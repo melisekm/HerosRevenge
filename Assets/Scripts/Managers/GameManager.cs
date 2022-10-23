@@ -7,7 +7,10 @@ public class GameManager : Singleton<GameManager>
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
 
-    public GameState State;
+    public GameState state;
+
+    // time until the game starts
+    [SerializeField] private float startDelay = 2f;
 
 
     private void Start()
@@ -19,7 +22,7 @@ public class GameManager : Singleton<GameManager>
     {
         OnBeforeStateChanged?.Invoke(newState);
 
-        State = newState;
+        state = newState;
         switch (newState)
         {
             case GameState.Starting:
@@ -55,14 +58,12 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleStarting()
     {
-        // move this somewhere else
-        IEnumerator StartGame()
+        void StartGame()
         {
-            yield return new WaitForSeconds(3f);
+            SpawnManager.Instance.SpawnPlayer();
             ChangeState(GameState.Playing);
         }
-
-        StartCoroutine(StartGame());
+        TimerManager.Instance.AddTimer(StartGame, startDelay);
     }
 
     private void HandlePlaying()

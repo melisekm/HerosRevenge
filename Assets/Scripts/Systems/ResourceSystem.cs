@@ -14,7 +14,7 @@ public class ResourceSystem : Singleton<ResourceSystem>
         player = Resources.Load<ScriptablePlayer>("Player");
     }
 
-    public ScriptableEnemy GetEnemy(EnemyType type)
+    public ScriptableEnemy GetEnemyByType(EnemyType type)
     {
         return enemies.Find(x => x.enemyType == type);
     }

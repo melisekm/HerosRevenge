@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   stats:
-    Health: 0
-    AttackPower: 0
-    DefenseRating: 0
-    Speed: 0
-    CooldownRecovery: 0
+    health: 200
+    attackPower: 80
+    defenseRating: 0.2
+    speed: 250
+    cooldownRecovery: 0
+  prefab: {fileID: 3846312350725019872, guid: 7811fa07224b0634aa73712e72643218, type: 3}

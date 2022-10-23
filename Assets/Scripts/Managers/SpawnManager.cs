@@ -6,12 +6,16 @@ using UnityEngine;
 public class SpawnManager : Singleton<SpawnManager>
 {
     private readonly List<Transform> spawnPoints = new();
+    private Transform playerSpawn;
     public float spawnRate = 1f;
     public bool shouldSpawn = true;
 
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+        playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+        // spawnPoints = new List<Transform>();
         var spawnPointsGo = GameObject.FindGameObjectsWithTag("SpawnPoint");
         foreach (var spawnPoint in spawnPointsGo)
         {
@@ -19,15 +23,36 @@ public class SpawnManager : Singleton<SpawnManager>
         }
     }
 
+
+    public void SpawnPlayer(float delay = 3f)
+    {
+        var playerScriptable = ResourceSystem.Instance.player;
+        var player = Instantiate(playerScriptable.prefab, playerSpawn.position, Quaternion.identity);
+        player.stats = playerScriptable.stats;
+    }
+
     private void SpawnEnemy(Transform spawnPoint)
     {
         Debug.Log("Spawned at " + spawnPoint.gameObject.name);
         var enemyScriptable = ResourceSystem.Instance.GetRandomEnemy();
-        // var enemy = Instantiate()
+        EnemyUnit enemy = Instantiate(enemyScriptable.prefab, spawnPoint.position, Quaternion.identity) as EnemyUnit;
+        enemy.SetStats(enemyScriptable.stats);
+        
     }
 
     public void SpawnEnemies()
     {
+        IEnumerator SpawnEnemiesCoroutine()
+        {
+            while (shouldSpawn)
+            {
+                foreach (Transform spawnPoint in spawnPoints)
+                {
+                    yield return new WaitForSeconds(spawnRate);
+                    SpawnEnemy(spawnPoint);
+                }
+            }
+        }
         shouldSpawn = true;
         StartCoroutine(SpawnEnemiesCoroutine());
     }
@@ -37,15 +62,5 @@ public class SpawnManager : Singleton<SpawnManager>
         shouldSpawn = false;
     }
 
-    private IEnumerator SpawnEnemiesCoroutine()
-    {
-        while (shouldSpawn)
-        {
-            foreach (Transform spawnPoint in spawnPoints)
-            {
-                SpawnEnemy(spawnPoint);
-                yield return new WaitForSeconds(spawnRate);
-            }
-        }
-    }
+    
 }

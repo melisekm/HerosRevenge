@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 128420736}
   - component: {fileID: 8526851069538936006}
   - component: {fileID: 1448866423}
+  - component: {fileID: 4603347336739323027}
   m_Layer: 0
-  m_Name: MeleeEnemy
+  m_Name: Ded
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1548414111
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dcea51d6065d64246aeec467afeff684, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.24
+  radius: 0.3425365
   height: 2
   canMove: 1
   maxSpeed: 2
@@ -186,9 +187,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.042536467, y: 0}
   serializedVersion: 2
-  m_Radius: 0.24
+  m_Radius: 0.34253648
 --- !u!50 &1448866423
 Rigidbody2D:
   serializedVersion: 4
@@ -210,3 +211,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4603347336739323027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7567320438183283978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f41dc387f1d8a14eb979b89215f8709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    health: 0
+    attackPower: 0
+    defenseRating: 0
+    speed: 0
+    cooldownRecovery: 0
+  destinationSetter: {fileID: 128420734}
+  aiPath: {fileID: 128420735}

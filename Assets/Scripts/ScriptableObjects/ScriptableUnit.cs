@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class ScriptableUnit : ScriptableObject
 {
-    public Stats Stats;
-    public Unit Prefab;
+    public Stats stats;
+    public Unit prefab;
 }
 
 [Serializable]
 public struct Stats
 {
-    public int Health;
-    public int AttackPower;
-    public float DefenseRating;
-    public float Speed;
-    public float CooldownRecovery;
+    public int health;
+    public int attackPower;
+    public float defenseRating;
+    public float speed;
+    public float cooldownRecovery;
 }
 

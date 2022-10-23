@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Ded
   m_EditorClassIdentifier: 
   stats:
-    Health: 0
-    AttackPower: 0
-    DefenseRating: 0
-    Speed: 0
-    CooldownRecovery: 0
-  enemyType: 0
+    health: 0
+    attackPower: 0
+    defenseRating: 0
+    speed: 0
+    cooldownRecovery: 0
+  prefab: {fileID: 0}
+  enemyType: 1
