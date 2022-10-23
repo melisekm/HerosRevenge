@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - BackgroundLayer
   - 
   - 
   - 
@@ -41,10 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
+    locked: 1
   - name: Background
     uniqueID: 714815073
-    locked: 0
+    locked: 1
   - name: NormalEnemy
     uniqueID: 2746553185
     locked: 0
