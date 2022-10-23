@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // rb = GetComponent<Rigidbody2D>();
         // unit = GetComponent<PlayerUnit>();
-        speed = unit.stats.speed;
+        speed = unit.Stats.speed;
     }
 
     private void FixedUpdate()

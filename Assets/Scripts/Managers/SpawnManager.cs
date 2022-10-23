@@ -27,7 +27,7 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         var playerScriptable = ResourceSystem.Instance.player;
         var player = Instantiate(playerScriptable.prefab, playerSpawn.position, Quaternion.identity);
-        player.stats = playerScriptable.stats;
+        player.SetStats(playerScriptable.stats);
     }
 
     private void SpawnEnemy(Transform spawnPoint)

@@ -13,10 +13,10 @@ public class EnemyUnit : Unit
         destinationSetter.target = GameObject.FindWithTag("Player").transform;
     }
 
-    public void SetStats(Stats newStats)
+    public override void SetStats(Stats newStats)
     {
-        stats = newStats;
-        aiPath.maxSpeed = stats.speed;
+        base.SetStats(newStats);
+        aiPath.maxSpeed = Stats.speed;
 
     }
     private void Update()

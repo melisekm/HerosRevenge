@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    public Stats stats;
+    public Stats Stats { get; private set; }
+    
+    public virtual void SetStats(Stats stats) => Stats = stats;
     
     protected virtual void Awake()
     {
