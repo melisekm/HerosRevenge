@@ -18,5 +18,5 @@ MonoBehaviour:
     defenseRating: 0.1
     speed: 2
     cooldownRecovery: 0
-  prefab: {fileID: -6026331531748989683, guid: 1a9e5b1f2a62b9d4dad34c6ec3ec4f93, type: 3}
+  prefab: {fileID: 3219470348388093629, guid: c0ceb603a6dae454999afc676f5f74ce, type: 3}
   enemyType: 0
