@@ -1,13 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class Timer
 {
     public float RemainingSeconds { get; private set; }
 
-    public Timer(float duration) => RemainingSeconds = duration;
+    public Timer(float duration)
+    {
+        RemainingSeconds = duration;
+    }
 
     public event Action OnTimerEnd;
 

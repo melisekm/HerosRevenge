@@ -1,28 +1,36 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TimerManager : Singleton<TimerManager>
 {
-    private List<Timer> timers = new List<Timer>();
+    private ArrayList timers = new();
+    private static Stack<Timer> removedTimers = new(); 
+
 
     public void AddTimer(Action callback, float duration = 1f)
     {
         var timer = new Timer(duration);
         timer.OnTimerEnd += callback;
+        timer.OnTimerEnd += () => RemoveTimer(timer);
         timers.Add(timer);
     }
 
     public void RemoveTimer(Timer timer)
     {
-        timers.Remove(timer);
+        removedTimers.Push(timer);
     }
 
     private void Update()
     {
-        foreach (var t in timers)
+        foreach (Timer timer in timers)
         {
-            t.Tick(Time.deltaTime);
+            timer.Tick(Time.deltaTime);
+        }
+        while (removedTimers.Count != 0 ) {
+            Timer t = removedTimers.Pop();
+            timers.Remove(t);
         }
     }
 }

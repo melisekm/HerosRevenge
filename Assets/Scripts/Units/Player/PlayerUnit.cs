@@ -6,16 +6,20 @@ using UnityEngine;
 public class PlayerUnit : Unit
 {
     public PlayerMovement playerMovement;
-    private void Start()
-    {
-        // playerMovement
-    }
+ 
     protected override void OnStateChanged(GameState state)
     {
         if (state == GameState.Playing)
         {
-            // playerMovement.canMove = true;
-            // playerMovement.ToggleMovement();
+            // this happens before the player movement script is enabled
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnManager.Instance.ToggleSpawning();
         }
     }
 }

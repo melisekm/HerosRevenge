@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
@@ -15,7 +15,6 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         base.Awake();
         playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
-        // spawnPoints = new List<Transform>();
         var spawnPointsGo = GameObject.FindGameObjectsWithTag("SpawnPoint");
         foreach (var spawnPoint in spawnPointsGo)
         {
@@ -37,7 +36,6 @@ public class SpawnManager : Singleton<SpawnManager>
         var enemyScriptable = ResourceSystem.Instance.GetRandomEnemy();
         EnemyUnit enemy = Instantiate(enemyScriptable.prefab, spawnPoint.position, Quaternion.identity) as EnemyUnit;
         enemy.SetStats(enemyScriptable.stats);
-        
     }
 
     public void SpawnEnemies()
@@ -46,21 +44,24 @@ public class SpawnManager : Singleton<SpawnManager>
         {
             while (shouldSpawn)
             {
-                foreach (Transform spawnPoint in spawnPoints)
+                foreach (var spawnPoint in spawnPoints.TakeWhile(spawnPoint => shouldSpawn))
                 {
                     yield return new WaitForSeconds(spawnRate);
                     SpawnEnemy(spawnPoint);
                 }
             }
         }
+
         shouldSpawn = true;
         StartCoroutine(SpawnEnemiesCoroutine());
     }
 
-    public void StopSpawning()
+    public void ToggleSpawning()
     {
-        shouldSpawn = false;
+        shouldSpawn = !shouldSpawn;
+        if (shouldSpawn)
+        {
+            SpawnEnemies();
+        }
     }
-
-    
 }

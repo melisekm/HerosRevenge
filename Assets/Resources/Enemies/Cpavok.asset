@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Cpavok
   m_EditorClassIdentifier: 
   stats:
-    Health: 100
-    AttackPower: 5
-    DefenseRating: 0.1
-    Speed: 2
-    CooldownRecovery: 0
+    health: 20
+    attackPower: 5
+    defenseRating: 0.1
+    speed: 2
+    cooldownRecovery: 0
+  prefab: {fileID: -6026331531748989683, guid: 1a9e5b1f2a62b9d4dad34c6ec3ec4f93, type: 3}
   enemyType: 0
