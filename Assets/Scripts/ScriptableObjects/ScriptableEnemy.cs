@@ -14,7 +14,7 @@ public enum EnemyType
 {
     Cpavok,
     Ded,
-    Bodale,
+    Vermener,
     Amoniak,
     Rozok
 }

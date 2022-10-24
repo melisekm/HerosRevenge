@@ -13,10 +13,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        // rb = GetComponent<Rigidbody2D>();
-        // unit = GetComponent<PlayerUnit>();
         speed = unit.Stats.speed;
     }
+
 
     private void FixedUpdate()
     {
@@ -25,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             Vector2 movement = new Vector2(horizontal, vertical);
-            rb.velocity = movement * (speed * Time.deltaTime);
+            unit.rb.velocity = movement * (speed * Time.deltaTime);
         }
     }
 }

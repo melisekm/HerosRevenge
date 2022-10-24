@@ -6,10 +6,13 @@ using UnityEngine;
 public class EnemyUnit : Unit
 {
     public AIDestinationSetter destinationSetter;
-    public AIPath aiPath; // A* controls the movement of the enemy
-    // it also has stopping distance, speed, slowdown distance..
-    private void Start()
+    // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
+    public AIPath aiPath; 
+    protected override void Awake()
     {
+        base.Awake();
+        destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
+        aiPath = gameObject.GetComponent<AIPath>();
         destinationSetter.target = GameObject.FindWithTag("Player").transform;
     }
 
@@ -17,11 +20,6 @@ public class EnemyUnit : Unit
     {
         base.SetStats(newStats);
         aiPath.maxSpeed = Stats.speed;
+    }
 
-    }
-    private void Update()
-    {
-        
-    }
-    
 }

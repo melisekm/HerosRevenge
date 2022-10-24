@@ -9,7 +9,7 @@ public class TimerManager : Singleton<TimerManager>
     private static Stack<Timer> removedTimers = new(); 
 
 
-    public void AddTimer(Action callback, float duration = 1f)
+    public void StartTimer(Action callback, float duration = 1f)
     {
         var timer = new Timer(duration);
         timer.OnTimerEnd += callback;

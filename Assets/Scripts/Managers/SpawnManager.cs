@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
@@ -23,11 +22,10 @@ public class SpawnManager : Singleton<SpawnManager>
     }
 
 
-    public void SpawnPlayer(float delay = 3f)
+    public void SpawnPlayer()
     {
         var playerScriptable = ResourceSystem.Instance.player;
-        var player = Instantiate(playerScriptable.prefab, playerSpawn.position, Quaternion.identity);
-        player.SetStats(playerScriptable.stats);
+        Instantiate(playerScriptable.prefab, playerSpawn.position, Quaternion.identity);
     }
 
     private void SpawnEnemy(Transform spawnPoint)
@@ -44,8 +42,9 @@ public class SpawnManager : Singleton<SpawnManager>
         {
             while (shouldSpawn)
             {
-                foreach (var spawnPoint in spawnPoints.TakeWhile(spawnPoint => shouldSpawn))
+                foreach (var spawnPoint in spawnPoints)
                 {
+                    if (!shouldSpawn) break;
                     yield return new WaitForSeconds(spawnRate);
                     SpawnEnemy(spawnPoint);
                 }

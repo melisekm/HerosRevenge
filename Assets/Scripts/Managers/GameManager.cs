@@ -10,7 +10,10 @@ public class GameManager : Singleton<GameManager>
     public GameState state;
 
     // time until the game starts
-    [SerializeField] private float startDelay = 2f;
+    [Min(0.01f)]
+    [SerializeField]
+    private float startDelay = 2f;
+    [SerializeField] private bool spawnPlayer = false;
 
 
     private void Start()
@@ -58,17 +61,13 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleStarting()
     {
-        void StartGame()
-        {
-            SpawnManager.Instance.SpawnPlayer();
-            ChangeState(GameState.Playing);
-        }
-        TimerManager.Instance.AddTimer(StartGame, startDelay);
+        if (spawnPlayer) SpawnManager.Instance.SpawnPlayer();
+        ChangeState(GameState.Playing);
     }
 
     private void HandlePlaying()
     {
-        SpawnManager.Instance.SpawnEnemies();
+        TimerManager.Instance.StartTimer(SpawnManager.Instance.SpawnEnemies, startDelay);
     }
 }
 

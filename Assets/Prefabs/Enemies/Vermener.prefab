@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: radius
-      value: 0.28
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 249690688147837586, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -26,7 +26,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8,
+      objectReference: {fileID: 21300000, guid: 90528682d7966644198b5beea1d49a43,
         type: 3}
     - target: {fileID: 249690688147837586, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -46,17 +46,42 @@ PrefabInstance:
     - target: {fileID: 772787556210138997, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Name
-      value: Bodale
+      value: Vermener
       objectReference: {fileID: 0}
     - target: {fileID: 1835348455726953751, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Radius
-      value: 0.28
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835348455726953751, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835348455726953751, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -108,5 +133,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 90528682d7966644198b5beea1d49a43,
+        type: 3}
+    - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ce8e399850898e4b843eb18ff7c86f3, type: 3}
+--- !u!1 &6915336484701343480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 772787556210138997, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 6143274744076784013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &335523514902425647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915336484701343480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc40e16f63c01b94db48f3523c8b005c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

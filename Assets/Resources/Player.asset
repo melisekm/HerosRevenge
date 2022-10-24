@@ -16,6 +16,6 @@ MonoBehaviour:
     health: 200
     attackPower: 80
     defenseRating: 0.2
-    speed: 250
+    speed: 175
     cooldownRecovery: 0
   prefab: {fileID: 3846312350725019872, guid: 7811fa07224b0634aa73712e72643218, type: 3}

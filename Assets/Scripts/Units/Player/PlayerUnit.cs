@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerUnit : Unit
@@ -15,8 +16,17 @@ public class PlayerUnit : Unit
         }
     }
 
-    private void Update()
+    protected override void Start()
     {
+        base.Start();
+        var playerScriptable = ResourceSystem.Instance.player;
+        SetStats(playerScriptable.stats);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        sprite.flipX = rb.velocity.x >= 0;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SpawnManager.Instance.ToggleSpawning();
