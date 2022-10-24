@@ -3479,7 +3479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bcac967b5e59f4db05e34f9ebca704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  state: 1
   startDelay: 0.01
   spawnPlayer: 0
 --- !u!1 &567248734
@@ -4006,12 +4006,12 @@ PrefabInstance:
     - target: {fileID: 461855116459380957, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 461855116459380957, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.74
       objectReference: {fileID: 0}
     - target: {fileID: 461855116459380957, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
@@ -4051,6 +4051,11 @@ PrefabInstance:
     - target: {fileID: 461855116459380957, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846312350725019872, guid: 7811fa07224b0634aa73712e72643218,
+        type: 3}
+      propertyPath: isDefaultFacingRight
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

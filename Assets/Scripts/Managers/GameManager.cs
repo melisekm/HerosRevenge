@@ -18,7 +18,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        ChangeState(GameState.Starting);
+        ChangeState(state);
     }
 
     public void ChangeState(GameState newState)

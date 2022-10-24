@@ -176,7 +176,7 @@ SpriteRenderer:
   m_SortingLayerID: 120783377
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4f0f7a68703ccb143939c24937c14b0d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2cf7f72a29a3a1443838ceff7b77b5d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -239,7 +239,6 @@ MonoBehaviour:
   canMove: 1
   rb: {fileID: 461855116459380947}
   unit: {fileID: 3846312350725019872}
-  sprite: {fileID: 461855116459380956}
 --- !u!114 &3846312350725019872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,4 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa105a9ca074d7bb063b03ce7e65559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  sprite: {fileID: 0}
+  isFacingRight: 1
   playerMovement: {fileID: 461855116459380946}

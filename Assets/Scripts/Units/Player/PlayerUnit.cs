@@ -7,7 +7,8 @@ using UnityEngine;
 public class PlayerUnit : Unit
 {
     public PlayerMovement playerMovement;
- 
+
+
     protected override void OnStateChanged(GameState state)
     {
         if (state == GameState.Playing)
@@ -26,10 +27,31 @@ public class PlayerUnit : Unit
     protected override void Update()
     {
         base.Update();
-        sprite.flipX = rb.velocity.x >= 0;
+        if (rb.velocity.x >= 0.01f)
+        {
+            if (!isFacingRight)
+            {
+                Flip();
+            }
+        
+        }
+        else if(rb.velocity.x <= -0.01f)
+        {
+            if (isFacingRight)
+            {
+                Flip();
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SpawnManager.Instance.ToggleSpawning();
         }
     }
+    
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        sprite.flipX = !sprite.flipX;
+    }
+
 }

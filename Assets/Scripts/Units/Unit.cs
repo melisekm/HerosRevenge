@@ -9,6 +9,8 @@ public abstract class Unit : MonoBehaviour
     public Stats Stats { get; private set; }
 
     public virtual void SetStats(Stats stats) => Stats = stats;
+    [SerializeField] protected bool isFacingRight = true;
+
 
     protected virtual void Awake()
     {
