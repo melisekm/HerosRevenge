@@ -237,7 +237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  rb: {fileID: 461855116459380947}
   unit: {fileID: 3846312350725019872}
 --- !u!114 &3846312350725019872
 MonoBehaviour:
@@ -254,4 +253,3 @@ MonoBehaviour:
   rb: {fileID: 0}
   sprite: {fileID: 0}
   isFacingRight: 0
-  playerMovement: {fileID: 461855116459380946}

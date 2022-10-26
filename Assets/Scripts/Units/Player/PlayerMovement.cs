@@ -6,14 +6,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool canMove = true;
-    public Rigidbody2D rb;
     public PlayerUnit unit;
 
     private float speed;
 
     private void Start()
     {
-        speed = unit.Stats.speed;
+        speed = unit.attributes.speed;
     }
 
 

@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class PlayerUnit : Unit
 {
-    public PlayerMovement playerMovement;
+    public PlayerStats stats { get; private set; }
+    public void SetStats(PlayerStats st) => stats = st;
+
 
 
     protected override void OnStateChanged(GameState state)
@@ -20,12 +22,15 @@ public class PlayerUnit : Unit
     protected override void Start()
     {
         base.Start();
-        var playerScriptable = ResourceSystem.Instance.player;
-        SetStats(playerScriptable.stats);
+        // TODO TEMPORARY Spawn manager should set this or load it from somewhere
+        ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
+        SetAttributes(playerScriptable.attributes);
+        SetStats(playerScriptable.playerStats);
     }
 
     protected override void Update()
     {
+        Debug.Log(this.stats.level);
         base.Update();
         if (rb.velocity.x >= 0.01f)
         {

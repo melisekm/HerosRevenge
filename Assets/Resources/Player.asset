@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23ee97a503d35e44a287e7d9eaae927, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  stats:
+  attributes:
     health: 200
     attackPower: 80
     defenseRating: 0.2
     speed: 175
     cooldownRecovery: 0
   prefab: {fileID: 3846312350725019872, guid: 7811fa07224b0634aa73712e72643218, type: 3}
+  playerStats:
+    xp: 0
+    level: 1
+    gold: 0

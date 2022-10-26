@@ -4,12 +4,13 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public SpriteRenderer sprite;
-    public Stats Stats { get; private set; }
-
-    public virtual void SetStats(Stats stats) => Stats = stats;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public SpriteRenderer sprite;
     [SerializeField] protected bool isFacingRight = true;
+    public Attributes attributes { get; private set; }
+
+    public virtual void SetAttributes(Attributes attr) => attributes = attr;
+    
 
 
     protected virtual void Awake()

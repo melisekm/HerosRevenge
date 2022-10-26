@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class EnemyUnit : Unit
 {
-    public AIDestinationSetter destinationSetter;
+    [HideInInspector] public AIDestinationSetter destinationSetter;
 
     // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
-    public AIPath aiPath;
+    [HideInInspector] public AIPath aiPath;
 
     private Action rotateToPlayer;
 
@@ -58,9 +58,9 @@ public class EnemyUnit : Unit
     //     }
     // }
 
-    public override void SetStats(Stats newStats)
+    public override void SetAttributes(Attributes newAttributes)
     {
-        base.SetStats(newStats);
-        aiPath.maxSpeed = Stats.speed;
+        base.SetAttributes(newAttributes);
+        aiPath.maxSpeed = attributes.speed;
     }
 }
