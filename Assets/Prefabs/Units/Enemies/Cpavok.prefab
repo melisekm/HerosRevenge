@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: radius
-      value: 0.3
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -634077508788494325, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: graphMask.value
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 772787556210138997, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}

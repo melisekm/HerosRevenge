@@ -6,6 +6,7 @@ public class AbilityHolder : MonoBehaviour
 {
     private AbilityType abilityType = AbilityType.Empty;
     private ScriptableAbility scriptableAbility;
+    public PlayerUnit playerUnit;
     [HideInInspector] public bool isActive;
 
     void Start()
@@ -30,7 +31,10 @@ public class AbilityHolder : MonoBehaviour
             Ability fireOrbAbility = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
             if (fireOrbAbility)
             {
-                fireOrbAbility.SetAbilityStats(scriptableAbility.stats);
+                AbilityStats abilityStats = scriptableAbility.stats;
+                abilityStats.damage += playerUnit.attributes.attackPower.actual;
+                abilityStats.baseCooldown = abilityStats.baseCooldown * (1 - playerUnit.attributes.cooldownRecovery.actual);
+                fireOrbAbility.SetAbilityStats(abilityStats);
                 fireOrbAbility.enabled = true;
             }
         }

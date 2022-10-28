@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PiercingShot
   m_EditorClassIdentifier: 
   stats:
-    damage: 150
+    damage: 60
     baseCooldown: 0.7
     range: 10
   abilityType: 3

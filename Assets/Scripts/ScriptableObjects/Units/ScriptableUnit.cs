@@ -11,6 +11,15 @@ public abstract class ScriptableUnit : ScriptableObject
 [Serializable]
 public class Attributes
 {
+    public Attributes(Attributes other)
+    {
+        health = new Attribute(other.health);
+        attackPower = new Attribute(other.attackPower);
+        speed = new Attribute(other.speed);
+        defenseRating = new Attribute(other.defenseRating);
+        cooldownRecovery = new Attribute(other.cooldownRecovery);
+    }
+
     [SerializeField] public Attribute health;
     [SerializeField] public Attribute attackPower;
     [SerializeField] public Attribute defenseRating;
@@ -21,7 +30,15 @@ public class Attributes
 [Serializable]
 public class Attribute
 {
-    public Attribute(int initial, int actual, int min, int max, int increasePerLevel)
+    public Attribute(Attribute other)
+    {
+        initial = other.initial;
+        actual = other.actual;
+        min = other.min;
+        max = other.max;
+        increasePerLevel = other.increasePerLevel;
+    }
+    public Attribute(float initial, float actual, float min, float max, float increasePerLevel)
     {
         this.initial = initial;
         this.actual = actual;

@@ -13,10 +13,35 @@ MonoBehaviour:
   m_Name: Cpavok
   m_EditorClassIdentifier: 
   attributes:
-    health: 75
-    attackPower: 8
-    defenseRating: 0.1
-    speed: 2
-    cooldownRecovery: 0
+    health:
+      initial: 50
+      actual: 50
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    attackPower:
+      initial: 8
+      actual: 8
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    defenseRating:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    speed:
+      initial: 2
+      actual: 2
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    cooldownRecovery:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 0
+      increasePerLevel: 0
   prefab: {fileID: 4526574905518588468, guid: 2f0d660c857242f4d80c9acb112bd8d9, type: 3}
   enemyType: 0

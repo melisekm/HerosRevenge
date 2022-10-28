@@ -36,7 +36,7 @@ public class SpawnManager : Singleton<SpawnManager>
         if (enemy)
         {
             // do any level based stuff here
-            enemy.SetAttributes(enemyScriptable.attributes);
+            enemy.SetAttributes(new Attributes(enemyScriptable.attributes));
         }
     }
 

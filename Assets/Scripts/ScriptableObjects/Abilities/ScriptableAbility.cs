@@ -12,7 +12,7 @@ public class ScriptableAbility : ScriptableObject
 [Serializable]
 public struct AbilityStats
 {
-    public int damage;
+    public float damage;
     public float baseCooldown;
     public float range;
 }

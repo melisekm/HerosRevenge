@@ -13,13 +13,48 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   attributes:
-    health: 200
-    attackPower: 80
-    defenseRating: 0.2
-    speed: 175
-    cooldownRecovery: 0
+    health:
+      initial: 100
+      actual: 100
+      min: 0
+      max: 10000
+      increasePerLevel: 50
+    attackPower:
+      initial: 10
+      actual: 10
+      min: 0
+      max: 10000
+      increasePerLevel: 5
+    defenseRating:
+      initial: 0.1
+      actual: 0.1
+      min: 0
+      max: 0.9
+      increasePerLevel: 0.01
+    speed:
+      initial: 175
+      actual: 175
+      min: 0
+      max: 300
+      increasePerLevel: 0
+    cooldownRecovery:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 0.9
+      increasePerLevel: 0.01
   prefab: {fileID: 3846312350725019872, guid: 7811fa07224b0634aa73712e72643218, type: 3}
   playerStats:
     xp: 0
-    level: 1
-    gold: 0
+    level:
+      initial: 1
+      actual: 1
+      min: 1
+      max: 50
+      increasePerLevel: 1
+    gold:
+      initial: 50
+      actual: 50
+      min: 0
+      max: 10000
+      increasePerLevel: 75

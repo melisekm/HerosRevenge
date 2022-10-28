@@ -38,11 +38,11 @@ public abstract class Unit : MonoBehaviour
     {
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         int damageTaken = Mathf.RoundToInt(damage * (1 - attributes.defenseRating.actual));
         attributes.health.actual -= damageTaken;
         
-        Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + attributes.health);
+        Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + attributes.health.actual);
     }
 }
