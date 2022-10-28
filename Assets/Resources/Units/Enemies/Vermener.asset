@@ -32,8 +32,8 @@ MonoBehaviour:
       max: 0
       increasePerLevel: 0
     speed:
-      initial: 1
-      actual: 1
+      initial: 2
+      actual: 2
       min: 0
       max: 0
       increasePerLevel: 0

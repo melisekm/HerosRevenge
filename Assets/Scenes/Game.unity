@@ -159,7 +159,7 @@ MonoBehaviour:
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 0
+  showNavGraphs: 1
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -4566,6 +4566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da736ad76bfab014b9017d0570ea1354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUnit: {fileID: 1160418144}
   isActive: 1
 --- !u!114 &1160418142
 MonoBehaviour:
@@ -4579,6 +4580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da736ad76bfab014b9017d0570ea1354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUnit: {fileID: 1160418144}
   isActive: 0
 --- !u!114 &1160418143
 MonoBehaviour:
@@ -4593,6 +4595,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedAbilityNumber: {fileID: 1200577328}
+--- !u!114 &1160418144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3846312350725019872, guid: 7811fa07224b0634aa73712e72643218,
+    type: 3}
+  m_PrefabInstance: {fileID: 1160418139}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160418140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa105a9ca074d7bb063b03ce7e65559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1171836109
 GameObject:
   m_ObjectHideFlags: 0
