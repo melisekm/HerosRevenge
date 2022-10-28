@@ -63,4 +63,5 @@ public class EnemyUnit : Unit
         base.SetAttributes(newAttributes);
         aiPath.maxSpeed = attributes.speed.initial;
     }
+
 }

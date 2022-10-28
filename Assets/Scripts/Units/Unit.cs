@@ -43,6 +43,16 @@ public abstract class Unit : MonoBehaviour
         int damageTaken = Mathf.RoundToInt(damage * (1 - attributes.defenseRating.actual));
         attributes.health.actual -= damageTaken;
         
+        if (attributes.health.actual <= 0)
+        {
+            Die();
+        }
+        
         Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + attributes.health.actual);
+    }
+    
+    protected virtual void Die()
+    {
+        Destroy(gameObject);
     }
 }
