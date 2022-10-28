@@ -7,7 +7,8 @@ public class SpawnManager : Singleton<SpawnManager>
     private readonly List<Transform> spawnPoints = new();
     private Transform playerSpawn;
     public float spawnRate = 1f;
-    public bool shouldSpawn = true;
+    private bool shouldSpawn = true;
+    public bool isSpawningEnabled = true;
 
 
     protected override void Awake()
@@ -55,8 +56,11 @@ public class SpawnManager : Singleton<SpawnManager>
             }
         }
 
-        shouldSpawn = true;
-        StartCoroutine(SpawnEnemiesCoroutine());
+        if (isSpawningEnabled)
+        {
+            shouldSpawn = true;
+            StartCoroutine(SpawnEnemiesCoroutine());
+        }
     }
 
     public void ToggleSpawning()

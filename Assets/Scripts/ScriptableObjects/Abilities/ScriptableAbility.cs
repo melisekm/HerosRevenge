@@ -1,18 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ScriptableAbility : ScriptableObject
+[CreateAssetMenu(menuName = "Scriptables/Abilities/New Scriptable Ability")]
+public class ScriptableAbility : ScriptableObject
 {
-  
-    public Sprite sprite;
     public AbilityStats stats;
-    
-
-    public abstract void Initialize(GameObject obj);
-    public abstract void Trigger();
+    public AbilityType abilityType;
+    public Ability prefab;
 }
+
 [Serializable]
 public struct AbilityStats
 {
@@ -24,5 +20,8 @@ public struct AbilityStats
 [Serializable]
 public enum AbilityType
 {
-    
+    Empty = 0,
+    Cleave = 1,
+    FireOrb = 2,
+    PiercingShot = 3
 }

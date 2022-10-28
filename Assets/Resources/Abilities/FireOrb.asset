@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5e236e6754dfb489fc1e205d96daa7, type: 3}
-  m_Name: Vermener
+  m_Script: {fileID: 11500000, guid: c038356f0460c8c448b0b7d5a69fc690, type: 3}
+  m_Name: FireOrb
   m_EditorClassIdentifier: 
   stats:
-    health: 30
-    attackPower: 15
-    defenseRating: 0.5
-    speed: 1.5
-    cooldownRecovery: 0.5
-  prefab: {fileID: 335523514902425647, guid: 000ac3cc0426f97419dd36386afceaca, type: 3}
-  enemyType: 2
+    damage: 100
+    baseCooldown: 0.5
+    range: 10
+  abilityType: 2
+  prefab: {fileID: 7359200154823451720, guid: 6bebb38791b60c94f8276e35d2e7bac7, type: 3}

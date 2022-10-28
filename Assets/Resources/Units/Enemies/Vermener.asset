@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e5e236e6754dfb489fc1e205d96daa7, type: 3}
-  m_Name: Cpavok
+  m_Name: Vermener
   m_EditorClassIdentifier: 
-  stats:
-    health: 20
-    attackPower: 5
-    defenseRating: 0.1
-    speed: 2
+  attributes:
+    health: 150
+    attackPower: 10
+    defenseRating: 0
+    speed: 1.5
     cooldownRecovery: 0
-  prefab: {fileID: 4526574905518588468, guid: 2f0d660c857242f4d80c9acb112bd8d9, type: 3}
-  enemyType: 0
+  prefab: {fileID: 335523514902425647, guid: 000ac3cc0426f97419dd36386afceaca, type: 3}
+  enemyType: 2

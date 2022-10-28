@@ -30,7 +30,6 @@ public class PlayerUnit : Unit
 
     protected override void Update()
     {
-        Debug.Log(this.stats.level);
         base.Update();
         if (rb.velocity.x >= 0.01f)
         {

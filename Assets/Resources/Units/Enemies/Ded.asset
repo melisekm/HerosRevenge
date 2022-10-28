@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5e236e6754dfb489fc1e205d96daa7, type: 3}
   m_Name: Ded
   m_EditorClassIdentifier: 
-  stats:
-    health: 25
-    attackPower: 8
-    defenseRating: 0
+  attributes:
+    health: 100
+    attackPower: 15
+    defenseRating: 0.2
     speed: 3
     cooldownRecovery: 0
   prefab: {fileID: 3872082363261132874, guid: 65ace372b344f2a448e282c5ecead28b, type: 3}
