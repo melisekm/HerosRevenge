@@ -31,7 +31,6 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void SpawnEnemy(Transform spawnPoint)
     {
-        Debug.Log("Spawned at " + spawnPoint.gameObject.name);
         ScriptableEnemy enemyScriptable = ResourceSystem.Instance.GetRandomEnemy();
         EnemyUnit enemy = Instantiate(enemyScriptable.prefab, spawnPoint.position, Quaternion.identity) as EnemyUnit;
         if (enemy)

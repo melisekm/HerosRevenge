@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbilityHolder : MonoBehaviour
 {
     private AbilityType abilityType = AbilityType.Empty;
+    private ScriptableAbility scriptableAbility;
     [HideInInspector] public bool isActive;
 
     void Start()
@@ -14,6 +15,10 @@ public class AbilityHolder : MonoBehaviour
     public void SetAbilityType(AbilityType abilityT)
     {
         abilityType = abilityT;
+        if (abilityType != AbilityType.Empty)
+        {
+            scriptableAbility = ResourceSystem.Instance.GetAbilityByType(abilityType);
+        }
     }
 
     void Update()
@@ -22,29 +27,11 @@ public class AbilityHolder : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ScriptableAbility scriptableAbility = ResourceSystem.Instance.GetAbilityByType(abilityType);
-            var abilityPrefab = scriptableAbility.prefab;
-            Debug.Log(scriptableAbility.prefab.transform.rotation.x);
-            Debug.Log(scriptableAbility.prefab.transform.rotation.y);
-            Debug.Log(scriptableAbility.prefab.transform.rotation.z);
-
-
-            Ability fireOrbAbility = Instantiate(
-                abilityPrefab, transform.position,
-                Quaternion.identity
-            );
+            Ability fireOrbAbility = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
             if (fireOrbAbility)
             {
-                Debug.Log("Instantiated");
-                Debug.Log("Setting Stats");
                 fireOrbAbility.SetAbilityStats(scriptableAbility.stats);
-                Debug.Log("Stats set");
-                Debug.Log(fireOrbAbility.transform.rotation.z);
-
                 fireOrbAbility.enabled = true;
-                Debug.Log("Enabled");
-                Debug.Log(fireOrbAbility.transform.rotation.z);
-
             }
         }
     }

@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: -0.03947727
       objectReference: {fileID: 0}
+    - target: {fileID: 4798423122588028441, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_RootOrder
@@ -167,6 +172,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7865297908160743101}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &5724600821842692898
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466503047459641800}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &3872082363261132874
 MonoBehaviour:
   m_ObjectHideFlags: 0

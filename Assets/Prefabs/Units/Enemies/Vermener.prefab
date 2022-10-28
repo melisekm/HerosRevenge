@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4798423122588028441, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_RootOrder
@@ -167,6 +172,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6143274744076784013}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &1297291233361045302
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915336484701343480}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!114 &335523514902425647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc40e16f63c01b94db48f3523c8b005c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  sprite: {fileID: 0}
+  isFacingRight: 1
+  destinationSetter: {fileID: 0}
+  aiPath: {fileID: 0}

@@ -10,7 +10,6 @@ public abstract class Unit : MonoBehaviour
     public Attributes attributes { get; private set; }
 
     public virtual void SetAttributes(Attributes attr) => attributes = attr;
-    
 
 
     protected virtual void Awake()
@@ -39,5 +38,6 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + attributes.health);
     }
 }

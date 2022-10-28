@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 1
-  isSpawningEnabled: 0
+  isSpawningEnabled: 1
 --- !u!1 &101092648
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 347573518}
   m_Layer: 1
   m_Name: Objects
-  m_TagString: Untagged
+  m_TagString: SolidObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

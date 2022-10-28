@@ -2,15 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PiercingShotAbility : Ability
+public class PiercingShotAbility : RangedAbility
 {
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-        
-    }
 }
