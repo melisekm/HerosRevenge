@@ -61,6 +61,6 @@ public class EnemyUnit : Unit
     public override void SetAttributes(Attributes newAttributes)
     {
         base.SetAttributes(newAttributes);
-        aiPath.maxSpeed = attributes.speed;
+        aiPath.maxSpeed = attributes.speed.initial;
     }
 }

@@ -7,6 +7,8 @@ public abstract class Unit : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public SpriteRenderer sprite;
     [SerializeField] protected bool isFacingRight = true;
+    
+    
     public Attributes attributes { get; private set; }
 
     public virtual void SetAttributes(Attributes attr) => attributes = attr;
@@ -38,6 +40,9 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        int damageTaken = Mathf.RoundToInt(damage * (1 - attributes.defenseRating.actual));
+        attributes.health.actual -= damageTaken;
+        
         Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + attributes.health);
     }
 }

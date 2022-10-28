@@ -10,9 +10,9 @@ public class ScriptablePlayer : ScriptableUnit
 }
 
 [Serializable]
-public struct PlayerStats
+public class PlayerStats
 {
-    public int xp;
-    public int level;
-    public int gold;
+    public float xp;
+    [SerializeField] public Attribute level;
+    [SerializeField] public Attribute gold;
 }

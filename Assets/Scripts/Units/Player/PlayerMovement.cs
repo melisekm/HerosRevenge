@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        speed = unit.attributes.speed;
+        speed = unit.attributes.speed.initial;
     }
 
 
