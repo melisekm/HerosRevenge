@@ -7,12 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
     public bool canMove = true;
     public PlayerUnit unit;
+    private Vector2 direction;
 
-    private float speed;
 
-    private void Start()
+    private void Update()
     {
-        speed = unit.attributes.speed.initial;
+        // Get player's movement direction based on input and normalize to prevent double speed when moving diagonal
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxis("Vertical")).normalized;
     }
 
 
@@ -20,10 +21,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            Vector2 movement = new Vector2(horizontal, vertical);
-            unit.rb.velocity = movement * (speed * Time.deltaTime);
+            float speed = unit.attributes.speed.actual;
+            unit.rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
         }
     }
 }

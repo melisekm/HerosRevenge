@@ -40,28 +40,23 @@ public class EnemyUnit : Unit
         rotateToPlayer();
     }
 
-    // private void RotateToPlayer()
-    // {
-    //
-    //     // sprite.flipX = isDefaultFacingRight
-    //     //     ? destinationSetter.target.position.x < transform.position.x
-    //     //     : destinationSetter.target.position.x > transform.position.x;
-    //     bool facingLeftAndGoingRight = aiPath.desiredVelocity.x >= 0.01f && !isDefaultFacingRight;
-    //     bool facingRightAndGoingLeft = aiPath.desiredVelocity.x <= -0.01f && isDefaultFacingRight;
-    //     if (facingLeftAndGoingRight || facingRightAndGoingLeft)
-    //     {
-    //         sprite.flipX = true;
-    //     }
-    //     else
-    //     {
-    //         sprite.flipX = false;
-    //     }
-    // }
-
     public override void SetAttributes(Attributes newAttributes)
     {
         base.SetAttributes(newAttributes);
         aiPath.maxSpeed = attributes.speed.initial;
     }
 
+    public override void TakeDamage(float damage)
+    {
+        // flash red
+        StartCoroutine(FlashRed());
+        base.TakeDamage(damage);
+    }
+
+    IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+    }
 }

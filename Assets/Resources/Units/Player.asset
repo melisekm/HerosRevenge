@@ -32,10 +32,10 @@ MonoBehaviour:
       max: 0.9
       increasePerLevel: 0.01
     speed:
-      initial: 175
-      actual: 175
+      initial: 5
+      actual: 5
       min: 0
-      max: 300
+      max: 15
       increasePerLevel: 0
     cooldownRecovery:
       initial: 0
