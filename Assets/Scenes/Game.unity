@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17dc81182f062d6419216e0342bfa5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 1
+  spawnRate: 2
   isSpawningEnabled: 1
 --- !u!1 &101092648
 GameObject:
@@ -4769,7 +4769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerUnit: {fileID: 1160418144}
-  isActive: 1
+  isHolderActive: 0
 --- !u!114 &1160418142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4783,7 +4783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerUnit: {fileID: 1160418144}
-  isActive: 0
+  isHolderActive: 0
 --- !u!114 &1160418143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10354,7 +10354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1593421907
 MonoBehaviour:
   m_ObjectHideFlags: 0

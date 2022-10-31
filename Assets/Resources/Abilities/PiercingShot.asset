@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PiercingShot
   m_EditorClassIdentifier: 
   stats:
-    damage: 60
+    damage: 100
     baseCooldown: 0.7
-    range: 10
+    range: 15
   abilityType: 3
   prefab: {fileID: 4943086765236575779, guid: 8c1439b1f95231642b8adde4ca0115f7, type: 3}

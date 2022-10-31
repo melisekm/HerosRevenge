@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes:
     health:
-      initial: 130
-      actual: 130
+      initial: 100
+      actual: 100
       min: 0
       max: 0
       increasePerLevel: 0
@@ -32,8 +32,8 @@ MonoBehaviour:
       max: 0
       increasePerLevel: 0
     speed:
-      initial: 2
-      actual: 2
+      initial: 1.5
+      actual: 1.5
       min: 0
       max: 0
       increasePerLevel: 0

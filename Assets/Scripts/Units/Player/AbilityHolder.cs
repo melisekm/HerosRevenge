@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
@@ -7,7 +5,16 @@ public class AbilityHolder : MonoBehaviour
     private AbilityType abilityType = AbilityType.Empty;
     private ScriptableAbility scriptableAbility;
     public PlayerUnit playerUnit;
-    [HideInInspector] public bool isActive;
+    [HideInInspector] public bool isHolderActive;
+    private float cooldownTime;
+
+    enum AbilityState
+    {
+        ready,
+        cooldown
+    }
+
+    AbilityState abilityState = AbilityState.ready;
 
     void Start()
     {
@@ -22,21 +29,37 @@ public class AbilityHolder : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-        if (!isActive || abilityType == AbilityType.Empty) return;
+        if (abilityType == AbilityType.Empty) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        switch (abilityState)
         {
-            Ability fireOrbAbility = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
-            if (fireOrbAbility)
-            {
-                AbilityStats abilityStats = scriptableAbility.stats;
-                abilityStats.damage += playerUnit.attributes.attackPower.actual;
-                abilityStats.baseCooldown = abilityStats.baseCooldown * (1 - playerUnit.attributes.cooldownRecovery.actual);
-                fireOrbAbility.SetAbilityStats(abilityStats);
-                fireOrbAbility.enabled = true;
-            }
+            case AbilityState.ready:
+                if (isHolderActive && Input.GetKeyDown(KeyCode.Space))
+                {
+                    ActivateAbility(out var ability);
+                    abilityState = AbilityState.cooldown;
+                    cooldownTime = ability.abilityStats.baseCooldown;
+                }
+
+                break;
+            case AbilityState.cooldown:
+                if (cooldownTime > 0)
+                    cooldownTime -= Time.deltaTime;
+                else
+                    abilityState = AbilityState.ready;
+                break;
         }
+    }
+
+    private void ActivateAbility(out Ability ability)
+    {
+        ability = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
+        AbilityStats abilityStats = scriptableAbility.stats;
+        abilityStats.damage += playerUnit.attributes.attackPower.actual;
+        abilityStats.baseCooldown = abilityStats.baseCooldown * (1 - playerUnit.attributes.cooldownRecovery.actual);
+        ability.SetAbilityStats(abilityStats);
+        ability.enabled = true;
     }
 }

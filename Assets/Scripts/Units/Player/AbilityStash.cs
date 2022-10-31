@@ -17,6 +17,7 @@ public class AbilityStash : MonoBehaviour
         }
 
         selectedAbility = abilityList[0];
+        selectedAbility.isHolderActive = true;
         abilityList[0].SetAbilityType(AbilityType.FireOrb);
         abilityList[1].SetAbilityType(AbilityType.PiercingShot);
     }
@@ -30,7 +31,7 @@ public class AbilityStash : MonoBehaviour
             if (Input.GetKeyDown((i + 1).ToString()))
             {
                 selectedAbilityNumber.text = (i + 1).ToString();
-                abilityList[i].isActive = true;
+                abilityList[i].isHolderActive = true;
                 selectedAbility = abilityList[i];
                 wasAbilityChanged = true;
                 break;
@@ -42,7 +43,7 @@ public class AbilityStash : MonoBehaviour
         {
             if (abilityHolder != selectedAbility)
             {
-                abilityHolder.isActive = false;
+                abilityHolder.isHolderActive = false;
             }
         }
     }

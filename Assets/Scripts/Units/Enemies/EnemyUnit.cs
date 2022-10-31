@@ -53,7 +53,7 @@ public class EnemyUnit : Unit
         base.TakeDamage(damage);
     }
 
-    IEnumerator FlashRed()
+    private IEnumerator FlashRed()
     {
         sprite.color = Color.red;
         yield return new WaitForSeconds(0.1f);
