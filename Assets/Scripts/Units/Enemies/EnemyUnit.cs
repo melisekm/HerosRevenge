@@ -1,11 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 
 public class EnemyUnit : Unit
 {
+    public float attackCooldown = 1f;
+    private float attackTimer;
+    private GameObject player;
     [HideInInspector] public AIDestinationSetter destinationSetter;
 
     // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
@@ -13,12 +14,22 @@ public class EnemyUnit : Unit
 
     private Action rotateToPlayer;
 
+    private enum State
+    {
+        Moving,
+        Attacking,
+    }
+
+    private State state = State.Moving;
+
+
     protected override void Awake()
     {
         base.Awake();
         destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
         aiPath = gameObject.GetComponent<AIPath>();
-        destinationSetter.target = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        destinationSetter.target = player.transform;
     }
 
     protected override void Start()
@@ -26,37 +37,80 @@ public class EnemyUnit : Unit
         // determine which way to flip enemy based on default spirte direction and position of player relative to enemy
         if (isFacingRight)
         {
-            rotateToPlayer = () => sprite.flipX = destinationSetter.target.position.x < transform.position.x;
+            rotateToPlayer = () => sprite.flipX = player.transform.position.x < transform.position.x;
         }
         else
         {
-            rotateToPlayer = () => sprite.flipX = destinationSetter.target.position.x > transform.position.x;
+            rotateToPlayer = () => sprite.flipX = player.transform.position.x > transform.position.x;
         }
     }
 
     protected override void Update()
     {
         base.Update();
+        if (!player) return;
+
+        if (attackTimer >= 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
+
         rotateToPlayer();
+        CheckDistance();
+        StateDecision();
+    }
+
+    private void StateDecision()
+    {
+        switch (state)
+        {
+            case State.Moving:
+            {
+                FollowTarget();
+                break;
+            }
+            case State.Attacking:
+                if (attackTimer <= 0)
+                {
+                    AttackPlayer();
+                    attackTimer = attackCooldown;
+                }
+
+                break;
+        }
+    }
+
+    private void CheckDistance()
+    {
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance > aiPath.endReachedDistance)
+        {
+            aiPath.canMove = true;
+            state = State.Moving;
+        }
+        else if (distance <= aiPath.endReachedDistance && attackTimer <= 0)
+        {
+            aiPath.canMove = false;
+            state = State.Attacking;
+        }
+    }
+
+    protected virtual void FollowTarget()
+    {
+    }
+
+
+    protected virtual void AttackPlayer()
+    {
+        if (player && player.TryGetComponent(out PlayerUnit playerUnit))
+        {
+            playerUnit.TakeDamage(attributes.attackPower.actual);
+        }
     }
 
     public override void SetAttributes(Attributes newAttributes)
     {
         base.SetAttributes(newAttributes);
         aiPath.maxSpeed = attributes.speed.initial;
-    }
-
-    public override void TakeDamage(float damage)
-    {
-        // flash red
-        StartCoroutine(FlashRed());
-        base.TakeDamage(damage);
-    }
-
-    private IEnumerator FlashRed()
-    {
-        sprite.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        sprite.color = Color.white;
     }
 }

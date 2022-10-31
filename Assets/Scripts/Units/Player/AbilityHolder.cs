@@ -8,13 +8,13 @@ public class AbilityHolder : MonoBehaviour
     [HideInInspector] public bool isHolderActive;
     private float cooldownTime;
 
-    enum AbilityState
+    private enum AbilityState
     {
-        ready,
-        cooldown
+        Ready,
+        Cooldown
     }
 
-    AbilityState abilityState = AbilityState.ready;
+    AbilityState abilityState = AbilityState.Ready;
 
     void Start()
     {
@@ -35,20 +35,20 @@ public class AbilityHolder : MonoBehaviour
 
         switch (abilityState)
         {
-            case AbilityState.ready:
+            case AbilityState.Ready:
                 if (isHolderActive && Input.GetKeyDown(KeyCode.Space))
                 {
                     ActivateAbility(out var ability);
-                    abilityState = AbilityState.cooldown;
+                    abilityState = AbilityState.Cooldown;
                     cooldownTime = ability.abilityStats.baseCooldown;
                 }
 
                 break;
-            case AbilityState.cooldown:
+            case AbilityState.Cooldown:
                 if (cooldownTime > 0)
                     cooldownTime -= Time.deltaTime;
                 else
-                    abilityState = AbilityState.ready;
+                    abilityState = AbilityState.Ready;
                 break;
         }
     }
