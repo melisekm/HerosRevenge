@@ -22,6 +22,7 @@ public class EnemyUnit : Unit
 
     private State state = State.Moving;
 
+    public GameObject energy;
 
     protected override void Awake()
     {
@@ -112,5 +113,13 @@ public class EnemyUnit : Unit
     {
         base.SetAttributes(newAttributes);
         aiPath.maxSpeed = attributes.speed.initial;
+    }
+
+    protected override void Die()
+    {
+        // TODO: add death animation
+        // TODO: add death sound?
+        Instantiate(energy, transform.position, Quaternion.identity);
+        base.Die();
     }
 }

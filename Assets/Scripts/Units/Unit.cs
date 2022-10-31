@@ -51,7 +51,6 @@ public abstract class Unit : MonoBehaviour
             Die();
         }
 
-        Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + attributes.health.actual);
     }
 
     protected virtual void Die()

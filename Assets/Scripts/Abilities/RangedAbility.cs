@@ -37,10 +37,8 @@ public class RangedAbility : Ability
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision with " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Hit Enemy");
             collision.gameObject.GetComponent<Unit>().TakeDamage(abilityStats.damage);
             if (!isPiercing)
             {
@@ -50,7 +48,6 @@ public class RangedAbility : Ability
 
         if (collision.gameObject.CompareTag("SolidObjects"))
         {
-            Debug.Log("Hit Solid Object");
             Destroy(gameObject);
         }
     }

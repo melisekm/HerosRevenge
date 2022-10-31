@@ -45,7 +45,12 @@ MonoBehaviour:
       increasePerLevel: 0.03
   prefab: {fileID: 3846312350725019872, guid: 7811fa07224b0634aa73712e72643218, type: 3}
   playerStats:
-    xp: 0
+    xp:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 100
+      increasePerLevel: 0
     level:
       initial: 1
       actual: 1

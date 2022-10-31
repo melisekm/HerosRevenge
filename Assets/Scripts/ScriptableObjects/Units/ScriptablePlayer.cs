@@ -14,19 +14,19 @@ public class PlayerStats
 {
     public PlayerStats(PlayerStats other)
     {
-        xp = other.xp;
+        xp = new Attribute(other.xp);
         level = new Attribute(other.level);
         gold = new Attribute(other.gold);
     }
 
-    public PlayerStats(float xp, Attribute level, Attribute gold)
+    public PlayerStats(Attribute xp, Attribute level, Attribute gold)
     {
-        this.xp = xp;
+        this.xp = new Attribute(xp);
         this.level = new Attribute(level);
         this.gold = new Attribute(gold);
     }
 
-    public float xp;
+    [SerializeField] public Attribute xp;
     [SerializeField] public Attribute level;
     [SerializeField] public Attribute gold;
 }

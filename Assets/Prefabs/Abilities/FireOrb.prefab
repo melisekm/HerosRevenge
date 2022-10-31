@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5853070898336761628}
   - component: {fileID: 85366102344392206}
   m_Layer: 8
-  m_Name: FireOrb
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
