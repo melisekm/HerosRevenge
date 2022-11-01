@@ -40,7 +40,7 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        StartCoroutine(FlashRed());
+        StartCoroutine(Flash());
 
         int damageTaken = Mathf.RoundToInt(damage * (1 - attributes.defenseRating.actual));
         attributes.health.actual -= damageTaken;
@@ -58,10 +58,14 @@ public abstract class Unit : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator FlashRed()
+    private IEnumerator Flash(Color color = default)
     {
-        sprite.color = Color.red;
-        yield return new WaitForSeconds(0.3f);
+        if (color == default)
+        {
+            color = Color.red;
+        }
+        sprite.color = color;
+        yield return new WaitForSeconds(0.2f);
         sprite.color = Color.white;
     }
 }

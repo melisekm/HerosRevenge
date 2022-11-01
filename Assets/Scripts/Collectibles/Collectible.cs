@@ -12,13 +12,13 @@ public abstract class Collectible : MonoBehaviour
         pickupDistance = player.GetComponent<PlayerUnit>().pickupRange;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!player) return;
-        if (Vector3.Distance(transform.position, player.transform.position) < 1)
+        
+        if (Vector3.Distance(transform.position, player.transform.position) < pickupDistance)
         {
             PickUp();
-            Destroy(gameObject);
         }
     }
 

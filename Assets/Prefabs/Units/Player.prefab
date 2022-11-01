@@ -270,3 +270,5 @@ MonoBehaviour:
   rb: {fileID: 0}
   sprite: {fileID: 0}
   isFacingRight: 0
+  pickupRange: 2
+  levelUpMultiplier: 1.25

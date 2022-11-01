@@ -8,7 +8,6 @@ public class CpavokUnit : EnemyUnit
     protected override void Update()
     {
         base.Update();
-        // sprite.flipX = destinationSetter.target.position.x < transform.position.x;
 
     }
 }
