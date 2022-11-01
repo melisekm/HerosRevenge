@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,19 +12,41 @@ public class UIManager : Singleton<UIManager>
     public TMP_Text xpText;
     public TMP_Text goldText;
     public TMP_Text levelText;
-    private GameObject player; 
+    public TMP_Text timeText;
+    private GameObject player;
     protected override void Awake()
     {
         base.Awake();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    private void OnEnable()
+    {
+        GameManager.onUpdateTime += UpdateTime;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onUpdateTime -= UpdateTime;
+    }
+
     private void Start()
     {
         StartCoroutine(UpdateUI());
-
     }
 
+    // https://github.com/michalferko/tvorbahier/blob/master/PacMan/Assets/Scripts/UIManager.cs
+    void UpdateTime(float value)
+    {
+        // transform time to desired format
+        int minutes = Mathf.FloorToInt(value / 60F);
+        int seconds = Mathf.FloorToInt(value - minutes * 60);
+        string niceTime = $"{minutes:00}:{seconds:00}";
+
+        // Set UI time text
+        timeText.text = niceTime;
+    }
+    
     private IEnumerator UpdateUI()
     {
         while (true)

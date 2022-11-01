@@ -15,6 +15,13 @@ public class GameManager : Singleton<GameManager>
     [Min(0.01f)] [SerializeField] private float startDelay = 2f;
     [SerializeField] private bool spawnPlayer = false;
 
+    private float currentTime;
+
+    public delegate void OnUpdateStats(float value);
+
+    public static event OnUpdateStats onUpdateTime;
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -24,6 +31,15 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         ChangeState(state);
+    }
+
+    private void Update()
+    {
+        if (state == GameState.Playing)
+        {
+            currentTime = Time.timeSinceLevelLoad;
+            onUpdateTime?.Invoke(currentTime);
+        }
     }
 
     public void ChangeState(GameState newState)
