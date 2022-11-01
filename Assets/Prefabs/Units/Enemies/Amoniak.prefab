@@ -22,6 +22,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Amoniak
       objectReference: {fileID: 0}
+    - target: {fileID: 1451329490124573908, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.336
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301116677286019160, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_RootOrder
@@ -76,6 +86,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636713366400530883, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: enemyUnit
+      value: 
+      objectReference: {fileID: 8521648999819969690}
+    - target: {fileID: 7806236167210982766, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145128489381128394, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -152,5 +177,5 @@ MonoBehaviour:
   aiPath: {fileID: 0}
   dropOnDeath: {fileID: 8611622526525416522, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
     type: 3}
-  projectilePrefab: {fileID: 4943086765236575779, guid: 8c1439b1f95231642b8adde4ca0115f7,
+  projectilePrefab: {fileID: 7359200154823451720, guid: 6bebb38791b60c94f8276e35d2e7bac7,
     type: 3}

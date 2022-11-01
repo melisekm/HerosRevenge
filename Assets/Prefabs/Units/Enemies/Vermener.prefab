@@ -148,6 +148,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6636713366400530883, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: enemyUnit
+      value: 
+      objectReference: {fileID: 2484768982978457234}
     - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_FlipX

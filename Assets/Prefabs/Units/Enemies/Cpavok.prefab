@@ -27,6 +27,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cpavok
       objectReference: {fileID: 0}
+    - target: {fileID: 1451329490124573908, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.366
+      objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_RootOrder
@@ -82,6 +87,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6636713366400530883, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: enemyUnit
+      value: 
+      objectReference: {fileID: 2662427547799630412}
     - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Size.x
