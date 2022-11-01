@@ -4,9 +4,4 @@ using UnityEngine;
 
 public class VermenerUnit : EnemyUnit
 {
-    protected override void Update()
-    {
-        base.Update();
-        
-    }
 }

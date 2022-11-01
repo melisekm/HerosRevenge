@@ -8,20 +8,20 @@ public class RangedAbility : Ability
     public int rotationOffset = -90;
     private float flownDistance;
     public bool isPiercing = false;
+    public bool collidesWithSolidObjects = true;
 
-    private float GetAngleToMouse()
+    private float GetAngleToTarget()
     {
         // https://answers.unity.com/questions/995540/move-towards-mouse-direction-infinitely-at-constan.html
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos = new Vector3(mousePos.x, mousePos.y, 0);
-        Vector3 diff = mousePos - transform.position;
+        Vector3 targetPos = new Vector3(target.x, target.y, 0);
+        Vector3 diff = targetPos - transform.position;
         diff.Normalize();
         return Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
     }
 
     protected virtual void Start()
     {
-        float angle = GetAngleToMouse();
+        float angle = GetAngleToTarget();
         transform.rotation = Quaternion.Euler(0f, 0f, angle + rotationOffset);
     }
 
@@ -35,18 +35,22 @@ public class RangedAbility : Ability
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.TryGetComponent(out Unit unit))
         {
-            collision.gameObject.GetComponent<Unit>().TakeDamage(abilityStats.damage);
-            if (!isPiercing)
+            if (targetFaction == unit.faction)
             {
-                Destroy(gameObject);
+                unit.TakeDamage(abilityStats.damage);
+                if (!isPiercing)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 
-        if (collision.gameObject.CompareTag("SolidObjects"))
+        if (collidesWithSolidObjects && collision.gameObject.CompareTag("SolidObjects"))
         {
             Destroy(gameObject);
         }

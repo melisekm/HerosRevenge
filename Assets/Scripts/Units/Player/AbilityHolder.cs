@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utils;
 
 public class AbilityHolder : MonoBehaviour
 {
@@ -58,8 +59,9 @@ public class AbilityHolder : MonoBehaviour
         ability = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
         AbilityStats abilityStats = scriptableAbility.stats;
         abilityStats.damage += playerUnit.attributes.attackPower.actual;
-        abilityStats.baseCooldown = abilityStats.baseCooldown * (1 - playerUnit.attributes.cooldownRecovery.actual);
+        abilityStats.baseCooldown *= 1 - playerUnit.attributes.cooldownRecovery.actual;
         ability.SetAbilityStats(abilityStats);
+        ability.SetTarget(Camera.main.ScreenToWorldPoint(Input.mousePosition), Faction.Enemy);
         ability.enabled = true;
     }
 }

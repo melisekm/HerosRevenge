@@ -8,6 +8,7 @@ public abstract class ScriptableUnit : ScriptableObject
     public Unit prefab;
 }
 
+
 [Serializable]
 public class Attributes
 {
@@ -38,6 +39,7 @@ public class Attribute
         max = other.max;
         increasePerLevel = other.increasePerLevel;
     }
+
     public Attribute(float initial, float actual, float min, float max, float increasePerLevel)
     {
         this.initial = initial;

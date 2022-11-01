@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Utils;
 
 public abstract class Unit : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public abstract class Unit : MonoBehaviour
     [HideInInspector] public SpriteRenderer sprite;
     [SerializeField] protected bool isFacingRight = true;
 
+    // public get private set
+    public Faction faction { get; protected set; }  
 
     public Attributes attributes { get; private set; }
 
@@ -20,13 +23,6 @@ public abstract class Unit : MonoBehaviour
         GameManager.OnBeforeStateChanged += OnStateChanged;
     }
 
-    protected virtual void Start()
-    {
-    }
-
-    protected virtual void Update()
-    {
-    }
 
     protected virtual void OnDestroy()
     {

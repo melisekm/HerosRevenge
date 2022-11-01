@@ -1,12 +1,13 @@
 using System;
 using Pathfinding;
 using UnityEngine;
+using Utils;
 
 public class EnemyUnit : Unit
 {
     public float attackCooldown = 1f;
     private float attackTimer;
-    private GameObject player;
+    protected GameObject player;
     [HideInInspector] public AIDestinationSetter destinationSetter;
 
     // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
@@ -22,7 +23,9 @@ public class EnemyUnit : Unit
 
     private State state = State.Moving;
 
-    public GameObject energy;
+    public GameObject dropOnDeath;
+    
+
 
     protected override void Awake()
     {
@@ -31,9 +34,10 @@ public class EnemyUnit : Unit
         aiPath = gameObject.GetComponent<AIPath>();
         player = GameObject.FindGameObjectWithTag("Player");
         destinationSetter.target = player.transform;
+        faction = Faction.Enemy;
     }
 
-    protected override void Start()
+    protected void Start()
     {
         // determine which way to flip enemy based on default spirte direction and position of player relative to enemy
         if (isFacingRight)
@@ -46,9 +50,8 @@ public class EnemyUnit : Unit
         }
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         if (!player) return;
 
         if (attackTimer >= 0)
@@ -67,7 +70,7 @@ public class EnemyUnit : Unit
         {
             case State.Moving:
             {
-                FollowTarget();
+                // FollowTarget();
                 break;
             }
             case State.Attacking:
@@ -86,12 +89,12 @@ public class EnemyUnit : Unit
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance > aiPath.endReachedDistance)
         {
-            aiPath.canMove = true;
+            // aiPath.canMove = true;
             state = State.Moving;
         }
         else if (distance <= aiPath.endReachedDistance && attackTimer <= 0)
         {
-            aiPath.canMove = false;
+            // aiPath.canMove = false;
             state = State.Attacking;
         }
     }
@@ -103,10 +106,7 @@ public class EnemyUnit : Unit
 
     protected virtual void AttackPlayer()
     {
-        if (player && player.TryGetComponent(out PlayerUnit playerUnit))
-        {
-            playerUnit.TakeDamage(attributes.attackPower.actual);
-        }
+        
     }
 
     public override void SetAttributes(Attributes newAttributes)
@@ -119,7 +119,10 @@ public class EnemyUnit : Unit
     {
         // TODO: add death animation
         // TODO: add death sound?
-        Instantiate(energy, transform.position, Quaternion.identity);
+        if (dropOnDeath)
+        {
+            Instantiate(dropOnDeath, transform.position, Quaternion.identity);
+        }
         base.Die();
     }
 }

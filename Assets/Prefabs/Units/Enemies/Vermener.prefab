@@ -223,7 +223,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &335523514902425647
+--- !u!114 &2484768982978457234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,13 +232,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6915336484701343480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc40e16f63c01b94db48f3523c8b005c, type: 3}
+  m_Script: {fileID: 11500000, guid: 28e543173ee03274896a648149177a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   sprite: {fileID: 0}
   isFacingRight: 1
+  faction: 1
   attackCooldown: 1
   destinationSetter: {fileID: 0}
   aiPath: {fileID: 0}
-  energy: {fileID: 8611622526525416522, guid: 14870b67d514fab4db30e6a1f4d1f8bd, type: 3}
+  dropOnDeath: {fileID: 8611622526525416522, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
+    type: 3}

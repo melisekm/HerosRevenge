@@ -1,5 +1,6 @@
 using System.Reflection;
 using UnityEngine;
+using Utils;
 
 public class PlayerUnit : Unit
 {
@@ -8,6 +9,11 @@ public class PlayerUnit : Unit
     public float pickupRange = 2f;
     public float levelUpMultiplier = 1.25f;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        faction = Faction.Player;
+    }
 
     protected override void OnStateChanged(GameState state)
     {
@@ -17,18 +23,17 @@ public class PlayerUnit : Unit
         }
     }
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
+        faction = Faction.Player;
         // TODO TEMPORARY Spawn manager should set this or load it from somewhere
         ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
         SetAttributes(new Attributes(playerScriptable.attributes));
         SetStats(new PlayerStats(playerScriptable.playerStats));
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         SetFacingDirection();
     }
 
@@ -64,7 +69,7 @@ public class PlayerUnit : Unit
     public void PickUpEnergy(float amount)
     {
         stats.xp.actual += amount;
-        if (stats.xp.actual >= stats.xp.max && stats.level.actual < stats.level.max )
+        if (stats.xp.actual >= stats.xp.max && stats.level.actual < stats.level.max)
         {
             LevelUp();
         }
@@ -80,7 +85,7 @@ public class PlayerUnit : Unit
         stats.level.actual++;
         stats.gold.actual += stats.gold.increasePerLevel;
 
-        
+
         LevelUpAttribute(attributes.health);
         LevelUpAttribute(attributes.speed);
         LevelUpAttribute(attributes.attackPower);

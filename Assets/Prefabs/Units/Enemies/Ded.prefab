@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: endReachedDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 249690688147837586, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Size.x
@@ -188,7 +193,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3872082363261132874
+--- !u!114 &-1339602520040639883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,4 +211,7 @@ MonoBehaviour:
   attackCooldown: 1
   destinationSetter: {fileID: 0}
   aiPath: {fileID: 0}
-  energy: {fileID: 8611622526525416522, guid: 14870b67d514fab4db30e6a1f4d1f8bd, type: 3}
+  dropOnDeath: {fileID: 8611622526525416522, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
+    type: 3}
+  projectilePrefab: {fileID: 3118448274658497239, guid: ea25cd2f633cb3e4a87de6d781d97d56,
+    type: 3}

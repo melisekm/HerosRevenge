@@ -9,6 +9,7 @@ public class ScriptablePlayer : ScriptableUnit
     public PlayerStats playerStats;
 }
 
+
 [Serializable]
 public class PlayerStats
 {
