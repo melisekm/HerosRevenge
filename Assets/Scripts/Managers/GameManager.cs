@@ -17,9 +17,9 @@ public class GameManager : Singleton<GameManager>
 
     private float currentTime;
 
-    public delegate void OnUpdateStats(float value);
+    public delegate void OnUpdateUI(float value);
 
-    public static event OnUpdateStats onUpdateTime;
+    public static event OnUpdateUI OnUpdateTime;
 
 
     protected override void Awake()
@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
         if (state == GameState.Playing)
         {
             currentTime = Time.timeSinceLevelLoad;
-            onUpdateTime?.Invoke(currentTime);
+            OnUpdateTime?.Invoke(currentTime);
         }
     }
 

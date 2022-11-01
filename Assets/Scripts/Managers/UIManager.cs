@@ -22,12 +22,12 @@ public class UIManager : Singleton<UIManager>
 
     private void OnEnable()
     {
-        GameManager.onUpdateTime += UpdateTime;
+        GameManager.OnUpdateTime += UpdateTime;
     }
 
     private void OnDisable()
     {
-        GameManager.onUpdateTime -= UpdateTime;
+        GameManager.OnUpdateTime -= UpdateTime;
     }
 
     private void Start()

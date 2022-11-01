@@ -9,7 +9,7 @@ public abstract class Unit : MonoBehaviour
     [SerializeField] protected bool isFacingRight = true;
 
     // public get private set
-    public Faction faction { get; protected set; }  
+    public Faction faction { get; protected set; }
 
     public Attributes attributes { get; private set; }
 
@@ -46,7 +46,6 @@ public abstract class Unit : MonoBehaviour
             attributes.health.actual = attributes.health.min;
             Die();
         }
-
     }
 
     protected virtual void Die()
@@ -60,6 +59,7 @@ public abstract class Unit : MonoBehaviour
         {
             color = Color.red;
         }
+
         sprite.color = color;
         yield return new WaitForSeconds(0.2f);
         sprite.color = Color.white;

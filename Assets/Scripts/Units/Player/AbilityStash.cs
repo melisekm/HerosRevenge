@@ -6,7 +6,7 @@ using UnityEngine;
 public class AbilityStash : MonoBehaviour
 {
     private List<AbilityHolder> abilityList = new();
-    public TMP_Text selectedAbilityNumber;
+    public TMP_Text selectedAbilityNumber; // TODO Remove
     private AbilityHolder selectedAbility;
 
     private void Start()
