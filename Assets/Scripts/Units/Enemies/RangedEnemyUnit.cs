@@ -27,6 +27,7 @@ public class RangedEnemyUnit : EnemyUnit
             };
             projectile.SetAbilityStats(stats);
             projectile.SetTarget(player.transform.position, Faction.Player);
+            projectile.gameObject.layer = LayerMask.NameToLayer("EnemyAbilityLayer"); // FIXME do we do this like this?
             projectile.enabled = true;
         }
     }

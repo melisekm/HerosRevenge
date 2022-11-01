@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: radius
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 249690688147837586, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Size.x
@@ -238,7 +243,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   sprite: {fileID: 0}
   isFacingRight: 1
-  faction: 1
   attackCooldown: 1
   destinationSetter: {fileID: 0}
   aiPath: {fileID: 0}

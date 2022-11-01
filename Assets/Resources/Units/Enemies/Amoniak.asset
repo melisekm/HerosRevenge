@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5e236e6754dfb489fc1e205d96daa7, type: 3}
+  m_Name: Amoniak
+  m_EditorClassIdentifier: 
+  attributes:
+    health:
+      initial: 30
+      actual: 30
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    attackPower:
+      initial: 5
+      actual: 5
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    defenseRating:
+      initial: 0.4
+      actual: 0.4
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    speed:
+      initial: 2
+      actual: 2
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    cooldownRecovery:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 0
+      increasePerLevel: 0
+  prefab: {fileID: 8521648999819969690, guid: 52e86e7fc45249b4891484c2f79842d0, type: 3}
+  enemyType: 0

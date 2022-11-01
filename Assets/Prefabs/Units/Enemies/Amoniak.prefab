@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &739475430494240693
+--- !u!1001 &3224072541653385869
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,22 +10,17 @@ PrefabInstance:
     - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: radius
-      value: 0.32
+      value: 0.27
       objectReference: {fileID: 0}
     - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
-      propertyPath: maxSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -634077508788494325, guid: 8ce8e399850898e4b843eb18ff7c86f3,
-        type: 3}
-      propertyPath: graphMask.value
-      value: -1
+      propertyPath: endReachedDistance
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 772787556210138997, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Name
-      value: Cpavok
+      value: Amoniak
       objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -40,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.174
       objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -85,76 +80,77 @@ PrefabInstance:
     - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.9
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.91
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b82daa112b7ef1245800b45d4a09b74a,
+      objectReference: {fileID: -431304623, guid: 5d820f0429daa444b96dd27a005fd72e,
         type: 3}
     - target: {fileID: 9193684666517397032, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1835348455726953751, guid: 8ce8e399850898e4b843eb18ff7c86f3, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ce8e399850898e4b843eb18ff7c86f3, type: 3}
---- !u!1 &70468578209669312 stripped
+--- !u!1 &2740241177267150328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 772787556210138997, guid: 8ce8e399850898e4b843eb18ff7c86f3,
     type: 3}
-  m_PrefabInstance: {fileID: 739475430494240693}
+  m_PrefabInstance: {fileID: 3224072541653385869}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &5497222222348303280
+--- !u!61 &6872099430370582543
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70468578209669312}
+  m_GameObject: {fileID: 2740241177267150328}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02089974, y: -0.004644364}
+  m_Offset: {x: 0.0013190061, y: -0.013189971}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9, y: 0.91}
-    newSize: {x: 0.9, y: 0.91}
+    oldSize: {x: 1, y: 1.25}
+    newSize: {x: 0.64, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3312095, y: 0.5773614}
+  m_Size: {x: 0.390623, y: 0.5324651}
   m_EdgeRadius: 0
---- !u!114 &2662427547799630412
+--- !u!114 &8521648999819969690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70468578209669312}
+  m_GameObject: {fileID: 2740241177267150328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e543173ee03274896a648149177a95, type: 3}
+  m_Script: {fileID: 11500000, guid: f41218d8e43958a4eaace3bda0b8f00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   sprite: {fileID: 0}
   isFacingRight: 1
-  attackCooldown: 1
+  attackCooldown: 0.5
   destinationSetter: {fileID: 0}
   aiPath: {fileID: 0}
   dropOnDeath: {fileID: 8611622526525416522, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
+    type: 3}
+  projectilePrefab: {fileID: 7359200154823451720, guid: 6bebb38791b60c94f8276e35d2e7bac7,
     type: 3}

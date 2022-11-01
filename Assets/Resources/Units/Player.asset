@@ -20,8 +20,8 @@ MonoBehaviour:
       max: 10000
       increasePerLevel: 50
     attackPower:
-      initial: 10
-      actual: 10
+      initial: 5
+      actual: 5
       min: 0
       max: 10000
       increasePerLevel: 5
