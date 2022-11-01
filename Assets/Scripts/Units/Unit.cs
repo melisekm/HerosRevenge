@@ -61,7 +61,7 @@ public abstract class Unit : MonoBehaviour
     private IEnumerator FlashRed()
     {
         sprite.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         sprite.color = Color.white;
     }
 }

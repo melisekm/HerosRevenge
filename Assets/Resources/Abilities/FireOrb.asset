@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireOrb
   m_EditorClassIdentifier: 
   stats:
-    damage: 25
+    damage: 35
     baseCooldown: 0.25
     range: 7
   abilityType: 2
