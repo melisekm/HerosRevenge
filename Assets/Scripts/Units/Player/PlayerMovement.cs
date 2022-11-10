@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // Get player's movement direction based on input and normalize to prevent double speed when moving diagonal
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
 
 

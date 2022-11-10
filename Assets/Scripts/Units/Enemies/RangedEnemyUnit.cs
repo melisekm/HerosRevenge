@@ -18,7 +18,7 @@ public class RangedEnemyUnit : EnemyUnit
         if (projectile)
         {
             float projectileDamage;
-            projectileDamage = attributes == null ? 10f : attributes.attackPower.actual;
+            projectileDamage = attributes == null ? 10f : attributes.attackPower.actual; // TODO: remove hardcoded number
 
             AbilityStats stats = new AbilityStats
             {
