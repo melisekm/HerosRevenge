@@ -4265,6 +4265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bcac967b5e59f4db05e34f9ebca704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   state: 1
   startDelay: 0.01
   spawnPlayer: 0
@@ -5823,6 +5824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 461855116459380945, guid: 7811fa07224b0634aa73712e72643218,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461855116459380957, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}

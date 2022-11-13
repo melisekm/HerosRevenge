@@ -1,28 +1,52 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Healthbar : MonoBehaviour
 {
-    public Unit enemyUnit;
+    private Unit unit;
     private Transform bar;
     private Transform background;
+    private float prevHealth;
+    private float prevMaxHealth;
+    public bool isAlwaysActive = false;
+
+
+    private void Awake()
+    {
+        unit = GetComponentInParent<Unit>();
+    }
 
     private void Start()
     {
         bar = transform.Find("Bar");
         background = transform.Find("Background");
+        SetActive(isAlwaysActive);
     }
 
     private void Update()
     {
-        var currentHealth = enemyUnit.attributes.health.actual;
-        var maxCurrentHealth = enemyUnit.attributes.health.initial;
-        background.gameObject.SetActive(currentHealth < maxCurrentHealth); // TODO move somewhere else or remove
-        bar.gameObject.SetActive(currentHealth < maxCurrentHealth); // Shouldnt really update this all the time
+        var currentHealth = unit.attributes.health.actual;
+        var maxCurrentHealth = unit.attributes.health.initial;
+        bool hasHealthChanged = currentHealth != prevHealth || maxCurrentHealth != prevMaxHealth;
+        if (hasHealthChanged)
+        {
+            if (!isAlwaysActive)
+            {
+                bool isHealthLessThanMax = currentHealth < maxCurrentHealth;
+                SetActive(isHealthLessThanMax);
+            }
+            prevHealth = currentHealth;
+            prevMaxHealth = maxCurrentHealth;
+            SetSize(currentHealth / maxCurrentHealth);
+        }
+    }
 
-
-        SetSize(currentHealth / maxCurrentHealth);
+    private void SetActive(bool active)
+    {
+        background.gameObject.SetActive(active);
+        bar.gameObject.SetActive(active);
     }
 
     private void SetSize(float size)

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    private GameObject player;
+    public GameObject player;
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
 
@@ -26,6 +26,8 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         player = GameObject.FindGameObjectWithTag("Player");
+        
+
     }
 
     private void Start()

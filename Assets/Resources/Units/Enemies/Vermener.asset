@@ -43,5 +43,5 @@ MonoBehaviour:
       min: 0
       max: 0
       increasePerLevel: 0
-  prefab: {fileID: 2484768982978457234, guid: 000ac3cc0426f97419dd36386afceaca, type: 3}
+  prefab: {fileID: 7964189920759807245, guid: 000ac3cc0426f97419dd36386afceaca, type: 3}
   enemyType: 2

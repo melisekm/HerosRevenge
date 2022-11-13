@@ -25,7 +25,6 @@ public class PlayerUnit : Unit
 
     protected void Start()
     {
-        faction = Faction.Player;
         // TODO TEMPORARY Spawn manager should set this or load it from somewhere
         ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
         SetAttributes(new Attributes(playerScriptable.attributes));
