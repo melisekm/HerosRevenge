@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: -6812616915088294612, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.7932024
+      value: 0.74894637
       objectReference: {fileID: 0}
     - target: {fileID: -6812616915088294612, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: -6812616915088294612, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.62612486
+      value: 0.67480636
       objectReference: {fileID: 0}
     - target: {fileID: -6812616915088294612, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
@@ -71,12 +71,12 @@ PrefabInstance:
     - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.69
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
@@ -121,7 +121,7 @@ PrefabInstance:
     - target: {fileID: 5463510667716986333, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5463510667716986333, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
@@ -175,13 +175,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4006492488070156149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c51141f822e4d40898d94f706b2934, type: 3}
+  m_Script: {fileID: 11500000, guid: 62809f37ad9a1634388707314d8c80ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationOffset: -90
-  speed: 10
   isPiercing: 1
   collidesWithSolidObjects: 0
+  speed: 1
 --- !u!1 &4743379793293016296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1579615521485040599, guid: e505cc4cabcc80d4e899ee9352045493,

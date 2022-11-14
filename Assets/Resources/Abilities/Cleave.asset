@@ -15,6 +15,6 @@ MonoBehaviour:
   stats:
     damage: 20
     baseCooldown: 0.3
-    range: 2
+    range: 0.25
   abilityType: 1
   prefab: {fileID: -4030127963876839283, guid: f89a730844140274eaad0a86a1e13972, type: 3}
