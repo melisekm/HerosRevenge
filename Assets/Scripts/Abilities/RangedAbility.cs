@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RangedAbility : Ability
@@ -7,16 +8,35 @@ public class RangedAbility : Ability
     public float speed = 10f;
     private float flownDistance;
 
+    private bool canMove = true;
+    private static readonly int PlayFinished = Animator.StringToHash("playFinished");
+
     protected virtual void Update()
     {
-        transform.position += transform.up * (speed * Time.deltaTime);
-
-        flownDistance += speed * Time.deltaTime;
-        if (flownDistance >= abilityStats.range)
+        if (canMove)
         {
-            DestroyAfterAnimation();
+            transform.position += transform.up * (speed * Time.deltaTime);
+
+            flownDistance += speed * Time.deltaTime;
+            if (flownDistance >= abilityStats.range)
+            {
+                Die();
+            }
         }
     }
 
-    
+    protected override void Die()
+    {
+        if (isAnimated && animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
+        {
+            // if trigger parameter exists in animator
+            animator.SetTrigger(PlayFinished);
+            canMove = false;
+            Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }
