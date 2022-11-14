@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4943086765236575777}
   - component: {fileID: 4943086765236575779}
   - component: {fileID: 5128297489681600274}
+  - component: {fileID: 6562850970448237131}
   m_Layer: 8
   m_Name: PiercingShot
   m_TagString: Untagged
@@ -132,9 +133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPiercing: 1
   collidesWithSolidObjects: 1
-  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
-    type: 3}
-  hitColor: {r: 0.25943398, g: 0.3468621, b: 1, a: 1}
   speed: 10
 --- !u!61 &5128297489681600274
 BoxCollider2D:
@@ -162,3 +160,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15656383, y: 1.135057}
   m_EdgeRadius: 0
+--- !u!114 &6562850970448237131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943086765236575778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f300f0c94aa7be498559ed52c06b5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
+    type: 3}
+  hitColor: {r: 0.0047169924, g: 0.23600456, b: 1, a: 1}

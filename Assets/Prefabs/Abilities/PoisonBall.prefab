@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3563167441012829100}
   - component: {fileID: 3118448274658497239}
   - component: {fileID: 6888264990556181672}
+  - component: {fileID: -2802625756382048473}
   m_Layer: 10
   m_Name: PoisonBall
   m_TagString: Untagged
@@ -132,9 +133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPiercing: 0
   collidesWithSolidObjects: 1
-  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
-    type: 3}
-  hitColor: {r: 0.17801023, g: 1, b: 0, a: 1}
   speed: 10
 --- !u!58 &6888264990556181672
 CircleCollider2D:
@@ -152,3 +150,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.14
+--- !u!114 &-2802625756382048473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807822209394156985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f300f0c94aa7be498559ed52c06b5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
+    type: 3}
+  hitColor: {r: 0, g: 1, b: 0.11830664, a: 1}

@@ -38,9 +38,7 @@ public class RangedAbility : Ability
         {
             if (hitEffect)
             {
-                var hitEffectMain = hitEffect.main;
-                hitEffectMain.startColor = new ParticleSystem.MinMaxGradient(hitColor);
-                Instantiate(hitEffect, transform.position + transform.up, Quaternion.identity);
+                hitEffect.Activate();
             }
 
             Destroy(gameObject);

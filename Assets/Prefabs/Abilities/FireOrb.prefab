@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7359200154823451718}
   - component: {fileID: 7359200154823451720}
   - component: {fileID: 1701416597366444426}
+  - component: {fileID: 3797999688211964504}
   m_Layer: 8
   m_Name: FireOrb
   m_TagString: Untagged
@@ -132,9 +133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPiercing: 0
   collidesWithSolidObjects: 1
-  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
-    type: 3}
-  hitColor: {r: 1, g: 0.6324958, b: 0, a: 1}
   speed: 10
 --- !u!61 &1701416597366444426
 BoxCollider2D:
@@ -162,3 +160,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23676641, y: 1.004368}
   m_EdgeRadius: 0
+--- !u!114 &3797999688211964504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359200154823451721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f300f0c94aa7be498559ed52c06b5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
+    type: 3}
+  hitColor: {r: 1, g: 0.64705884, b: 0, a: 1}
