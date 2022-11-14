@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using Utils;
 
@@ -11,9 +12,15 @@ public abstract class Ability : MonoBehaviour
     protected int rotationOffset = -90;
     public bool isPiercing = false;
     public bool collidesWithSolidObjects = true;
+    private Animator animator;
     
     public virtual void SetAbilityStats(AbilityStats st) => abilityStats = st;
 
+    protected void Awake()
+    {
+        // get animator in children
+        animator = GetComponentInChildren<Animator>();
+    }
 
     protected virtual void Start()
     {
@@ -46,16 +53,37 @@ public abstract class Ability : MonoBehaviour
                 unit.TakeDamage(abilityStats.damage);
                 if (!isPiercing)
                 {
-                    Destroy(gameObject);
+                    DestroyAfterAnimation();
                 }
             }
         }
 
         if (collidesWithSolidObjects && collision.gameObject.CompareTag("SolidObjects"))
         {
+            DestroyAfterAnimation();
+        }
+    }
+    
+    public virtual void DestroyAfterAnimation()
+    {
+        if (animator != null)
+        {
+            // if trigger parameter exists in animator
+            if (animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
+            {
+                animator.SetTrigger("playFinished");
+                Destroy(gameObject, 0.3f);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
 
-  
 }

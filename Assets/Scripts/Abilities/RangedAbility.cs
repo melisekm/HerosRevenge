@@ -14,7 +14,7 @@ public class RangedAbility : Ability
         flownDistance += speed * Time.deltaTime;
         if (flownDistance >= abilityStats.range)
         {
-            Destroy(gameObject);
+            DestroyAfterAnimation();
         }
     }
 
