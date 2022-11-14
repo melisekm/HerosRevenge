@@ -27,7 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7359200154823451718}
   m_RootOrder: 0
@@ -130,9 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b68ea424a1e3d94cb46fbf7c70fdef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  rotationOffset: -90
   isPiercing: 0
+  collidesWithSolidObjects: 1
+  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
+    type: 3}
+  hitColor: {r: 1, g: 0.6324958, b: 0, a: 1}
+  speed: 10
 --- !u!61 &1701416597366444426
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +149,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01819256, y: -0.016373277}
+  m_Offset: {x: 0.013062857, y: 0.06313722}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,5 +160,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32910115, y: 1.2659831}
+  m_Size: {x: 0.23676641, y: 1.004368}
   m_EdgeRadius: 0

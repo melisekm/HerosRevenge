@@ -13,18 +13,15 @@ public abstract class Ability : MonoBehaviour
     public bool isPiercing = false;
     public bool collidesWithSolidObjects = true;
     protected Animator animator;
-    protected bool isAnimated;
+    public ParticleSystem hitEffect;
+    public Color hitColor;
+
     
     public virtual void SetAbilityStats(AbilityStats st) => abilityStats = st;
 
     protected void Awake()
     {
-        // get animator in children
         animator = GetComponentInChildren<Animator>();
-        if (animator != null)
-        {
-            isAnimated = true;
-        }
     }
 
     protected virtual void Start()

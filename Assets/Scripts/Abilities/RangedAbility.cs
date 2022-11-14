@@ -27,7 +27,7 @@ public class RangedAbility : Ability
 
     protected override void Die()
     {
-        if (isAnimated && animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
+        if (animator && animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
         {
             // if trigger parameter exists in animator
             animator.SetTrigger(PlayFinished);
@@ -36,6 +36,13 @@ public class RangedAbility : Ability
         }
         else
         {
+            if (hitEffect)
+            {
+                var hitEffectMain = hitEffect.main;
+                hitEffectMain.startColor = new ParticleSystem.MinMaxGradient(hitColor);
+                Instantiate(hitEffect, transform.position + transform.up, Quaternion.identity);
+            }
+
             Destroy(gameObject);
         }
     }

@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3563167441012829100}
   - component: {fileID: 3118448274658497239}
-  - component: {fileID: 6888264990556181672}
+  - component: {fileID: 5412794097732380216}
   m_Layer: 10
   m_Name: Iceball
   m_TagString: Untagged
@@ -153,8 +153,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPiercing: 0
   collidesWithSolidObjects: 1
+  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
+    type: 3}
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
   speed: 10
---- !u!58 &6888264990556181672
+--- !u!58 &5412794097732380216
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,6 +170,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.10780578}
   serializedVersion: 2
-  m_Radius: 0.14
+  m_Radius: 0.3378058

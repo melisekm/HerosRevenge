@@ -130,10 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62809f37ad9a1634388707314d8c80ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  rotationOffset: -90
   isPiercing: 0
   collidesWithSolidObjects: 1
+  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
+    type: 3}
+  hitColor: {r: 0.17801023, g: 1, b: 0, a: 1}
+  speed: 10
 --- !u!58 &6888264990556181672
 CircleCollider2D:
   m_ObjectHideFlags: 0
