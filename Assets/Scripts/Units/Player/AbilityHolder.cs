@@ -8,18 +8,45 @@ public class AbilityHolder : MonoBehaviour
     public PlayerUnit playerUnit;
     [HideInInspector] public bool isHolderActive;
     private float cooldownTime;
+    private AbilityState abilityState = AbilityState.Ready;
+
 
     private enum AbilityState
     {
         Ready,
         Cooldown
     }
-
-    AbilityState abilityState = AbilityState.Ready;
-
-    void Start()
+    
+    private void OnEnable()
     {
+        PlayerControls.OnAttack += ActivateAbility;
     }
+
+    private void OnDisable()
+    {
+        PlayerControls.OnAttack -= ActivateAbility;
+    }
+
+
+    private void ActivateAbility()
+    {
+        if (isHolderActive && abilityType != AbilityType.Empty && abilityState == AbilityState.Ready)
+        {
+            Ability ability = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
+            ability.Activate(UpdateAbilityStats(), Camera.main.ScreenToWorldPoint(Input.mousePosition), Faction.Enemy);
+            abilityState = AbilityState.Cooldown;
+            cooldownTime = ability.abilityStats.baseCooldown;
+        }
+    }
+
+    private AbilityStats UpdateAbilityStats()
+    {
+        AbilityStats abilityStats = scriptableAbility.stats;
+        abilityStats.damage += playerUnit.attributes.attackPower.actual;
+        abilityStats.baseCooldown *= 1 - playerUnit.attributes.cooldownRecovery.actual;
+        return abilityStats;
+    }
+
 
     public void SetAbilityType(AbilityType abilityT)
     {
@@ -32,36 +59,12 @@ public class AbilityHolder : MonoBehaviour
 
     private void Update()
     {
-        if (abilityType == AbilityType.Empty) return;
-
-        switch (abilityState)
+        if (abilityType !=  AbilityType.Empty && abilityState == AbilityState.Cooldown)
         {
-            case AbilityState.Ready:
-                if (isHolderActive && Input.GetKeyDown(KeyCode.Space))
-                {
-                    ActivateAbility(out var ability);
-                    abilityState = AbilityState.Cooldown;
-                    cooldownTime = ability.abilityStats.baseCooldown;
-                }
-
-                break;
-            case AbilityState.Cooldown:
-                if (cooldownTime > 0)
-                    cooldownTime -= Time.deltaTime;
-                else
-                    abilityState = AbilityState.Ready;
-                break;
+            if (cooldownTime > 0)
+                cooldownTime -= Time.deltaTime;
+            else
+                abilityState = AbilityState.Ready;
         }
-    }
-
-    private void ActivateAbility(out Ability ability)
-    {
-        ability = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
-        AbilityStats abilityStats = scriptableAbility.stats;
-        abilityStats.damage += playerUnit.attributes.attackPower.actual;
-        abilityStats.baseCooldown *= 1 - playerUnit.attributes.cooldownRecovery.actual;
-        ability.SetAbilityStats(abilityStats);
-        ability.SetTarget(Camera.main.ScreenToWorldPoint(Input.mousePosition), Faction.Enemy);
-        ability.enabled = true;
     }
 }

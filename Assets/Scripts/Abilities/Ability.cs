@@ -16,8 +16,30 @@ public abstract class Ability : MonoBehaviour
     public ParticleSystem hitEffect;
     public Color hitColor;
 
+    public void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
+    {
+        SetAbilityStats(stats);
+        SetTarget(target, targetFaction);
+        SetLayer(targetFaction);
+        enabled = true;
+    }
     
     public virtual void SetAbilityStats(AbilityStats st) => abilityStats = st;
+
+    private void SetLayer(Faction targetFaction)
+    {
+        if (targetFaction == Faction.Player)
+        {
+            gameObject.layer = LayerMask.NameToLayer("EnemyAbilityLayer"); // TODO: FIXME do we do this like this?
+        }
+    }
+    public void SetTarget(Vector3 target, Faction targetFaction)
+    {
+        this.target = target;
+        this.targetFaction = targetFaction;
+    }
+
+
 
     protected void Awake()
     {
@@ -28,12 +50,6 @@ public abstract class Ability : MonoBehaviour
     {
         float angle = GetAngleToTarget();
         transform.rotation = Quaternion.Euler(0f, 0f, angle + rotationOffset);
-    }
-
-    public void SetTarget(Vector3 target, Faction targetFaction)
-    {
-        this.target = target;
-        this.targetFaction = targetFaction;
     }
     
     protected float GetAngleToTarget()

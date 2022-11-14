@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     damage: 35
-    baseCooldown: 0.25
+    baseCooldown: 0.5
     range: 7
   abilityType: 2
   prefab: {fileID: 7359200154823451720, guid: 6bebb38791b60c94f8276e35d2e7bac7, type: 3}

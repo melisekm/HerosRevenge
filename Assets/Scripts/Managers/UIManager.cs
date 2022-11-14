@@ -13,7 +13,9 @@ public class UIManager : Singleton<UIManager>
     public TMP_Text goldText;
     public TMP_Text levelText;
     public TMP_Text timeText;
+    public TMP_Text selectedAbilityNumber;
     private GameObject player;
+
     protected override void Awake()
     {
         base.Awake();
@@ -23,11 +25,18 @@ public class UIManager : Singleton<UIManager>
     private void OnEnable()
     {
         GameManager.OnUpdateTime += UpdateTime;
+        PlayerControls.OnSwitchAbility += UpdateAbility;
+    }
+
+    private void UpdateAbility(int index)
+    {
+        selectedAbilityNumber.text = (index + 1).ToString();
     }
 
     private void OnDisable()
     {
         GameManager.OnUpdateTime -= UpdateTime;
+        PlayerControls.OnSwitchAbility -= UpdateAbility;
     }
 
     private void Start()
@@ -46,7 +55,7 @@ public class UIManager : Singleton<UIManager>
         // Set UI time text
         timeText.text = niceTime;
     }
-    
+
     private IEnumerator UpdateUI()
     {
         while (true)
@@ -54,7 +63,8 @@ public class UIManager : Singleton<UIManager>
             yield return new WaitForSecondsRealtime(0.1f);
             if (player && player.TryGetComponent(out PlayerUnit playerUnit))
             {
-                healthText.text = playerUnit.attributes.health.actual.ToString() + "/" + playerUnit.attributes.health.initial.ToString();
+                healthText.text = playerUnit.attributes.health.actual.ToString() + "/" +
+                                  playerUnit.attributes.health.initial.ToString();
                 goldText.text = playerUnit.stats.gold.actual.ToString();
                 xpText.text = playerUnit.stats.xp.actual.ToString() + "/" + playerUnit.stats.xp.max.ToString();
                 levelText.text = playerUnit.stats.level.actual.ToString();

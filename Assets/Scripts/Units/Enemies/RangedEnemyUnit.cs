@@ -17,18 +17,15 @@ public class RangedEnemyUnit : EnemyUnit
         Ability projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         if (projectile)
         {
-            float projectileDamage;
-            projectileDamage = attributes == null ? 10f : attributes.attackPower.actual; // TODO: remove hardcoded number
+            // TODO: remove hardcoded number if attributes was not set (Spawned from Editor)
+            float projectileDamage = attributes == null ? 10f : attributes.attackPower.actual; 
 
             AbilityStats stats = new AbilityStats
             {
                 damage = projectileDamage,
                 range = aiPath.endReachedDistance,
             };
-            projectile.SetAbilityStats(stats);
-            projectile.SetTarget(player.transform.position, Faction.Player);
-            projectile.gameObject.layer = LayerMask.NameToLayer("EnemyAbilityLayer"); // FIXME do we do this like this?
-            projectile.enabled = true;
+            projectile.Activate(stats, player.transform.position, Faction.Player);
         }
     }
 }

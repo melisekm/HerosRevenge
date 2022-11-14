@@ -1,13 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class AbilityStash : MonoBehaviour
 {
     private List<AbilityHolder> abilityList = new();
-    public TMP_Text selectedAbilityNumber; // TODO Remove
     private AbilityHolder selectedAbility;
+
+    public void OnEnable()
+    {
+        PlayerControls.OnSwitchAbility += SwitchAbility;
+    }
+
+    public void OnDisable()
+    {
+        PlayerControls.OnSwitchAbility -= SwitchAbility;
+    }
 
     private void Start()
     {
@@ -22,23 +29,11 @@ public class AbilityStash : MonoBehaviour
         abilityList[1].SetAbilityType(AbilityType.PiercingShot);
     }
 
-    private void Update()
+    private void SwitchAbility(int index)
     {
-        bool wasAbilityChanged = false;
-        // selection 1 - abilityList.Count
-        for (int i = 0; i < abilityList.Count; i++)
-        {
-            if (Input.GetKeyDown((i + 1).ToString()))
-            {
-                selectedAbilityNumber.text = (i + 1).ToString();
-                abilityList[i].isHolderActive = true;
-                selectedAbility = abilityList[i];
-                wasAbilityChanged = true;
-                break;
-            }
-        }
+        abilityList[index].isHolderActive = true;
+        selectedAbility = abilityList[index];
 
-        if (!wasAbilityChanged) return;
         foreach (AbilityHolder abilityHolder in abilityList)
         {
             if (abilityHolder != selectedAbility)
