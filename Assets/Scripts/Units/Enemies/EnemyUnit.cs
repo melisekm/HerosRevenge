@@ -24,8 +24,6 @@ public class EnemyUnit : Unit
     private State state = State.Moving;
 
     public GameObject dropOnDeath;
-    
-
 
     protected override void Awake()
     {
