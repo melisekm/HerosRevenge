@@ -5,6 +5,8 @@ public class AbilityStash : MonoBehaviour
 {
     private List<AbilityHolder> abilityList = new();
     private AbilityHolder selectedAbility;
+    public int maxAbilityCount = 2;
+
 
     public void OnEnable()
     {
@@ -16,16 +18,20 @@ public class AbilityStash : MonoBehaviour
         PlayerControls.OnSwitchAbility -= SwitchAbility;
     }
 
-    private void Start()
+    private void Awake()
     {
-        foreach (var abilityHolder in GetComponents<AbilityHolder>())
+        for (int i = 0; i < maxAbilityCount; i++)
         {
+            var abilityHolder = gameObject.AddComponent<AbilityHolder>();
             abilityList.Add(abilityHolder);
         }
+    }
 
+    private void Start()
+    {
         selectedAbility = abilityList[0];
         selectedAbility.isHolderActive = true;
-        abilityList[0].SetAbilityType(AbilityType.FireOrb);
+        abilityList[0].SetAbilityType(AbilityType.Cleave);
         abilityList[1].SetAbilityType(AbilityType.PiercingShot);
     }
 

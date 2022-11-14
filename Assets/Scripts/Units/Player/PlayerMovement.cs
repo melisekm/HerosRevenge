@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerUnit))]
 public class PlayerMovement : MonoBehaviour
 {
     public bool canMove = true;

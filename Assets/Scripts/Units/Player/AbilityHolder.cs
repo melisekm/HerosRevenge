@@ -1,11 +1,12 @@
 using UnityEngine;
 using Utils;
 
+[RequireComponent(typeof(PlayerUnit))]
 public class AbilityHolder : MonoBehaviour
 {
     private AbilityType abilityType = AbilityType.Empty;
     private ScriptableAbility scriptableAbility;
-    public PlayerUnit playerUnit;
+    private PlayerUnit playerUnit;
     [HideInInspector] public bool isHolderActive;
     private float cooldownTime;
     private AbilityState abilityState = AbilityState.Ready;
@@ -16,7 +17,12 @@ public class AbilityHolder : MonoBehaviour
         Ready,
         Cooldown
     }
-    
+
+    private void Start()
+    {
+        playerUnit = GetComponent<PlayerUnit>();
+    }
+
     private void OnEnable()
     {
         PlayerControls.OnAttack += ActivateAbility;
@@ -26,7 +32,6 @@ public class AbilityHolder : MonoBehaviour
     {
         PlayerControls.OnAttack -= ActivateAbility;
     }
-
 
     private void ActivateAbility()
     {
@@ -59,7 +64,7 @@ public class AbilityHolder : MonoBehaviour
 
     private void Update()
     {
-        if (abilityType !=  AbilityType.Empty && abilityState == AbilityState.Cooldown)
+        if (abilityType != AbilityType.Empty && abilityState == AbilityState.Cooldown)
         {
             if (cooldownTime > 0)
                 cooldownTime -= Time.deltaTime;

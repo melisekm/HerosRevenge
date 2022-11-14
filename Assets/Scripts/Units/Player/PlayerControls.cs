@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public int maxAbilityCount = 2;
-
     public static event Action OnAttack;
     public static event Action<int> OnSwitchAbility;
     public static event Action<float, float> OnMovement;
+
+    private int maxAbilityCount;
+
+    private void Start()
+    {
+        maxAbilityCount = TryGetComponent(out AbilityStash stash) ? stash.maxAbilityCount : 0;
+    }
 
 
     private void Update()
@@ -17,7 +22,7 @@ public class PlayerControls : MonoBehaviour
         OnMovement?.Invoke(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         // rewrite to GetButtonDown
-        
+
         if (Input.GetButton("Fire1"))
         {
             OnAttack?.Invoke();
