@@ -35,6 +35,7 @@ public class SpawnManager : Singleton<SpawnManager>
     private void SpawnEnemy(Transform spawnPoint)
     {
         ScriptableEnemy enemyScriptable = ResourceSystem.Instance.GetRandomEnemy();
+        // ScriptableEnemy enemyScriptable = ResourceSystem.Instance.GetEnemyByType(EnemyType.Amoniak);
         EnemyUnit enemy = Instantiate(enemyScriptable.prefab, spawnPoint.position, Quaternion.identity) as EnemyUnit;
         if (enemy)
         {

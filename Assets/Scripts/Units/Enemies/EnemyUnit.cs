@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Pathfinding;
 using UnityEngine;
 using Utils;
@@ -19,15 +20,20 @@ public class EnemyUnit : Unit
     {
         Moving,
         Attacking,
+        Dead
     }
 
     private State state = State.Moving;
 
     public GameObject dropOnDeath;
+    
+    private Animator animator;
+    private static readonly int Dying = Animator.StringToHash("Dying");
 
     protected override void Awake()
     {
         base.Awake();
+        animator = GetComponent<Animator>();
         destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
         aiPath = gameObject.GetComponent<AIPath>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -35,7 +41,7 @@ public class EnemyUnit : Unit
         faction = Faction.Enemy;
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         // determine which way to flip enemy based on default spirte direction and position of player relative to enemy
         if (isFacingRight)
@@ -46,6 +52,7 @@ public class EnemyUnit : Unit
         {
             rotateToPlayer = () => sprite.flipX = player.transform.position.x > transform.position.x;
         }
+
     }
 
     protected void Update()
@@ -57,54 +64,40 @@ public class EnemyUnit : Unit
             attackTimer -= Time.deltaTime;
         }
 
-        rotateToPlayer();
-        CheckDistance();
-        StateDecision();
-    }
-
-    private void StateDecision()
-    {
-        switch (state)
+        if (state != State.Dead)
         {
-            case State.Moving:
-            {
-                // FollowTarget();
-                break;
-            }
-            case State.Attacking:
-                if (attackTimer <= 0)
-                {
-                    AttackPlayer();
-                    attackTimer = attackCooldown;
-                }
+            rotateToPlayer();
+            CheckDistance();
+        }
 
-                break;
+        if (state == State.Attacking)
+        {
+            if (attackTimer <= 0)
+            {
+                AttackPlayer();
+                attackTimer = attackCooldown;
+            }
         }
     }
+
 
     private void CheckDistance()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance > aiPath.endReachedDistance)
         {
-            // aiPath.canMove = true;
             state = State.Moving;
         }
         else if (distance <= aiPath.endReachedDistance && attackTimer <= 0)
         {
-            // aiPath.canMove = false;
             state = State.Attacking;
         }
-    }
-
-    protected virtual void FollowTarget()
-    {
     }
 
 
     protected virtual void AttackPlayer()
     {
-        
+        // overriden in child classes TODO: make abstract
     }
 
     public override void SetAttributes(Attributes newAttributes)
@@ -115,12 +108,24 @@ public class EnemyUnit : Unit
 
     protected override void Die()
     {
-        // TODO: add death animation
-        // TODO: add death sound?
+        state = State.Dead;
+        aiPath.canMove = false;
+        // set gameobject layer to background so it doesn't collide with anything
+        gameObject.layer = LayerMask.NameToLayer("BackgroundLayer");
+
         if (dropOnDeath)
         {
             Instantiate(dropOnDeath, transform.position, Quaternion.identity);
         }
-        base.Die();
+
+        if (animator && animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
+        {
+            // Dying animation after animation has OnAnimationStart which calls Destroy after animation is done
+            animator.SetTrigger(Dying);
+        }
+        else
+        {
+            base.Die();
+        }
     }
 }

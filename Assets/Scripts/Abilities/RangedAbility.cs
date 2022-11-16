@@ -27,12 +27,13 @@ public class RangedAbility : Ability
 
     protected override void Die()
     {
+        canMove = false;
+        // either has a custom animation or set specific particle hit effect and just dissapears
+        
         if (animator && animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
         {
             // if trigger parameter exists in animator
             animator.SetTrigger(PlayFinished);
-            canMove = false;
-            Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
         }
         else
         {

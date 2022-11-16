@@ -34,8 +34,8 @@ public class Healthbar : MonoBehaviour
         {
             if (!isAlwaysActive)
             {
-                bool isHealthLessThanMax = currentHealth < maxCurrentHealth;
-                SetActive(isHealthLessThanMax);
+                bool notFullNotZero = currentHealth < maxCurrentHealth && currentHealth > 0;
+                SetActive(notFullNotZero);
             }
             prevHealth = currentHealth;
             prevMaxHealth = maxCurrentHealth;

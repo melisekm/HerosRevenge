@@ -44,4 +44,4 @@ MonoBehaviour:
       max: 0
       increasePerLevel: 0
   prefab: {fileID: 8521648999819969690, guid: 52e86e7fc45249b4891484c2f79842d0, type: 3}
-  enemyType: 0
+  enemyType: 3
