@@ -47,10 +47,15 @@ public abstract class Unit : MonoBehaviour
             Die();
         }
     }
-
+    
     protected virtual void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); 
+    }
+
+    protected virtual void DieAfterDelay(float delay=0.5f)
+    {
+        Destroy(gameObject, delay); 
     }
 
     private IEnumerator Flash(Color color = default)

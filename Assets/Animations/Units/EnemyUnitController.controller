@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AmoniakDie
+  m_Name: UnitDie
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -43,7 +43,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7f49d6a82ae00f842bed28b7afea4708, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9744644dbc297344498927aa932db118, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -80,7 +80,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AmoniakController
+  m_Name: EnemyUnitController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Dying
@@ -88,7 +88,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -149,7 +149,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AmoniakAlive
+  m_Name: UnitAlive
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -163,7 +163,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cea16d2fa1f5b164c9d6ba1e394975b9, type: 2}
+  m_Motion: {fileID: 7400000, guid: fe4c3cfd1e22d65408aec5965efae7e9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -176,7 +176,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AmoniakAppear
+  m_Name: UnitAppear
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -190,7 +190,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a544bbde56caa6e46bb7475db369dd68, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6e7f1e5d7bf6ec04498e3cd4c149908e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

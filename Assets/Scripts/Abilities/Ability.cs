@@ -19,7 +19,7 @@ public abstract class Ability : MonoBehaviour
 
     protected void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         hitEffect = GetComponent<HitEffect>();
     }
 

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DedUnit : RangedEnemyUnit
 {
     private bool isEvading;
+    public float evadeTime = 2f;
+    public float randomPathSize = 5f;
 
     protected override void AttackPlayer()
     {
@@ -22,9 +25,9 @@ public class DedUnit : RangedEnemyUnit
         var oldEndReachedDistance = aiPath.endReachedDistance;
         aiPath.endReachedDistance = 0;
         // set random position near the gameObject
-        var randomPosition = transform.position + Random.insideUnitSphere * 5;
+        var randomPosition = transform.position + Random.insideUnitSphere * randomPathSize;
         aiPath.destination = randomPosition;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(evadeTime);
         // revert to normal
         aiPath.endReachedDistance = oldEndReachedDistance;
         destinationSetter.enabled = true;

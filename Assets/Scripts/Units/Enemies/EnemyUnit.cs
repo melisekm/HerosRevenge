@@ -26,6 +26,7 @@ public class EnemyUnit : Unit
     private State state = State.Moving;
 
     public GameObject dropOnDeath;
+    public float deathDelay;
     
     private Animator animator;
     private static readonly int Dying = Animator.StringToHash("Dying");
@@ -69,7 +70,6 @@ public class EnemyUnit : Unit
             rotateToPlayer();
             CheckDistance();
         }
-
         if (state == State.Attacking)
         {
             if (attackTimer <= 0)
@@ -109,7 +109,8 @@ public class EnemyUnit : Unit
     protected override void Die()
     {
         state = State.Dead;
-        aiPath.canMove = false;
+        // disable path finding
+        destinationSetter.enabled = false;
         // set gameobject layer to background so it doesn't collide with anything
         gameObject.layer = LayerMask.NameToLayer("BackgroundLayer");
 
@@ -122,10 +123,8 @@ public class EnemyUnit : Unit
         {
             // Dying animation after animation has OnAnimationStart which calls Destroy after animation is done
             animator.SetTrigger(Dying);
+
         }
-        else
-        {
-            base.Die();
-        }
+        base.DieAfterDelay(deathDelay);
     }
 }

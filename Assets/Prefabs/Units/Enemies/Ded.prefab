@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: radius
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -58,6 +58,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ded
       objectReference: {fileID: 0}
+    - target: {fileID: 1451329490124573908, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.38
+      objectReference: {fileID: 0}
     - target: {fileID: 1835348455726953751, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Radius
@@ -96,12 +101,12 @@ PrefabInstance:
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -161,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 6357379451131370618, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6636713366400530883, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -217,7 +222,27 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
+--- !u!95 &-9108807382893132347
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466503047459641800}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc24389ecd391954da5caa251286c529, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-1339602520040639883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,3 +265,5 @@ MonoBehaviour:
     type: 3}
   projectilePrefab: {fileID: 3118448274658497239, guid: ea25cd2f633cb3e4a87de6d781d97d56,
     type: 3}
+  evadeTime: 2
+  randomPathSize: 5

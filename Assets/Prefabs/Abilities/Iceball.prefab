@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 389038331256310315}
   - component: {fileID: 4578781947324196366}
-  - component: {fileID: 424055002493388450}
   m_Layer: 10
   m_Name: Visual
   m_TagString: Untagged
@@ -85,26 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &424055002493388450
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196585746773662283}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 26c7edea7ea9cbc4ea56e18fd44db6b2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5807822209394156985
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +95,7 @@ GameObject:
   - component: {fileID: 3563167441012829100}
   - component: {fileID: 3118448274658497239}
   - component: {fileID: 5412794097732380216}
+  - component: {fileID: 4703212943246044686}
   m_Layer: 10
   m_Name: Iceball
   m_TagString: Untagged
@@ -153,9 +133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPiercing: 0
   collidesWithSolidObjects: 1
-  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
-    type: 3}
-  hitColor: {r: 1, g: 1, b: 1, a: 1}
   speed: 10
 --- !u!58 &5412794097732380216
 CircleCollider2D:
@@ -173,3 +150,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.10780578}
   serializedVersion: 2
   m_Radius: 0.3378058
+--- !u!95 &4703212943246044686
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807822209394156985}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26c7edea7ea9cbc4ea56e18fd44db6b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -17,6 +17,16 @@ PrefabInstance:
       propertyPath: endReachedDistance
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: autoRepath.maximumInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -691925817180643692, guid: 8ce8e399850898e4b843eb18ff7c86f3,
+        type: 3}
+      propertyPath: autoRepath.visualizeSensitivity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 772787556210138997, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_Name
@@ -167,7 +177,7 @@ Animator:
   m_GameObject: {fileID: 2740241177267150328}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a788f50b2c0ed2543b2ddab47088d4af, type: 2}
+  m_Controller: {fileID: 22100000, guid: 4358351f48e93e64c90242b74564d982, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -197,7 +207,6 @@ MonoBehaviour:
   aiPath: {fileID: 0}
   dropOnDeath: {fileID: 8611622526525416522, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
     type: 3}
-  deathEffect: {fileID: 7640292927797286205, guid: ed3d81ab21f14a64ea14522be60ef35f,
-    type: 3}
+  deathDelay: 0.4
   projectilePrefab: {fileID: 3118448274658497239, guid: f60ce880744d19e47a91cc64a7fe3623,
     type: 3}
