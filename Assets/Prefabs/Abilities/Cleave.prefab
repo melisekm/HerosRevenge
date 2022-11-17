@@ -178,8 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62809f37ad9a1634388707314d8c80ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPiercing: 1
-  collidesWithSolidObjects: 0
+  collidesWithUnits: 0
+  collidesWithEnvironment: 0
   speed: 1
 --- !u!1 &4743379793293016296 stripped
 GameObject:

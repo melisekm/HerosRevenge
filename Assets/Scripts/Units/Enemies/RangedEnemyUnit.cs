@@ -9,11 +9,16 @@ public class RangedEnemyUnit : EnemyUnit
 
     protected override void AttackPlayer()
     {
-        Ability projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        ActivateAbility(transform.position);
+    }
+
+    protected void ActivateAbility(Vector3 startPosition)
+    {
+        Ability projectile = Instantiate(projectilePrefab, startPosition, Quaternion.identity);
         if (projectile)
         {
             // TODO: remove hardcoded number if attributes was not set (Spawned from Editor)
-            float projectileDamage = attributes == null ? 10f : attributes.attackPower.actual; 
+            float projectileDamage = attributes == null ? 10f : attributes.attackPower.actual;
 
             AbilityStats stats = new AbilityStats
             {

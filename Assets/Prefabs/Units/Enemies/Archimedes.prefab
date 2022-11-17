@@ -50,32 +50,32 @@ PrefabInstance:
     - target: {fileID: 1451329490124573908, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.839
+      value: 0.465
       objectReference: {fileID: 0}
     - target: {fileID: 2587301577148639434, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2587301577148639434, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 3707739095920358561, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3707739095920358561, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 3707739095920358561, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5301116677286019160, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -151,7 +151,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyUnit
       value: 
-      objectReference: {fileID: 8521648999819969690}
+      objectReference: {fileID: 0}
     - target: {fileID: 7806236167210982766, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_IsActive
@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 8622520703318324932, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9145128489381128394, guid: 8ce8e399850898e4b843eb18ff7c86f3,
         type: 3}
@@ -242,7 +242,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8521648999819969690
+--- !u!114 &-9059387938369545995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,18 +251,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2740241177267150328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41218d8e43958a4eaace3bda0b8f00c, type: 3}
+  m_Script: {fileID: 11500000, guid: ce097b77e0ffe2c47947b57cb0ce8a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   sprite: {fileID: 0}
   isFacingRight: 1
   attackCooldown: 2
-  destinationSetter: {fileID: 0}
-  aiPath: {fileID: 0}
+  deathDelay: 0.4
   dropOnDeath: {fileID: 6074496508514105833, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
     type: 3}
+  player: {fileID: 0}
+  destinationSetter: {fileID: 0}
+  aiPath: {fileID: 0}
   energyDropAmount: 10
-  deathDelay: 0.4
-  projectilePrefab: {fileID: 3118448274658497239, guid: f60ce880744d19e47a91cc64a7fe3623,
+  state: 0
+  projectilePrefab: {fileID: -7477808379987039157, guid: 5a9b201abcf3a044ab4f30b997d1f6f9,
     type: 3}
+  randomRadius: 5

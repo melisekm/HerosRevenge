@@ -1,18 +1,18 @@
+using System.Linq;
 using UnityEngine;
 using Utils;
 
-public abstract class Ability : MonoBehaviour
+public class Ability : MonoBehaviour
 {
     public AbilityStats abilityStats { get; private set; }
 
     protected Vector3 target;
     protected Faction targetFaction;
-    protected int rotationOffset = -90;
-    public bool isPiercing = false;
-    public bool collidesWithSolidObjects = true;
+    public bool collidesWithUnits = false;
+    public bool collidesWithEnvironment = true;
     protected Animator animator;
     protected HitEffect hitEffect;
-
+    private static readonly int PlayFinished = Animator.StringToHash("playFinished");
 
     public virtual void SetAbilityStats(AbilityStats st) => abilityStats = st;
 
@@ -23,18 +23,12 @@ public abstract class Ability : MonoBehaviour
         hitEffect = GetComponent<HitEffect>();
     }
 
-    protected virtual void Start()
-    {
-        float angle = GetAngleToTarget();
-        transform.rotation = Quaternion.Euler(0f, 0f, angle + rotationOffset);
-    }
 
-    public void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
+    public virtual void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
     {
         SetAbilityStats(stats);
         SetTarget(target, targetFaction);
         SetLayer(targetFaction);
-        enabled = true;
     }
 
     private void SetLayer(Faction targetFaction)
@@ -50,32 +44,28 @@ public abstract class Ability : MonoBehaviour
         this.target = target;
         this.targetFaction = targetFaction;
     }
+    
 
-    protected float GetAngleToTarget()
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        // https://answers.unity.com/questions/995540/move-towards-mouse-direction-infinitely-at-constan.html
-        Vector3 targetPos = new Vector3(target.x, target.y, 0);
-        Vector3 diff = targetPos - transform.position;
-        diff.Normalize();
-        return Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        Act(collision);
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void Act(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Unit unit))
         {
             if (targetFaction == unit.faction)
             {
                 unit.TakeDamage(abilityStats.damage);
-                if (!isPiercing)
+                if (collidesWithUnits)
                 {
                     Die();
                 }
             }
         }
 
-        if (collidesWithSolidObjects && collision.gameObject.CompareTag("SolidObjects"))
+        if (collidesWithEnvironment && collision.gameObject.CompareTag("SolidObjects"))
         {
             Die();
         }
@@ -83,6 +73,20 @@ public abstract class Ability : MonoBehaviour
 
     protected virtual void Die()
     {
-        Destroy(gameObject);
+        if (animator && animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
+        {
+            // if trigger parameter exists in animator
+            animator.SetTrigger(PlayFinished);
+            Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+        }
+        else
+        {
+            if (hitEffect)
+            {
+                hitEffect.Activate();
+            }
+
+            Destroy(gameObject);
+        }
     }
 }

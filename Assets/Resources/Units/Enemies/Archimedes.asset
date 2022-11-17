@@ -43,6 +43,6 @@ MonoBehaviour:
       min: 0
       max: 0
       increasePerLevel: 0
-  prefab: {fileID: 8521648999819969690, guid: 10418266ed9de3342b1a08dbe03e0259, type: 3}
+  prefab: {fileID: -9059387938369545995, guid: 10418266ed9de3342b1a08dbe03e0259, type: 3}
   enemyType: 5
   energyDropAmount: 60
