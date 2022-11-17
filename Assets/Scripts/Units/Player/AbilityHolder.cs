@@ -38,11 +38,11 @@ public class AbilityHolder : MonoBehaviour
         if (isHolderActive && abilityType != AbilityType.Empty && abilityState == AbilityState.Ready)
         {
             Ability ability = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
-            // distance between player and mouseposition
-            Vector3 distance = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            // clampf to maxcastrange
-            distance = Vector3.ClampMagnitude(distance, playerUnit.maxCastRange);
-            ability.Activate(UpdateAbilityStats(), distance, Faction.Enemy);
+            // https://stackoverflow.com/a/67777412
+            // clamp magnitude to limit cast range 
+            Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var delta  = Vector3.ClampMagnitude(mousepos - transform.position, playerUnit.maxCastRange);
+            ability.Activate(UpdateAbilityStats(), transform.position + delta, Faction.Enemy);
             abilityState = AbilityState.Cooldown;
             cooldownTime = ability.abilityStats.baseCooldown;
         }
