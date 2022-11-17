@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Utils;
 
@@ -8,9 +9,14 @@ public class GroundAbility : Ability
     public float dissapearTime = 2f;
     private bool isActive = true;
 
+    public override void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
+    {
+        base.Activate(stats, target, targetFaction);
+        transform.position = new Vector3(target.x, target.y, 0);
+    }
+    
     protected override void Act(Collider2D collision)
     {
-        Debug.Log("collision with " + collision.gameObject.name);
         if (isActive && attackTimer <= 0)
         {
             base.Act(collision);

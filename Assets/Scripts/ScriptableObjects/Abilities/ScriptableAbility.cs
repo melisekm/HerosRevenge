@@ -23,5 +23,6 @@ public enum AbilityType
     Empty = 0,
     Cleave = 1,
     FireOrb = 2,
-    PiercingShot = 3
+    PiercingShot = 3,
+    PoisonRain = 4,
 }

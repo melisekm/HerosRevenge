@@ -7,6 +7,7 @@ public class PlayerUnit : Unit
     public PlayerStats stats { get; private set; }
     public void SetStats(PlayerStats st) => stats = st;
     public float pickupRange = 2f;
+    public float maxCastRange = 10f;
     public float levelUpMultiplier = 1.25f;
 
     protected override void Awake()

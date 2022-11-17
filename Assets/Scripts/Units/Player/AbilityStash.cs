@@ -31,7 +31,7 @@ public class AbilityStash : MonoBehaviour
     {
         selectedAbility = abilityList[0];
         selectedAbility.isHolderActive = true;
-        abilityList[0].SetAbilityType(AbilityType.FireOrb);
+        abilityList[0].SetAbilityType(AbilityType.PoisonRain);
         abilityList[1].SetAbilityType(AbilityType.PiercingShot);
     }
 

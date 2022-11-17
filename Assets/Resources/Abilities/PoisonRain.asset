@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c038356f0460c8c448b0b7d5a69fc690, type: 3}
+  m_Name: PoisonRain
+  m_EditorClassIdentifier: 
+  stats:
+    damage: 5
+    baseCooldown: 1
+    range: 0
+  abilityType: 4
+  prefab: {fileID: -7477808379987039157, guid: aeeece30c91cdd24a82f744d2d29d632, type: 3}
