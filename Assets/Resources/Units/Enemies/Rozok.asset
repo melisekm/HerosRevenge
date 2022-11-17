@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e5e236e6754dfb489fc1e205d96daa7, type: 3}
-  m_Name: Ded
+  m_Name: Rozok
   m_EditorClassIdentifier: 
   attributes:
     health:
-      initial: 75
-      actual: 75
+      initial: 150
+      actual: 150
       min: 0
       max: 0
       increasePerLevel: 0
     attackPower:
-      initial: 12
-      actual: 12
+      initial: 20
+      actual: 20
       min: 0
       max: 0
       increasePerLevel: 0
@@ -43,6 +43,6 @@ MonoBehaviour:
       min: 0
       max: 0
       increasePerLevel: 0
-  prefab: {fileID: -1339602520040639883, guid: 65ace372b344f2a448e282c5ecead28b, type: 3}
-  enemyType: 1
-  energyDropAmount: 15
+  prefab: {fileID: 3510289188932019529, guid: a9e3305f81e78bf418924f1a703ec048, type: 3}
+  enemyType: 4
+  energyDropAmount: 40

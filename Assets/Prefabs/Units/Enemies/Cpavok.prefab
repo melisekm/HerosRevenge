@@ -148,28 +148,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3312095, y: 0.5773614}
   m_EdgeRadius: 0
---- !u!114 &8035803763369033050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70468578209669312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41218d8e43958a4eaace3bda0b8f00c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  sprite: {fileID: 0}
-  isFacingRight: 1
-  attackCooldown: 1
-  destinationSetter: {fileID: 0}
-  aiPath: {fileID: 0}
-  dropOnDeath: {fileID: 8611622526525416522, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
-    type: 3}
-  projectilePrefab: {fileID: -4030127963876839283, guid: 3beb4fd1702f1ef4a8c317b7b69cd23e,
-    type: 3}
 --- !u!95 &6613273393928094629
 Animator:
   serializedVersion: 4
@@ -190,3 +168,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8035803763369033050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70468578209669312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41218d8e43958a4eaace3bda0b8f00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  sprite: {fileID: 0}
+  isFacingRight: 1
+  attackCooldown: 1
+  destinationSetter: {fileID: 0}
+  aiPath: {fileID: 0}
+  dropOnDeath: {fileID: 6074496508514105833, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
+    type: 3}
+  energyDropAmount: 10
+  deathDelay: 0
+  projectilePrefab: {fileID: -4030127963876839283, guid: 3beb4fd1702f1ef4a8c317b7b69cd23e,
+    type: 3}

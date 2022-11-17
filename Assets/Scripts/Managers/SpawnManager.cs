@@ -35,11 +35,12 @@ public class SpawnManager : Singleton<SpawnManager>
     private void SpawnEnemy(Transform spawnPoint)
     {
         ScriptableEnemy enemyScriptable = ResourceSystem.Instance.GetRandomEnemy();
-        // ScriptableEnemy enemyScriptable = ResourceSystem.Instance.GetEnemyByType(EnemyType.Amoniak);
+        // ScriptableEnemy enemyScriptable = ResourceSystem.Instance.GetEnemyByType(EnemyType.Rozok);
         EnemyUnit enemy = Instantiate(enemyScriptable.prefab, spawnPoint.position, Quaternion.identity) as EnemyUnit;
         if (enemy)
         {
             // do any level based stuff here
+            enemy.energyDropAmount = enemyScriptable.energyDropAmount; // * level
             enemy.SetAttributes(new Attributes(enemyScriptable.attributes));
         }
     }

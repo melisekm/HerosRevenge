@@ -45,3 +45,4 @@ MonoBehaviour:
       increasePerLevel: 0
   prefab: {fileID: 8035803763369033050, guid: 2f0d660c857242f4d80c9acb112bd8d9, type: 3}
   enemyType: 0
+  energyDropAmount: 10

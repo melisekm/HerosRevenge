@@ -25,10 +25,12 @@ public class EnemyUnit : Unit
 
     private State state = State.Moving;
 
-    public GameObject dropOnDeath;
+    public Energy dropOnDeath;
+    public int energyDropAmount = 10;
+
     public float deathDelay;
     
-    private Animator animator;
+    protected Animator animator;
     private static readonly int Dying = Animator.StringToHash("Dying");
 
     protected override void Awake()
@@ -56,7 +58,7 @@ public class EnemyUnit : Unit
 
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (!player) return;
 
@@ -110,18 +112,21 @@ public class EnemyUnit : Unit
     {
         state = State.Dead;
         // disable path finding
+        aiPath.canMove = false;
         destinationSetter.enabled = false;
         // set gameobject layer to background so it doesn't collide with anything
         gameObject.layer = LayerMask.NameToLayer("BackgroundLayer");
 
         if (dropOnDeath)
         {
-            Instantiate(dropOnDeath, transform.position, Quaternion.identity);
+            Energy collectible = Instantiate(dropOnDeath, transform.position, Quaternion.identity);
+            collectible.amount = energyDropAmount;
         }
 
         if (animator && animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
         {
             // Dying animation after animation has OnAnimationStart which calls Destroy after animation is done
+            
             animator.SetTrigger(Dying);
 
         }
