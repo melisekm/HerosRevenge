@@ -31,7 +31,7 @@ public class Ability : MonoBehaviour
         SetLayer(targetFaction);
     }
 
-    private void SetLayer(Faction targetFaction)
+    protected virtual void SetLayer(Faction targetFaction)
     {
         if (targetFaction == Faction.Player)
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utils;
 
 public class GroundAbility : Ability
 {
@@ -9,10 +10,19 @@ public class GroundAbility : Ability
 
     protected override void Act(Collider2D collision)
     {
+        Debug.Log("collision with " + collision.gameObject.name);
         if (isActive && attackTimer <= 0)
         {
             base.Act(collision);
             attackTimer = attackCooldown;
+        }
+    }
+    
+    protected override void SetLayer(Faction targetFaction)
+    {
+        if (targetFaction == Faction.Player)
+        {
+            gameObject.layer = LayerMask.NameToLayer("GroundAbilityLayer");
         }
     }
 

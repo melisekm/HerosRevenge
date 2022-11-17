@@ -9,7 +9,8 @@ public class DangerIndicator : Effect
     private Transform progressCircle;
     private float activationTime = 3f;
     private float timeElapsed;
-
+    private Faction targetFaction;
+    
     private void Start()
     {
         progressCircle = transform.Find("ProgressCircle");
@@ -29,17 +30,18 @@ public class DangerIndicator : Effect
             Ability ability = Instantiate(effect.ability, transform.position, Quaternion.identity);
             AbilityStats abilityStats = new AbilityStats
             {
-                damage = effect.damage,
-                range = 0,
+                damage = effect.damage, // scale with level
             };
-            ability.Activate(abilityStats, transform.position, Faction.Player);
+            ability.Activate(abilityStats, transform.position, targetFaction);
             // destroy the indicator
             Destroy(gameObject);
         }
     }
 
-    public override void Initialize(ScriptableEffect scriptableEffect)
+    public override void Initialize(ScriptableEffect scriptableEffect, Faction targetFaction)
     {
         effect = (DangerIndicatorEffect) scriptableEffect;
+        this.targetFaction = targetFaction;
+        
     }
 }

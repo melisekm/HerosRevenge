@@ -7,8 +7,7 @@ public class SpawnManager : Singleton<SpawnManager>
     private readonly List<Transform> spawnPoints = new();
     private Transform playerSpawn;
     public float spawnRate = 1f;
-    private bool shouldSpawn = true;
-    public bool isSpawningEnabled = true;
+    public bool shouldSpawn = true;
     public EnemyType spawnType;
     public bool spawnRandomEnemyTypes = true;
 
@@ -55,22 +54,25 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         IEnumerator SpawnEnemiesCoroutine()
         {
-            while (shouldSpawn)
+            while (true)
             {
-                foreach (var spawnPoint in spawnPoints)
+                if (shouldSpawn)
                 {
-                    if (!shouldSpawn) break;
+                    foreach (var spawnPoint in spawnPoints)
+                    {
+                        if (!shouldSpawn) break;
+                        yield return new WaitForSeconds(spawnRate);
+                        SpawnEnemy(spawnPoint);
+                    }
+                }
+                else
+                {
                     yield return new WaitForSeconds(spawnRate);
-                    SpawnEnemy(spawnPoint);
                 }
             }
-        }
 
-        if (isSpawningEnabled)
-        {
-            shouldSpawn = true;
-            StartCoroutine(SpawnEnemiesCoroutine());
         }
+        StartCoroutine(SpawnEnemiesCoroutine());
     }
 
     public void ToggleSpawning()
