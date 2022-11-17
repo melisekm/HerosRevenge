@@ -21,7 +21,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1151256797, guid: 1709eba4bb19dfd40804d38c3256f495,
+      objectReference: {fileID: 586935336, guid: 56e31c37031804547bb2f50fa8316cd5,
         type: 3}
     - target: {fileID: 584617831172583730, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
@@ -42,6 +42,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
@@ -96,12 +106,12 @@ PrefabInstance:
     - target: {fileID: 5463510667716986333, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7179263956710627402, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
       propertyPath: m_Name
-      value: GroundFire
+      value: Explosion
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6812616915088294612, guid: e505cc4cabcc80d4e899ee9352045493, type: 3}
@@ -125,9 +135,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.53}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.74
+  m_Radius: 1.1
 --- !u!95 &1162651526672154910
 Animator:
   serializedVersion: 4
@@ -138,7 +148,7 @@ Animator:
   m_GameObject: {fileID: 8644752939902044301}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5ae3c7ed5724dde469a4276a8511d173, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94ced02a6ebb817428a2b3d761d5ce62, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -163,4 +173,4 @@ MonoBehaviour:
   collidesWithUnits: 0
   collidesWithEnvironment: 0
   attackCooldown: 0.5
-  dissapearTime: 4
+  dissapearTime: 0.1

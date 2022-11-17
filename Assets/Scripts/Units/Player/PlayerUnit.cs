@@ -58,6 +58,7 @@ public class PlayerUnit : Unit
     {
         isFacingRight = !isFacingRight;
         sprite.flipX = !sprite.flipX;
+        // this only flips sprite, not the collider etc
     }
 
     protected override void Die()

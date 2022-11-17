@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GroundAbility : Ability
@@ -7,11 +6,6 @@ public class GroundAbility : Ability
     private float attackTimer;
     public float dissapearTime = 2f;
     private bool isActive = true;
-
-    private void Start()
-    {
-        attackTimer = attackCooldown;
-    }
 
     protected override void Act(Collider2D collision)
     {
@@ -28,7 +22,7 @@ public class GroundAbility : Ability
         Act(collision);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    protected void OnTriggerStay2D(Collider2D collision)
     {
         Act(collision);
     }
@@ -36,12 +30,11 @@ public class GroundAbility : Ability
     protected void Update()
     {
         if (!isActive) return;
-
         if (attackTimer >= 0)
         {
             attackTimer -= Time.deltaTime;
         }
-        
+
         dissapearTime -= Time.deltaTime;
         if (dissapearTime <= 0)
         {
