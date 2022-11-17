@@ -9,11 +9,6 @@ public class RangedEnemyUnit : EnemyUnit
 
     protected override void AttackPlayer()
     {
-        FireProjectile();
-    }
-
-    private void FireProjectile()
-    {
         Ability projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         if (projectile)
         {

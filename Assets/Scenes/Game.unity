@@ -366,6 +366,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRate: 1.5
   isSpawningEnabled: 1
+  spawnType: 0
+  spawnRandomEnemyTypes: 1
 --- !u!1 &101092648
 GameObject:
   m_ObjectHideFlags: 0

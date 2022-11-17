@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
@@ -8,30 +7,32 @@ public class EnemyUnit : Unit
 {
     public float attackCooldown = 1f;
     private float attackTimer;
-    protected GameObject player;
+    public float deathDelay;
+
+    public Energy dropOnDeath;
+
+    [HideInInspector] public GameObject player;
+
     [HideInInspector] public AIDestinationSetter destinationSetter;
 
     // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
     [HideInInspector] public AIPath aiPath;
+    [HideInInspector] public int energyDropAmount = 10;
 
-    private Action rotateToPlayer;
 
-    private enum State
+    [HideInInspector] public EnemyState state = EnemyState.Moving;
+
+    public enum EnemyState
     {
         Moving,
         Attacking,
         Dead
     }
 
-    private State state = State.Moving;
-
-    public Energy dropOnDeath;
-    [HideInInspector] public int energyDropAmount = 10;
-
-    public float deathDelay;
-    
     protected Animator animator;
     private static readonly int Dying = Animator.StringToHash("Dying");
+    private static readonly int Attack = Animator.StringToHash("Attack");
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     protected override void Awake()
     {
@@ -44,42 +45,37 @@ public class EnemyUnit : Unit
         faction = Faction.Enemy;
     }
 
-    protected virtual void Start()
-    {
-        // determine which way to flip enemy based on default spirte direction and position of player relative to enemy
-        if (isFacingRight)
-        {
-            rotateToPlayer = () => sprite.flipX = player.transform.position.x < transform.position.x;
-        }
-        else
-        {
-            rotateToPlayer = () => sprite.flipX = player.transform.position.x > transform.position.x;
-        }
-
-    }
-
     protected virtual void Update()
     {
         if (!player) return;
+
+        animator.SetFloat(Speed, Mathf.Abs(aiPath.desiredVelocity.x));
+
 
         if (attackTimer >= 0)
         {
             attackTimer -= Time.deltaTime;
         }
 
-        if (state != State.Dead)
+        if (state != EnemyState.Dead)
         {
-            rotateToPlayer();
             CheckDistance();
         }
-        if (state == State.Attacking)
+
+        if (state == EnemyState.Attacking)
         {
             if (attackTimer <= 0)
             {
+                animator.SetTrigger(Attack);
                 AttackPlayer();
                 attackTimer = attackCooldown;
             }
         }
+    }
+
+    // overriden in child classes
+    protected virtual void AttackPlayer()
+    {
     }
 
 
@@ -88,19 +84,14 @@ public class EnemyUnit : Unit
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance > aiPath.endReachedDistance)
         {
-            state = State.Moving;
+            state = EnemyState.Moving;
         }
         else if (distance <= aiPath.endReachedDistance && attackTimer <= 0)
         {
-            state = State.Attacking;
+            state = EnemyState.Attacking;
         }
     }
 
-
-    protected virtual void AttackPlayer()
-    {
-        // overriden in child classes TODO: make abstract
-    }
 
     public override void SetAttributes(Attributes newAttributes)
     {
@@ -110,7 +101,7 @@ public class EnemyUnit : Unit
 
     protected override void Die()
     {
-        state = State.Dead;
+        state = EnemyState.Dead;
         // disable path finding
         aiPath.canMove = false;
         destinationSetter.enabled = false;
@@ -119,17 +110,16 @@ public class EnemyUnit : Unit
 
         if (dropOnDeath)
         {
-            Energy collectible = Instantiate(dropOnDeath, transform.position, Quaternion.identity);
-            collectible.amount = energyDropAmount;
+            Energy energy = Instantiate(dropOnDeath, transform.position, Quaternion.identity);
+            energy.amount = energyDropAmount;
         }
 
         if (animator && animator.parameters.Any(p => p.type == AnimatorControllerParameterType.Trigger))
         {
             // Dying animation after animation has OnAnimationStart which calls Destroy after animation is done
-            
             animator.SetTrigger(Dying);
-
         }
+
         base.DieAfterDelay(deathDelay);
     }
 }

@@ -17,17 +17,15 @@ public class GameManager : Singleton<GameManager>
 
     private float currentTime;
 
-    public delegate void OnUpdateUI(float value);
+    public delegate void UpdateUI(float value);
 
-    public static event OnUpdateUI OnUpdateTime;
+    public static event UpdateUI OnUpdateTime;
 
 
     protected override void Awake()
     {
         base.Awake();
         player = GameObject.FindGameObjectWithTag("Player");
-        
-
     }
 
     private void Start()

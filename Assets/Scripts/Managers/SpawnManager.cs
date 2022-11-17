@@ -9,6 +9,8 @@ public class SpawnManager : Singleton<SpawnManager>
     public float spawnRate = 1f;
     private bool shouldSpawn = true;
     public bool isSpawningEnabled = true;
+    public EnemyType spawnType;
+    public bool spawnRandomEnemyTypes = true;
 
 
     protected override void Awake()
@@ -34,8 +36,12 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void SpawnEnemy(Transform spawnPoint)
     {
-        ScriptableEnemy enemyScriptable = ResourceSystem.Instance.GetRandomEnemy();
-        // ScriptableEnemy enemyScriptable = ResourceSystem.Instance.GetEnemyByType(EnemyType.Vermener);
+        ScriptableEnemy enemyScriptable;
+        if (spawnRandomEnemyTypes)
+            enemyScriptable = ResourceSystem.Instance.GetRandomEnemy();
+        else
+            enemyScriptable = ResourceSystem.Instance.GetEnemyByType(spawnType);
+
         EnemyUnit enemy = Instantiate(enemyScriptable.prefab, spawnPoint.position, Quaternion.identity) as EnemyUnit;
         if (enemy)
         {

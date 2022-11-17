@@ -6,7 +6,7 @@ public abstract class Unit : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public SpriteRenderer sprite;
-    [SerializeField] protected bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     // public get private set
     public Faction faction { get; protected set; }
