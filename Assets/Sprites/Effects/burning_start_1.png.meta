@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b437077bf55b8c48b63b14ab785e296
+guid: f1b758ad0643e3b4588032389d09ad6c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fireset_0
+      name: burning_start_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a058efb7513504b4c8849777f08bd4af
-      internalID: -613662732
+      spriteID: 7c1639957f7987f499e804f701a840af
+      internalID: -1647093711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireset_1
+      name: burning_start_1_1
       rect:
         serializedVersion: 2
-        x: 256
+        x: 24
         y: 0
-        width: 256
-        height: 256
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46ab55e04661aed42b58001c39079680
-      internalID: -579958647
+      spriteID: 227f472900b480949ae1a4aba2bba9e2
+      internalID: 967122613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireset_2
+      name: burning_start_1_2
       rect:
         serializedVersion: 2
-        x: 512
+        x: 48
         y: 0
-        width: 256
-        height: 256
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6261178b21e52894e965a202c397c349
-      internalID: 1914920982
+      spriteID: bf5089f7b6226794a9a6a05206c082a9
+      internalID: 959195174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fireset_3
+      name: burning_start_1_3
       rect:
         serializedVersion: 2
-        x: 768
+        x: 72
         y: 0
-        width: 256
-        height: 256
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,29 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2790a2a575fc2ae419693ec6dfb55eaf
-      internalID: 634295605
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fireset_4
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4f53a77cfa861843bb0583eff77948e
-      internalID: 1909905646
+      spriteID: 67c588f056df4304db008dfa99327a65
+      internalID: -1984059677
       vertices: []
       indices: 
       edges: []
@@ -231,11 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fireset_3: 634295605
-      fireset_2: 1914920982
-      fireset_4: 1909905646
-      fireset_0: -613662732
-      fireset_1: -579958647
+      burning_start_1_1: 967122613
+      burning_start_1_2: 959195174
+      burning_start_1_0: -1647093711
+      burning_start_1_3: -1984059677
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

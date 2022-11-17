@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 public class GroundAbility : Ability
@@ -6,31 +6,47 @@ public class GroundAbility : Ability
     public float attackCooldown = 0.5f;
     private float attackTimer;
     public float dissapearTime = 2f;
+    private bool isActive = true;
 
     private void Start()
     {
-        Destroy(gameObject, dissapearTime);
+        attackTimer = attackCooldown;
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    protected override void Act(Collider2D collision)
     {
-        
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (attackTimer <= 0)
+        if (isActive && attackTimer <= 0)
         {
-            Act(collision);
+            base.Act(collision);
             attackTimer = attackCooldown;
         }
     }
 
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        Act(collision);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Act(collision);
+    }
+
     protected void Update()
     {
+        if (!isActive) return;
+
         if (attackTimer >= 0)
         {
             attackTimer -= Time.deltaTime;
+        }
+        
+        dissapearTime -= Time.deltaTime;
+        if (dissapearTime <= 0)
+        {
+            isActive = false;
+            Die();
         }
     }
 }

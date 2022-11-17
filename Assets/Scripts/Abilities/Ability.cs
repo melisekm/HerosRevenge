@@ -51,7 +51,7 @@ public class Ability : MonoBehaviour
         Act(collision);
     }
 
-    protected void Act(Collider2D collision)
+    protected virtual void Act(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Unit unit))
         {
