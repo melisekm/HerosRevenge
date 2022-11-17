@@ -35,6 +35,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1579615521485040599, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579615521485040599, guid: e505cc4cabcc80d4e899ee9352045493,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -113,6 +118,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 7179263956710627402, guid: e505cc4cabcc80d4e899ee9352045493,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6812616915088294612, guid: e505cc4cabcc80d4e899ee9352045493, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e505cc4cabcc80d4e899ee9352045493, type: 3}
@@ -171,6 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collidesWithUnits: 0
-  collidesWithEnvironment: 0
-  attackCooldown: 0.5
+  collidesWithEnvironment: 1
+  attackCooldown: 0.05
   dissapearTime: 0.1

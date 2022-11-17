@@ -8,6 +8,7 @@ public class EffectSpawner : MonoBehaviour
     public float spawnRate = 5f;
     private float timer;
     public bool isActive = true;
+    public Vector2 spawnArea;
     
 
     private void Update()
@@ -16,20 +17,26 @@ public class EffectSpawner : MonoBehaviour
         
         if (timer <= 0)
         {
+            SpawnEffect();
             timer = spawnRate;
-            ScriptableEffect scriptableEffect = ResourceSystem.Instance.GetRandomEffect();
-            // get random position in a rectangle
-            Vector3 position = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
-            // spawn effect
-            if (scriptableEffect.effectType == EffectType.Damage)
-            {
-                Effect effect = Instantiate(scriptableEffect.effect, position, Quaternion.identity);
-                effect.Initialize(scriptableEffect);
-            }
         }
         else
         {
             timer -= Time.deltaTime;
+        }
+    }
+
+    private void SpawnEffect()
+    {
+        ScriptableEffect scriptableEffect = ResourceSystem.Instance.GetRandomEffect();
+        // get random position in a rectangle
+        Vector3 position = new Vector3(
+            Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
+        // spawn effect
+        if (scriptableEffect.effectType == EffectType.Damage)
+        {
+            Effect effect = Instantiate(scriptableEffect.effect, position, Quaternion.identity);
+            effect.Initialize(scriptableEffect);
         }
     }
 }
