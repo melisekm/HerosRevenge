@@ -18,5 +18,6 @@ public enum EnemyType
     Ded,
     Vermener,
     Amoniak,
-    Rozok
+    Rozok,
+    Archimedes
 }

@@ -7,11 +7,15 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AmoniakController
-  m_Controller: {fileID: 9100000, guid: cc24389ecd391954da5caa251286c529, type: 2}
+  m_Controller: {fileID: 9100000, guid: be3f3be8d3a0f9e45979eb1b19366f70, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: fe4c3cfd1e22d65408aec5965efae7e9, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: cea16d2fa1f5b164c9d6ba1e394975b9, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 6e7f1e5d7bf6ec04498e3cd4c149908e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d9417ca6f8e10d846a24ef0dd5a791e5, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: a544bbde56caa6e46bb7475db369dd68, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 9744644dbc297344498927aa932db118, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: deb14a74a3110cb4d9297b5bd5c49902, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cea16d2fa1f5b164c9d6ba1e394975b9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4719ae90483864342b361c8253d90979, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 7f49d6a82ae00f842bed28b7afea4708, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1cd6a1d45268e7348a16893b57946cb5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cea16d2fa1f5b164c9d6ba1e394975b9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e91d452a0d2978b44966d863af43d404, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cea16d2fa1f5b164c9d6ba1e394975b9, type: 2}

@@ -26,7 +26,7 @@ public class EnemyUnit : Unit
     private State state = State.Moving;
 
     public Energy dropOnDeath;
-    public int energyDropAmount = 10;
+    [HideInInspector] public int energyDropAmount = 10;
 
     public float deathDelay;
     
