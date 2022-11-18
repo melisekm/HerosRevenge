@@ -10,12 +10,12 @@ public class LevelUpUISetter : MonoBehaviour
 {
     public GameObject levelUpPanel;
     public TMP_Text levelNumber;
-    public UIAbilitySlot[] abilitySlots;
+    public List<UIAbilitySlot> abilitySlots;
     
     
     public static event Action<ScriptableReward> OnRewardSelected;
     
-
+    [Serializable]
     public struct UIAbilitySlot
     {
         public TMP_Text name;
@@ -30,25 +30,10 @@ public class LevelUpUISetter : MonoBehaviour
     {
         levelUpPanel.SetActive(true);
         levelNumber.text = playerStats.level.actual.ToString();
-        abilitySlots = new UIAbilitySlot[nextRewards.Length];
-        for (int i = 0; i < abilitySlots.Length; i++)
+        for (int i = 0; i < abilitySlots.Count; i++)
         {
 
-            ScriptableReward reward;
-            if (nextRewards[i].rewardType == LevelUpSelectionHandler.RewardType.Ability)
-            {
-                reward = (ScriptableAbility)nextRewards[i].reward;
-
-            }
-            else if (nextRewards[i].rewardType == LevelUpSelectionHandler.RewardType.Stat)
-            {
-                reward = (ScriptableStatUpgrade)nextRewards[i].reward;
-            }
-            else
-            {
-                levelUpPanel.SetActive(false);
-                return;
-            }
+            ScriptableReward reward = nextRewards[i].reward;
             
             abilitySlots[i].name.text = reward.rewardName;
             abilitySlots[i].description.text = reward.description;

@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c038356f0460c8c448b0b7d5a69fc690, type: 3}
   m_Name: Cleave
   m_EditorClassIdentifier: 
+  rewardName: Cleave
+  icon: {fileID: -1224957714, guid: cdbdb62962c298f4fa6c787f8da23779, type: 3}
+  description: Sweeeep
   stats:
     damage: 20
     baseCooldown: 0.4
     range: 0.25
   abilityType: 1
   prefab: {fileID: -4030127963876839283, guid: f89a730844140274eaad0a86a1e13972, type: 3}
+  minLevel: 0

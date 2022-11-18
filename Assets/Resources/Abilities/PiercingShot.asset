@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c038356f0460c8c448b0b7d5a69fc690, type: 3}
   m_Name: PiercingShot
   m_EditorClassIdentifier: 
+  rewardName: Piercing Shot
+  icon: {fileID: 21300000, guid: eb91a05851448ed4babd87dbca39d94b, type: 3}
+  description: IT PIERCES
   stats:
     damage: 60
     baseCooldown: 0.7
     range: 15
   abilityType: 3
   prefab: {fileID: 4943086765236575779, guid: 8c1439b1f95231642b8adde4ca0115f7, type: 3}
+  minLevel: 0

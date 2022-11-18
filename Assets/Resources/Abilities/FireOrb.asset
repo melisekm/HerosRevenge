@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c038356f0460c8c448b0b7d5a69fc690, type: 3}
   m_Name: FireOrb
   m_EditorClassIdentifier: 
+  rewardName: Fire Orb
+  icon: {fileID: 21300000, guid: 6243c13ba1784934e9b25949f9bc26d6, type: 3}
+  description: OHEN
   stats:
     damage: 35
     baseCooldown: 0.5
     range: 7
   abilityType: 2
   prefab: {fileID: 7359200154823451720, guid: 6bebb38791b60c94f8276e35d2e7bac7, type: 3}
+  minLevel: 0

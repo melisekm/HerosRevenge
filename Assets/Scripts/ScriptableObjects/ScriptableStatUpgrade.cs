@@ -7,7 +7,7 @@ using UnityEngine;
 public class ScriptableStatUpgrade : ScriptableReward
 {
     public StatType statType;
-    public int amount;
+    public float amount;
 }
 
 [Serializable]

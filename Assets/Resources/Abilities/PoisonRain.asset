@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c038356f0460c8c448b0b7d5a69fc690, type: 3}
   m_Name: PoisonRain
   m_EditorClassIdentifier: 
+  rewardName: Poison Rain
+  icon: {fileID: 21300000, guid: 840352eeee4cbcd40a6cdb838e049c79, type: 3}
+  description: IT RAINS
   stats:
     damage: 5
     baseCooldown: 1
     range: 0
   abilityType: 4
   prefab: {fileID: -7477808379987039157, guid: aeeece30c91cdd24a82f744d2d29d632, type: 3}
+  minLevel: 0

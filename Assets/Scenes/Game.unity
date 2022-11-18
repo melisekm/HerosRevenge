@@ -13021,7 +13021,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelUpPanel: {fileID: 1462152668}
-  levelNumber: {fileID: 0}
+  levelNumber: {fileID: 992291561}
+  abilitySlots:
+  - name: {fileID: 387246490}
+    description: {fileID: 495591008}
+    type: {fileID: 1731439359}
+    icon: {fileID: 1766873217}
+    button: {fileID: 323904492}
+  - name: {fileID: 706353968}
+    description: {fileID: 619042252}
+    type: {fileID: 576222052}
+    icon: {fileID: 206620809}
+    button: {fileID: 1844603150}
 --- !u!1 &1465907098
 GameObject:
   m_ObjectHideFlags: 0

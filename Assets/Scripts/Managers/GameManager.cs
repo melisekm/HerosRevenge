@@ -42,6 +42,12 @@ public class GameManager : Singleton<GameManager>
         LevelUpUISetter.OnRewardSelected += OnRewardSelected;
     }
 
+    private void OnDisable()
+    {
+        ProgressionController.OnLevelUp -= OnLevelUp;
+        LevelUpUISetter.OnRewardSelected -= OnRewardSelected;
+    }
+
     private void OnRewardSelected(ScriptableReward reward)
     {
         Time.timeScale = 1;
