@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class Energy : Collectible
 {
@@ -10,17 +8,15 @@ public class Energy : Collectible
     
     // how close the game object has to be to disappear after flying towards the player
     private float destroyDistance = 0.1f;
+    
+    public static event Action<int> OnEnergyCollected;
 
     private bool pickedUp;
 
-
     protected override void PickUp()
     {
-        if (player && player.TryGetComponent(out PlayerUnit playerUnit))
-        {
-            playerUnit.PickUpEnergy(amount);
-            pickedUp = true;
-        }
+        OnEnergyCollected?.Invoke(amount);
+        pickedUp = true;
     }
 
     protected override void Update()

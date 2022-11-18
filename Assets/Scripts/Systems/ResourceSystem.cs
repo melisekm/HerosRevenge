@@ -9,6 +9,7 @@ public class ResourceSystem : Singleton<ResourceSystem>
     public List<ScriptableAbility> abilities;
     public List<ScriptableEffect> damageEffects;
     public List<ScriptableEffect> collectibleEffects; // TODO: change name
+    public List<ScriptableStatUpgrade> statUpgrades;
     public ScriptablePlayer player;
 
     protected override void Awake()
@@ -16,6 +17,7 @@ public class ResourceSystem : Singleton<ResourceSystem>
         base.Awake();
         enemies = Resources.LoadAll<ScriptableEnemy>("Units/Enemies").ToList();
         abilities = Resources.LoadAll<ScriptableAbility>("Abilities").ToList();
+        statUpgrades = Resources.LoadAll<ScriptableStatUpgrade>("StatUpgrades").ToList();
         var effects = Resources.LoadAll<ScriptableEffect>("Effects").ToList();
         foreach (var effect in effects)
         {

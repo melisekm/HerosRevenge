@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptables/Abilities/New Scriptable Ability")]
-public class ScriptableAbility : ScriptableObject
+public class ScriptableAbility : ScriptableReward
 {
     public AbilityStats stats;
     public AbilityType abilityType;
     public Ability prefab;
+    public float minLevel;
 }
 
 [Serializable]

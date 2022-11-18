@@ -1,5 +1,5 @@
-using System.Reflection;
-using UnityEngine;
+using System;
+using Units.Player;
 using Utils;
 
 public class PlayerUnit : Unit
@@ -9,6 +9,10 @@ public class PlayerUnit : Unit
     public float pickupRange = 2f;
     public float maxCastRange = 10f;
     public float levelUpMultiplier = 1.25f;
+    public int rewardsCount = 2;
+    private ProgressionController progressionController;
+
+    public static event Action<float, float> OnPlayerTakeDamage;
 
     protected override void Awake()
     {
@@ -30,6 +34,15 @@ public class PlayerUnit : Unit
         ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
         SetAttributes(new Attributes(playerScriptable.attributes));
         SetStats(new PlayerStats(playerScriptable.playerStats));
+        progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
+        Energy.OnEnergyCollected += progressionController.PickUpEnergy;
+        OnPlayerTakeDamage?.Invoke(attributes.health.actual, attributes.health.initial);
+
+    }
+
+    private void OnDisable()
+    {
+        Energy.OnEnergyCollected -= progressionController.PickUpEnergy;
     }
 
     protected void Update()
@@ -67,45 +80,9 @@ public class PlayerUnit : Unit
         GameManager.Instance.ChangeState(GameState.ArenaFailed);
     }
 
-    public void PickUpEnergy(float amount)
+    public override void TakeDamage(float damage)
     {
-        stats.xp.actual += amount;
-        if (stats.xp.actual >= stats.xp.max && stats.level.actual < stats.level.max)
-        {
-            LevelUp();
-        }
-    }
-
-    private void LevelUp()
-    {
-        // TODO show Level up screen
-        // TODO add level up effect
-        // TODO add level up sound
-        stats.xp.actual = stats.xp.min;
-        stats.xp.max = Mathf.RoundToInt(stats.xp.max * levelUpMultiplier);
-        stats.level.actual++;
-        stats.gold.actual += stats.gold.increasePerLevel;
-
-
-        LevelUpAttribute(attributes.health);
-        LevelUpAttribute(attributes.speed);
-        LevelUpAttribute(attributes.attackPower);
-        LevelUpAttribute(attributes.cooldownRecovery);
-        LevelUpAttribute(attributes.defenseRating);
-    }
-
-    private void LevelUpAttribute(Attribute attr)
-    {
-        float newValue = attr.initial + attr.increasePerLevel;
-        if (newValue < attr.max)
-        {
-            attr.initial = newValue;
-            attr.actual = attr.initial;
-        }
-        else
-        {
-            attr.initial = attr.max;
-            attr.actual = attr.max;
-        }
+        base.TakeDamage(damage);
+        OnPlayerTakeDamage?.Invoke(attributes.health.actual, attributes.health.initial);
     }
 }

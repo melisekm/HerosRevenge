@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using Managers;
+using Units.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,9 +30,28 @@ public class GameManager : Singleton<GameManager>
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
+
     private void Start()
     {
         ChangeState(state);
+    }
+
+    private void OnEnable()
+    {
+        ProgressionController.OnLevelUp += OnLevelUp;
+        LevelUpUISetter.OnRewardSelected += OnRewardSelected;
+    }
+
+    private void OnRewardSelected(ScriptableReward reward)
+    {
+        Time.timeScale = 1;
+    }
+
+    private void OnLevelUp(PlayerStats stats, Attributes attributes, bool initial,
+        LevelUpSelectionHandler.Reward[] rewards)
+    {
+        // freeze the game
+        Time.timeScale = 0;
     }
 
     private void Update()
