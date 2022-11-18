@@ -20,22 +20,28 @@ public class UIManager : Singleton<UIManager>
         GameManager.OnUpdateTime += SetTime;
         PlayerControls.OnSwitchAbility += SetAbility;
         ProgressionController.OnLevelUp += OnLevelUp;
+        ProgressionController.OnExperienceChanged += SetExperience;
         PlayerUnit.OnPlayerTakeDamage += SetHealth;
+    }
+
+    private void SetExperience(float actual, float max)
+    {
+        xpText.text = actual + "/" + max;
     }
 
 
     private void SetHealth(float newHealth, float maxHealth)
     {
-        healthText.text = newHealth.ToString() + "/" + maxHealth.ToString();
+        healthText.text = newHealth + "/" + maxHealth;
     }
 
     private void OnLevelUp(PlayerStats playerStats, Attributes playerAttributes, bool initial,
         LevelUpSelectionHandler.Reward[] nextRewards)
     {
         levelText.text = playerStats.level.actual.ToString();
-        xpText.text = playerStats.xp.actual.ToString() + "/" + playerStats.xp.max.ToString();
+        xpText.text = playerStats.xp.actual + "/" + playerStats.xp.max;
         goldText.text = playerStats.gold.actual.ToString();
-        healthText.text = playerAttributes.health.actual.ToString() + "/" + playerAttributes.health.initial.ToString();
+        healthText.text = playerAttributes.health.actual + "/" + playerAttributes.health.initial;
 
         if (initial) return;
         this.nextRewards = nextRewards;

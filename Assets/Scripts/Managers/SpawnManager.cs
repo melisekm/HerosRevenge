@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class SpawnManager : Singleton<SpawnManager>
     public bool shouldSpawn = true;
     public EnemyType spawnType;
     public bool spawnRandomEnemyTypes = true;
+    
+    public static event Action<EnemyUnit> OnEnemySpawned;
 
 
     protected override void Awake()
@@ -47,6 +50,7 @@ public class SpawnManager : Singleton<SpawnManager>
             // do any level based stuff here
             enemy.energyDropAmount = enemyScriptable.energyDropAmount; // * level
             enemy.SetAttributes(new Attributes(enemyScriptable.attributes));
+            OnEnemySpawned?.Invoke(enemy);
         }
     }
 

@@ -40,13 +40,27 @@ public class LevelUpUISetter : MonoBehaviour
             abilitySlots[i].type.text = nextRewards[i].rewardType.ToString();
             abilitySlots[i].icon.sprite = reward.icon;
             abilitySlots[i].button.onClick.RemoveAllListeners();
+            abilitySlots[i].button.interactable = false;
             abilitySlots[i].button.onClick.AddListener(() =>
             {
                 OnRewardSelected?.Invoke(reward);
                 levelUpPanel.SetActive(false);
             });
-
+            StartCoroutine(EnableButton(abilitySlots[i].button));
         }
 
+        IEnumerator EnableButton(Button btn)
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            btn.interactable = true;
+        }
     }
+    
+    // private void EnableButtons()
+    // {
+    //     foreach(var slot in abilitySlots)
+    //     {
+    //         slot.button.interactable = true;
+    //     }
+    // }
 }

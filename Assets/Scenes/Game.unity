@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 1.5
-  shouldSpawn: 0
+  shouldSpawn: 1
   spawnType: 5
   spawnRandomEnemyTypes: 1
 --- !u!1 &101092648

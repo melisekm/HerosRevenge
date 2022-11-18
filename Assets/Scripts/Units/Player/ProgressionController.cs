@@ -10,6 +10,7 @@ namespace Units.Player
         private Attributes playerAttributes;
         private float levelUpMultiplier;
         public static event Action<PlayerStats, Attributes, bool, LevelUpSelectionHandler.Reward[]> OnLevelUp;
+        public static event Action<float, float> OnExperienceChanged;
         private LevelUpSelectionHandler levelUpSelectionHandler;
 
         public ProgressionController(PlayerUnit playerUnit, float levelUpMultiplier, int rewardsCount)
@@ -24,6 +25,7 @@ namespace Units.Player
         public void PickUpEnergy(int amount)
         {
             playerStats.xp.actual += amount;
+            OnExperienceChanged?.Invoke(playerStats.xp.actual, playerStats.xp.max);
             if (playerStats.xp.actual >= playerStats.xp.max && playerStats.level.actual < playerStats.level.max)
             {
                 LevelUp();

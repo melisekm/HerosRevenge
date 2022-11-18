@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
@@ -5,6 +6,7 @@ using Utils;
 
 public class EnemyUnit : Unit
 {
+    public static event Action<EnemyUnit> OneEnemyUnitDied;
     public float attackCooldown = 1f;
     private float attackTimer;
     public float deathDelay;
@@ -121,5 +123,6 @@ public class EnemyUnit : Unit
         }
 
         base.DieAfterDelay(deathDelay);
+        OneEnemyUnitDied?.Invoke(this);
     }
 }

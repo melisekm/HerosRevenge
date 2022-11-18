@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Managers;
 using Units.Player;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class GameManager : Singleton<GameManager>
     public GameObject player;
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
+    public Dictionary<int, EnemyUnit> enemies = new();
+    public int enemiesKilled;
 
     public GameState state;
 
@@ -40,12 +43,67 @@ public class GameManager : Singleton<GameManager>
     {
         ProgressionController.OnLevelUp += OnLevelUp;
         LevelUpUISetter.OnRewardSelected += OnRewardSelected;
+        SpawnManager.OnEnemySpawned += OnEnemySpawned;
+        EnemyUnit.OneEnemyUnitDied += OnEnemyDied;
     }
 
     private void OnDisable()
     {
         ProgressionController.OnLevelUp -= OnLevelUp;
         LevelUpUISetter.OnRewardSelected -= OnRewardSelected;
+        SpawnManager.OnEnemySpawned -= OnEnemySpawned;
+        EnemyUnit.OneEnemyUnitDied -= OnEnemyDied;
+    }
+
+
+    private void OnEnemyDied(EnemyUnit obj)
+    {
+        enemies.Remove(obj.GetInstanceID());
+        enemiesKilled++;
+        DecideSpawnRate();
+    }
+
+    private void OnEnemySpawned(EnemyUnit enemy)
+    {
+        enemies[enemy.GetInstanceID()] = enemy;
+        DecideSpawnRate();
+    }
+
+    private void DecideSpawnRate()
+    {
+        var enemyCount = enemies.Count;
+        float newSpawnRate;
+        if (currentTime < 30)
+        {
+            newSpawnRate = 2f;
+        }
+
+        else if (currentTime < 90)
+        {
+            newSpawnRate = 1f;
+
+        }
+        
+        else if (enemyCount < 5)
+        {
+            newSpawnRate = 0.25f;
+        }
+        else if (enemyCount < 15)
+        {
+            newSpawnRate = 0.5f;
+        }
+        else if (enemyCount < 30)
+        {
+            newSpawnRate = 1f;
+        }
+        else
+        {
+            // TODO: LOSE
+            newSpawnRate = 3f;
+        }
+        SpawnManager.Instance.spawnRate = newSpawnRate;
+
+        Debug.Log("ENEMY COUNT: " + enemyCount + " SPAWN RATE: " + newSpawnRate);
     }
 
     private void OnRewardSelected(ScriptableReward reward)
@@ -57,7 +115,10 @@ public class GameManager : Singleton<GameManager>
         LevelUpSelectionHandler.Reward[] rewards)
     {
         // freeze the game
-        Time.timeScale = 0;
+        if (!initial)
+        {
+            Time.timeScale = 0;
+        }
     }
 
     private void Update()

@@ -8,7 +8,7 @@ public class AbilityHolder : MonoBehaviour
     private ScriptableAbility scriptableAbility;
     private PlayerUnit playerUnit;
     [HideInInspector] public bool isHolderActive;
-    private float cooldownTime;
+    [HideInInspector] public float cooldownTime;
     private AbilityState abilityState = AbilityState.Ready;
 
 
