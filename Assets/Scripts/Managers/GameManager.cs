@@ -44,7 +44,7 @@ public class GameManager : Singleton<GameManager>
         ProgressionController.OnLevelUp += OnLevelUp;
         LevelUpUISetter.OnRewardSelected += OnRewardSelected;
         SpawnManager.OnEnemySpawned += OnEnemySpawned;
-        EnemyUnit.OneEnemyUnitDied += OnEnemyDied;
+        EnemyUnit.OnEnemyUnitDied += OnEnemyDied;
     }
 
     private void OnDisable()
@@ -52,7 +52,7 @@ public class GameManager : Singleton<GameManager>
         ProgressionController.OnLevelUp -= OnLevelUp;
         LevelUpUISetter.OnRewardSelected -= OnRewardSelected;
         SpawnManager.OnEnemySpawned -= OnEnemySpawned;
-        EnemyUnit.OneEnemyUnitDied -= OnEnemyDied;
+        EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
     }
 
 
@@ -60,51 +60,15 @@ public class GameManager : Singleton<GameManager>
     {
         enemies.Remove(obj.GetInstanceID());
         enemiesKilled++;
-        DecideSpawnRate();
+        // TODO: if curr lvl has enemy cap and enemiesKilled == cap, change state to level complete
+        
     }
 
     private void OnEnemySpawned(EnemyUnit enemy)
     {
         enemies[enemy.GetInstanceID()] = enemy;
-        DecideSpawnRate();
     }
 
-    private void DecideSpawnRate()
-    {
-        var enemyCount = enemies.Count;
-        float newSpawnRate;
-        if (currentTime < 30)
-        {
-            newSpawnRate = 2f;
-        }
-
-        else if (currentTime < 90)
-        {
-            newSpawnRate = 1f;
-
-        }
-        
-        else if (enemyCount < 5)
-        {
-            newSpawnRate = 0.25f;
-        }
-        else if (enemyCount < 15)
-        {
-            newSpawnRate = 0.5f;
-        }
-        else if (enemyCount < 30)
-        {
-            newSpawnRate = 1f;
-        }
-        else
-        {
-            // TODO: LOSE
-            newSpawnRate = 3f;
-        }
-        SpawnManager.Instance.spawnRate = newSpawnRate;
-
-        Debug.Log("ENEMY COUNT: " + enemyCount + " SPAWN RATE: " + newSpawnRate);
-    }
 
     private void OnRewardSelected(ScriptableReward reward)
     {

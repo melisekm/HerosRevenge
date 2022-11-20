@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
@@ -8,6 +9,13 @@ public class GroundAbility : Ability
     private float attackTimer;
     public float dissapearTime = 2f;
     private bool isActive = true;
+    private float radius;
+
+    private void Start()
+    {
+        // get collider radius
+        radius = GetComponent<CircleCollider2D>().radius;
+    }
 
     public override void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
     {
@@ -17,10 +25,9 @@ public class GroundAbility : Ability
     
     protected override void Act(Collider2D collision)
     {
-        if (isActive && attackTimer <= 0)
+        if (isActive)
         {
             base.Act(collision);
-            attackTimer = attackCooldown;
         }
     }
     
@@ -38,17 +45,22 @@ public class GroundAbility : Ability
         Act(collision);
     }
 
-    protected void OnTriggerStay2D(Collider2D collision)
-    {
-        Act(collision);
-    }
-
     protected void Update()
     {
         if (!isActive) return;
-        if (attackTimer >= 0)
+        if (attackTimer < attackCooldown)
         {
-            attackTimer -= Time.deltaTime;
+            attackTimer += Time.deltaTime;
+        }
+        // periodically check for physics.overlapcircle to hit enemies
+        else
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+            foreach (Collider2D collider in colliders)
+            {
+                Act(collider);
+            }
+            attackTimer = 0;
         }
 
         dissapearTime -= Time.deltaTime;

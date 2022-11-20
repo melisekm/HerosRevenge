@@ -8,9 +8,10 @@ public class EffectSpawner : MonoBehaviour
     private float timer;
     public bool isActive = true;
     public Vector2 spawnArea;
-    public int areaOfEffectEventChance = 10;
-    public int eventCheckInterval = 10;
-    public int eventLength = 10;
+    [Header("Event")]
+    public int aoeChance = 10;
+    public int checkInterval = 10;
+    public int length = 10;
 
 
     private void Start()
@@ -26,13 +27,13 @@ public class EffectSpawner : MonoBehaviour
             {
                 // random 0 - 100
                 var random = Random.Range(0, 100);
-                if (random < areaOfEffectEventChance)
+                if (random < aoeChance)
                 {
                     AoEEvent();
                 }
             }
 
-            yield return new WaitForSeconds(eventCheckInterval);
+            yield return new WaitForSeconds(checkInterval);
         }
     }
 
@@ -44,7 +45,7 @@ public class EffectSpawner : MonoBehaviour
             spawnEffectEverySeconds = 0.1f;
             timer = 0;
             Debug.Log("Starting event");
-            yield return new WaitForSeconds(eventLength);
+            yield return new WaitForSeconds(length);
             Debug.Log("Ending event");
             spawnEffectEverySeconds = previousSpawnEffectEverySeconds;
         }

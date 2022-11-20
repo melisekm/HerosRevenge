@@ -11,7 +11,8 @@ public class SpawnManager : Singleton<SpawnManager>
     public bool shouldSpawn = true;
     public EnemyType spawnType;
     public bool spawnRandomEnemyTypes = true;
-    
+    public bool dynamicSpawnRate = true;
+
     public static event Action<EnemyUnit> OnEnemySpawned;
 
 
@@ -24,6 +25,21 @@ public class SpawnManager : Singleton<SpawnManager>
         {
             spawnPoints.Add(spawnPoint.transform);
         }
+    }
+
+    private void OnEnable()
+    {
+        EnemyUnit.OnEnemyUnitDied += OnEnemyDied;
+    }
+
+    private void OnDisable()
+    {
+        EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
+    }
+
+    private void OnEnemyDied(EnemyUnit obj)
+    {
+        DecideSpawnRate();
     }
 
 
@@ -50,7 +66,9 @@ public class SpawnManager : Singleton<SpawnManager>
             // do any level based stuff here
             enemy.energyDropAmount = enemyScriptable.energyDropAmount; // * level
             enemy.SetAttributes(new Attributes(enemyScriptable.attributes));
+            Debug.Log("Spawned enemy: " + enemy.name + " with HP: " + enemy.attributes.health.actual);
             OnEnemySpawned?.Invoke(enemy);
+            DecideSpawnRate();
         }
     }
 
@@ -74,8 +92,8 @@ public class SpawnManager : Singleton<SpawnManager>
                     yield return new WaitForSeconds(spawnRate);
                 }
             }
-
         }
+
         StartCoroutine(SpawnEnemiesCoroutine());
     }
 
@@ -86,5 +104,45 @@ public class SpawnManager : Singleton<SpawnManager>
         {
             SpawnEnemies();
         }
+    }
+
+    private void DecideSpawnRate()
+    {
+        if (!dynamicSpawnRate) return;
+
+        var currentTime = Time.timeSinceLevelLoad;
+        var enemyCount = GameManager.Instance.enemies.Count;
+        float newSpawnRate;
+        if (currentTime < 30)
+        {
+            newSpawnRate = 2f;
+        }
+
+        else if (currentTime < 90)
+        {
+            newSpawnRate = 1f;
+        }
+
+        else if (enemyCount < 5)
+        {
+            newSpawnRate = 0.25f;
+        }
+        else if (enemyCount < 15)
+        {
+            newSpawnRate = 0.5f;
+        }
+        else if (enemyCount < 30)
+        {
+            newSpawnRate = 1f;
+        }
+        else
+        {
+            // TODO: LOSE
+            newSpawnRate = 3f;
+        }
+
+        spawnRate = newSpawnRate;
+
+        Debug.Log("ENEMY COUNT: " + enemyCount + " SPAWN RATE: " + newSpawnRate);
     }
 }

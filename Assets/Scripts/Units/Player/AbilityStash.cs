@@ -5,7 +5,7 @@ public class AbilityStash : MonoBehaviour
 {
     private List<AbilityHolder> abilityList = new();
     private AbilityHolder selectedAbility;
-    public int maxAbilityCount = 2;
+    public int maxAbilityCount = 4;
 
 
     public void OnEnable()
@@ -46,8 +46,8 @@ public class AbilityStash : MonoBehaviour
     {
         selectedAbility = abilityList[0];
         selectedAbility.isHolderActive = true;
-        abilityList[0].SetAbilityType(AbilityType.Cleave);
-        // abilityList[1].SetAbilityType(AbilityType.PiercingShot);
+        abilityList[0].SetAbilityType(AbilityType.FireOrb);
+        abilityList[1].SetAbilityType(AbilityType.PoisonRain);
     }
 
     private void SwitchAbility(int index)

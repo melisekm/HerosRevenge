@@ -203,11 +203,13 @@ MonoBehaviour:
   sprite: {fileID: 0}
   isFacingRight: 0
   attackCooldown: 0.5
-  destinationSetter: {fileID: 0}
-  aiPath: {fileID: 0}
+  deathDelay: 0.4
   dropOnDeath: {fileID: 6074496508514105833, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
     type: 3}
+  player: {fileID: 0}
+  destinationSetter: {fileID: 0}
+  aiPath: {fileID: 0}
   energyDropAmount: 10
-  deathDelay: 0.4
+  state: 0
   projectilePrefab: {fileID: 3118448274658497239, guid: f60ce880744d19e47a91cc64a7fe3623,
     type: 3}

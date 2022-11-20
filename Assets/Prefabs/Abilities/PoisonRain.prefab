@@ -9952,5 +9952,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collidesWithUnits: 0
   collidesWithEnvironment: 0
-  attackCooldown: 0.1
+  attackCooldown: 0.25
   dissapearTime: 2

@@ -6,7 +6,7 @@ using Utils;
 
 public class EnemyUnit : Unit
 {
-    public static event Action<EnemyUnit> OneEnemyUnitDied;
+    public static event Action<EnemyUnit> OnEnemyUnitDied;
     public float attackCooldown = 1f;
     private float attackTimer;
     public float deathDelay;
@@ -103,6 +103,8 @@ public class EnemyUnit : Unit
 
     protected override void Die()
     {
+        if (state == EnemyState.Dead) return;
+
         state = EnemyState.Dead;
         // disable path finding
         aiPath.canMove = false;
@@ -123,6 +125,6 @@ public class EnemyUnit : Unit
         }
 
         base.DieAfterDelay(deathDelay);
-        OneEnemyUnitDied?.Invoke(this);
+        OnEnemyUnitDied?.Invoke(this);
     }
 }

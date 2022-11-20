@@ -37,7 +37,6 @@ public abstract class Unit : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         StartCoroutine(Flash());
-
         int damageTaken = Mathf.RoundToInt(damage * (1 - attributes.defenseRating.actual));
         attributes.health.actual -= damageTaken;
 
