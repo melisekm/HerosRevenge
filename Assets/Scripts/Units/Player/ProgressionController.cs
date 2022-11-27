@@ -33,7 +33,6 @@ namespace Units.Player
         }
         private void LevelUp()
         {
-            // TODO show Level up screen
             // TODO add level up effect
             // TODO add level up sound
             playerStats.xp.actual = playerStats.xp.min;

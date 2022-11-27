@@ -12,7 +12,6 @@ public class UIManager : Singleton<UIManager>
     public TMP_Text levelText;
     public TMP_Text timeText;
     public TMP_Text selectedAbilityNumber;
-    private LevelUpSelectionHandler.Reward[] nextRewards;
     public LevelUpUISetter levelUpUISetter;
 
     private void OnEnable()
@@ -21,7 +20,7 @@ public class UIManager : Singleton<UIManager>
         PlayerControls.OnSwitchAbility += SetAbility;
         ProgressionController.OnLevelUp += OnLevelUp;
         ProgressionController.OnExperienceChanged += SetExperience;
-        PlayerUnit.OnPlayerTakeDamage += SetHealth;
+        PlayerUnit.OnPlayerHealthChanged += SetHealth;
     }
 
     private void SetExperience(float actual, float max)
@@ -44,7 +43,6 @@ public class UIManager : Singleton<UIManager>
         healthText.text = playerAttributes.health.actual + "/" + playerAttributes.health.initial;
 
         if (initial) return;
-        this.nextRewards = nextRewards;
         levelUpUISetter.SetLevelUpUI(playerStats, playerAttributes, nextRewards);
     }
 
@@ -60,7 +58,7 @@ public class UIManager : Singleton<UIManager>
         GameManager.OnUpdateTime -= SetTime;
         PlayerControls.OnSwitchAbility -= SetAbility;
         ProgressionController.OnLevelUp -= OnLevelUp;
-        PlayerUnit.OnPlayerTakeDamage -= SetHealth;
+        PlayerUnit.OnPlayerHealthChanged -= SetHealth;
     }
 
 

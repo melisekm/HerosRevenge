@@ -19,6 +19,7 @@ public class Attributes
         speed = new Attribute(other.speed);
         defenseRating = new Attribute(other.defenseRating);
         cooldownRecovery = new Attribute(other.cooldownRecovery);
+        pickupRange = new Attribute(other.pickupRange);
     }
 
     [SerializeField] public Attribute health;
@@ -26,6 +27,7 @@ public class Attributes
     [SerializeField] public Attribute defenseRating;
     [SerializeField] public Attribute speed;
     [SerializeField] public Attribute cooldownRecovery;
+    [SerializeField] public Attribute pickupRange;
 }
 
 [Serializable]

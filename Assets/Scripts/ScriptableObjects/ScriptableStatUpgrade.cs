@@ -18,5 +18,6 @@ public enum StatType
     Speed,
     Defense,
     CooldownRecovery,
-    PickupRange
+    PickupRange,
+    Gold
 }

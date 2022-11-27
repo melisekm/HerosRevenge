@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardName: Damage
   icon: {fileID: 21300000, guid: 54f3667bb2d56694b8f41abf64390c1a, type: 3}
-  description: dmg
+  description: Increase base attack damage by 10.
   statType: 1
   amount: 10

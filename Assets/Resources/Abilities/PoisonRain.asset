@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardName: Poison Rain
   icon: {fileID: 21300000, guid: 840352eeee4cbcd40a6cdb838e049c79, type: 3}
-  description: IT RAINS
+  description: 'Poisonous darts land at the designated medium sized area for a short
+    duration.  '
   stats:
     damage: 5
     baseCooldown: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardName: Cleave
   icon: {fileID: -1224957714, guid: cdbdb62962c298f4fa6c787f8da23779, type: 3}
-  description: Sweeeep
+  description: Short range damages enemies in a semicircle.
   stats:
     damage: 20
     baseCooldown: 0.4

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardName: Fire Orb
   icon: {fileID: 21300000, guid: 6243c13ba1784934e9b25949f9bc26d6, type: 3}
-  description: OHEN
+  description: Cast a medium ranged fiery projectile towards the target.
   stats:
     damage: 35
     baseCooldown: 0.5

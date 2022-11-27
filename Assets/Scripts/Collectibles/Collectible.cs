@@ -5,18 +5,18 @@ using UnityEngine;
 public abstract class Collectible : MonoBehaviour
 {
     protected GameObject player;
-    private float pickupDistance;
+    private PlayerUnit playerUnit;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pickupDistance = player.GetComponent<PlayerUnit>().pickupRange;
+        playerUnit = player.GetComponent<PlayerUnit>();
     }
 
     protected virtual void Update()
     {
         if (!player) return;
         
-        if (Vector3.Distance(transform.position, player.transform.position) < pickupDistance)
+        if (Vector3.Distance(transform.position, player.transform.position) < playerUnit.attributes.pickupRange.actual)
         {
             PickUp();
         }

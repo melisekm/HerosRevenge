@@ -6,13 +6,12 @@ public class PlayerUnit : Unit
 {
     public PlayerStats stats { get; private set; }
     public void SetStats(PlayerStats st) => stats = st;
-    public float pickupRange = 2f;
     public float maxCastRange = 10f;
     public float levelUpMultiplier = 1.25f;
     public int rewardsCount = 2;
     private ProgressionController progressionController;
 
-    public static event Action<float, float> OnPlayerTakeDamage;
+    public static event Action<float, float> OnPlayerHealthChanged;
 
     protected override void Awake()
     {
@@ -36,13 +35,55 @@ public class PlayerUnit : Unit
         SetStats(new PlayerStats(playerScriptable.playerStats));
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
         Energy.OnEnergyCollected += progressionController.PickUpEnergy;
-        OnPlayerTakeDamage?.Invoke(attributes.health.actual, attributes.health.initial);
+        LevelUpUISetter.OnRewardSelected += UpdateAttributes;
+        OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
 
+    }
+
+    private void UpdateAttributes(ScriptableReward scriptableStat)
+    {
+        if (scriptableStat is ScriptableStatUpgrade statUpgrade)
+        {
+            switch (statUpgrade.statType)
+            {
+                case StatType.Health:
+                    attributes.health.initial += statUpgrade.amount;
+                    attributes.health.actual += statUpgrade.amount;
+                    OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
+                    break;
+                case StatType.Damage:
+                    attributes.attackPower.initial += statUpgrade.amount;
+                    attributes.attackPower.actual += statUpgrade.amount;
+                    break;
+                case StatType.Speed:
+                    attributes.speed.initial += statUpgrade.amount;
+                    attributes.speed.actual += statUpgrade.amount;
+                    break;
+                case StatType.Defense:
+                    attributes.defenseRating.initial += statUpgrade.amount;
+                    attributes.defenseRating.actual += statUpgrade.amount;
+                    break;
+                case StatType.CooldownRecovery:
+                    attributes.cooldownRecovery.initial += statUpgrade.amount;
+                    attributes.cooldownRecovery.actual += statUpgrade.amount;
+                    break;
+                case StatType.PickupRange:
+                    attributes.pickupRange.initial += statUpgrade.amount;
+                    attributes.pickupRange.actual += statUpgrade.amount;
+                    break;
+                case StatType.Gold:
+                    stats.gold.actual += statUpgrade.amount;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 
     private void OnDisable()
     {
         Energy.OnEnergyCollected -= progressionController.PickUpEnergy;
+        LevelUpUISetter.OnRewardSelected -= UpdateAttributes;
     }
 
     protected void Update()
@@ -83,6 +124,6 @@ public class PlayerUnit : Unit
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        OnPlayerTakeDamage?.Invoke(attributes.health.actual, attributes.health.initial);
+        OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
     }
 }

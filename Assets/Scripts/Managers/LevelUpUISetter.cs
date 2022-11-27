@@ -11,10 +11,10 @@ public class LevelUpUISetter : MonoBehaviour
     public GameObject levelUpPanel;
     public TMP_Text levelNumber;
     public List<UIAbilitySlot> abilitySlots;
-    
-    
+
+
     public static event Action<ScriptableReward> OnRewardSelected;
-    
+
     [Serializable]
     public struct UIAbilitySlot
     {
@@ -24,17 +24,32 @@ public class LevelUpUISetter : MonoBehaviour
         public Image icon;
         public Button button;
     }
-    
 
-    public void SetLevelUpUI(PlayerStats playerStats, Attributes playerAttributes, LevelUpSelectionHandler.Reward[] nextRewards)
+    [Header("Attributes")] public TMP_Text damage;
+    public TMP_Text speed;
+    public TMP_Text defense;
+    public TMP_Text cooldown;
+    public TMP_Text pickup;
+    public TMP_Text health;
+
+
+    public void SetLevelUpUI(PlayerStats playerStats, Attributes playerAttributes,
+        LevelUpSelectionHandler.Reward[] nextRewards)
     {
-        levelUpPanel.SetActive(true);
+        damage.text = playerAttributes.attackPower.actual.ToString();
+        speed.text = playerAttributes.speed.actual.ToString();
+        defense.text = (playerAttributes.defenseRating.actual * 100).ToString() + "%";
+        cooldown.text = (playerAttributes.cooldownRecovery.actual * 100).ToString() + "%";
+        pickup.text = playerAttributes.pickupRange.actual.ToString();
+        health.text = playerAttributes.health.actual.ToString();
         levelNumber.text = playerStats.level.actual.ToString();
+        levelUpPanel.SetActive(true);
+
+
         for (int i = 0; i < abilitySlots.Count; i++)
         {
-
             ScriptableReward reward = nextRewards[i].reward;
-            
+
             abilitySlots[i].name.text = reward.rewardName;
             abilitySlots[i].description.text = reward.description;
             abilitySlots[i].type.text = nextRewards[i].rewardType.ToString();
@@ -55,12 +70,4 @@ public class LevelUpUISetter : MonoBehaviour
             btn.interactable = true;
         }
     }
-    
-    // private void EnableButtons()
-    // {
-    //     foreach(var slot in abilitySlots)
-    //     {
-    //         slot.button.interactable = true;
-    //     }
-    // }
 }
