@@ -11,7 +11,6 @@ public class GameManager : Singleton<GameManager>
     public GameObject player;
     public Dictionary<int, EnemyUnit> enemies = new();
     public int enemiesKilled;
-    private PlayerContainer playerContainer;
 
     public GameState state;
 
@@ -29,14 +28,12 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
     private void Start()
     {
         ChangeState(state);
-        playerContainer = new PlayerContainer();
     }
 
     private void OnEnable()
@@ -146,12 +143,16 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleStarting()
     {
-        if (spawnPlayer) SpawnManager.Instance.SpawnPlayer();
         ChangeState(GameState.Playing);
     }
 
     private void HandlePlaying()
     {
+        if (spawnPlayer)
+        {
+            SpawnManager.Instance.SpawnPlayer();
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         TimerManager.Instance.StartTimer(SpawnManager.Instance.SpawnEnemies, startDelay);
     }
 }

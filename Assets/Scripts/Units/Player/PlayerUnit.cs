@@ -22,9 +22,9 @@ public class PlayerUnit : Unit
     protected void Start()
     {
         // TODO TEMPORARY Spawn manager should set this or load it from somewhere
-        ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
-        SetAttributes(new Attributes(playerScriptable.attributes));
-        SetStats(new PlayerStats(playerScriptable.playerStats));
+        // ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
+        // SetAttributes(new Attributes(playerScriptable.attributes));
+        // SetStats(new PlayerStats(playerScriptable.playerStats));
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
         Energy.OnEnergyCollected += progressionController.PickUpEnergy;
         LevelUpUISetter.OnRewardSelected += UpdateAttributes;

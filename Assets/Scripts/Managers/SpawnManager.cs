@@ -46,10 +46,12 @@ public class SpawnManager : Singleton<SpawnManager>
     public void SpawnPlayer()
     {
         var playerScriptable = ResourceSystem.Instance.player;
+        var playerContainer = SceneSystem.Instance.playerContainer;
         var player = Instantiate(playerScriptable.prefab, playerSpawn.position, Quaternion.identity);
-        // var playerUnit = player.GetComponent<PlayerUnit>();
-        // playerUnit.SetAttributes(new Attributes(playerScriptable.attributes));
-        // playerUnit.SetStats(new PlayerStats(playerScriptable.playerStats));
+        var playerUnit = player.GetComponent<PlayerUnit>();
+        playerUnit.SetAttributes(playerContainer.playerAttributes);
+        playerUnit.SetStats(playerContainer.playerStats);
+        // GameManager.Instance.player = player.gameObject;
     }
 
     private void SpawnEnemy(Transform spawnPoint)
