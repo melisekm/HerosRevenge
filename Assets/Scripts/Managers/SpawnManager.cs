@@ -123,15 +123,15 @@ public class SpawnManager : Singleton<SpawnManager>
             newSpawnRate = 1f;
         }
 
-        else if (enemyCount < 5)
+        else if (enemyCount < 15)
         {
             newSpawnRate = 0.25f;
         }
-        else if (enemyCount < 15)
+        else if (enemyCount < 25)
         {
             newSpawnRate = 0.5f;
         }
-        else if (enemyCount < 30)
+        else if (enemyCount < 35)
         {
             newSpawnRate = 1f;
         }

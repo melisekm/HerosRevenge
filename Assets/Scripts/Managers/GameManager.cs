@@ -9,10 +9,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public GameObject player;
-    public static event Action<GameState> OnBeforeStateChanged;
-    public static event Action<GameState> OnAfterStateChanged;
     public Dictionary<int, EnemyUnit> enemies = new();
     public int enemiesKilled;
+    private PlayerContainer playerContainer;
 
     public GameState state;
 
@@ -37,6 +36,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         ChangeState(state);
+        playerContainer = new PlayerContainer();
     }
 
     private void OnEnable()
@@ -96,8 +96,6 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeState(GameState newState)
     {
-        OnBeforeStateChanged?.Invoke(newState);
-
         state = newState;
         switch (newState)
         {
@@ -117,7 +115,6 @@ public class GameManager : Singleton<GameManager>
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
 
-        OnAfterStateChanged?.Invoke(newState);
 
         Debug.Log($"New state: {newState}");
     }

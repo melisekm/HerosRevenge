@@ -20,17 +20,6 @@ public abstract class Unit : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        GameManager.OnBeforeStateChanged += OnStateChanged;
-    }
-
-
-    protected virtual void OnDestroy()
-    {
-        GameManager.OnBeforeStateChanged -= OnStateChanged;
-    }
-
-    protected virtual void OnStateChanged(GameState state)
-    {
     }
 
 

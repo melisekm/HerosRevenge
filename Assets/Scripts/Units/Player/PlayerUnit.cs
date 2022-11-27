@@ -19,14 +19,6 @@ public class PlayerUnit : Unit
         faction = Faction.Player;
     }
 
-    protected override void OnStateChanged(GameState state)
-    {
-        if (state == GameState.Playing)
-        {
-            // this happens before the player movement script is enabled
-        }
-    }
-
     protected void Start()
     {
         // TODO TEMPORARY Spawn manager should set this or load it from somewhere
