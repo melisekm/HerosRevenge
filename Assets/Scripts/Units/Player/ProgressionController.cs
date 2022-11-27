@@ -11,6 +11,7 @@ namespace Units.Player
         private float levelUpMultiplier;
         public static event Action<PlayerStats, Attributes, bool, LevelUpSelectionHandler.Reward[]> OnLevelUp;
         public static event Action<float, float> OnExperienceChanged;
+        public static event Action<float> OnGoldChanged;
         private LevelUpSelectionHandler levelUpSelectionHandler;
 
         public ProgressionController(PlayerUnit playerUnit, float levelUpMultiplier, int rewardsCount)
@@ -31,6 +32,14 @@ namespace Units.Player
                 LevelUp();
             }
         }
+        
+        public void PickupGold(float amount)
+        {
+            playerStats.gold.actual += amount;
+            OnGoldChanged?.Invoke(playerStats.gold.actual);
+        }
+        
+        
         private void LevelUp()
         {
             // TODO add level up effect

@@ -72,7 +72,7 @@ public class PlayerUnit : Unit
                     attributes.pickupRange.actual += statUpgrade.amount;
                     break;
                 case StatType.Gold:
-                    stats.gold.actual += statUpgrade.amount;
+                    progressionController.PickupGold(statUpgrade.amount);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

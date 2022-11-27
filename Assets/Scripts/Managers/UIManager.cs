@@ -20,7 +20,18 @@ public class UIManager : Singleton<UIManager>
         PlayerControls.OnSwitchAbility += SetAbility;
         ProgressionController.OnLevelUp += OnLevelUp;
         ProgressionController.OnExperienceChanged += SetExperience;
+        ProgressionController.OnGoldChanged += SetGold;
         PlayerUnit.OnPlayerHealthChanged += SetHealth;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnUpdateTime -= SetTime;
+        PlayerControls.OnSwitchAbility -= SetAbility;
+        ProgressionController.OnLevelUp -= OnLevelUp;
+        PlayerUnit.OnPlayerHealthChanged -= SetHealth;
+        ProgressionController.OnExperienceChanged -= SetExperience;
+        ProgressionController.OnGoldChanged -= SetGold;
     }
 
     private void SetExperience(float actual, float max)
@@ -28,6 +39,10 @@ public class UIManager : Singleton<UIManager>
         xpText.text = actual + "/" + max;
     }
 
+    private void SetGold(float actual)
+    {
+        goldText.text = actual.ToString();
+    }
 
     private void SetHealth(float newHealth, float maxHealth)
     {
@@ -47,18 +62,9 @@ public class UIManager : Singleton<UIManager>
     }
 
 
-
     private void SetAbility(int index)
     {
         selectedAbilityNumber.text = (index + 1).ToString();
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnUpdateTime -= SetTime;
-        PlayerControls.OnSwitchAbility -= SetAbility;
-        ProgressionController.OnLevelUp -= OnLevelUp;
-        PlayerUnit.OnPlayerHealthChanged -= SetHealth;
     }
 
 
@@ -73,5 +79,4 @@ public class UIManager : Singleton<UIManager>
         // Set UI time text
         timeText.text = niceTime;
     }
-    
 }
