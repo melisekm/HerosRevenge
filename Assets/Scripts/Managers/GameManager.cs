@@ -42,6 +42,7 @@ public class GameManager : Singleton<GameManager>
         LevelUpUISetter.OnRewardSelected += OnRewardSelected;
         SpawnManager.OnEnemySpawned += OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied += OnEnemyDied;
+        PlayerUnit.OnPlayerDied += HandleArenaFailed;
     }
 
     private void OnDisable()
@@ -50,6 +51,7 @@ public class GameManager : Singleton<GameManager>
         LevelUpUISetter.OnRewardSelected -= OnRewardSelected;
         SpawnManager.OnEnemySpawned -= OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
+        PlayerUnit.OnPlayerDied -= HandleArenaFailed;
     }
 
 
@@ -130,13 +132,10 @@ public class GameManager : Singleton<GameManager>
             if (player && player.TryGetComponent(out PlayerMovement playerMovement) &&
                 player.TryGetComponent(out PlayerUnit playerUnit))
             {
-                // Time.timeScale = 0.0f;
                 playerMovement.canMove = false;
                 playerUnit.sprite.enabled = false;
                 UIManager.Instance.deathText.gameObject.SetActive(true);
                 yield return new WaitForSecondsRealtime(2f);
-                // Time.timeScale = 1;
-                SceneSystem.Instance.FadeToScene(0);
             }
         }
 

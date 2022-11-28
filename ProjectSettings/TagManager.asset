@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - PlayerSpawn
   - SolidObjects
+  - PlayerContainer
   layers:
   - Default
   - TransparentFX

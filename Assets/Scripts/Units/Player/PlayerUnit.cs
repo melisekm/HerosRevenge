@@ -1,5 +1,6 @@
 using System;
 using Units.Player;
+using UnityEngine;
 using Utils;
 
 public class PlayerUnit : Unit
@@ -12,6 +13,7 @@ public class PlayerUnit : Unit
     private ProgressionController progressionController;
 
     public static event Action<float, float> OnPlayerHealthChanged;
+    public static event Action OnPlayerDied;
 
     protected override void Awake()
     {
@@ -26,7 +28,7 @@ public class PlayerUnit : Unit
         // SetAttributes(new Attributes(playerScriptable.attributes));
         // SetStats(new PlayerStats(playerScriptable.playerStats));
         
-        var playerContainer = SceneSystem.Instance.playerContainer;
+        var playerContainer = GameObject.FindWithTag("PlayerContainer").GetComponent<PlayerContainer>();
         Initialize(playerContainer);
         
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
@@ -114,7 +116,8 @@ public class PlayerUnit : Unit
 
     protected override void Die()
     {
-        GameManager.Instance.ChangeState(GameState.ArenaFailed);
+        // GameManager.Instance.ChangeState(GameState.ArenaFailed);
+        OnPlayerDied?.Invoke();
     }
 
     public override void TakeDamage(float damage)
