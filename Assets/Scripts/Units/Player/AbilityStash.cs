@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AbilityStash : MonoBehaviour
 {
@@ -18,6 +20,12 @@ public class AbilityStash : MonoBehaviour
     {
         PlayerControls.OnSwitchAbility -= SwitchAbility;
         LevelUpUISetter.OnRewardSelected -= SetAbility;
+    }
+
+    public void OnDestroy()
+    {
+        var playerContainer = GameObject.FindWithTag("PlayerContainer").GetComponent<PlayerContainer>();
+        playerContainer.abilityTypes = abilityList.ConvertAll(ability => ability.abilityType);
     }
 
     private void SetAbility(ScriptableReward scriptableAbility)
@@ -41,7 +49,7 @@ public class AbilityStash : MonoBehaviour
             abilityList.Add(abilityHolder);
         }
 
-        if (playerContainer.abilityList.Count == 0) // if this is first run we set abilities to default
+        if (playerContainer.abilityTypes.Count == 0) // if this is first run we set abilities to default
         {
             for (int i = 0; i < defaultAbilityTypes.Count; i++)
             {
@@ -52,14 +60,14 @@ public class AbilityStash : MonoBehaviour
         {
             // else playercontainer already holds abilities,
             // so we just take their types because values are set when ability is activated
-            for (int i = 0; i < playerContainer.abilityList.Count; i++)
+            for (int i = 0; i < playerContainer.abilityTypes.Count; i++)
             {
-                abilityList[i].SetAbilityType(playerContainer.abilityList[i].abilityType);
+                abilityList[i].SetAbilityType(playerContainer.abilityTypes[i]);
             }
         }
 
         // save reference so its persistent
-        playerContainer.abilityList = abilityList;
+        // playerContainer.abilityList = abilityList;
         
         selectedAbility = abilityList[0];
         selectedAbility.isHolderActive = true;

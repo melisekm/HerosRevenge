@@ -5,7 +5,7 @@ public class PlayerContainer : MonoBehaviour
 {
     [HideInInspector] public Attributes playerAttributes;
     [HideInInspector] public PlayerStats playerStats;
-    [HideInInspector] public List<AbilityHolder> abilityList = new();
+    [HideInInspector] public List<AbilityType> abilityTypes = new();
 
     [HideInInspector] public int currentArena;
 
@@ -28,12 +28,12 @@ public class PlayerContainer : MonoBehaviour
     }
 
     public void Save(Attributes playerAttributes, PlayerStats playerStats, int currentArena,
-        Dictionary<int, bool> levelUnlocked, List<AbilityHolder> abilityList)
+        Dictionary<int, bool> levelUnlocked, List<AbilityType> abilityTypes)
     {
         this.playerAttributes = playerAttributes;
         this.playerStats = playerStats;
         this.currentArena = currentArena;
         this.levelUnlocked = levelUnlocked;
-        this.abilityList = abilityList;
+        this.abilityTypes = abilityTypes;
     }
 }
