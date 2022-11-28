@@ -3,7 +3,7 @@ using TMPro;
 using Units.Player;
 using UnityEngine;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {
     public TMP_Text healthText;
     public TMP_Text deathText;
@@ -47,6 +47,10 @@ public class UIManager : Singleton<UIManager>
     private void SetHealth(float newHealth, float maxHealth)
     {
         healthText.text = newHealth + "/" + maxHealth;
+        if(newHealth <= 0)
+        {
+            deathText.gameObject.SetActive(true);
+        }
     }
 
     private void OnLevelUp(PlayerStats playerStats, Attributes playerAttributes, bool initial,

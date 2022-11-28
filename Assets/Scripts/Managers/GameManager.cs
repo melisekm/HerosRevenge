@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Managers;
 using Units.Player;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -23,12 +22,6 @@ public class GameManager : Singleton<GameManager>
     public delegate void UpdateUI(float value);
 
     public static event UpdateUI OnUpdateTime;
-
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
 
 
     private void Start()
@@ -60,7 +53,6 @@ public class GameManager : Singleton<GameManager>
         enemies.Remove(obj.GetInstanceID());
         enemiesKilled++;
         // TODO: if curr lvl has enemy cap and enemiesKilled == cap, change state to level complete
-        
     }
 
     private void OnEnemySpawned(EnemyUnit enemy)
@@ -78,7 +70,7 @@ public class GameManager : Singleton<GameManager>
         LevelUpSelectionHandler.Reward[] rewards)
     {
         // freeze the game
-        if (!initial)
+        if (!initial && state == GameState.Playing)
         {
             Time.timeScale = 0;
         }
@@ -95,7 +87,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeState(GameState newState)
     {
-        if(state == newState) return;
+        if (state == newState) return;
         Debug.Log($"New state: {newState}");
 
         state = newState;
@@ -116,8 +108,6 @@ public class GameManager : Singleton<GameManager>
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
-
-
     }
 
     private void HandleArenaFinished()
@@ -127,19 +117,12 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleArenaFailed()
     {
-        IEnumerator PlayerDeath()
+        if (player && player.TryGetComponent(out PlayerMovement playerMovement) &&
+            player.TryGetComponent(out PlayerUnit playerUnit))
         {
-            if (player && player.TryGetComponent(out PlayerMovement playerMovement) &&
-                player.TryGetComponent(out PlayerUnit playerUnit))
-            {
-                playerMovement.canMove = false;
-                playerUnit.sprite.enabled = false;
-                UIManager.Instance.deathText.gameObject.SetActive(true);
-                yield return new WaitForSecondsRealtime(2f);
-            }
+            playerMovement.canMove = false;
+            playerUnit.sprite.enabled = false;
         }
-
-        StartCoroutine(PlayerDeath());
     }
 
     private void HandleStarting()
@@ -154,6 +137,7 @@ public class GameManager : Singleton<GameManager>
             SpawnManager.Instance.SpawnPlayer();
             player = GameObject.FindGameObjectWithTag("Player");
         }
+
         TimerManager.Instance.StartTimer(SpawnManager.Instance.SpawnEnemies, startDelay);
     }
 }
