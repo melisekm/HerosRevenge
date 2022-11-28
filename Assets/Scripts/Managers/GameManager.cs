@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        ChangeState(state);
+        ChangeState(GameState.Playing);
     }
 
     private void OnEnable()
@@ -93,6 +93,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeState(GameState newState)
     {
+        if(state == newState) return;
         Debug.Log($"New state: {newState}");
 
         state = newState;
@@ -129,13 +130,13 @@ public class GameManager : Singleton<GameManager>
             if (player && player.TryGetComponent(out PlayerMovement playerMovement) &&
                 player.TryGetComponent(out PlayerUnit playerUnit))
             {
-                Time.timeScale = 0.0f;
+                // Time.timeScale = 0.0f;
                 playerMovement.canMove = false;
                 playerUnit.sprite.enabled = false;
                 UIManager.Instance.deathText.gameObject.SetActive(true);
                 yield return new WaitForSecondsRealtime(2f);
-                Time.timeScale = 1;
-                SceneManager.LoadScene(0);
+                // Time.timeScale = 1;
+                SceneSystem.Instance.FadeToScene(0);
             }
         }
 

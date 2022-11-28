@@ -66,7 +66,6 @@ public class SpawnManager : Singleton<SpawnManager>
             // do any level based stuff here
             enemy.energyDropAmount = enemyScriptable.energyDropAmount; // * level
             enemy.SetAttributes(new Attributes(enemyScriptable.attributes));
-            Debug.Log("Spawned enemy: " + enemy.name + " with HP: " + enemy.attributes.health.actual);
             OnEnemySpawned?.Invoke(enemy);
             DecideSpawnRate();
         }

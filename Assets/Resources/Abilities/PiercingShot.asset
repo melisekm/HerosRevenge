@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PiercingShot
   m_EditorClassIdentifier: 
   rewardName: Piercing Shot
-  icon: {fileID: 21300000, guid: eb91a05851448ed4babd87dbca39d94b, type: 3}
+  icon: {fileID: 21300000, guid: c51afa706b02a044694b30f33f81d239, type: 3}
   description: Shoot arrow like projectile which pierces through all enemies
   stats:
     damage: 60

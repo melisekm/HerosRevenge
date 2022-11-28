@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Defense
   m_EditorClassIdentifier: 
   rewardName: Defense
-  icon: {fileID: 21300000, guid: 54f3667bb2d56694b8f41abf64390c1a, type: 3}
+  icon: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51, type: 3}
   description: Increase defense rating by 5%.
   statType: 3
   amount: 0.05

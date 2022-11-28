@@ -33,5 +33,9 @@ public class PlayerMovement : MonoBehaviour
             float speed = unit.attributes.speed.actual;
             unit.rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
         }
+        else
+        {
+            unit.rb.velocity = Vector2.zero;
+        }
     }
 }

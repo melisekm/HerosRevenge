@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   rewardName: Health
-  icon: {fileID: 21300000, guid: 54f3667bb2d56694b8f41abf64390c1a, type: 3}
+  icon: {fileID: 21300000, guid: 963a9c0aeeafe224a8ba9205686e462b, type: 3}
   description: Increase maximum health by 25.
   statType: 0
   amount: 25
