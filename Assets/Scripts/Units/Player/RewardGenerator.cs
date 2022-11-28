@@ -1,11 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-namespace Managers
+namespace Units.Player
 {
     public class RewardGenerator
     {
-        private PlayerUnit playerUnit;
         private int rewardsCount;
 
         public enum RewardType
@@ -20,19 +20,15 @@ namespace Managers
             public ScriptableReward reward;
         }
 
-        public RewardGenerator(PlayerUnit playerUnit, int rewardsCount)
+        public RewardGenerator(int rewardsCount)
         {
-            this.playerUnit = playerUnit;
             this.rewardsCount = rewardsCount;
         }
 
-        public Reward[] GenerateRewards()
+        public Reward[] GenerateRewards(List<ScriptableAbility> abilities, List<ScriptableStatUpgrade> statUpgrades)
         {
             Reward[] nextRewards = new Reward[rewardsCount];
             // filter those which have minlevel less than playerunit.stats.level.actual
-            var abilities = ResourceSystem.Instance.abilities.Where(a => a.minLevel <= playerUnit.stats.level.actual)
-                .ToList();
-            var statUpgrades = ResourceSystem.Instance.statUpgrades;
             for (int i = 0; i < nextRewards.Length; i++)
             {
                 var nextRewardType = (RewardType)Random.Range(0, nextRewards.Length);

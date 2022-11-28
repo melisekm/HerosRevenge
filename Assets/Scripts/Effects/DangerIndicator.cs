@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
@@ -8,7 +6,12 @@ public class DangerIndicator : Effect
     private DangerIndicatorEffect effect;
     private Transform progressCircle;
     public float activationTime = 3f;
+    
+    [Header("Random Activation Time")]
     public bool randomActivationTime = true;
+    public float minActivationTime = 1f;
+    public float maxActivationTime = 4f;
+    
     private float timeElapsed;
     private Faction targetFaction;
 
@@ -18,7 +21,7 @@ public class DangerIndicator : Effect
         transform.localScale = effect.ability.GetComponent<CircleCollider2D>().radius * 2 * Vector3.one;
         if (randomActivationTime)
         {
-            activationTime = Random.Range(1f, 4f);
+            activationTime = Random.Range(minActivationTime, maxActivationTime);
         }
     }
 

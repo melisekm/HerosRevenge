@@ -6,8 +6,7 @@ public class ResourceSystem : Singleton<ResourceSystem>
 {
     public List<ScriptableEnemy> enemies;
     public List<ScriptableAbility> abilities;
-    public List<ScriptableEffect> damageEffects;
-    public List<ScriptableEffect> collectibleEffects; // TODO: change name
+    public List<ScriptableEffect> effects;
     public List<ScriptableStatUpgrade> statUpgrades;
     public ScriptablePlayer player;
 
@@ -17,33 +16,24 @@ public class ResourceSystem : Singleton<ResourceSystem>
         enemies = Resources.LoadAll<ScriptableEnemy>("Units/Enemies").ToList();
         abilities = Resources.LoadAll<ScriptableAbility>("Abilities").ToList();
         statUpgrades = Resources.LoadAll<ScriptableStatUpgrade>("StatUpgrades").ToList();
-        var effects = Resources.LoadAll<ScriptableEffect>("Effects").ToList();
-        foreach (var effect in effects)
-        {
-            if (effect.effectType == EffectType.Damage)
-                damageEffects.Add(effect);
-            else
-                collectibleEffects.Add(effect);
-        }
-
+        effects = Resources.LoadAll<ScriptableEffect>("Effects").ToList();
         player = Resources.Load<ScriptablePlayer>("Units/Player");
     }
 
     public ScriptableEffect GetRandomDamageEffect()
     {
-        return damageEffects[Random.Range(0, damageEffects.Count)];
+        return effects[Random.Range(0, effects.Count)];
     }
 
-    public ScriptableEffect GetRandomCollectibleEffect()
-    {
-        return collectibleEffects[Random.Range(0, collectibleEffects.Count)];
-    }
 
     public ScriptableEffect GetRandomEffect()
     {
-        // if (Random.Range(0, 2) == 0)
         return GetRandomDamageEffect();
-        // return GetRandomCollectibleEffect();
+    }
+
+    public ScriptableEffect GetEffectByType(EffectType type)
+    {
+        return effects.Find(x => x.effectType == type);
     }
 
     public ScriptableEnemy GetEnemyByType(EnemyType type)

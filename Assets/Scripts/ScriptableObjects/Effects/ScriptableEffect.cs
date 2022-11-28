@@ -12,7 +12,5 @@ public class ScriptableEffect : ScriptableObject
 [Serializable]
 public enum EffectType
 {
-    Damage,
-    Powerup,
-    Treasure
+    DangerIndicator,
 }

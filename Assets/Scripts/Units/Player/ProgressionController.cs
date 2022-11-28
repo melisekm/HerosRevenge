@@ -1,11 +1,12 @@
 ﻿using System;
-using Managers;
+using System.Linq;
 using UnityEngine;
 
 namespace Units.Player
 {
     public class ProgressionController
     {
+        private PlayerUnit playerUnit;
         private PlayerStats playerStats;
         private Attributes playerAttributes;
         private float levelUpMultiplier;
@@ -16,11 +17,12 @@ namespace Units.Player
 
         public ProgressionController(PlayerUnit playerUnit, float levelUpMultiplier, int rewardsCount)
         {
+            this.playerUnit = playerUnit;
             playerStats = playerUnit.stats;
             playerAttributes = playerUnit.attributes;
             this.levelUpMultiplier = levelUpMultiplier;
             OnLevelUp?.Invoke(playerStats, playerAttributes, true, null);
-            rewardGenerator = new RewardGenerator(playerUnit, rewardsCount);
+            rewardGenerator = new RewardGenerator(rewardsCount);
         }
 
         public void PickUpEnergy(int amount)
@@ -57,7 +59,14 @@ namespace Units.Player
             LevelUpAttribute(playerAttributes.attackPower);
             LevelUpAttribute(playerAttributes.cooldownRecovery);
             LevelUpAttribute(playerAttributes.defenseRating);
-            OnLevelUp?.Invoke(playerStats, playerAttributes, false, rewardGenerator.GenerateRewards());
+            var abilites = ResourceSystem.
+                Instance
+                .abilities
+                .Where(ability => ability.minLevel <= playerUnit.stats.level.actual)
+                .ToList();
+            var statUpgrades = ResourceSystem.Instance.statUpgrades;
+
+            OnLevelUp?.Invoke(playerStats, playerAttributes, false, rewardGenerator.GenerateRewards(abilites, statUpgrades));
         }
 
         private void LevelUpAttribute(Attribute attr)
