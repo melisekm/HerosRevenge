@@ -3,7 +3,7 @@ using TMPro;
 using Units.Player;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class HudSetter : MonoBehaviour
 {
     public TMP_Text healthText;
     public TMP_Text deathText;
@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
     }
 
     private void OnLevelUp(PlayerStats playerStats, Attributes playerAttributes, bool initial,
-        LevelUpSelectionHandler.Reward[] nextRewards)
+        RewardGenerator.Reward[] nextRewards)
     {
         levelText.text = playerStats.level.actual.ToString();
         xpText.text = playerStats.xp.actual + "/" + playerStats.xp.max;

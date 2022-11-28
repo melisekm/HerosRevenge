@@ -34,7 +34,7 @@ public class LevelUpUISetter : MonoBehaviour
 
 
     public void SetLevelUpUI(PlayerStats playerStats, Attributes playerAttributes,
-        LevelUpSelectionHandler.Reward[] nextRewards)
+        RewardGenerator.Reward[] nextRewards)
     {
         damage.text = playerAttributes.attackPower.actual.ToString();
         speed.text = playerAttributes.speed.actual.ToString();

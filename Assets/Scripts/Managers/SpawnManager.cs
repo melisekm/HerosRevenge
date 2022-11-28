@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : Singleton<SpawnManager>
+public class SpawnManager : MonoBehaviour
 {
     private readonly List<Transform> spawnPoints = new();
-    private Transform playerSpawn;
     public float spawnRate = 1f;
     public bool shouldSpawn = true;
     public EnemyType spawnType;
@@ -16,10 +15,8 @@ public class SpawnManager : Singleton<SpawnManager>
     public static event Action<EnemyUnit> OnEnemySpawned;
 
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
         var spawnPointsGo = GameObject.FindGameObjectsWithTag("SpawnPoint");
         foreach (var spawnPoint in spawnPointsGo)
         {
@@ -40,16 +37,6 @@ public class SpawnManager : Singleton<SpawnManager>
     private void OnEnemyDied(EnemyUnit obj)
     {
         DecideSpawnRate();
-    }
-
-
-    public void SpawnPlayer()
-    {
-        // var playerScriptable = ResourceSystem.Instance.player;
-        // var playerContainer = SceneSystem.Instance.playerContainer;
-        // var player = Instantiate(playerScriptable.prefab, playerSpawn.position, Quaternion.identity);
-        // var playerUnit = player.GetComponent<PlayerUnit>();
-        // playerUnit.Initialize(playerContainer);
     }
 
     private void SpawnEnemy(Transform spawnPoint)
@@ -94,15 +81,6 @@ public class SpawnManager : Singleton<SpawnManager>
         }
 
         StartCoroutine(SpawnEnemiesCoroutine());
-    }
-
-    public void ToggleSpawning()
-    {
-        shouldSpawn = !shouldSpawn;
-        if (shouldSpawn)
-        {
-            SpawnEnemies();
-        }
     }
 
     private void DecideSpawnRate()

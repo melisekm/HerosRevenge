@@ -7,17 +7,25 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool canMove = true;
-    public PlayerUnit unit;
+    public PlayerUnit playerUnit;
     private Vector2 direction;
+    
 
     public void OnEnable()
     {
         PlayerControls.OnMovement += Move;
+        PlayerUnit.OnPlayerDied += DisableMovement;
     }
 
     public void OnDisable()
     {
         PlayerControls.OnMovement -= Move;
+        PlayerUnit.OnPlayerDied -= DisableMovement;
+    }
+    
+    private void DisableMovement()
+    {
+        canMove = false;
     }
     
     private void Move(float horizontal, float vertical)
@@ -30,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            float speed = unit.attributes.speed.actual;
-            unit.rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
+            float speed = playerUnit.attributes.speed.actual;
+            playerUnit.rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
         }
         else
         {
-            unit.rb.velocity = Vector2.zero;
+            playerUnit.rb.velocity = Vector2.zero;
         }
     }
 }

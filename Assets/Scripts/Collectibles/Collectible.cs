@@ -14,7 +14,8 @@ public abstract class Collectible : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!player) return;
+        // cant pickup if player is dead
+        if (playerUnit.attributes.health.actual <= 0) return;
         
         if (Vector3.Distance(transform.position, player.transform.position) < playerUnit.attributes.pickupRange.actual)
         {

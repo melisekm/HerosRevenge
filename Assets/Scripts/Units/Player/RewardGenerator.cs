@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class LevelUpSelectionHandler
+    public class RewardGenerator
     {
         private PlayerUnit playerUnit;
         private int rewardsCount;
@@ -20,7 +20,7 @@ namespace Managers
             public ScriptableReward reward;
         }
 
-        public LevelUpSelectionHandler(PlayerUnit playerUnit, int rewardsCount)
+        public RewardGenerator(PlayerUnit playerUnit, int rewardsCount)
         {
             this.playerUnit = playerUnit;
             this.rewardsCount = rewardsCount;
@@ -54,7 +54,6 @@ namespace Managers
                     };
                 }
             }
-
             return nextRewards;
         }
     }

@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelChanger : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
     public Animator animator;
     private int levelToLoad;
+    public int gameOverSceneIndex = 1;
 
     private void OnEnable()
     {
@@ -18,7 +19,7 @@ public class LevelChanger : MonoBehaviour
 
     private void LoadGameOverScene()
     {
-        FadeToScene(1);
+        FadeToScene(gameOverSceneIndex);
     }
 
     public void FadeToScene(int levelIndex)

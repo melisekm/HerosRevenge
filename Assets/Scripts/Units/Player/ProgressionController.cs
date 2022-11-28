@@ -9,10 +9,10 @@ namespace Units.Player
         private PlayerStats playerStats;
         private Attributes playerAttributes;
         private float levelUpMultiplier;
-        public static event Action<PlayerStats, Attributes, bool, LevelUpSelectionHandler.Reward[]> OnLevelUp;
+        public static event Action<PlayerStats, Attributes, bool, RewardGenerator.Reward[]> OnLevelUp;
         public static event Action<float, float> OnExperienceChanged;
         public static event Action<float> OnGoldChanged;
-        private LevelUpSelectionHandler levelUpSelectionHandler;
+        private RewardGenerator rewardGenerator;
 
         public ProgressionController(PlayerUnit playerUnit, float levelUpMultiplier, int rewardsCount)
         {
@@ -20,11 +20,13 @@ namespace Units.Player
             playerAttributes = playerUnit.attributes;
             this.levelUpMultiplier = levelUpMultiplier;
             OnLevelUp?.Invoke(playerStats, playerAttributes, true, null);
-            levelUpSelectionHandler = new LevelUpSelectionHandler(playerUnit, rewardsCount);
+            rewardGenerator = new RewardGenerator(playerUnit, rewardsCount);
         }
 
         public void PickUpEnergy(int amount)
         {
+            if (playerAttributes.health.actual <= 0) return;
+
             playerStats.xp.actual += amount;
             OnExperienceChanged?.Invoke(playerStats.xp.actual, playerStats.xp.max);
             if (playerStats.xp.actual >= playerStats.xp.max && playerStats.level.actual < playerStats.level.max)
@@ -32,14 +34,14 @@ namespace Units.Player
                 LevelUp();
             }
         }
-        
+
         public void PickupGold(float amount)
         {
             playerStats.gold.actual += amount;
             OnGoldChanged?.Invoke(playerStats.gold.actual);
         }
-        
-        
+
+
         private void LevelUp()
         {
             // TODO add level up effect
@@ -55,8 +57,9 @@ namespace Units.Player
             LevelUpAttribute(playerAttributes.attackPower);
             LevelUpAttribute(playerAttributes.cooldownRecovery);
             LevelUpAttribute(playerAttributes.defenseRating);
-            OnLevelUp?.Invoke(playerStats, playerAttributes, false, levelUpSelectionHandler.GenerateRewards());
+            OnLevelUp?.Invoke(playerStats, playerAttributes, false, rewardGenerator.GenerateRewards());
         }
+
         private void LevelUpAttribute(Attribute attr)
         {
             float newValue = attr.initial + attr.increasePerLevel;

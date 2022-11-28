@@ -25,6 +25,8 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (attributes.health.actual == attributes.health.min) return;
+        
         StartCoroutine(Flash());
         int damageTaken = Mathf.RoundToInt(damage * (1 - attributes.defenseRating.actual));
         attributes.health.actual -= damageTaken;

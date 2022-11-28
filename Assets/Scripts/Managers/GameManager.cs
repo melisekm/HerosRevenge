@@ -7,26 +7,23 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public GameObject player;
     public Dictionary<int, EnemyUnit> enemies = new();
     public int enemiesKilled;
+    private float currentTime;
 
+
+    public SpawnManager spawnManager;
     public GameState state;
 
     // time until the game starts
     [Min(0.01f)] [SerializeField] private float startDelay = 2f;
-    [SerializeField] private bool spawnPlayer = false;
 
-    private float currentTime;
-
-    public delegate void UpdateUI(float value);
-
-    public static event UpdateUI OnUpdateTime;
-
+    public static event Action<float> OnUpdateTime;
+    
 
     private void Start()
     {
-        ChangeState(GameState.Playing);
+        ChangeState(GameState.Starting);
     }
 
     private void OnEnable()
@@ -35,7 +32,7 @@ public class GameManager : Singleton<GameManager>
         LevelUpUISetter.OnRewardSelected += OnRewardSelected;
         SpawnManager.OnEnemySpawned += OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied += OnEnemyDied;
-        PlayerUnit.OnPlayerDied += HandleArenaFailed;
+        PlayerUnit.OnPlayerDied += OnPlayerDead;
     }
 
     private void OnDisable()
@@ -44,7 +41,12 @@ public class GameManager : Singleton<GameManager>
         LevelUpUISetter.OnRewardSelected -= OnRewardSelected;
         SpawnManager.OnEnemySpawned -= OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
-        PlayerUnit.OnPlayerDied -= HandleArenaFailed;
+        PlayerUnit.OnPlayerDied -= OnPlayerDead;
+    }
+
+    private void OnPlayerDead()
+    {
+        ChangeState(GameState.ArenaFailed);
     }
 
 
@@ -67,7 +69,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void OnLevelUp(PlayerStats stats, Attributes attributes, bool initial,
-        LevelUpSelectionHandler.Reward[] rewards)
+        RewardGenerator.Reward[] rewards)
     {
         // freeze the game
         if (!initial && state == GameState.Playing)
@@ -85,9 +87,8 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void ChangeState(GameState newState)
+    private void ChangeState(GameState newState)
     {
-        if (state == newState) return;
         Debug.Log($"New state: {newState}");
 
         state = newState;
@@ -112,17 +113,10 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleArenaFinished()
     {
-        throw new NotImplementedException();
     }
 
     private void HandleArenaFailed()
     {
-        if (player && player.TryGetComponent(out PlayerMovement playerMovement) &&
-            player.TryGetComponent(out PlayerUnit playerUnit))
-        {
-            playerMovement.canMove = false;
-            playerUnit.sprite.enabled = false;
-        }
     }
 
     private void HandleStarting()
@@ -132,13 +126,13 @@ public class GameManager : Singleton<GameManager>
 
     private void HandlePlaying()
     {
-        if (spawnPlayer)
+        IEnumerator StartSpawning()
         {
-            SpawnManager.Instance.SpawnPlayer();
-            player = GameObject.FindGameObjectWithTag("Player");
+            yield return new WaitForSeconds(startDelay);
+            spawnManager.SpawnEnemies();
         }
 
-        TimerManager.Instance.StartTimer(SpawnManager.Instance.SpawnEnemies, startDelay);
+        StartCoroutine(StartSpawning());
     }
 }
 

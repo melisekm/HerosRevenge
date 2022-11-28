@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
@@ -10,14 +8,32 @@ public class PlayerControls : MonoBehaviour
     public static event Action<float, float> OnMovement;
 
     private int maxAbilityCount;
+    private bool isActive = true;
 
     private void Start()
     {
         maxAbilityCount = TryGetComponent(out AbilityStash stash) ? stash.maxAbilityCount : 0;
     }
 
+    private void OnEnable()
+    {
+        PlayerUnit.OnPlayerDied += DisableControls;
+    }
+
+    private void OnDisable()
+    {
+        PlayerUnit.OnPlayerDied -= DisableControls;
+    }
+
+    private void DisableControls()
+    {
+        isActive = false;
+    }
+
     private void Update()
     {
+        if (!isActive) return;
+
         OnMovement?.Invoke(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if (Input.GetButton("Fire1"))

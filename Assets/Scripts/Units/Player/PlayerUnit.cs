@@ -116,7 +116,8 @@ public class PlayerUnit : Unit
 
     protected override void Die()
     {
-        // GameManager.Instance.ChangeState(GameState.ArenaFailed);
+        sprite.enabled = false;
+        // TODO: add death animation
         OnPlayerDied?.Invoke();
     }
 
