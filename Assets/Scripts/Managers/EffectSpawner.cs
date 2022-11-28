@@ -79,7 +79,6 @@ public class EffectSpawner : MonoBehaviour
         if (scriptableEffect.effectType == EffectType.Damage)
         {
             Effect effect = Instantiate(scriptableEffect.effect, position, Quaternion.identity);
-            
             effect.Initialize(scriptableEffect, Faction.Player);
         }
     }

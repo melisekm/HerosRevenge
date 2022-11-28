@@ -23,11 +23,6 @@ public class PlayerUnit : Unit
 
     protected void Start()
     {
-        // TODO TEMPORARY Spawn manager should set this or load it from somewhere
-        // ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
-        // SetAttributes(new Attributes(playerScriptable.attributes));
-        // SetStats(new PlayerStats(playerScriptable.playerStats));
-        
         var playerContainer = GameObject.FindWithTag("PlayerContainer").GetComponent<PlayerContainer>();
         Initialize(playerContainer);
         

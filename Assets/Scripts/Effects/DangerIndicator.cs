@@ -7,14 +7,19 @@ public class DangerIndicator : Effect
 {
     private DangerIndicatorEffect effect;
     private Transform progressCircle;
-    private float activationTime = 3f;
+    public float activationTime = 3f;
+    public bool randomActivationTime = true;
     private float timeElapsed;
     private Faction targetFaction;
-    
+
     private void Start()
     {
         progressCircle = transform.Find("ProgressCircle");
         transform.localScale = effect.ability.GetComponent<CircleCollider2D>().radius * 2 * Vector3.one;
+        if (randomActivationTime)
+        {
+            activationTime = Random.Range(1f, 4f);
+        }
     }
 
     private void Update()
@@ -40,8 +45,7 @@ public class DangerIndicator : Effect
 
     public override void Initialize(ScriptableEffect scriptableEffect, Faction targetFaction)
     {
-        effect = (DangerIndicatorEffect) scriptableEffect;
+        effect = (DangerIndicatorEffect)scriptableEffect;
         this.targetFaction = targetFaction;
-        
     }
 }

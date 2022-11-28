@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class UnitSpawner : MonoBehaviour
 {
     private readonly List<Transform> spawnPoints = new();
     public float spawnRate = 1f;

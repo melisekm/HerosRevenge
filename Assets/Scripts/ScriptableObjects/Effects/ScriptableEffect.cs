@@ -13,4 +13,6 @@ public class ScriptableEffect : ScriptableObject
 public enum EffectType
 {
     Damage,
+    Powerup,
+    Treasure
 }

@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     private float currentTime;
 
 
-    public SpawnManager spawnManager;
+    public UnitSpawner unitSpawner;
     public GameState state;
 
     // time until the game starts
@@ -30,7 +30,7 @@ public class GameManager : Singleton<GameManager>
     {
         ProgressionController.OnLevelUp += OnLevelUp;
         LevelUpUISetter.OnRewardSelected += OnRewardSelected;
-        SpawnManager.OnEnemySpawned += OnEnemySpawned;
+        UnitSpawner.OnEnemySpawned += OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied += OnEnemyDied;
         PlayerUnit.OnPlayerDied += OnPlayerDead;
     }
@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager>
     {
         ProgressionController.OnLevelUp -= OnLevelUp;
         LevelUpUISetter.OnRewardSelected -= OnRewardSelected;
-        SpawnManager.OnEnemySpawned -= OnEnemySpawned;
+        UnitSpawner.OnEnemySpawned -= OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
         PlayerUnit.OnPlayerDied -= OnPlayerDead;
     }
@@ -129,7 +129,7 @@ public class GameManager : Singleton<GameManager>
         IEnumerator StartSpawning()
         {
             yield return new WaitForSeconds(startDelay);
-            spawnManager.SpawnEnemies();
+            unitSpawner.SpawnEnemies();
         }
 
         StartCoroutine(StartSpawning());
