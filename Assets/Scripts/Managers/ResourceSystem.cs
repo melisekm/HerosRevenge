@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Units.Player;
 using UnityEngine;
 
 public class ResourceSystem : Singleton<ResourceSystem>
@@ -8,6 +9,7 @@ public class ResourceSystem : Singleton<ResourceSystem>
     public List<ScriptableAbility> abilities;
     public List<ScriptableEffect> effects;
     public List<ScriptableStatUpgrade> statUpgrades;
+    public List<ScriptablePowerUp> powerUps;
     public ScriptablePlayer player;
 
     protected override void Awake()
@@ -18,6 +20,12 @@ public class ResourceSystem : Singleton<ResourceSystem>
         statUpgrades = Resources.LoadAll<ScriptableStatUpgrade>("StatUpgrades").ToList();
         effects = Resources.LoadAll<ScriptableEffect>("Effects").ToList();
         player = Resources.Load<ScriptablePlayer>("Units/Player");
+        powerUps = Resources.LoadAll<ScriptablePowerUp>("PowerUps").ToList();
+    }
+    
+    public ScriptablePowerUp GetPowerUpByType(PowerUpType type)
+    {
+        return powerUps.Find(x => x.powerUpType == type);
     }
 
     public ScriptableEffect GetRandomDamageEffect()

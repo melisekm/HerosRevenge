@@ -17,7 +17,7 @@ namespace Units.Player
         public class Reward
         {
             public RewardType rewardType;
-            public ScriptableReward reward;
+            public ScriptableReward scriptableReward;
         }
 
         public RewardGenerator(int rewardsCount)
@@ -32,21 +32,22 @@ namespace Units.Player
             for (int i = 0; i < nextRewards.Length; i++)
             {
                 var nextRewardType = (RewardType)Random.Range(0, nextRewards.Length);
-                if (nextRewardType == RewardType.Ability)
+                // make sure there is at least one ability or stat upgrade regardless of what rolls
+                if ((abilities.Count > 0 && nextRewardType == RewardType.Ability) || statUpgrades.Count == 0)
                 {
                     nextRewards[i] = new Reward
                     {
                         rewardType = RewardType.Ability,
-                        reward = abilities[Random.Range(0, abilities.Count)]
+                        scriptableReward = abilities[Random.Range(0, abilities.Count)]
                     };
                 }
 
-                else if (nextRewardType == RewardType.Stat)
+                else
                 {
                     nextRewards[i] = new Reward
                     {
                         rewardType = RewardType.Stat,
-                        reward = statUpgrades[Random.Range(0, statUpgrades.Count)]
+                        scriptableReward = statUpgrades[Random.Range(0, statUpgrades.Count)]
                     };
                 }
             }

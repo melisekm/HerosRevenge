@@ -11,7 +11,6 @@ public class Energy : Collectible
     
     public static event Action<int> OnEnergyCollected;
 
-    private bool pickedUp;
 
     protected override void PickUp()
     {
@@ -33,9 +32,6 @@ public class Energy : Collectible
                 Destroy(gameObject);
             }
         }
-        else
-        {
-            base.Update();
-        }
+        base.Update();
     }
 }

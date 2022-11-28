@@ -1,16 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Treasure : MonoBehaviour
+[RequireComponent(typeof(Animator))]
+public class Treasure : Collectible
 {
-    private void Start()
+    public float amount = 25;
+    public TMP_Text numberPopup;
+
+    private Animator animator;
+    
+    private SpriteRenderer spriteRenderer;
+    public Sprite[] sprites;
+    private static readonly int Collected = Animator.StringToHash("Collected");
+
+    public static event Action<float> OnTreasueCollected;
+
+    protected override void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        // random sprite
+        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
+        base.Start();
     }
 
-    private void Update()
+
+    protected override void PickUp()
     {
-        
+        Debug.Log($"Treasure collected: {amount}");
+        OnTreasueCollected?.Invoke(amount);
+        pickedUp = true;
+        animator.SetTrigger(Collected);
+    }
+
+    public void Initialize(ScriptableStatPowerUp scriptableStatPowerUp)
+    {
+        // random amount
+        if (scriptableStatPowerUp.randomAmount)
+        {
+            amount = Random.Range(scriptableStatPowerUp.minRandomAmount, scriptableStatPowerUp.maxRandomAmount);
+            // to int
+            amount = Mathf.RoundToInt(amount);
+        }
+        else
+        {
+            amount = scriptableStatPowerUp.statUpgrade.amount;
+        }
+
+        numberPopup.text = "+" + amount;
+    }
+
+    // called by animation event
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

@@ -16,7 +16,7 @@ public class AbilityStash : MonoBehaviour
 
     private void SetAbility(ScriptableReward scriptableAbility)
     {
-        // check type of reward
+        // check type of scriptableReward
         if (scriptableAbility is ScriptableAbility ability)
         {
             var randomIndex = Random.Range(0, abilityList.Count);

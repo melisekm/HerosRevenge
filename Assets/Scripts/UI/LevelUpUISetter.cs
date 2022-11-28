@@ -48,7 +48,7 @@ public class LevelUpUISetter : MonoBehaviour
 
         for (int i = 0; i < abilitySlots.Count; i++)
         {
-            ScriptableReward reward = nextRewards[i].reward;
+            ScriptableReward reward = nextRewards[i].scriptableReward;
 
             abilitySlots[i].name.text = reward.rewardName;
             abilitySlots[i].description.text = reward.description;

@@ -40,7 +40,7 @@ public class EventSpawner : EffectSpawner
         IEnumerator ToggleAoEEvent()
         {
             isEventActive = true;
-            effectTimer = 0;
+            timeUntilSpawn = 0;
             eventEffect = ResourceSystem.Instance.GetEffectByType(EffectType.DangerIndicator);
             Debug.Log("Starting event");
             yield return new WaitForSeconds(length);
@@ -57,7 +57,7 @@ public class EventSpawner : EffectSpawner
         base.Update();
     }
 
-    protected override ScriptableEffect GetEffect()
+    protected override ScriptableObject GetEntity()
     {
         return eventEffect;
     }

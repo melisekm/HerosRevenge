@@ -25,12 +25,12 @@ public class PlayerUnit : Unit
     {
         var playerContainer = GameObject.FindWithTag("PlayerContainer").GetComponent<PlayerContainer>();
         Initialize(playerContainer);
-        
+
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
         Energy.OnEnergyCollected += progressionController.PickUpEnergy;
+        Treasure.OnTreasueCollected += progressionController.PickUpGold;
         LevelUpUISetter.OnRewardSelected += UpdateAttributes;
         OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
-
     }
 
     private void UpdateAttributes(ScriptableReward scriptableStat)
@@ -65,7 +65,7 @@ public class PlayerUnit : Unit
                     attributes.pickupRange.actual += statUpgrade.amount;
                     break;
                 case StatType.Gold:
-                    progressionController.PickupGold(statUpgrade.amount);
+                    progressionController.PickUpGold((int)statUpgrade.amount);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -77,6 +77,7 @@ public class PlayerUnit : Unit
     {
         Energy.OnEnergyCollected -= progressionController.PickUpEnergy;
         LevelUpUISetter.OnRewardSelected -= UpdateAttributes;
+        Treasure.OnTreasueCollected -= progressionController.PickUpGold;
     }
 
     protected void Update()

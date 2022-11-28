@@ -37,7 +37,7 @@ namespace Units.Player
             }
         }
 
-        public void PickupGold(float amount)
+        public void PickUpGold(float amount)
         {
             playerStats.gold.actual += amount;
             OnGoldChanged?.Invoke(playerStats.gold.actual);
@@ -59,14 +59,14 @@ namespace Units.Player
             LevelUpAttribute(playerAttributes.attackPower);
             LevelUpAttribute(playerAttributes.cooldownRecovery);
             LevelUpAttribute(playerAttributes.defenseRating);
-            var abilites = ResourceSystem.
-                Instance
+            var abilites = ResourceSystem.Instance
                 .abilities
                 .Where(ability => ability.minLevel <= playerUnit.stats.level.actual)
                 .ToList();
             var statUpgrades = ResourceSystem.Instance.statUpgrades;
 
-            OnLevelUp?.Invoke(playerStats, playerAttributes, false, rewardGenerator.GenerateRewards(abilites, statUpgrades));
+            OnLevelUp?.Invoke(playerStats, playerAttributes, false,
+                rewardGenerator.GenerateRewards(abilites, statUpgrades));
         }
 
         private void LevelUpAttribute(Attribute attr)

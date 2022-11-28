@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Collectible : MonoBehaviour
 {
     protected GameObject player;
     private PlayerUnit playerUnit;
-    private void Start()
+    protected bool pickedUp;
+
+    protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerUnit = player.GetComponent<PlayerUnit>();
@@ -15,7 +15,7 @@ public abstract class Collectible : MonoBehaviour
     protected virtual void Update()
     {
         // cant pickup if player is dead
-        if (playerUnit.attributes.health.actual <= 0) return;
+        if (pickedUp || playerUnit.attributes.health.actual <= 0) return;
         
         if (Vector3.Distance(transform.position, player.transform.position) < playerUnit.attributes.pickupRange.actual)
         {

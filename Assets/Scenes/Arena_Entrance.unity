@@ -6303,6 +6303,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1465907099}
     m_Modifications:
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: spawnArea.x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: spawnArea.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statTypes.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statTypes.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statTypes.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statTypes.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statTypes.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statTypes.Array.data[5]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statTypes.Array.data[6]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416147, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: statUpgradesToSpawnAsPowerups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 439990397580565541, guid: 8991e991f547c0c4f9b5979e2e562af0,
         type: 3}
       propertyPath: m_Name
