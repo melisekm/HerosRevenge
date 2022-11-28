@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerContainer : MonoBehaviour
 {
     [HideInInspector] public Attributes playerAttributes;
     [HideInInspector] public PlayerStats playerStats;
+    [HideInInspector] public List<AbilityHolder> abilityList = new();
 
-    [HideInInspector] public int currentLevel;
+    [HideInInspector] public int currentArena;
 
     // id of level and if it is unlocked
     public Dictionary<int, bool> levelUnlocked;
-    
 
     private void Start()
     {
@@ -22,19 +21,19 @@ public class PlayerContainer : MonoBehaviour
             { 1, true },
             { 2, false }
         };
-        currentLevel = 1;
+        currentArena = 1;
         ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
         playerAttributes = new Attributes(playerScriptable.attributes);
         playerStats = new PlayerStats(playerScriptable.playerStats);
-        // dont destroy on load
     }
 
-    public void Save(Attributes playerAttributes, PlayerStats playerStats, int currentLevel,
-        Dictionary<int, bool> levelUnlocked)
+    public void Save(Attributes playerAttributes, PlayerStats playerStats, int currentArena,
+        Dictionary<int, bool> levelUnlocked, List<AbilityHolder> abilityList)
     {
         this.playerAttributes = playerAttributes;
         this.playerStats = playerStats;
-        this.currentLevel = currentLevel;
+        this.currentArena = currentArena;
         this.levelUnlocked = levelUnlocked;
+        this.abilityList = abilityList;
     }
 }

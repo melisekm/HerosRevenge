@@ -4,12 +4,14 @@ using Utils;
 [RequireComponent(typeof(PlayerUnit))]
 public class AbilityHolder : MonoBehaviour
 {
-    private AbilityType abilityType = AbilityType.Empty;
+    public AbilityType abilityType = AbilityType.Empty;
     private ScriptableAbility scriptableAbility;
     private PlayerUnit playerUnit;
     [HideInInspector] public bool isHolderActive;
     [HideInInspector] public float cooldownTime;
     private AbilityState abilityState = AbilityState.Ready;
+    // here it would be best to have some kind of container holding info about currently active ability
+    // e.g. scriptableability, values, type etc
 
 
     private enum AbilityState
@@ -53,7 +55,7 @@ public class AbilityHolder : MonoBehaviour
         AbilityStats abilityStats = scriptableAbility.stats;
         abilityStats.damage += playerUnit.attributes.attackPower.actual;
         abilityStats.baseCooldown *= 1 - playerUnit.attributes.cooldownRecovery.actual;
-        // can also do something based on player level or level he is currently in
+        // can also do something based on player level or level he is *currently* in
         // if player is level 7, then increase damage further by 10%
         abilityStats.damage *= 1 + playerUnit.stats.level.actual * 0.1f;
         

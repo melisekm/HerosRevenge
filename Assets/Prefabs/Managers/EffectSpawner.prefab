@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {x: 13, y: 5}
-  spawnEffectEverySeconds: 5
+  spawnTimer: 5
 --- !u!114 &1444416147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,8 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffce2031d9b9354394a4617e32d33e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilitiesToSpawnAsPowerups: []
-  statUpgradesToSpawnAsPowerups: []
+  spawnArea: {x: 13, y: 5}
+  spawnTimer: 25
+  abilityTypes: 
+  statTypes: 06000000
 --- !u!114 &1444416148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {x: 13, y: 5}
-  spawnEffectEverySeconds: 0.1
+  spawnTimer: 5
   isEventActivable: 1
   aoeChance: 10
   checkInterval: 10

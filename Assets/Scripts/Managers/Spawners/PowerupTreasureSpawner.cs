@@ -46,7 +46,6 @@ public class PowerupTreasureSpawner : GroundEntitySpawner
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            // maybe we can initialize it (give it some kind of description and value)
         }
     }
 
