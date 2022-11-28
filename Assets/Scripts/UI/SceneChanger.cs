@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,7 +21,13 @@ public class SceneChanger : MonoBehaviour
 
     private void LoadGameOverScene()
     {
-        FadeToScene(gameOverSceneIndex);
+        IEnumerator FadeAfterDelay()
+        {
+            yield return new WaitForSeconds(1f);
+            FadeToScene(gameOverSceneIndex);
+        }
+
+        StartCoroutine(FadeAfterDelay());
     }
 
     public void FadeToScene(int levelIndex)

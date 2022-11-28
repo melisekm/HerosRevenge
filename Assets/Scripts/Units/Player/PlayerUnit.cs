@@ -113,6 +113,8 @@ public class PlayerUnit : Unit
     protected override void Die()
     {
         sprite.enabled = false;
+        stats.gold.actual = 0; // he lost all his gold when he died
+        stats.xp.actual = 0; // and xp too
         // TODO: add death animation
         OnPlayerDied?.Invoke();
     }
@@ -128,6 +130,5 @@ public class PlayerUnit : Unit
         SetAttributes(playerContainer.playerAttributes);
         SetStats(playerContainer.playerStats);
         attributes.health.actual = attributes.health.initial; // set health to max incase it was changed
-        stats.xp.actual = 0; // Reset XP
     }
 }
