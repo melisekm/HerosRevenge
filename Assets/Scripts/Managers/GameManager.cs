@@ -93,6 +93,8 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeState(GameState newState)
     {
+        Debug.Log($"New state: {newState}");
+
         state = newState;
         switch (newState)
         {
@@ -113,7 +115,6 @@ public class GameManager : Singleton<GameManager>
         }
 
 
-        Debug.Log($"New state: {newState}");
     }
 
     private void HandleArenaFinished()

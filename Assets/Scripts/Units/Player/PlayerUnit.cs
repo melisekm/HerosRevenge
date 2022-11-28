@@ -25,6 +25,10 @@ public class PlayerUnit : Unit
         // ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
         // SetAttributes(new Attributes(playerScriptable.attributes));
         // SetStats(new PlayerStats(playerScriptable.playerStats));
+        
+        var playerContainer = SceneSystem.Instance.playerContainer;
+        Initialize(playerContainer);
+        
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
         Energy.OnEnergyCollected += progressionController.PickUpEnergy;
         LevelUpUISetter.OnRewardSelected += UpdateAttributes;
@@ -117,5 +121,13 @@ public class PlayerUnit : Unit
     {
         base.TakeDamage(damage);
         OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
+    }
+
+    public void Initialize(PlayerContainer playerContainer)
+    {
+        SetAttributes(playerContainer.playerAttributes);
+        SetStats(playerContainer.playerStats);
+        attributes.health.actual = attributes.health.initial; // set health to max incase it was changed
+        stats.xp.actual = 0; // Reset XP
     }
 }

@@ -5,6 +5,7 @@ public class PlayerContainer
     public Attributes playerAttributes;
     public PlayerStats playerStats;
     public int currentLevel;
+    // id of level and if it is unlocked
     public Dictionary<int, bool> levelUnlocked;
 
     public PlayerContainer()
