@@ -6318,6 +6318,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1465907099}
     m_Modifications:
+    - target: {fileID: 1444416148, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: aoeChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416148, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: spawnTimer
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444416148, guid: 8991e991f547c0c4f9b5979e2e562af0, type: 3}
+      propertyPath: checkInterval
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 439990397580565541, guid: 8991e991f547c0c4f9b5979e2e562af0,
         type: 3}
       propertyPath: m_Name
@@ -22813,7 +22825,7 @@ PrefabInstance:
     - target: {fileID: 6765358064544470484, guid: 597acd844d3afe546b07d0d88b3bf1fc,
         type: 3}
       propertyPath: gameOverSceneIndex
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597acd844d3afe546b07d0d88b3bf1fc, type: 3}
