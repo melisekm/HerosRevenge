@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Units.Player;
 using UnityEngine;
 
 public class ResourceSystem : Singleton<ResourceSystem>

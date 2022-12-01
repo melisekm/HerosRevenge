@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptables/PowerUps/New Scriptable Ability PowerUp")]
 public class ScriptableAbilityPowerUp : ScriptablePowerUp
 {
-    [HideInInspector] public ScriptableAbility ability;
+    [NonSerialized] public ScriptableAbility ability;
 }

@@ -13,16 +13,16 @@ public class EnemyUnit : Unit
 
     public Energy dropOnDeath;
 
-    [HideInInspector] public GameObject player;
+    [NonSerialized] public GameObject player;
 
-    [HideInInspector] public AIDestinationSetter destinationSetter;
+    [NonSerialized] public AIDestinationSetter destinationSetter;
 
     // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
-    [HideInInspector] public AIPath aiPath;
-    [HideInInspector] public int energyDropAmount = 10;
+    [NonSerialized] public AIPath aiPath;
+    [NonSerialized] public int energyDropAmount = 10;
 
 
-    [HideInInspector] public EnemyState state = EnemyState.Moving;
+    [NonSerialized] public EnemyState state = EnemyState.Moving;
 
     public enum EnemyState
     {

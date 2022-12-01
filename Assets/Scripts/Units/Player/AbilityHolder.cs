@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Utils;
 
@@ -7,8 +8,8 @@ public class AbilityHolder : MonoBehaviour
     public AbilityType abilityType = AbilityType.Empty;
     private ScriptableAbility scriptableAbility;
     private PlayerUnit playerUnit;
-    [HideInInspector] public bool isHolderActive;
-    [HideInInspector] public float cooldownTime;
+    [NonSerialized] public bool isHolderActive;
+    [NonSerialized] public float cooldownTime;
     private AbilityState abilityState = AbilityState.Ready;
     // here it would be best to have some kind of container holding info about currently active ability
     // e.g. scriptableability, values, type etc

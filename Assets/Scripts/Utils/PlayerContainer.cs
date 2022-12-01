@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerContainer : MonoBehaviour
 {
-    [HideInInspector] public Attributes playerAttributes;
-    [HideInInspector] public PlayerStats playerStats;
-    [HideInInspector] public List<AbilityType> abilityTypes = new();
+    [NonSerialized] public Attributes playerAttributes;
+    [NonSerialized] public PlayerStats playerStats;
+    [NonSerialized] public List<AbilityType> abilityTypes = new();
 
-    [HideInInspector] public int currentArena;
+    [NonSerialized] public int currentArena;
 
     // id of level and if it is unlocked
     public Dictionary<int, bool> levelUnlocked;

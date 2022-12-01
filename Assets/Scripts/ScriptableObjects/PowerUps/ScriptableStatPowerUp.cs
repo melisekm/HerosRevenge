@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptables/PowerUps/New Scriptable Stat PowerUp")]
 public class ScriptableStatPowerUp : ScriptablePowerUp
 {
-    [HideInInspector] public ScriptableStatUpgrade statUpgrade;
+    [NonSerialized] public ScriptableStatUpgrade statUpgrade;
     [Tooltip("Use random range amount or set amount of stat upgrade that it receives")]
     public bool randomAmount = true;
     [Header("If Random Amount is true")]

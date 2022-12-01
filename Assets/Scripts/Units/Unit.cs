@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Utils;
 
 public abstract class Unit : MonoBehaviour
 {
-    [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public SpriteRenderer sprite;
+    [NonSerialized] public Rigidbody2D rb;
+    [NonSerialized] public SpriteRenderer sprite;
     public bool isFacingRight = true;
 
     // public get private set
