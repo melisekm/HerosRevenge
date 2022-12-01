@@ -6,19 +6,22 @@ public class DangerIndicator : Effect
     private DangerIndicatorEffect effect;
     private Transform progressCircle;
     public float activationTime = 3f;
-    
-    [Header("Random Activation Time")]
-    public bool randomActivationTime = true;
+
+    [Header("Random Activation Time")] public bool randomActivationTime = true;
     public float minActivationTime = 1f;
     public float maxActivationTime = 4f;
-    
+
     private float timeElapsed;
     private Faction targetFaction;
 
     private void Start()
     {
         progressCircle = transform.Find("ProgressCircle");
-        transform.localScale = effect.ability.GetComponent<CircleCollider2D>().radius * 2 * Vector3.one;
+        if (progressCircle && effect.ability.TryGetComponent(out CircleCollider2D circleCollider))
+        {
+            transform.localScale = circleCollider.radius * 2 * Vector3.one;
+        }
+
         if (randomActivationTime)
         {
             activationTime = Random.Range(minActivationTime, maxActivationTime);

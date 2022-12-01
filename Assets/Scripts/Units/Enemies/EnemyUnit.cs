@@ -40,8 +40,8 @@ public class EnemyUnit : Unit
     {
         base.Awake();
         animator = GetComponent<Animator>();
-        destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
-        aiPath = gameObject.GetComponent<AIPath>();
+        destinationSetter = GetComponent<AIDestinationSetter>();
+        aiPath = GetComponent<AIPath>();
         player = GameObject.FindGameObjectWithTag("Player");
         destinationSetter.target = player.transform;
         faction = Faction.Enemy;

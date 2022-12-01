@@ -23,8 +23,15 @@ public class PlayerUnit : Unit
 
     protected void Start()
     {
-        var playerContainer = GameObject.FindWithTag("PlayerContainer").GetComponent<PlayerContainer>();
-        Initialize(playerContainer);
+        var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
+        if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
+        {
+            Initialize(playerContainer);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerContainer not found");
+        }
 
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
         Energy.OnEnergyCollected += progressionController.PickUpEnergy;

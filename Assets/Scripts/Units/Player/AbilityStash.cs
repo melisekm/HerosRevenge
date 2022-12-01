@@ -22,8 +22,11 @@ public class AbilityStash : MonoBehaviour
 
     public void OnDestroy()
     {
-        var playerContainer = GameObject.FindWithTag("PlayerContainer").GetComponent<PlayerContainer>();
-        playerContainer.abilityTypes = abilityList.ConvertAll(ability => ability.abilityType);
+        var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
+        if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
+        {
+            playerContainer.abilityTypes = abilityList.ConvertAll(ability => ability.abilityType);
+        }
     }
 
     private void SetAbility(ScriptableReward scriptableAbility)
@@ -40,33 +43,32 @@ public class AbilityStash : MonoBehaviour
 
     private void Start()
     {
-        var playerContainer = GameObject.FindWithTag("PlayerContainer").GetComponent<PlayerContainer>();
         for (int i = 0; i < defaultAbilityTypes.Count; i++)
         {
             var abilityHolder = gameObject.AddComponent<AbilityHolder>();
             abilityList.Add(abilityHolder);
         }
 
-        if (playerContainer.abilityTypes.Count == 0) // if this is first run we set abilities to default
+        if (GameObject.FindWithTag("PlayerContainer").TryGetComponent(out PlayerContainer playerContainer))
         {
-            for (int i = 0; i < defaultAbilityTypes.Count; i++)
+            if (playerContainer.abilityTypes.Count == 0) // if this is first run we set abilities to default
             {
-                abilityList[i].SetAbilityType(defaultAbilityTypes[i]);
+                for (int i = 0; i < defaultAbilityTypes.Count; i++)
+                {
+                    abilityList[i].SetAbilityType(defaultAbilityTypes[i]);
+                }
             }
-        }
-        else
-        {
-            // else playercontainer already holds abilities,
-            // so we just take their types because values are set when ability is activated
-            for (int i = 0; i < playerContainer.abilityTypes.Count; i++)
+            else
             {
-                abilityList[i].SetAbilityType(playerContainer.abilityTypes[i]);
+                // else playercontainer already holds abilities,
+                // so we just take their types because values are set when ability is activated
+                for (int i = 0; i < playerContainer.abilityTypes.Count; i++)
+                {
+                    abilityList[i].SetAbilityType(playerContainer.abilityTypes[i]);
+                }
             }
         }
 
-        // save reference so its persistent
-        // playerContainer.abilityList = abilityList;
-        
         selectedAbility = abilityList[0];
         selectedAbility.isHolderActive = true;
     }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Utils;
 
+[RequireComponent(typeof(CircleCollider2D))]
 public class GroundAbility : Ability
 {
     public float attackCooldown = 0.5f;
