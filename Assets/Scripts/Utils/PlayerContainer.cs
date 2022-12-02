@@ -13,7 +13,7 @@ public class PlayerContainer : MonoBehaviour
     // id of level and if it is unlocked
     public Dictionary<int, bool> levelUnlocked;
 
-    private void Start()
+    private void Awake()
     {
         // create new instance of levelUnlocked with 2 levels unlocked in constructor
         // or load from file in future

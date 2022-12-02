@@ -15,31 +15,37 @@ MonoBehaviour:
   attributes:
     health:
       initial: 50
-      actual: 50
+      _actual: 50
       min: 0
       max: 0
       increasePerLevel: 0
     attackPower:
       initial: 10
-      actual: 10
+      _actual: 10
       min: 0
       max: 0
       increasePerLevel: 0
     defenseRating:
       initial: 0.1
-      actual: 0.1
+      _actual: 0.1
       min: 0
       max: 0
       increasePerLevel: 0
     speed:
       initial: 2
-      actual: 2
+      _actual: 2
       min: 0
       max: 0
       increasePerLevel: 0
     cooldownRecovery:
       initial: 0
-      actual: 0
+      _actual: 0
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    pickupRange:
+      initial: 0
+      _actual: 0
       min: 0
       max: 0
       increasePerLevel: 0

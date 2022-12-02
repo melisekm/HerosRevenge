@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 public class AttributeUpgrader
@@ -15,7 +14,7 @@ public class AttributeUpgrader
             new(playerUnit.attributes.defenseRating),
             new(playerUnit.attributes.cooldownRecovery),
             new(playerUnit.attributes.pickupRange),
-            new GoldAttributeUpgrade(playerUnit.progressionController.PickUpGold)
+            new GoldAttributeUpgrade(playerUnit.stats.gold)
         };
     }
 
@@ -27,11 +26,8 @@ public class AttributeUpgrader
 
 public class AttributeUpgrade
 {
-    private Attribute attribute;
+    protected Attribute attribute;
 
-    protected AttributeUpgrade()
-    {
-    }
 
     public AttributeUpgrade(Attribute attribute)
     {
@@ -40,22 +36,19 @@ public class AttributeUpgrade
 
     public virtual void ApplyUpgrade(float amount)
     {
-        attribute.actual += amount;
         attribute.initial += amount;
+        attribute.actual += amount;
     }
 }
 
 public class GoldAttributeUpgrade : AttributeUpgrade
 {
-    private Action<float> pickupGold;
-
-    public GoldAttributeUpgrade(Action<float> pickupGold)
+    public GoldAttributeUpgrade(Attribute attribute) : base(attribute)
     {
-        this.pickupGold = pickupGold;
     }
 
     public override void ApplyUpgrade(float amount)
     {
-        pickupGold?.Invoke(amount);
+        attribute.actual += amount;
     }
 }

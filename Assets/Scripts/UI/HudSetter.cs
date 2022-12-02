@@ -13,40 +13,46 @@ public class HudSetter : MonoBehaviour
     public TMP_Text selectedAbilityNumber;
     public LevelUpUISetter levelUpUISetter;
 
+    public PlayerUnit playerUnit;
+    private void Start()
+    {
+        playerUnit.attributes.health.OnValueChanged += SetHealth;
+        playerUnit.stats.xp.OnValueChanged += SetExperience;
+        playerUnit.stats.gold.OnValueChanged += SetGold;
+
+    }
+
     private void OnEnable()
     {
         GameManager.OnUpdateTime += SetTime;
         PlayerControls.OnSwitchAbility += SetAbility;
         ProgressionController.OnLevelUp += OnLevelUp;
-        ProgressionController.OnExperienceChanged += SetExperience;
-        ProgressionController.OnGoldChanged += SetGold;
-        PlayerUnit.OnPlayerHealthChanged += SetHealth;
     }
 
     private void OnDisable()
     {
         GameManager.OnUpdateTime -= SetTime;
         PlayerControls.OnSwitchAbility -= SetAbility;
+        playerUnit.attributes.health.OnValueChanged -= SetHealth;
+        playerUnit.stats.xp.OnValueChanged -= SetExperience;
+        playerUnit.stats.gold.OnValueChanged -= SetGold;
         ProgressionController.OnLevelUp -= OnLevelUp;
-        PlayerUnit.OnPlayerHealthChanged -= SetHealth;
-        ProgressionController.OnExperienceChanged -= SetExperience;
-        ProgressionController.OnGoldChanged -= SetGold;
     }
 
-    private void SetExperience(float actual, float max)
+    private void SetExperience(Attribute xp)
     {
-        xpText.text = actual + "/" + max;
+        xpText.text = xp.actual + "/" + xp.max;
     }
 
-    private void SetGold(float actual)
+    private void SetGold(Attribute gold)
     {
-        goldText.text = actual.ToString();
+        goldText.text = gold.actual.ToString();
     }
 
-    private void SetHealth(float newHealth, float maxHealth)
+    private void SetHealth(Attribute health)
     {
-        healthText.text = newHealth + "/" + maxHealth;
-        if(newHealth <= 0)
+        healthText.text = health.actual + "/" + health.initial;
+        if(health.actual  <= 0)
         {
             deathText.gameObject.SetActive(true);
         }

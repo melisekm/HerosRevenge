@@ -12,17 +12,12 @@ public class PlayerUnit : Unit
     public ProgressionController progressionController { get; private set; }
     private AttributeUpgrader attributeUpgrader;
 
-    public static event Action<float, float> OnPlayerHealthChanged;
     public static event Action OnPlayerDied;
 
     protected override void Awake()
     {
         base.Awake();
         faction = Faction.Player;
-    }
-
-    protected void Start()
-    {
         var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
         if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
         {
@@ -35,10 +30,13 @@ public class PlayerUnit : Unit
 
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
         attributeUpgrader = new AttributeUpgrader(this);
+    }
+
+    protected void OnEnable()
+    {
         Energy.OnEnergyCollected += progressionController.PickUpEnergy;
         Treasure.OnTreasueCollected += progressionController.PickUpGold;
         LevelUpUISetter.OnRewardSelected += UpdateAttributes;
-        OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
     }
 
     private void UpdateAttributes(ScriptableReward scriptableStat)
@@ -46,10 +44,6 @@ public class PlayerUnit : Unit
         if (scriptableStat is ScriptableStatUpgrade statUpgrade)
         {
             attributeUpgrader.Upgrade(statUpgrade.statType, statUpgrade.amount);
-            if (statUpgrade.statType == StatType.Health)
-            {
-                OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
-            }
         }
     }
 
@@ -67,12 +61,6 @@ public class PlayerUnit : Unit
         stats.xp.actual = 0; // and xp too
         // TODO: add death animation
         OnPlayerDied?.Invoke();
-    }
-
-    public override void TakeDamage(float damage)
-    {
-        base.TakeDamage(damage);
-        OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
     }
 
     public void Initialize(PlayerContainer playerContainer)

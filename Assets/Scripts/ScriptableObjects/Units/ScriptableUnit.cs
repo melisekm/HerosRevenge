@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public abstract class ScriptableUnit : ScriptableObject
@@ -33,10 +34,22 @@ public class Attributes
 public class Attribute
 {
     [SerializeField] public float initial;
-    [SerializeField] public float actual;
+
+    [SerializeField] public float _actual;
+    public float actual
+    {
+        get => _actual;
+        set
+        {
+            _actual = value;
+            OnValueChanged?.Invoke(this);
+        }
+    }
+
     [SerializeField] public float min;
     [SerializeField] public float max;
     [SerializeField] public float increasePerLevel;
+    public event Action<Attribute> OnValueChanged;
     public Attribute(Attribute other)
     {
         initial = other.initial;
@@ -53,6 +66,7 @@ public class Attribute
         this.min = min;
         this.max = max;
         this.increasePerLevel = increasePerLevel;
+        
     }
 
 

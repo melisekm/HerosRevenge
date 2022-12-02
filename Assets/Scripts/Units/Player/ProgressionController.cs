@@ -11,8 +11,6 @@ namespace Units.Player
         private Attributes playerAttributes;
         private float levelUpMultiplier;
         public static event Action<PlayerStats, Attributes, bool, RewardGenerator.Reward[]> OnLevelUp;
-        public static event Action<float, float> OnExperienceChanged;
-        public static event Action<float> OnGoldChanged;
         private RewardGenerator rewardGenerator;
         private List<Attribute> attributesToLevelUp;
 
@@ -39,7 +37,6 @@ namespace Units.Player
             if (playerAttributes.health.actual <= 0) return;
 
             playerStats.xp.actual += amount;
-            OnExperienceChanged?.Invoke(playerStats.xp.actual, playerStats.xp.max);
             if (playerStats.xp.actual >= playerStats.xp.max && playerStats.level.actual < playerStats.level.max)
             {
                 LevelUp();
@@ -49,7 +46,6 @@ namespace Units.Player
         public void PickUpGold(float amount)
         {
             playerStats.gold.actual += amount;
-            OnGoldChanged?.Invoke(playerStats.gold.actual);
         }
 
 
