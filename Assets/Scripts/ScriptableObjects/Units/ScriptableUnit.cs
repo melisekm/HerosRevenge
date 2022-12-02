@@ -32,6 +32,11 @@ public class Attributes
 [Serializable]
 public class Attribute
 {
+    [SerializeField] public float initial;
+    [SerializeField] public float actual;
+    [SerializeField] public float min;
+    [SerializeField] public float max;
+    [SerializeField] public float increasePerLevel;
     public Attribute(Attribute other)
     {
         initial = other.initial;
@@ -50,9 +55,5 @@ public class Attribute
         this.increasePerLevel = increasePerLevel;
     }
 
-    [SerializeField] public float initial;
-    [SerializeField] public float actual;
-    [SerializeField] public float min;
-    [SerializeField] public float max;
-    [SerializeField] public float increasePerLevel;
+
 }

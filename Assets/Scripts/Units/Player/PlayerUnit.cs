@@ -5,12 +5,12 @@ using Utils;
 
 public class PlayerUnit : Unit
 {
-    public PlayerStats stats { get; private set; }
-    public void SetStats(PlayerStats st) => stats = st;
+    public PlayerStats stats;
     public float maxCastRange = 10f;
     public float levelUpMultiplier = 1.25f;
     public int rewardsCount = 2;
-    private ProgressionController progressionController;
+    public ProgressionController progressionController { get; private set; }
+    private AttributeUpgrader attributeUpgrader;
 
     public static event Action<float, float> OnPlayerHealthChanged;
     public static event Action OnPlayerDied;
@@ -34,6 +34,7 @@ public class PlayerUnit : Unit
         }
 
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
+        attributeUpgrader = new AttributeUpgrader(this);
         Energy.OnEnergyCollected += progressionController.PickUpEnergy;
         Treasure.OnTreasueCollected += progressionController.PickUpGold;
         LevelUpUISetter.OnRewardSelected += UpdateAttributes;
@@ -44,38 +45,10 @@ public class PlayerUnit : Unit
     {
         if (scriptableStat is ScriptableStatUpgrade statUpgrade)
         {
-            switch (statUpgrade.statType)
+            attributeUpgrader.Upgrade(statUpgrade.statType, statUpgrade.amount);
+            if (statUpgrade.statType == StatType.Health)
             {
-                case StatType.Health:
-                    attributes.health.initial += statUpgrade.amount;
-                    attributes.health.actual += statUpgrade.amount;
-                    OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
-                    break;
-                case StatType.Damage:
-                    attributes.attackPower.initial += statUpgrade.amount;
-                    attributes.attackPower.actual += statUpgrade.amount;
-                    break;
-                case StatType.Speed:
-                    attributes.speed.initial += statUpgrade.amount;
-                    attributes.speed.actual += statUpgrade.amount;
-                    break;
-                case StatType.Defense:
-                    attributes.defenseRating.initial += statUpgrade.amount;
-                    attributes.defenseRating.actual += statUpgrade.amount;
-                    break;
-                case StatType.CooldownRecovery:
-                    attributes.cooldownRecovery.initial += statUpgrade.amount;
-                    attributes.cooldownRecovery.actual += statUpgrade.amount;
-                    break;
-                case StatType.PickupRange:
-                    attributes.pickupRange.initial += statUpgrade.amount;
-                    attributes.pickupRange.actual += statUpgrade.amount;
-                    break;
-                case StatType.Gold:
-                    progressionController.PickUpGold((int)statUpgrade.amount);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                OnPlayerHealthChanged?.Invoke(attributes.health.actual, attributes.health.initial);
             }
         }
     }
@@ -135,7 +108,7 @@ public class PlayerUnit : Unit
     public void Initialize(PlayerContainer playerContainer)
     {
         SetAttributes(playerContainer.playerAttributes);
-        SetStats(playerContainer.playerStats);
+        stats = playerContainer.playerStats;
         attributes.health.actual = attributes.health.initial; // set health to max incase it was changed
     }
 }

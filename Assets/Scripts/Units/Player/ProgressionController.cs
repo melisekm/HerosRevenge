@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -14,15 +15,25 @@ namespace Units.Player
         public static event Action<float, float> OnExperienceChanged;
         public static event Action<float> OnGoldChanged;
         private RewardGenerator rewardGenerator;
+        private List<Attribute> attributesToLevelUp;
 
         public ProgressionController(PlayerUnit playerUnit, float levelUpMultiplier, int rewardsCount)
         {
             this.playerUnit = playerUnit;
+            this.levelUpMultiplier = levelUpMultiplier;
             playerStats = playerUnit.stats;
             playerAttributes = playerUnit.attributes;
-            this.levelUpMultiplier = levelUpMultiplier;
             OnLevelUp?.Invoke(playerStats, playerAttributes, true, null);
             rewardGenerator = new RewardGenerator(rewardsCount);
+            attributesToLevelUp = new List<Attribute>
+            {
+                playerAttributes.health,
+                playerAttributes.speed,
+                playerAttributes.attackPower,
+                playerAttributes.cooldownRecovery,
+                playerAttributes.defenseRating,
+                playerAttributes.pickupRange
+            };
         }
 
         public void PickUpEnergy(int amount)
@@ -54,11 +65,8 @@ namespace Units.Player
             playerStats.gold.actual += playerStats.gold.increasePerLevel;
 
 
-            LevelUpAttribute(playerAttributes.health);
-            LevelUpAttribute(playerAttributes.speed);
-            LevelUpAttribute(playerAttributes.attackPower);
-            LevelUpAttribute(playerAttributes.cooldownRecovery);
-            LevelUpAttribute(playerAttributes.defenseRating);
+            attributesToLevelUp.ForEach(LevelUpAttribute);
+
             var abilites = ResourceSystem.Instance
                 .abilities
                 .Where(ability => ability.minLevel <= playerUnit.stats.level.actual)
