@@ -10,7 +10,6 @@ public class PlayerUnit : Unit
     public float levelUpMultiplier = 1.25f;
     public int rewardsCount = 2;
     public ProgressionController progressionController { get; private set; }
-    private AttributeUpgrader attributeUpgrader;
 
     public static event Action OnPlayerDied;
 
@@ -29,28 +28,17 @@ public class PlayerUnit : Unit
         }
 
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
-        attributeUpgrader = new AttributeUpgrader(this);
     }
 
     protected void OnEnable()
     {
         Energy.OnEnergyCollected += progressionController.PickUpEnergy;
         Treasure.OnTreasueCollected += progressionController.PickUpGold;
-        LevelUpUISetter.OnRewardSelected += UpdateAttributes;
-    }
-
-    private void UpdateAttributes(ScriptableReward scriptableStat)
-    {
-        if (scriptableStat is ScriptableStatUpgrade statUpgrade)
-        {
-            attributeUpgrader.Upgrade(statUpgrade.statType, statUpgrade.amount);
-        }
     }
 
     private void OnDisable()
     {
         Energy.OnEnergyCollected -= progressionController.PickUpEnergy;
-        LevelUpUISetter.OnRewardSelected -= UpdateAttributes;
         Treasure.OnTreasueCollected -= progressionController.PickUpGold;
     }
 

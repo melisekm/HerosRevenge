@@ -1,11 +1,25 @@
 using System.Collections.Generic;
+using UnityEngine;
 
-public class AttributeUpgrader
+[RequireComponent(typeof(PlayerUnit))]
+public class AttributeUpgrader : MonoBehaviour
 {
     private List<AttributeUpgrade> upgrades;
+    private PlayerUnit playerUnit;
 
-    public AttributeUpgrader(PlayerUnit playerUnit)
+    private void OnEnable()
     {
+        LevelUpUISetter.OnRewardSelected += UpdateAttributes;
+    }
+
+    private void OnDisable()
+    {
+        LevelUpUISetter.OnRewardSelected -= UpdateAttributes;
+    }
+
+    private void Start()
+    {
+        playerUnit = GetComponent<PlayerUnit>();
         upgrades = new List<AttributeUpgrade>
         {
             new(playerUnit.attributes.health),
@@ -18,9 +32,12 @@ public class AttributeUpgrader
         };
     }
 
-    public void Upgrade(StatType statType, float amount)
+    private void UpdateAttributes(ScriptableReward scriptableStat)
     {
-        upgrades[(int)statType].ApplyUpgrade(amount);
+        if (scriptableStat is ScriptableStatUpgrade statUpgrade)
+        {
+            upgrades[(int)statUpgrade.statType].ApplyUpgrade(statUpgrade.amount);
+        }
     }
 }
 

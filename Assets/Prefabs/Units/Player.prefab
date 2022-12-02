@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 461855116459380946}
   - component: {fileID: 8625971399444159673}
   - component: {fileID: 3846312350725019872}
+  - component: {fileID: 2071378742}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -201,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9d745498f592a4596f30f3468687e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFacingRight: 0
 --- !u!114 &461855116459380946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +216,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  playerUnit: {fileID: 3846312350725019872}
 --- !u!114 &8625971399444159673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,29 +241,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa105a9ca074d7bb063b03ce7e65559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFacingRight: 0
-  stats:
-    xp:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    level:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    gold:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
   maxCastRange: 10
   levelUpMultiplier: 1.25
   rewardsCount: 2
+--- !u!114 &2071378742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461855116459380945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8887c13e8e1f44f4c8e8c41c9a6c2c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &922623836905763256
 GameObject:
   m_ObjectHideFlags: 0

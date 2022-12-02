@@ -48,7 +48,7 @@ MonoBehaviour:
       _actual: 2
       min: 0
       max: 1000
-      increasePerLevel: 0.01
+      increasePerLevel: 0.1
   prefab: {fileID: 3846312350725019872, guid: 7811fa07224b0634aa73712e72643218, type: 3}
   playerStats:
     xp:
