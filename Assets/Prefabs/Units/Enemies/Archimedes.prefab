@@ -254,18 +254,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce097b77e0ffe2c47947b57cb0ce8a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  sprite: {fileID: 0}
   isFacingRight: 1
   attackCooldown: 2
   deathDelay: 0.4
   dropOnDeath: {fileID: 6074496508514105833, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
     type: 3}
-  player: {fileID: 0}
-  destinationSetter: {fileID: 0}
-  aiPath: {fileID: 0}
-  energyDropAmount: 10
-  state: 0
   projectilePrefab: {fileID: -7477808379987039157, guid: 5a9b201abcf3a044ab4f30b997d1f6f9,
     type: 3}
   randomRadius: 5
+--- !u!114 &6547786827192791147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740241177267150328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922f53bb896c121409462d5d946cd60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

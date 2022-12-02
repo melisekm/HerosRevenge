@@ -5,7 +5,7 @@ using Utils;
 
 public class PlayerUnit : Unit
 {
-    public PlayerStats stats;
+    public PlayerStats stats { get; private set; }
     public float maxCastRange = 10f;
     public float levelUpMultiplier = 1.25f;
     public int rewardsCount = 2;
@@ -58,36 +58,6 @@ public class PlayerUnit : Unit
         Energy.OnEnergyCollected -= progressionController.PickUpEnergy;
         LevelUpUISetter.OnRewardSelected -= UpdateAttributes;
         Treasure.OnTreasueCollected -= progressionController.PickUpGold;
-    }
-
-    protected void Update()
-    {
-        SetFacingDirection();
-    }
-
-    private void SetFacingDirection()
-    {
-        if (rb.velocity.x >= 0.01f)
-        {
-            if (!isFacingRight)
-            {
-                Flip();
-            }
-        }
-        else if (rb.velocity.x <= -0.01f)
-        {
-            if (isFacingRight)
-            {
-                Flip();
-            }
-        }
-    }
-
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        sprite.flipX = !sprite.flipX;
-        // this only flips sprite, not the collider etc
     }
 
     protected override void Die()

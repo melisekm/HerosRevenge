@@ -7,7 +7,7 @@ public class RangedAbility : Ability
     private float flownDistance;
 
     private bool canMove = true;
-    protected int rotationOffset = -90;
+    private int rotationOffset = -90;
 
 
     

@@ -7,7 +7,6 @@ namespace Units.Player
 {
     public class ProgressionController
     {
-        private PlayerUnit playerUnit;
         private PlayerStats playerStats;
         private Attributes playerAttributes;
         private float levelUpMultiplier;
@@ -19,7 +18,6 @@ namespace Units.Player
 
         public ProgressionController(PlayerUnit playerUnit, float levelUpMultiplier, int rewardsCount)
         {
-            this.playerUnit = playerUnit;
             this.levelUpMultiplier = levelUpMultiplier;
             playerStats = playerUnit.stats;
             playerAttributes = playerUnit.attributes;
@@ -69,7 +67,7 @@ namespace Units.Player
 
             var abilites = ResourceSystem.Instance
                 .abilities
-                .Where(ability => ability.minLevel <= playerUnit.stats.level.actual)
+                .Where(ability => ability.minLevel <= playerStats.level.actual)
                 .ToList();
             var statUpgrades = ResourceSystem.Instance.statUpgrades;
 

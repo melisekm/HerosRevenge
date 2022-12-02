@@ -265,15 +265,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41218d8e43958a4eaace3bda0b8f00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  sprite: {fileID: 0}
   isFacingRight: 1
   attackCooldown: 1
-  destinationSetter: {fileID: 0}
-  aiPath: {fileID: 0}
+  deathDelay: 0
   dropOnDeath: {fileID: 6074496508514105833, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
     type: 3}
-  energyDropAmount: 10
-  deathDelay: 0
   projectilePrefab: {fileID: -4030127963876839283, guid: 94c6d1b94b73d79498eb6a7a5ac7ab04,
     type: 3}
+--- !u!114 &-8697249506771251589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915336484701343480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922f53bb896c121409462d5d946cd60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

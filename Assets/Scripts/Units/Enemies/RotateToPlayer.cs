@@ -3,29 +3,30 @@ using UnityEngine;
 
 public class RotateToPlayer : MonoBehaviour
 {
-    private EnemyUnit enemyUnit;
+    public bool isFacingRight = true;
     private Action rotateToPlayer;
+    private SpriteRenderer sprite;
+    private GameObject player;
 
     private void Start()
     {
-        enemyUnit = GetComponent<EnemyUnit>();
-        if (enemyUnit.isFacingRight)
+        sprite = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        
+        if (isFacingRight)
         {
             rotateToPlayer = () =>
-                enemyUnit.sprite.flipX = enemyUnit.player.transform.position.x < transform.position.x;
+                sprite.flipX = player.transform.position.x < transform.position.x;
         }
         else
         {
             rotateToPlayer = () =>
-                enemyUnit.sprite.flipX = enemyUnit.player.transform.position.x > transform.position.x;
+                sprite.flipX = player.transform.position.x > transform.position.x;
         }
     }
 
     private void Update()
     {
-        if (enemyUnit.state != EnemyUnit.EnemyState.Dead)
-        {
-            rotateToPlayer();
-        }
+        rotateToPlayer();
     }
 }

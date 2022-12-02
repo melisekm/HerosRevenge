@@ -213,6 +213,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2844290470369281836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70468578209669312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922f53bb896c121409462d5d946cd60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFacingRight: 0
 --- !u!114 &3510289188932019529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,13 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e543173ee03274896a648149177a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  sprite: {fileID: 0}
   isFacingRight: 0
   attackCooldown: 2
-  destinationSetter: {fileID: 0}
-  aiPath: {fileID: 0}
+  deathDelay: 0
   dropOnDeath: {fileID: 6074496508514105833, guid: 14870b67d514fab4db30e6a1f4d1f8bd,
     type: 3}
-  energyDropAmount: 10
-  deathDelay: 0

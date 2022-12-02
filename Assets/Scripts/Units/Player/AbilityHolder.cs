@@ -11,6 +11,8 @@ public class AbilityHolder : MonoBehaviour
     [NonSerialized] public bool isHolderActive;
     [NonSerialized] public float cooldownTime;
     private AbilityState abilityState = AbilityState.Ready;
+
+    private Camera mainCamera;
     // here it would be best to have some kind of container holding info about currently active ability
     // e.g. scriptableability, values, type etc
 
@@ -23,6 +25,7 @@ public class AbilityHolder : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = Camera.main;
         playerUnit = GetComponent<PlayerUnit>();
     }
 
@@ -43,7 +46,7 @@ public class AbilityHolder : MonoBehaviour
             Ability ability = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
             // https://stackoverflow.com/a/67777412
             // clamp magnitude to limit cast range 
-            Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousepos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             var delta  = Vector3.ClampMagnitude(mousepos - transform.position, playerUnit.maxCastRange);
             ability.Activate(UpdateAbilityStats(), transform.position + delta, Faction.Enemy);
             abilityState = AbilityState.Cooldown;

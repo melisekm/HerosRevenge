@@ -1,11 +1,21 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerUnit))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     public bool canMove = true;
-    public PlayerUnit playerUnit;
+    private Attribute speed;
+    private PlayerUnit playerUnit;
+    private Rigidbody2D rb;
     private Vector2 direction;
+    
+    private void Start()
+    {
+        playerUnit = GetComponent<PlayerUnit>();
+        rb = GetComponent<Rigidbody2D>();
+        speed = playerUnit.attributes.speed;
+    }
     
 
     public void OnEnable()
@@ -33,14 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (canMove)
-        {
-            float speed = playerUnit.attributes.speed.actual;
-            playerUnit.rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
-        }
-        else
-        {
-            playerUnit.rb.velocity = Vector2.zero;
-        }
+        rb.velocity = canMove ? new Vector2(direction.x * speed.actual, direction.y * speed.actual) : Vector2.zero;
     }
 }

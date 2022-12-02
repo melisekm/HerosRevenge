@@ -1,17 +1,11 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Utils;
 
 public abstract class Unit : MonoBehaviour
 {
-    [NonSerialized] public Rigidbody2D rb;
-    [NonSerialized] public SpriteRenderer sprite;
-    public bool isFacingRight = true;
-
-    // public get private set
+    protected SpriteRenderer sprite;
     public Faction faction { get; protected set; }
-
     public Attributes attributes { get; private set; }
 
     public virtual void SetAttributes(Attributes attr) => attributes = attr;
@@ -19,8 +13,7 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        sprite = gameObject.GetComponent<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
 
@@ -28,8 +21,8 @@ public abstract class Unit : MonoBehaviour
     {
         if (attributes.health.actual == attributes.health.min) return;
         // apply random -10% to 10% damage
-        damage *= UnityEngine.Random.Range(0.9f, 1.1f);
-        
+        damage *= Random.Range(0.9f, 1.1f);
+
         StartCoroutine(Flash());
         int damageTaken = Mathf.RoundToInt(damage * (1 - attributes.defenseRating.actual));
         attributes.health.actual -= damageTaken;
@@ -40,15 +33,15 @@ public abstract class Unit : MonoBehaviour
             Die();
         }
     }
-    
+
     protected virtual void Die()
     {
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 
-    protected virtual void DieAfterDelay(float delay=0.5f)
+    protected virtual void DieAfterDelay(float delay = 0.5f)
     {
-        Destroy(gameObject, delay); 
+        Destroy(gameObject, delay);
     }
 
     private IEnumerator Flash(Color color = default)

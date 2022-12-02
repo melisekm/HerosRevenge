@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 2131615380969908907}
   - component: {fileID: 461855116459380947}
   - component: {fileID: 1559310882333100287}
+  - component: {fileID: 449979464853793331}
   - component: {fileID: 461855116459380946}
   - component: {fileID: 8625971399444159673}
   - component: {fileID: 3846312350725019872}
@@ -188,6 +189,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af159cd0f75c5a4a8efe430a2d7dba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &449979464853793331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461855116459380945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9d745498f592a4596f30f3468687e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &461855116459380946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  unit: {fileID: 3846312350725019872}
+  playerUnit: {fileID: 3846312350725019872}
 --- !u!114 &8625971399444159673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363842c024bca0247bd38127c3183945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAbilityCount: 2
+  defaultAbilityTypes: 0200000001000000
 --- !u!114 &3846312350725019872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,10 +240,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa105a9ca074d7bb063b03ce7e65559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  sprite: {fileID: 0}
   isFacingRight: 0
-  pickupRange: 2
+  stats:
+    xp:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    level:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 0
+      increasePerLevel: 0
+    gold:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 0
+      increasePerLevel: 0
   maxCastRange: 10
   levelUpMultiplier: 1.25
   rewardsCount: 2

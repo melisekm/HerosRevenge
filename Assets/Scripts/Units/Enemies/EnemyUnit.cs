@@ -8,30 +8,29 @@ public class EnemyUnit : Unit
 {
     public static event Action<EnemyUnit> OnEnemyUnitDied;
     public float attackCooldown = 1f;
-    private float attackTimer;
     public float deathDelay;
+    private float attackTimer;
+    private RotateToPlayer rotateToPlayer;
 
     public Energy dropOnDeath;
-
-    [NonSerialized] public GameObject player;
-
-    [NonSerialized] public AIDestinationSetter destinationSetter;
-
-    // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
-    [NonSerialized] public AIPath aiPath;
     [NonSerialized] public int energyDropAmount = 10;
 
+    protected GameObject player;
 
-    [NonSerialized] public EnemyState state = EnemyState.Moving;
+    // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
+    protected AIPath aiPath;
+    protected AIDestinationSetter destinationSetter;
 
-    public enum EnemyState
+    private EnemyState state = EnemyState.Moving;
+
+    private enum EnemyState
     {
         Moving,
         Attacking,
         Dead
     }
 
-    protected Animator animator;
+    private Animator animator;
     private static readonly int Dying = Animator.StringToHash("Dying");
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int Speed = Animator.StringToHash("Speed");
@@ -42,10 +41,20 @@ public class EnemyUnit : Unit
         animator = GetComponent<Animator>();
         destinationSetter = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
+        rotateToPlayer = GetComponent<RotateToPlayer>();
         player = GameObject.FindGameObjectWithTag("Player");
-        destinationSetter.target = player.transform;
+        if (player)
+        {
+            destinationSetter.target = player.transform;
+        }
+        else
+        {
+            Debug.LogError("Player not found");
+        }
+
         faction = Faction.Enemy;
     }
+
 
     protected virtual void Update()
     {
@@ -104,11 +113,20 @@ public class EnemyUnit : Unit
     protected override void Die()
     {
         if (state == EnemyState.Dead) return;
-
         state = EnemyState.Dead;
-        // disable path finding
-        aiPath.canMove = false;
-        destinationSetter.enabled = false;
+
+
+        if (aiPath)
+        {
+            aiPath.canMove = false;
+            destinationSetter.enabled = false;
+        }
+
+        if (rotateToPlayer)
+        {
+            rotateToPlayer.enabled = false;
+        }
+
         // set gameobject layer to background so it doesn't collide with anything
         gameObject.layer = LayerMask.NameToLayer("BackgroundLayer");
 

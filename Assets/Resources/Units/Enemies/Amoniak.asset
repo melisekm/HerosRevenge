@@ -43,6 +43,12 @@ MonoBehaviour:
       min: 0
       max: 0
       increasePerLevel: 0
+    pickupRange:
+      initial: 0
+      actual: 0
+      min: 0
+      max: 0
+      increasePerLevel: 0
   prefab: {fileID: 8521648999819969690, guid: 52e86e7fc45249b4891484c2f79842d0, type: 3}
   enemyType: 3
   energyDropAmount: 20

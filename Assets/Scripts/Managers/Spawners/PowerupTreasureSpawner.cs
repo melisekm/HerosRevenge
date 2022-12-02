@@ -77,7 +77,7 @@ public class PowerupTreasureSpawner : GroundEntitySpawner
         var rewardStatUpgrade = reward.scriptableReward as ScriptableStatUpgrade;
         // do any stat amount calculations here for example based on arena or random etc
         ScriptableStatPowerUp scriptableStatPowerUp;
-        if (rewardStatUpgrade.statType == StatType.Gold)
+        if (rewardStatUpgrade && rewardStatUpgrade.statType == StatType.Gold)
         {
             scriptableStatPowerUp = ResourceSystem.Instance
                 .GetPowerUpByType(PowerUpType.Treasure) as ScriptableStatPowerUp;
@@ -88,14 +88,22 @@ public class PowerupTreasureSpawner : GroundEntitySpawner
                 .GetPowerUpByType(PowerUpType.Stat) as ScriptableStatPowerUp;
         }
 
-        scriptableStatPowerUp.statUpgrade = rewardStatUpgrade;
-        return scriptableStatPowerUp;
+        if (scriptableStatPowerUp)
+        {
+            scriptableStatPowerUp.statUpgrade = rewardStatUpgrade;
+            return scriptableStatPowerUp;
+        }
+        throw new Exception("No powerup found for stat upgrade");
     }
 
     private ScriptableObject ConvertToScriptableAbilityPowerUp(RewardGenerator.Reward reward)
     {
         var scriptableAbilityPowerUp = ResourceSystem.Instance.GetPowerUpByType(PowerUpType.Ability) as ScriptableAbilityPowerUp;
-        scriptableAbilityPowerUp.ability = reward.scriptableReward as ScriptableAbility;
-        return scriptableAbilityPowerUp;
+        if (scriptableAbilityPowerUp)
+        {
+            scriptableAbilityPowerUp.ability = reward.scriptableReward as ScriptableAbility;
+            return scriptableAbilityPowerUp;
+        }
+        throw new Exception("No powerup found for ability");
     }
 }
