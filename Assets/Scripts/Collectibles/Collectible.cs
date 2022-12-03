@@ -8,7 +8,7 @@ public abstract class Collectible : MonoBehaviour
 
     protected virtual void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         playerUnit = player.GetComponent<PlayerUnit>();
     }
 

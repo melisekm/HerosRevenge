@@ -42,7 +42,7 @@ public class EnemyUnit : Unit
         destinationSetter = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
         rotateToPlayer = GetComponent<RotateToPlayer>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         if (player)
         {
             destinationSetter.target = player.transform;

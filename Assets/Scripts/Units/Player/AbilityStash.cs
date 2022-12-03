@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Units.Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +10,7 @@ public class AbilityStash : MonoBehaviour
     private AbilityHolder selectedAbilityHolder;
     public List<AbilityType> defaultAbilityTypes = new();
     public AbilityHolder ultimateAbilityHolder;
-    public static event Action OnUltimateChanged;
+    public static event Action<ScriptableAbility> OnUltimateChanged;
 
 
     public void OnEnable()
@@ -17,6 +18,13 @@ public class AbilityStash : MonoBehaviour
         PlayerControls.OnSwitchAbility += SwitchAbility;
         PlayerControls.OnUltimateButtonPress += TryToUseUltimate;
         LevelUpUISetter.OnRewardSelected += SetAbility;
+        // we need this because after clicking on reward it would immediately activate ability
+        ProgressionController.OnLevelUp += DisableSelectedHolder;
+    }
+
+    private void DisableSelectedHolder(PlayerStats _, Attributes __, bool initial, RewardGenerator.Reward[] ___)
+    {
+        if (!initial) selectedAbilityHolder.isHolderActive = false;
     }
 
     public void OnDisable()
@@ -28,6 +36,8 @@ public class AbilityStash : MonoBehaviour
         {
             PlayerControls.OnAttack -= abilityHolder.ActivateAbility;
         }
+
+        ProgressionController.OnLevelUp -= DisableSelectedHolder;
     }
 
     public void OnDestroy()
@@ -51,15 +61,15 @@ public class AbilityStash : MonoBehaviour
                 var randomIndex = Random.Range(0, abilityList.Count);
                 var abilityHolder = abilityList[randomIndex];
                 abilityHolder.SetAbilityType(ability.abilityType);
-                // TODO FIXME set cooldown time so it wont fire immediately on click
-                selectedAbilityHolder.cooldownTime = 0.5f;
             }
             else if (ability.group == AbilityGroup.Ultimate)
             {
                 ultimateAbilityHolder.SetAbilityType(ability.abilityType);
-                OnUltimateChanged?.Invoke();
+                OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
             }
         }
+
+        selectedAbilityHolder.isHolderActive = true;
     }
 
     private void Start()
@@ -79,6 +89,7 @@ public class AbilityStash : MonoBehaviour
                 {
                     abilityList[i].SetAbilityType(defaultAbilityTypes[i]);
                 }
+
                 ultimateAbilityHolder.SetAbilityType(ultimateAbilityHolder.abilityType);
             }
             else
@@ -92,8 +103,8 @@ public class AbilityStash : MonoBehaviour
 
                 ultimateAbilityHolder.SetAbilityType(playerContainer.ultimateType);
             }
-            OnUltimateChanged?.Invoke();
 
+            OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
         }
 
         selectedAbilityHolder = abilityList[0];

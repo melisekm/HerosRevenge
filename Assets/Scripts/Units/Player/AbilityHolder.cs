@@ -6,12 +6,13 @@ using Utils;
 public class AbilityHolder : MonoBehaviour
 {
     public AbilityType abilityType = AbilityType.Empty;
-    public ScriptableAbility scriptableAbility;
     private PlayerUnit playerUnit;
     [NonSerialized] public bool isHolderActive;
     [NonSerialized] public float cooldownTime;
+    [NonSerialized] public ScriptableAbility scriptableAbility;
     private AbilityState abilityState = AbilityState.Ready;
-    public static event Action OnUltimateUsed;
+    public event Action OnUltimateUsed;
+    public event Action OnAbilityReady;
 
     private Camera mainCamera;
     // here it would be best to have some kind of container holding info about currently active ability
@@ -30,7 +31,6 @@ public class AbilityHolder : MonoBehaviour
         playerUnit = GetComponent<PlayerUnit>();
     }
 
-
     public void ActivateAbility()
     {
         if (isHolderActive && abilityType != AbilityType.Empty && abilityState == AbilityState.Ready)
@@ -39,7 +39,7 @@ public class AbilityHolder : MonoBehaviour
             // https://stackoverflow.com/a/67777412
             // clamp magnitude to limit cast range 
             Vector3 mousepos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            var delta  = Vector3.ClampMagnitude(mousepos - transform.position, playerUnit.maxCastRange);
+            var delta = Vector3.ClampMagnitude(mousepos - transform.position, playerUnit.maxCastRange);
             ability.Activate(UpdateAbilityStats(), transform.position + delta, Faction.Enemy);
             abilityState = AbilityState.Cooldown;
             cooldownTime = ability.abilityStats.baseCooldown;
@@ -76,10 +76,14 @@ public class AbilityHolder : MonoBehaviour
         if (abilityType != AbilityType.Empty && abilityState == AbilityState.Cooldown)
         {
             if (cooldownTime > 0)
+            {
                 cooldownTime -= Time.deltaTime;
+            }
             else
+            {
                 abilityState = AbilityState.Ready;
+                OnAbilityReady?.Invoke();
+            }
         }
-
     }
 }

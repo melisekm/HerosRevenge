@@ -17,7 +17,7 @@ MonoBehaviour:
   description: BOOM
   stats:
     damage: 0
-    baseCooldown: 10
+    baseCooldown: 15
     range: 0
   abilityType: 5
   prefab: {fileID: -2779171180297876725, guid: 63c0ef589e6a1bd4ea2b02ac73a39f29, type: 3}

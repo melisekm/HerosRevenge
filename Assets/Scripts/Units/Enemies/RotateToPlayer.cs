@@ -11,7 +11,7 @@ public class RotateToPlayer : MonoBehaviour
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         
         if (isFacingRight)
         {

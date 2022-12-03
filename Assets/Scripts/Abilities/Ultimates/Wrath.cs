@@ -15,7 +15,7 @@ public class Wrath : Ability
 
     private void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindWithTag("Player");
         if (player && player.TryGetComponent(out PlayerUnit pu))
         {
             playerUnit = pu;
