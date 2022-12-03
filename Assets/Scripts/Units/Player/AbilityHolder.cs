@@ -18,7 +18,6 @@ public class AbilityHolder : MonoBehaviour
     // here it would be best to have some kind of container holding info about currently active ability
     // e.g. scriptableability, values, type etc
 
-
     private enum AbilityState
     {
         Ready,

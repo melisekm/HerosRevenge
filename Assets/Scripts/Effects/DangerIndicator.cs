@@ -28,6 +28,12 @@ public class DangerIndicator : Effect
         }
     }
 
+    public override void Initialize(ScriptableEffect scriptableEffect, Faction targetFaction)
+    {
+        effect = (DangerIndicatorEffect)scriptableEffect;
+        this.targetFaction = targetFaction;
+    }
+
     private void Update()
     {
         timeElapsed += Time.deltaTime;
@@ -47,11 +53,5 @@ public class DangerIndicator : Effect
             // destroy the indicator
             Destroy(gameObject);
         }
-    }
-
-    public override void Initialize(ScriptableEffect scriptableEffect, Faction targetFaction)
-    {
-        effect = (DangerIndicatorEffect)scriptableEffect;
-        this.targetFaction = targetFaction;
     }
 }

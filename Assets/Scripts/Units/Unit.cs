@@ -10,12 +10,10 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void SetAttributes(Attributes attr) => attributes = attr;
 
-
     protected virtual void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
-
 
     public virtual void TakeDamage(float damage)
     {

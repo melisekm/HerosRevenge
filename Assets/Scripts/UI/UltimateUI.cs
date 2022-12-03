@@ -5,12 +5,12 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class UltimateUI : MonoBehaviour
 {
+    private AbilityHolder ultimateHolder;
     private float currentMaxCooldown;
     private float baseCooldown;
     public TMP_Text cdText;
     public Image darkMask;
     public Image abilityIcon;
-    private AbilityHolder ultimateHolder;
 
     private void OnEnable()
     {

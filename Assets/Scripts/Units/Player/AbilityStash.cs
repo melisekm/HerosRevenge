@@ -21,11 +21,6 @@ public class AbilityStash : MonoBehaviour
         ProgressionController.OnLevelUp += DisableSelectedHolder;
     }
 
-    private void DisableSelectedHolder(PlayerStats _, Attributes __, bool initial, RewardGenerator.Reward[] ___)
-    {
-        if (!initial) selectedAbilityHolder.isHolderActive = false;
-    }
-
     public void OnDisable()
     {
         PlayerControls.OnSwitchAbility -= SwitchAbility;
@@ -35,7 +30,6 @@ public class AbilityStash : MonoBehaviour
         {
             PlayerControls.OnAttack -= abilityHolder.ActivateAbility;
         }
-
         ProgressionController.OnLevelUp -= DisableSelectedHolder;
     }
 
@@ -73,7 +67,6 @@ public class AbilityStash : MonoBehaviour
 
             OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
         }
-
         selectedAbilityHolder = abilityList[0];
         selectedAbilityHolder.isHolderActive = true;
         ultimateAbilityHolder.isHolderActive = true;
@@ -88,6 +81,11 @@ public class AbilityStash : MonoBehaviour
             playerContainer.abilityTypes = abilityList.ConvertAll(ability => ability.abilityType);
             playerContainer.ultimateType = ultimateAbilityHolder.abilityType;
         }
+    }
+
+    private void DisableSelectedHolder(PlayerStats _, Attributes __, bool initial, RewardGenerator.Reward[] ___)
+    {
+        if (!initial) selectedAbilityHolder.isHolderActive = false;
     }
 
     private void SetAbility(ScriptableReward scriptableAbility)
@@ -107,16 +105,13 @@ public class AbilityStash : MonoBehaviour
                 OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
             }
         }
-
         selectedAbilityHolder.isHolderActive = true;
     }
-
 
     private void TryToUseUltimate()
     {
         ultimateAbilityHolder.ActivateAbility();
     }
-
 
     private void SwitchAbility(int index)
     {

@@ -15,13 +15,6 @@ public class HudSetter : MonoBehaviour
 
     public PlayerUnit playerUnit;
 
-    private void Start()
-    {
-        playerUnit.attributes.health.OnValueChanged += SetHealth;
-        playerUnit.stats.xp.OnValueChanged += SetExperience;
-        playerUnit.stats.gold.OnValueChanged += SetGold;
-    }
-
     private void OnEnable()
     {
         GameManager.OnUpdateTime += SetTime;
@@ -37,6 +30,13 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.xp.OnValueChanged -= SetExperience;
         playerUnit.stats.gold.OnValueChanged -= SetGold;
         ProgressionController.OnLevelUp -= OnLevelUp;
+    }
+
+    private void Start()
+    {
+        playerUnit.attributes.health.OnValueChanged += SetHealth;
+        playerUnit.stats.xp.OnValueChanged += SetExperience;
+        playerUnit.stats.gold.OnValueChanged += SetGold;
     }
 
     private void SetExperience(Attribute xp)

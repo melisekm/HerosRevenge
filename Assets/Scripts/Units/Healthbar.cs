@@ -22,6 +22,17 @@ public class Healthbar : MonoBehaviour
         SetActive(isAlwaysActive);
     }
 
+    private void SetActive(bool active)
+    {
+        background.gameObject.SetActive(active);
+        bar.gameObject.SetActive(active);
+    }
+
+    private void SetSize(float size)
+    {
+        bar.localScale = new Vector3(size, 1f);
+    }
+
     private void Update()
     {
         var currentHealth = unit.attributes.health.actual;
@@ -39,16 +50,5 @@ public class Healthbar : MonoBehaviour
             prevMaxHealth = maxCurrentHealth;
             SetSize(currentHealth / maxCurrentHealth);
         }
-    }
-
-    private void SetActive(bool active)
-    {
-        background.gameObject.SetActive(active);
-        bar.gameObject.SetActive(active);
-    }
-
-    private void SetSize(float size)
-    {
-        bar.localScale = new Vector3(size, 1f);
     }
 }

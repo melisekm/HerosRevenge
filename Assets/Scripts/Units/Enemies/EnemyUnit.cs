@@ -44,51 +44,18 @@ public class EnemyUnit : Unit
         rotateToPlayer = GetComponent<RotateToPlayer>();
         player = GameObject.FindWithTag("Player");
         if (player)
-        {
             destinationSetter.target = player.transform;
-        }
         else
-        {
             Debug.LogError("Player not found");
-        }
 
         faction = Faction.Enemy;
     }
 
 
-    protected virtual void Update()
-    {
-        if (!player) return;
-
-        animator.SetFloat(Speed, Mathf.Abs(aiPath.desiredVelocity.x));
-
-
-        if (attackTimer >= 0)
-        {
-            attackTimer -= Time.deltaTime;
-        }
-
-        if (state != EnemyState.Dead)
-        {
-            CheckDistance();
-        }
-
-        if (state == EnemyState.Attacking)
-        {
-            if (attackTimer <= 0)
-            {
-                animator.SetTrigger(Attack);
-                AttackPlayer();
-                attackTimer = attackCooldown;
-            }
-        }
-    }
-
     // overriden in child classes
     protected virtual void AttackPlayer()
     {
     }
-
 
     private void CheckDistance()
     {
@@ -102,7 +69,6 @@ public class EnemyUnit : Unit
             state = EnemyState.Attacking;
         }
     }
-
 
     public override void SetAttributes(Attributes newAttributes)
     {
@@ -144,5 +110,32 @@ public class EnemyUnit : Unit
 
         base.DieAfterDelay(deathDelay);
         OnEnemyUnitDied?.Invoke(this);
+    }
+
+    protected virtual void Update()
+    {
+        if (!player) return;
+
+        animator.SetFloat(Speed, Mathf.Abs(aiPath.desiredVelocity.x));
+
+        if (attackTimer >= 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
+
+        if (state != EnemyState.Dead)
+        {
+            CheckDistance();
+        }
+
+        if (state == EnemyState.Attacking)
+        {
+            if (attackTimer <= 0)
+            {
+                animator.SetTrigger(Attack);
+                AttackPlayer();
+                attackTimer = attackCooldown;
+            }
+        }
     }
 }

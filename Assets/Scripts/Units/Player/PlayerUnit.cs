@@ -19,13 +19,9 @@ public class PlayerUnit : Unit
         faction = Faction.Player;
         var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
         if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
-        {
             Initialize(playerContainer);
-        }
         else
-        {
             Debug.LogWarning("PlayerContainer not found");
-        }
 
         progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
     }
@@ -51,7 +47,7 @@ public class PlayerUnit : Unit
         OnPlayerDied?.Invoke();
     }
 
-    public void Initialize(PlayerContainer playerContainer)
+    private void Initialize(PlayerContainer playerContainer)
     {
         SetAttributes(playerContainer.playerAttributes);
         stats = playerContainer.playerStats;

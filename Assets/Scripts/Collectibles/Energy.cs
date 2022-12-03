@@ -11,7 +11,6 @@ public class Energy : Collectible
 
     public static event Action<int> OnEnergyCollected;
 
-
     public override void PickUp()
     {
         pickedUp = true;

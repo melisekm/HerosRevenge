@@ -11,10 +11,6 @@ public class PlayerControls : MonoBehaviour
     private int maxAbilityCount;
     private bool isActive = true;
 
-    private void Start()
-    {
-        maxAbilityCount = TryGetComponent(out AbilityStash stash) ? stash.defaultAbilityTypes.Count : 0;
-    }
 
     private void OnEnable()
     {
@@ -24,6 +20,11 @@ public class PlayerControls : MonoBehaviour
     private void OnDisable()
     {
         PlayerUnit.OnPlayerDied -= DisableControls;
+    }
+
+    private void Start()
+    {
+        maxAbilityCount = TryGetComponent(out AbilityStash stash) ? stash.defaultAbilityTypes.Count : 0;
     }
 
     private void DisableControls()

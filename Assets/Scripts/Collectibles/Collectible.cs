@@ -6,6 +6,8 @@ public abstract class Collectible : MonoBehaviour
     private PlayerUnit playerUnit;
     protected bool pickedUp;
 
+    public abstract void PickUp();
+
     protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -22,6 +24,4 @@ public abstract class Collectible : MonoBehaviour
             PickUp();
         }
     }
-
-    public abstract void PickUp();
 }

@@ -8,8 +8,6 @@ public class GameManager : Singleton<GameManager>
 {
     public Dictionary<int, EnemyUnit> enemies = new();
     public int enemiesKilled;
-
-
     public UnitSpawner unitSpawner;
     public GameState state;
 
@@ -17,12 +15,6 @@ public class GameManager : Singleton<GameManager>
     [Min(0.01f)] [SerializeField] private float startDelay = 2f;
 
     public static event Action<float> OnUpdateTime;
-
-
-    private void Start()
-    {
-        ChangeState(GameState.Starting);
-    }
 
     private void OnEnable()
     {
@@ -40,6 +32,11 @@ public class GameManager : Singleton<GameManager>
         UnitSpawner.OnEnemySpawned -= OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
         PlayerUnit.OnPlayerDied -= OnPlayerDead;
+    }
+
+    private void Start()
+    {
+        ChangeState(GameState.Starting);
     }
 
     private void OnPlayerDead()
@@ -73,14 +70,6 @@ public class GameManager : Singleton<GameManager>
         if (!initial && state == GameState.Playing)
         {
             Time.timeScale = 0;
-        }
-    }
-
-    private void Update()
-    {
-        if (state == GameState.Playing)
-        {
-            OnUpdateTime?.Invoke(Time.timeSinceLevelLoad);
         }
     }
 
@@ -130,6 +119,14 @@ public class GameManager : Singleton<GameManager>
         }
 
         StartCoroutine(StartSpawning());
+    }
+
+    private void Update()
+    {
+        if (state == GameState.Playing)
+        {
+            OnUpdateTime?.Invoke(Time.timeSinceLevelLoad);
+        }
     }
 }
 
