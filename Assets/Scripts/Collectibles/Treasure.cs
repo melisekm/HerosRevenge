@@ -10,7 +10,7 @@ public class Treasure : Collectible
     public TMP_Text numberPopup;
 
     private Animator animator;
-    
+
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
     private static readonly int Collected = Animator.StringToHash("Collected");

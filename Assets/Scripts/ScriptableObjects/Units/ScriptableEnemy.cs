@@ -6,7 +6,6 @@ public class ScriptableEnemy : ScriptableUnit
 {
     public EnemyType enemyType;
     public int energyDropAmount;
-
 }
 
 [Serializable]

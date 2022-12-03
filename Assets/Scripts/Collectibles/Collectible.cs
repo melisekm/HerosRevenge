@@ -16,7 +16,7 @@ public abstract class Collectible : MonoBehaviour
     {
         // cant pickup if player is dead
         if (pickedUp || playerUnit.attributes.health.actual <= 0) return;
-        
+
         if (Vector3.Distance(transform.position, player.transform.position) < playerUnit.attributes.pickupRange.actual)
         {
             PickUp();

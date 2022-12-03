@@ -21,7 +21,7 @@ public class ResourceSystem : Singleton<ResourceSystem>
         player = Resources.Load<ScriptablePlayer>("Units/Player");
         powerUps = Resources.LoadAll<ScriptablePowerUp>("PowerUps").ToList();
     }
-    
+
     public ScriptablePowerUp GetPowerUpByType(PowerUpType type)
     {
         return powerUps.Find(x => x.powerUpType == type);

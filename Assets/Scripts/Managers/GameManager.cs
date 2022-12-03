@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
     [Min(0.01f)] [SerializeField] private float startDelay = 2f;
 
     public static event Action<float> OnUpdateTime;
-    
+
 
     private void Start()
     {

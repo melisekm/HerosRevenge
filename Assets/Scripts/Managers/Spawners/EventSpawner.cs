@@ -8,6 +8,7 @@ public class EventSpawner : EffectSpawner
     public int checkInterval = 10;
     public int length = 10;
     private bool isEventActive;
+
     private ScriptableEffect eventEffect;
     // private float spawn
 

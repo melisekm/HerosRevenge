@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -9,12 +7,13 @@ public class FacingDirectionSetter : MonoBehaviour
     public bool isFacingRight;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
-    
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
+
     protected void Update()
     {
         SetFacingDirection();

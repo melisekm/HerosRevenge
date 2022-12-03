@@ -12,7 +12,7 @@ public class RotateToPlayer : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player");
-        
+
         if (isFacingRight)
         {
             rotateToPlayer = () =>

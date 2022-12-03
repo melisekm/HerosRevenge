@@ -1,6 +1,5 @@
 public class MeleeEnemyUnit : EnemyUnit
 {
-
     protected override void AttackPlayer()
     {
         if (player && player.TryGetComponent(out PlayerUnit playerUnit))
@@ -8,5 +7,4 @@ public class MeleeEnemyUnit : EnemyUnit
             playerUnit.TakeDamage(attributes.attackPower.actual);
         }
     }
-
 }

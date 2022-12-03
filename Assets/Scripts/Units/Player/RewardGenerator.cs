@@ -50,6 +50,7 @@ namespace Units.Player
                     };
                 }
             }
+
             return nextRewards;
         }
     }

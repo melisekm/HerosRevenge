@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class BoomingVoice : Ability
@@ -12,7 +11,7 @@ public class BoomingVoice : Ability
             enemyUnit.TakeDamage(enemyUnit.attributes.health.initial * 0.5f);
             hitEffect.Activate(enemyUnit.transform.position);
         }
+
         Destroy(gameObject);
     }
-
 }

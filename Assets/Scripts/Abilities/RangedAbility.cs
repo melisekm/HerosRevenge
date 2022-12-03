@@ -10,14 +10,13 @@ public class RangedAbility : Ability
     private int rotationOffset = -90;
 
 
-    
     public override void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
     {
         base.Activate(stats, target, targetFaction);
         float angle = GetAngleToTarget();
         transform.rotation = Quaternion.Euler(0f, 0f, angle + rotationOffset);
     }
-    
+
 
     protected virtual void Update()
     {
@@ -32,7 +31,7 @@ public class RangedAbility : Ability
             }
         }
     }
-    
+
     protected float GetAngleToTarget()
     {
         // https://answers.unity.com/questions/995540/move-towards-mouse-direction-infinitely-at-constan.html
@@ -47,6 +46,4 @@ public class RangedAbility : Ability
         canMove = false;
         base.Die();
     }
-
-
 }

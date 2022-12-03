@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class Wrath : Ability
@@ -24,7 +22,7 @@ public class Wrath : Ability
             Destroy(gameObject, duration);
         }
     }
-    
+
     private void OnDestroy()
     {
         ToggleBoost(playerUnit.attributes, -1);

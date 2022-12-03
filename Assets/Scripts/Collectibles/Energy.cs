@@ -5,10 +5,10 @@ public class Energy : Collectible
 {
     public int amount;
     public float flySpeed = 10f;
-    
+
     // how close the game object has to be to disappear after flying towards the player
     private float destroyDistance = 0.1f;
-    
+
     public static event Action<int> OnEnergyCollected;
 
 
@@ -32,6 +32,7 @@ public class Energy : Collectible
                 Destroy(gameObject);
             }
         }
+
         base.Update();
     }
 }

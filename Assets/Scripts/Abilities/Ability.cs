@@ -44,7 +44,7 @@ public class Ability : MonoBehaviour
         this.target = target;
         this.targetFaction = targetFaction;
     }
-    
+
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

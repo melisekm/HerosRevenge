@@ -12,7 +12,6 @@ public class AbilityStash : MonoBehaviour
     public AbilityHolder ultimateAbilityHolder;
     public static event Action<ScriptableAbility> OnUltimateChanged;
 
-
     public void OnEnable()
     {
         PlayerControls.OnSwitchAbility += SwitchAbility;
@@ -38,38 +37,6 @@ public class AbilityStash : MonoBehaviour
         }
 
         ProgressionController.OnLevelUp -= DisableSelectedHolder;
-    }
-
-    public void OnDestroy()
-    {
-        // save abilities
-        var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
-        if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
-        {
-            playerContainer.abilityTypes = abilityList.ConvertAll(ability => ability.abilityType);
-            playerContainer.ultimateType = ultimateAbilityHolder.abilityType;
-        }
-    }
-
-    private void SetAbility(ScriptableReward scriptableAbility)
-    {
-        // check type of scriptableReward
-        if (scriptableAbility is ScriptableAbility ability)
-        {
-            if (ability.group == AbilityGroup.Regular)
-            {
-                var randomIndex = Random.Range(0, abilityList.Count);
-                var abilityHolder = abilityList[randomIndex];
-                abilityHolder.SetAbilityType(ability.abilityType);
-            }
-            else if (ability.group == AbilityGroup.Ultimate)
-            {
-                ultimateAbilityHolder.SetAbilityType(ability.abilityType);
-                OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
-            }
-        }
-
-        selectedAbilityHolder.isHolderActive = true;
     }
 
     private void Start()
@@ -111,6 +78,39 @@ public class AbilityStash : MonoBehaviour
         selectedAbilityHolder.isHolderActive = true;
         ultimateAbilityHolder.isHolderActive = true;
     }
+
+    public void OnDestroy()
+    {
+        // save abilities
+        var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
+        if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
+        {
+            playerContainer.abilityTypes = abilityList.ConvertAll(ability => ability.abilityType);
+            playerContainer.ultimateType = ultimateAbilityHolder.abilityType;
+        }
+    }
+
+    private void SetAbility(ScriptableReward scriptableAbility)
+    {
+        // check type of scriptableReward
+        if (scriptableAbility is ScriptableAbility ability)
+        {
+            if (ability.group == AbilityGroup.Regular)
+            {
+                var randomIndex = Random.Range(0, abilityList.Count);
+                var abilityHolder = abilityList[randomIndex];
+                abilityHolder.SetAbilityType(ability.abilityType);
+            }
+            else if (ability.group == AbilityGroup.Ultimate)
+            {
+                ultimateAbilityHolder.SetAbilityType(ability.abilityType);
+                OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
+            }
+        }
+
+        selectedAbilityHolder.isHolderActive = true;
+    }
+
 
     private void TryToUseUltimate()
     {

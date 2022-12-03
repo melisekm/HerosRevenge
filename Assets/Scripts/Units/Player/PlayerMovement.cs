@@ -9,14 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private PlayerUnit playerUnit;
     private Rigidbody2D rb;
     private Vector2 direction;
-    
+
     private void Start()
     {
         playerUnit = GetComponent<PlayerUnit>();
         rb = GetComponent<Rigidbody2D>();
         speed = playerUnit.attributes.speed;
     }
-    
+
 
     public void OnEnable()
     {
@@ -29,12 +29,12 @@ public class PlayerMovement : MonoBehaviour
         PlayerControls.OnMovement -= Move;
         PlayerUnit.OnPlayerDied -= DisableMovement;
     }
-    
+
     private void DisableMovement()
     {
         canMove = false;
     }
-    
+
     private void Move(float horizontal, float vertical)
     {
         // Get player's movement direction based on input and normalize to prevent double speed when moving diagonal

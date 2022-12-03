@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnergyVacuum : Ability
@@ -12,8 +10,7 @@ public class EnergyVacuum : Ability
             var energyComp = energy.GetComponent<Energy>();
             energyComp.PickUp();
         }
+
         Destroy(gameObject);
-
     }
-
 }

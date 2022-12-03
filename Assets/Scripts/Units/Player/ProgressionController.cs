@@ -51,13 +51,10 @@ namespace Units.Player
 
         private void LevelUp()
         {
-            // TODO add level up effect
-            // TODO add level up sound
             playerStats.xp.actual = playerStats.xp.min;
             playerStats.xp.max = Mathf.RoundToInt(playerStats.xp.max * levelUpMultiplier);
             playerStats.level.actual++;
             playerStats.gold.actual += playerStats.gold.increasePerLevel;
-
 
             attributesToLevelUp.ForEach(LevelUpAttribute);
 

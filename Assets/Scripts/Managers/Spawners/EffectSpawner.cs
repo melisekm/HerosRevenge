@@ -3,7 +3,6 @@ using Utils;
 
 public class EffectSpawner : GroundEntitySpawner
 {
-
     protected override void SpawnGroundEntity(ScriptableObject entity)
     {
         if (entity is ScriptableEffect scriptableEffect)

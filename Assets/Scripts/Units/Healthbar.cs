@@ -34,6 +34,7 @@ public class Healthbar : MonoBehaviour
                 bool notFullNotZero = currentHealth < maxCurrentHealth && currentHealth > 0;
                 SetActive(notFullNotZero);
             }
+
             prevHealth = currentHealth;
             prevMaxHealth = maxCurrentHealth;
             SetSize(currentHealth / maxCurrentHealth);

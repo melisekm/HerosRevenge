@@ -14,12 +14,12 @@ public class HudSetter : MonoBehaviour
     public LevelUpUISetter levelUpUISetter;
 
     public PlayerUnit playerUnit;
+
     private void Start()
     {
         playerUnit.attributes.health.OnValueChanged += SetHealth;
         playerUnit.stats.xp.OnValueChanged += SetExperience;
         playerUnit.stats.gold.OnValueChanged += SetGold;
-
     }
 
     private void OnEnable()
@@ -52,7 +52,7 @@ public class HudSetter : MonoBehaviour
     private void SetHealth(Attribute health)
     {
         healthText.text = health.actual + "/" + health.initial;
-        if(health.actual <= 0)
+        if (health.actual <= 0)
         {
             if (deathText)
             {

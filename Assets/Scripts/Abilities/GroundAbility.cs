@@ -21,7 +21,7 @@ public class GroundAbility : Ability
         base.Activate(stats, target, targetFaction);
         transform.position = new Vector3(target.x, target.y, 0);
     }
-    
+
     protected override void Act(Collider2D collision)
     {
         if (isActive)
@@ -29,7 +29,7 @@ public class GroundAbility : Ability
             base.Act(collision);
         }
     }
-    
+
     protected override void SetLayer(Faction targetFaction)
     {
         if (targetFaction == Faction.Player)
@@ -59,6 +59,7 @@ public class GroundAbility : Ability
             {
                 Act(collider);
             }
+
             attackTimer = 0;
         }
 
