@@ -52,9 +52,12 @@ public class HudSetter : MonoBehaviour
     private void SetHealth(Attribute health)
     {
         healthText.text = health.actual + "/" + health.initial;
-        if(health.actual  <= 0)
+        if(health.actual <= 0)
         {
-            deathText.gameObject.SetActive(true);
+            if (deathText)
+            {
+                deathText.gameObject.SetActive(true);
+            }
         }
     }
 

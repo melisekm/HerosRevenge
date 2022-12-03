@@ -36,4 +36,5 @@ public enum AbilityType
     PoisonRain,
     BoomingVoice,
     EnergyVacuum,
+    Wrath
 }
