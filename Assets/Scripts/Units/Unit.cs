@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Utils;
 
 public abstract class Unit : MonoBehaviour
 {
@@ -51,4 +50,10 @@ public abstract class Unit : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         sprite.color = Color.white;
     }
+}
+
+public enum Faction
+{
+    Player,
+    Enemy
 }

@@ -1,16 +1,15 @@
 using System.Linq;
 using UnityEngine;
-using Utils;
 
 public class Ability : MonoBehaviour
 {
     public AbilityStats abilityStats { get; private set; }
 
     protected Vector3 target;
-    protected Faction targetFaction;
+    private Faction targetFaction;
     public bool collidesWithUnits = false;
     public bool collidesWithEnvironment = true;
-    protected Animator animator;
+    private Animator animator;
     protected HitEffect hitEffect;
     private static readonly int PlayFinished = Animator.StringToHash("playFinished");
 

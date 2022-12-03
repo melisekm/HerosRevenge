@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
-using Utils;
 
 public class EnemyUnit : Unit
 {

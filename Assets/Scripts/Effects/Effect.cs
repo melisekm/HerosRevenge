@@ -1,5 +1,4 @@
 using UnityEngine;
-using Utils;
 
 public abstract class Effect : MonoBehaviour
 {

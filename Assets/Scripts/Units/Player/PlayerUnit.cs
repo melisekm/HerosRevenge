@@ -1,7 +1,6 @@
 using System;
 using Units.Player;
 using UnityEngine;
-using Utils;
 
 public class PlayerUnit : Unit
 {
