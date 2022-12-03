@@ -29,17 +29,8 @@ public class AbilityHolder : MonoBehaviour
         playerUnit = GetComponent<PlayerUnit>();
     }
 
-    private void OnEnable()
-    {
-        PlayerControls.OnAttack += ActivateAbility;
-    }
 
-    private void OnDisable()
-    {
-        PlayerControls.OnAttack -= ActivateAbility;
-    }
-
-    private void ActivateAbility()
+    public void ActivateAbility()
     {
         if (isHolderActive && abilityType != AbilityType.Empty && abilityState == AbilityState.Ready)
         {
@@ -62,7 +53,6 @@ public class AbilityHolder : MonoBehaviour
         // can also do something based on player level or level he is *currently* in
         // if player is level 7, then increase damage further by 10%
         abilityStats.damage *= 1 + playerUnit.stats.level.actual * 0.1f;
-        
         return abilityStats;
     }
 
@@ -85,5 +75,6 @@ public class AbilityHolder : MonoBehaviour
             else
                 abilityState = AbilityState.Ready;
         }
+
     }
 }

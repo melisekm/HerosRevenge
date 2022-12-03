@@ -8,6 +8,7 @@ public class ScriptableAbility : ScriptableReward
     public AbilityType abilityType;
     public Ability prefab;
     public float minLevel;
+    public AbilityGroup group;
 }
 
 [Serializable]
@@ -19,11 +20,19 @@ public struct AbilityStats
 }
 
 [Serializable]
+public enum AbilityGroup
+{
+    Regular,
+    Ultimate
+}
+
+[Serializable]
 public enum AbilityType
 {
-    Empty = 0,
-    Cleave = 1,
-    FireOrb = 2,
-    PiercingShot = 3,
-    PoisonRain = 4,
+    Empty,
+    Cleave,
+    FireOrb,
+    PiercingShot,
+    PoisonRain,
+    BoomingVoice,
 }

@@ -20,8 +20,6 @@ public abstract class Unit : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         if (attributes.health.actual == attributes.health.min) return;
-        // apply random -10% to 10% damage
-        damage *= Random.Range(0.9f, 1.1f);
 
         StartCoroutine(Flash());
         int damageTaken = Mathf.RoundToInt(damage * (1 - attributes.defenseRating.actual));

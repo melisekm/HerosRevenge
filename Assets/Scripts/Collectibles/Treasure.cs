@@ -29,7 +29,6 @@ public class Treasure : Collectible
 
     protected override void PickUp()
     {
-        Debug.Log($"Treasure collected: {amount}");
         OnTreasueCollected?.Invoke(amount);
         pickedUp = true;
         animator.SetTrigger(Collected);

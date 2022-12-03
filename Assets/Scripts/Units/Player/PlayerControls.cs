@@ -6,6 +6,7 @@ public class PlayerControls : MonoBehaviour
     public static event Action OnAttack;
     public static event Action<int> OnSwitchAbility;
     public static event Action<float, float> OnMovement;
+    public static event Action OnUltimateUse;
 
     private int maxAbilityCount;
     private bool isActive = true;
@@ -39,6 +40,11 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
             OnAttack?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnUltimateUse?.Invoke();
         }
 
         // iterate through the keys 1, 2.. and check if they are pressed

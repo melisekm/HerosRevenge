@@ -5,10 +5,10 @@ public class HitEffect : MonoBehaviour
     public ParticleSystem hitEffect;
     public Color hitColor;
 
-    public void Activate()
+    public void Activate(Vector3 position)
     {
         var hitEffectMain = hitEffect.main;
         hitEffectMain.startColor = new ParticleSystem.MinMaxGradient(hitColor);
-        Instantiate(hitEffect, transform.position + transform.up, Quaternion.identity);
+        Instantiate(hitEffect, position, Quaternion.identity);
     }
 }

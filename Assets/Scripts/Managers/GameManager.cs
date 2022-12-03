@@ -8,7 +8,6 @@ public class GameManager : Singleton<GameManager>
 {
     public Dictionary<int, EnemyUnit> enemies = new();
     public int enemiesKilled;
-    private float currentTime;
 
 
     public UnitSpawner unitSpawner;
@@ -81,8 +80,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (state == GameState.Playing)
         {
-            currentTime = Time.timeSinceLevelLoad;
-            OnUpdateTime?.Invoke(currentTime);
+            OnUpdateTime?.Invoke(Time.timeSinceLevelLoad);
         }
     }
 

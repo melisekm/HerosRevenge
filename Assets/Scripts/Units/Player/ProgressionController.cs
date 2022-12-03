@@ -61,14 +61,14 @@ namespace Units.Player
 
             attributesToLevelUp.ForEach(LevelUpAttribute);
 
-            var abilites = ResourceSystem.Instance
+            var abilities = ResourceSystem.Instance
                 .abilities
                 .Where(ability => ability.minLevel <= playerStats.level.actual)
                 .ToList();
-            var statUpgrades = ResourceSystem.Instance.statUpgrades;
+            var statUpgrades = ResourceSystem.Instance.statUpgrades.ToList();
 
             OnLevelUp?.Invoke(playerStats, playerAttributes, false,
-                rewardGenerator.GenerateRewards(abilites, statUpgrades));
+                rewardGenerator.GenerateRewards(abilities, statUpgrades));
         }
 
         private void LevelUpAttribute(Attribute attr)

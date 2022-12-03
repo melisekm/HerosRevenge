@@ -83,7 +83,7 @@ public class Ability : MonoBehaviour
         {
             if (hitEffect)
             {
-                hitEffect.Activate();
+                hitEffect.Activate(transform.position + transform.up);
             }
 
             Destroy(gameObject);

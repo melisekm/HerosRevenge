@@ -7,6 +7,7 @@ public class PlayerContainer : MonoBehaviour
     [NonSerialized] public Attributes playerAttributes;
     [NonSerialized] public PlayerStats playerStats;
     [NonSerialized] public List<AbilityType> abilityTypes = new();
+    [NonSerialized] public AbilityType ultimateType;
 
     [NonSerialized] public int currentArena;
 
@@ -29,12 +30,13 @@ public class PlayerContainer : MonoBehaviour
     }
 
     public void Save(Attributes playerAttributes, PlayerStats playerStats, int currentArena,
-        Dictionary<int, bool> levelUnlocked, List<AbilityType> abilityTypes)
+        Dictionary<int, bool> levelUnlocked, List<AbilityType> abilityTypes, AbilityType ultimateType)
     {
         this.playerAttributes = playerAttributes;
         this.playerStats = playerStats;
         this.currentArena = currentArena;
         this.levelUnlocked = levelUnlocked;
         this.abilityTypes = abilityTypes;
+        this.ultimateType = ultimateType;
     }
 }

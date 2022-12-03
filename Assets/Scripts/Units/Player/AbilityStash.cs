@@ -4,28 +4,37 @@ using UnityEngine;
 public class AbilityStash : MonoBehaviour
 {
     private List<AbilityHolder> abilityList = new();
-    private AbilityHolder selectedAbility;
+    private AbilityHolder selectedAbilityHolder;
     public List<AbilityType> defaultAbilityTypes = new();
+    public AbilityHolder ultimateAbilityHolder;
 
 
     public void OnEnable()
     {
         PlayerControls.OnSwitchAbility += SwitchAbility;
+        PlayerControls.OnUltimateUse += UseUltimate;
         LevelUpUISetter.OnRewardSelected += SetAbility;
     }
 
     public void OnDisable()
     {
         PlayerControls.OnSwitchAbility -= SwitchAbility;
+        PlayerControls.OnUltimateUse -= UseUltimate;
         LevelUpUISetter.OnRewardSelected -= SetAbility;
+        foreach (var abilityHolder in abilityList)
+        {
+            PlayerControls.OnAttack -= abilityHolder.ActivateAbility;
+        }
     }
 
     public void OnDestroy()
     {
+        // save abilities
         var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
         if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
         {
             playerContainer.abilityTypes = abilityList.ConvertAll(ability => ability.abilityType);
+            playerContainer.ultimateType = ultimateAbilityHolder.abilityType;
         }
     }
 
@@ -34,10 +43,18 @@ public class AbilityStash : MonoBehaviour
         // check type of scriptableReward
         if (scriptableAbility is ScriptableAbility ability)
         {
-            var randomIndex = Random.Range(0, abilityList.Count);
-            var abilityHolder = abilityList[randomIndex];
-            abilityHolder.SetAbilityType(ability.abilityType);
-            selectedAbility.cooldownTime = 0.5f; // TODO FIXME set cooldown time so it wont fire immediately on click
+            if (ability.group == AbilityGroup.Regular)
+            {
+                var randomIndex = Random.Range(0, abilityList.Count);
+                var abilityHolder = abilityList[randomIndex];
+                abilityHolder.SetAbilityType(ability.abilityType);
+                // TODO FIXME set cooldown time so it wont fire immediately on click
+                selectedAbilityHolder.cooldownTime = 0.5f;
+            }
+            else if (ability.group == AbilityGroup.Ultimate)
+            {
+                ultimateAbilityHolder.SetAbilityType(ability.abilityType);
+            }
         }
     }
 
@@ -46,6 +63,7 @@ public class AbilityStash : MonoBehaviour
         for (int i = 0; i < defaultAbilityTypes.Count; i++)
         {
             var abilityHolder = gameObject.AddComponent<AbilityHolder>();
+            PlayerControls.OnAttack += abilityHolder.ActivateAbility;
             abilityList.Add(abilityHolder);
         }
 
@@ -57,6 +75,7 @@ public class AbilityStash : MonoBehaviour
                 {
                     abilityList[i].SetAbilityType(defaultAbilityTypes[i]);
                 }
+                ultimateAbilityHolder.SetAbilityType(ultimateAbilityHolder.abilityType);
             }
             else
             {
@@ -66,21 +85,30 @@ public class AbilityStash : MonoBehaviour
                 {
                     abilityList[i].SetAbilityType(playerContainer.abilityTypes[i]);
                 }
+
+                ultimateAbilityHolder.SetAbilityType(playerContainer.ultimateType);
             }
         }
 
-        selectedAbility = abilityList[0];
-        selectedAbility.isHolderActive = true;
+        selectedAbilityHolder = abilityList[0];
+        selectedAbilityHolder.isHolderActive = true;
+        ultimateAbilityHolder.isHolderActive = true;
     }
+
+    private void UseUltimate()
+    {
+        ultimateAbilityHolder.ActivateAbility();
+    }
+
 
     private void SwitchAbility(int index)
     {
         abilityList[index].isHolderActive = true;
-        selectedAbility = abilityList[index];
+        selectedAbilityHolder = abilityList[index];
 
         foreach (AbilityHolder abilityHolder in abilityList)
         {
-            if (abilityHolder != selectedAbility)
+            if (abilityHolder != selectedAbilityHolder)
             {
                 abilityHolder.isHolderActive = false;
             }

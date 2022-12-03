@@ -9,7 +9,7 @@ public class PlayerUnit : Unit
     public float maxCastRange = 10f;
     public float levelUpMultiplier = 1.25f;
     public int rewardsCount = 2;
-    public ProgressionController progressionController { get; private set; }
+    private ProgressionController progressionController { get; set; }
 
     public static event Action OnPlayerDied;
 
