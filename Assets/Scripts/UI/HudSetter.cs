@@ -46,7 +46,7 @@ public class HudSetter : MonoBehaviour
 
     private void SetGold(Attribute gold)
     {
-        goldText.text = gold.actual.ToString();
+        goldText.text = gold.actual.ToString("F0");
     }
 
     private void SetHealth(Attribute health)
@@ -64,9 +64,9 @@ public class HudSetter : MonoBehaviour
     private void OnLevelUp(PlayerStats playerStats, Attributes playerAttributes, bool initial,
         RewardGenerator.Reward[] nextRewards)
     {
-        levelText.text = playerStats.level.actual.ToString();
+        levelText.text = playerStats.level.actual.ToString("F0");
         xpText.text = playerStats.xp.actual + "/" + playerStats.xp.max;
-        goldText.text = playerStats.gold.actual.ToString();
+        goldText.text = playerStats.gold.actual.ToString("F0");
         healthText.text = playerAttributes.health.actual + "/" + playerAttributes.health.initial;
 
         if (initial) return;

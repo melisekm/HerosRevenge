@@ -36,13 +36,13 @@ public class LevelUpUISetter : MonoBehaviour
     public void SetLevelUpUI(PlayerStats playerStats, Attributes playerAttributes,
         RewardGenerator.Reward[] nextRewards)
     {
-        damage.text = playerAttributes.attackPower.actual.ToString();
-        speed.text = playerAttributes.speed.actual.ToString();
-        defense.text = (playerAttributes.defenseRating.actual * 100).ToString() + "%";
-        cooldown.text = (playerAttributes.cooldownRecovery.actual * 100).ToString() + "%";
-        pickup.text = playerAttributes.pickupRange.actual.ToString();
-        health.text = playerAttributes.health.actual.ToString();
-        levelNumber.text = playerStats.level.actual.ToString();
+        damage.text = playerAttributes.attackPower.actual.ToString("F0");
+        speed.text = playerAttributes.speed.actual.ToString("0.#");
+        defense.text = (playerAttributes.defenseRating.actual * 100).ToString("F0") + "%";
+        cooldown.text = (playerAttributes.cooldownRecovery.actual * 100).ToString("F0") + "%";
+        pickup.text = playerAttributes.pickupRange.actual.ToString("0.#");
+        health.text = playerAttributes.health.actual.ToString("F0");
+        levelNumber.text = playerStats.level.actual.ToString("F0");
         levelUpPanel.SetActive(true);
 
 

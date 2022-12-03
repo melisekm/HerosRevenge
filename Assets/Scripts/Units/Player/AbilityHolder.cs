@@ -6,11 +6,12 @@ using Utils;
 public class AbilityHolder : MonoBehaviour
 {
     public AbilityType abilityType = AbilityType.Empty;
-    private ScriptableAbility scriptableAbility;
+    public ScriptableAbility scriptableAbility;
     private PlayerUnit playerUnit;
     [NonSerialized] public bool isHolderActive;
     [NonSerialized] public float cooldownTime;
     private AbilityState abilityState = AbilityState.Ready;
+    public static event Action OnUltimateUsed;
 
     private Camera mainCamera;
     // here it would be best to have some kind of container holding info about currently active ability
@@ -42,6 +43,10 @@ public class AbilityHolder : MonoBehaviour
             ability.Activate(UpdateAbilityStats(), transform.position + delta, Faction.Enemy);
             abilityState = AbilityState.Cooldown;
             cooldownTime = ability.abilityStats.baseCooldown;
+            if (scriptableAbility.group == AbilityGroup.Ultimate)
+            {
+                OnUltimateUsed?.Invoke();
+            }
         }
     }
 

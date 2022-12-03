@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AbilityStash : MonoBehaviour
 {
@@ -7,19 +9,20 @@ public class AbilityStash : MonoBehaviour
     private AbilityHolder selectedAbilityHolder;
     public List<AbilityType> defaultAbilityTypes = new();
     public AbilityHolder ultimateAbilityHolder;
+    public static event Action OnUltimateChanged;
 
 
     public void OnEnable()
     {
         PlayerControls.OnSwitchAbility += SwitchAbility;
-        PlayerControls.OnUltimateUse += UseUltimate;
+        PlayerControls.OnUltimateButtonPress += TryToUseUltimate;
         LevelUpUISetter.OnRewardSelected += SetAbility;
     }
 
     public void OnDisable()
     {
         PlayerControls.OnSwitchAbility -= SwitchAbility;
-        PlayerControls.OnUltimateUse -= UseUltimate;
+        PlayerControls.OnUltimateButtonPress -= TryToUseUltimate;
         LevelUpUISetter.OnRewardSelected -= SetAbility;
         foreach (var abilityHolder in abilityList)
         {
@@ -54,6 +57,7 @@ public class AbilityStash : MonoBehaviour
             else if (ability.group == AbilityGroup.Ultimate)
             {
                 ultimateAbilityHolder.SetAbilityType(ability.abilityType);
+                OnUltimateChanged?.Invoke();
             }
         }
     }
@@ -88,6 +92,8 @@ public class AbilityStash : MonoBehaviour
 
                 ultimateAbilityHolder.SetAbilityType(playerContainer.ultimateType);
             }
+            OnUltimateChanged?.Invoke();
+
         }
 
         selectedAbilityHolder = abilityList[0];
@@ -95,7 +101,7 @@ public class AbilityStash : MonoBehaviour
         ultimateAbilityHolder.isHolderActive = true;
     }
 
-    private void UseUltimate()
+    private void TryToUseUltimate()
     {
         ultimateAbilityHolder.ActivateAbility();
     }
