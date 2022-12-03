@@ -9,6 +9,7 @@ TagManager:
   - PlayerSpawn
   - SolidObjects
   - PlayerContainer
+  - Energy
   layers:
   - Default
   - TransparentFX

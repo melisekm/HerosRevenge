@@ -35,4 +35,5 @@ public enum AbilityType
     PiercingShot,
     PoisonRain,
     BoomingVoice,
+    EnergyVacuum,
 }

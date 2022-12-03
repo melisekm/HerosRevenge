@@ -23,5 +23,5 @@ public abstract class Collectible : MonoBehaviour
         }
     }
 
-    protected abstract void PickUp();
+    public abstract void PickUp();
 }

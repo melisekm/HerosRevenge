@@ -27,7 +27,7 @@ public class Treasure : Collectible
     }
 
 
-    protected override void PickUp()
+    public override void PickUp()
     {
         OnTreasueCollected?.Invoke(amount);
         pickedUp = true;

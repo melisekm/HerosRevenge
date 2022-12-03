@@ -12,9 +12,8 @@ public class Energy : Collectible
     public static event Action<int> OnEnergyCollected;
 
 
-    protected override void PickUp()
+    public override void PickUp()
     {
-        OnEnergyCollected?.Invoke(amount);
         pickedUp = true;
     }
 
@@ -29,6 +28,7 @@ public class Energy : Collectible
             // if reached player destroy self
             if (Vector3.Distance(transform.position, player.transform.position) < destroyDistance)
             {
+                OnEnergyCollected?.Invoke(amount);
                 Destroy(gameObject);
             }
         }
