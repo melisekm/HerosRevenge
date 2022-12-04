@@ -41,8 +41,8 @@ public class AbilityStash : MonoBehaviour
             PlayerControls.OnAttack += abilityHolder.ActivateAbility;
             abilityList.Add(abilityHolder);
         }
-
-        if (GameObject.FindWithTag("PlayerContainer").TryGetComponent(out PlayerContainer playerContainer))
+        var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
+        if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
         {
             if (playerContainer.abilityTypes.Count == 0) // if this is first run we set abilities to default
             {

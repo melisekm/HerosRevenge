@@ -4,17 +4,30 @@ using System.Collections.Generic;
 using Units.Player;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
-    public Dictionary<int, EnemyUnit> enemies = new();
-    public int enemiesKilled;
+    private int enemiesKilled;
     public UnitSpawner unitSpawner;
-    public GameState state;
+    private GameState state;
+    private PlayerContainer playerContainer;
 
     // time until the game starts
     [Min(0.01f)] [SerializeField] private float startDelay = 2f;
 
     public static event Action<float> OnUpdateTime;
+
+    private void Awake()
+    {
+        var playerContainerGo = GameObject.FindGameObjectWithTag("PlayerContainer");
+        if (playerContainerGo && playerContainerGo.TryGetComponent(out PlayerContainer playerContainer))
+        {
+            this.playerContainer = playerContainer;
+        }
+        else
+        {
+            Debug.LogError("PlayerContainer not found");
+        }
+    }
 
     private void OnEnable()
     {
@@ -47,14 +60,13 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnemyDied(EnemyUnit obj)
     {
-        enemies.Remove(obj.GetInstanceID());
         enemiesKilled++;
         // TODO: if curr lvl has enemy cap and enemiesKilled == cap, change state to level complete
     }
 
     private void OnEnemySpawned(EnemyUnit enemy)
     {
-        enemies[enemy.GetInstanceID()] = enemy;
+        // TODO: check if enemy count in unitspawner is equal to enemy cap if yes lose
     }
 
 

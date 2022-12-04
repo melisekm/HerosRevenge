@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public Animator animator;
-    private int levelToLoad;
-    public int gameOverSceneIndex = 1;
+    private string sceneToLoad;
+    public string gameOverSceneName = "Menu_ArenaSelection";
+    private PlayerContainer playerContainer;
 
     private void OnEnable()
     {
@@ -18,27 +20,42 @@ public class SceneChanger : MonoBehaviour
         PlayerUnit.OnPlayerDied -= LoadGameOverScene;
     }
 
+    private void Start()
+    {
+        var playerContainerGo = GameObject.FindWithTag("PlayerContainer");
+        if (playerContainerGo && playerContainerGo.TryGetComponent(out PlayerContainer playerContainer))
+        {
+            this.playerContainer = playerContainer;
+        }
+        else
+        {
+            Debug.LogError("PlayerContainer not found");
+        }
+    }
+
+
     private void LoadGameOverScene()
     {
         IEnumerator FadeAfterDelay()
         {
             yield return new WaitForSeconds(1f);
-            FadeToScene(gameOverSceneIndex);
+            FadeToScene(gameOverSceneName);
         }
 
         StartCoroutine(FadeAfterDelay());
     }
 
-    public void FadeToScene(int levelIndex)
+    public void FadeToScene(string sceneName)
     {
-        levelToLoad = levelIndex;
+        sceneToLoad = sceneName;
+        playerContainer.currentArena = sceneToLoad;
         animator.SetTrigger("FadeOut");
     }
 
     // In the animation event
     public void OnFadeComplete()
     {
-        SceneManager.LoadScene(levelToLoad);
+        SceneManager.LoadScene(sceneToLoad);
         animator.SetTrigger("FadeIn");
     }
 

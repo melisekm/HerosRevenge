@@ -22962,8 +22962,9 @@ PrefabInstance:
     - target: {fileID: 6852524191975129122, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnRate
-      value: 3
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: 411f5d5a8e6d73e42b052ad0c63bdeab,
+        type: 2}
     - target: {fileID: 6852524191975129122, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: dynamicSpawnRate

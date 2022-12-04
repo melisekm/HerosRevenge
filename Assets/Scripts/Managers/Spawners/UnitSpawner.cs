@@ -6,11 +6,13 @@ using UnityEngine;
 public class UnitSpawner : MonoBehaviour
 {
     private readonly List<Transform> spawnPoints = new();
-    public float spawnRate = 1f;
+    public float currentSpawnRate = 1f;
     public bool shouldSpawn = true;
     public EnemyType spawnType;
     public bool spawnRandomEnemyTypes = true;
     public bool dynamicSpawnRate = true;
+    private int enemyCount;
+    public SpawnRate spawnRate;
 
     public static event Action<EnemyUnit> OnEnemySpawned;
 
@@ -36,6 +38,7 @@ public class UnitSpawner : MonoBehaviour
 
     private void OnEnemyDied(EnemyUnit obj)
     {
+        enemyCount--;
         DecideSpawnRate();
     }
 
@@ -50,6 +53,7 @@ public class UnitSpawner : MonoBehaviour
         EnemyUnit enemy = Instantiate(enemyScriptable.prefab, spawnPoint.position, Quaternion.identity) as EnemyUnit;
         if (enemy)
         {
+            enemyCount++;
             // do any level based stuff here
             enemy.energyDropAmount = enemyScriptable.energyDropAmount; // * level
             enemy.SetAttributes(new Attributes(enemyScriptable.attributes));
@@ -69,13 +73,13 @@ public class UnitSpawner : MonoBehaviour
                     foreach (var spawnPoint in spawnPoints)
                     {
                         if (!shouldSpawn) break;
-                        yield return new WaitForSeconds(spawnRate);
+                        yield return new WaitForSeconds(currentSpawnRate);
                         SpawnEnemy(spawnPoint);
                     }
                 }
                 else
                 {
-                    yield return new WaitForSeconds(spawnRate);
+                    yield return new WaitForSeconds(currentSpawnRate);
                 }
             }
         }
@@ -86,38 +90,13 @@ public class UnitSpawner : MonoBehaviour
     private void DecideSpawnRate()
     {
         if (!dynamicSpawnRate) return;
-
-        var currentTime = Time.timeSinceLevelLoad;
-        var enemyCount = GameManager.Instance.enemies.Count;
-        float newSpawnRate;
-        if (currentTime < 30)
+        if (!spawnRate)
         {
-            newSpawnRate = 2f;
+            Debug.LogError("Trying to decide spawnrate but spawnrate object not found.");
+            return;
         }
 
-        else if (currentTime < 90)
-        {
-            newSpawnRate = 1f;
-        }
-
-        else if (enemyCount < 15)
-        {
-            newSpawnRate = 0.25f;
-        }
-        else if (enemyCount < 25)
-        {
-            newSpawnRate = 0.5f;
-        }
-        else if (enemyCount < 35)
-        {
-            newSpawnRate = 1f;
-        }
-        else
-        {
-            // TODO: LOSE
-            newSpawnRate = 3f;
-        }
-
-        spawnRate = newSpawnRate;
+        currentSpawnRate = spawnRate.GetSpawnRate(enemyCount, Time.timeSinceLevelLoad);
+        Debug.Log($"Spawn rate is now {currentSpawnRate}");
     }
 }

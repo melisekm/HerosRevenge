@@ -9,28 +9,27 @@ public class PlayerContainer : MonoBehaviour
     [NonSerialized] public List<AbilityType> abilityTypes = new();
     [NonSerialized] public AbilityType ultimateType;
 
-    [NonSerialized] public int currentArena;
+    [NonSerialized] public string currentArena;
 
     // id of level and if it is unlocked
-    public Dictionary<int, bool> levelUnlocked;
+    public Dictionary<string, bool> levelUnlocked;
 
     private void Awake()
     {
         // create new instance of levelUnlocked with 2 levels unlocked in constructor
         // or load from file in future
-        levelUnlocked = new Dictionary<int, bool>
+        levelUnlocked = new Dictionary<string, bool>
         {
-            { 1, true },
-            { 2, false }
+            { "Arena_Entrance", true },
+            { "Arena_Name", false }
         };
-        currentArena = 1;
         ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
         playerAttributes = new Attributes(playerScriptable.attributes);
         playerStats = new PlayerStats(playerScriptable.playerStats);
     }
 
-    public void Save(Attributes playerAttributes, PlayerStats playerStats, int currentArena,
-        Dictionary<int, bool> levelUnlocked, List<AbilityType> abilityTypes, AbilityType ultimateType)
+    public void Save(Attributes playerAttributes, PlayerStats playerStats, string currentArena,
+        Dictionary<string, bool> levelUnlocked, List<AbilityType> abilityTypes, AbilityType ultimateType)
     {
         this.playerAttributes = playerAttributes;
         this.playerStats = playerStats;
