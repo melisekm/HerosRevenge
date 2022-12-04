@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1bc449f0c8d63d4b859d55540e62305, type: 3}
-  m_Name: New Scriptable Ability Power Up
+  m_Name: AbilityPowerup
   m_EditorClassIdentifier: 
   powerUpType: 1
-  prefab: {fileID: 0}
-  ability: {fileID: 0}
+  prefab: {fileID: 7020559418433006018, guid: dd391665347c8734d9358a68357b0510, type: 3}

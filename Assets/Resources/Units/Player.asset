@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes:
     health:
-      initial: 100
-      _actual: 100
+      initial: 50
+      _actual: 50
       min: 0
       max: 10000
       increasePerLevel: 50

@@ -33,19 +33,8 @@ public class PowerupTreasureSpawner : GroundEntitySpawner
         if (entity is ScriptablePowerUp scriptablePowerUp)
         {
             var obj = Instantiate(scriptablePowerUp.prefab, position, Quaternion.identity);
-            switch (scriptablePowerUp.powerUpType)
-            {
-                case PowerUpType.Treasure:
-                    var treasure = obj.GetComponent<Treasure>();
-                    treasure.Initialize((ScriptableStatPowerUp)scriptablePowerUp);
-                    break;
-                case PowerUpType.Ability:
-                    break;
-                case PowerUpType.Stat:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            var powerUp = obj.GetComponent<InitializableCollectible>();
+            powerUp.Initialize(scriptablePowerUp);
         }
     }
 

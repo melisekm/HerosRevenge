@@ -5,13 +5,16 @@ public abstract class Collectible : MonoBehaviour
     protected GameObject player;
     private PlayerUnit playerUnit;
     protected bool pickedUp;
+    protected SpriteRenderer spriteRenderer;
 
+    
     public abstract void PickUp();
 
     protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player");
         playerUnit = player.GetComponent<PlayerUnit>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     protected virtual void Update()
@@ -21,6 +24,7 @@ public abstract class Collectible : MonoBehaviour
 
         if (Vector3.Distance(transform.position, player.transform.position) < playerUnit.attributes.pickupRange.actual)
         {
+            pickedUp = true;
             PickUp();
         }
     }

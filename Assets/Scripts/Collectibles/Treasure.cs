@@ -4,13 +4,12 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Animator))]
-public class Treasure : Collectible
+public class Treasure : Collectible, InitializableCollectible
 {
     public float amount = 25;
     public TMP_Text numberPopup;
 
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
     private static readonly int Collected = Animator.StringToHash("Collected");
 
@@ -19,7 +18,6 @@ public class Treasure : Collectible
     protected override void Start()
     {
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         // random sprite
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         base.Start();
@@ -29,12 +27,12 @@ public class Treasure : Collectible
     public override void PickUp()
     {
         OnTreasueCollected?.Invoke(amount);
-        pickedUp = true;
         animator.SetTrigger(Collected);
     }
 
-    public void Initialize(ScriptableStatPowerUp scriptableStatPowerUp)
+    public void Initialize(ScriptablePowerUp powerup)
     {
+        var scriptableStatPowerUp = (ScriptableStatPowerUp)powerup;
         // random amount
         if (scriptableStatPowerUp.randomAmount)
         {

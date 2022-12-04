@@ -48,7 +48,6 @@ namespace Units.Player
             playerStats.gold.actual += amount;
         }
 
-
         private void LevelUp()
         {
             playerStats.xp.actual = playerStats.xp.min;
@@ -56,7 +55,7 @@ namespace Units.Player
             playerStats.level.actual++;
             playerStats.gold.actual += playerStats.gold.increasePerLevel;
 
-            attributesToLevelUp.ForEach(LevelUpAttribute);
+            attributesToLevelUp.ForEach(attribute => attribute.LevelUp());
 
             var abilities = ResourceSystem.Instance
                 .abilities
@@ -66,21 +65,6 @@ namespace Units.Player
 
             OnLevelUp?.Invoke(playerStats, playerAttributes, false,
                 rewardGenerator.GenerateRewards(abilities, statUpgrades));
-        }
-
-        private void LevelUpAttribute(Attribute attr)
-        {
-            float newValue = attr.initial + attr.increasePerLevel;
-            if (newValue < attr.max)
-            {
-                attr.initial = newValue;
-                attr.actual = attr.initial;
-            }
-            else
-            {
-                attr.initial = attr.max;
-                attr.actual = attr.max;
-            }
         }
     }
 }

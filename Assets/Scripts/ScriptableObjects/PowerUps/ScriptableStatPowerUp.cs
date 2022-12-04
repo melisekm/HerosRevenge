@@ -11,4 +11,5 @@ public class ScriptableStatPowerUp : ScriptablePowerUp
 
     [Header("If Random Amount is true")] public int minRandomAmount;
     public int maxRandomAmount;
+
 }

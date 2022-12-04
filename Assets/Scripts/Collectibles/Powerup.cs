@@ -1,12 +1,28 @@
 using UnityEngine;
 
-public class Powerup : MonoBehaviour
+public abstract class Powerup : Collectible, InitializableCollectible
 {
-    private void Start()
+    public float disapearTime = 15f;
+    public float duration = 5f;
+
+    protected override void Update()
     {
+        if (disapearTime > 0)
+        {
+            disapearTime -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        base.Update();
     }
 
-    private void Update()
-    {
-    }
+    public abstract void Initialize(ScriptablePowerUp powerup);
+}
+
+public interface InitializableCollectible
+{
+    public void Initialize(ScriptablePowerUp powerup);
 }

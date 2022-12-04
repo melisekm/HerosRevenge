@@ -20,6 +20,7 @@ public class HudSetter : MonoBehaviour
         GameManager.OnUpdateTime += SetTime;
         PlayerControls.OnSwitchAbility += SetAbility;
         ProgressionController.OnLevelUp += OnLevelUp;
+        PlayerUnit.OnPlayerDied += OnPlayerDied;
     }
 
     private void OnDisable()
@@ -30,6 +31,7 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.xp.OnValueChanged -= SetExperience;
         playerUnit.stats.gold.OnValueChanged -= SetGold;
         ProgressionController.OnLevelUp -= OnLevelUp;
+        PlayerUnit.OnPlayerDied -= OnPlayerDied;
     }
 
     private void Start()
@@ -37,6 +39,13 @@ public class HudSetter : MonoBehaviour
         playerUnit.attributes.health.OnValueChanged += SetHealth;
         playerUnit.stats.xp.OnValueChanged += SetExperience;
         playerUnit.stats.gold.OnValueChanged += SetGold;
+    }
+    private void OnPlayerDied()
+    {
+        if (deathText)
+        {
+            deathText.gameObject.SetActive(true);
+        }
     }
 
     private void SetExperience(Attribute xp)
@@ -51,14 +60,7 @@ public class HudSetter : MonoBehaviour
 
     private void SetHealth(Attribute health)
     {
-        healthText.text = health.actual + "/" + health.initial;
-        if (health.actual <= 0)
-        {
-            if (deathText)
-            {
-                deathText.gameObject.SetActive(true);
-            }
-        }
+        healthText.text = health.actual.ToString("F0") + "/" + health.initial;
     }
 
     private void OnLevelUp(PlayerStats playerStats, Attributes playerAttributes, bool initial,
