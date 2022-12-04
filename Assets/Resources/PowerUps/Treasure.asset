@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpType: 0
   prefab: {fileID: 6250441153247868362, guid: cad2c53ec545bb948ae21e666924bae3, type: 3}
-  statUpgrade: {fileID: 11400000, guid: 4cdf703387d4ec4499566b2069e74577, type: 2}
   randomAmount: 1
   minRandomAmount: 10
   maxRandomAmount: 50

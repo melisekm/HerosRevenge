@@ -7,7 +7,6 @@ public class UltimateUI : MonoBehaviour
 {
     private AbilityHolder ultimateHolder;
     private float currentMaxCooldown;
-    private float baseCooldown;
     public TMP_Text cdText;
     public Image darkMask;
     public Image abilityIcon;
@@ -42,7 +41,6 @@ public class UltimateUI : MonoBehaviour
         {
             abilityIcon.enabled = true;
             abilityIcon.sprite = scriptableAbility.icon;
-            baseCooldown = scriptableAbility.stats.baseCooldown;
             cdText.gameObject.SetActive(true);
         }
         else
@@ -55,7 +53,7 @@ public class UltimateUI : MonoBehaviour
     private void ShowCooldown()
     {
         darkMask.fillAmount = 1;
-        currentMaxCooldown = baseCooldown;
+        currentMaxCooldown = ultimateHolder.cooldownTime;
         cdText.text = currentMaxCooldown.ToString("F0");
     }
 

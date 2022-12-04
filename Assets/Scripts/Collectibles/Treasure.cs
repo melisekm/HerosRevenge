@@ -17,10 +17,10 @@ public class Treasure : Collectible, InitializableCollectible
 
     protected override void Start()
     {
+        base.Start();
         animator = GetComponent<Animator>();
         // random sprite
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-        base.Start();
     }
 
 

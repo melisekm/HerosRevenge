@@ -119,7 +119,5 @@ public class UnitSpawner : MonoBehaviour
         }
 
         spawnRate = newSpawnRate;
-
-        Debug.Log("ENEMY COUNT: " + enemyCount + " SPAWN RATE: " + newSpawnRate);
     }
 }

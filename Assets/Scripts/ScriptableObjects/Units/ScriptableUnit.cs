@@ -54,7 +54,6 @@ public class Attribute
     public void ToggleUpgrade(float value, int modifier = 1)
     {        
         // if he was on max attrbute, lost boost do not lower it
-
         if (modifier == -1 && Math.Abs(initial - max) < 0.001) return;
         initial = Mathf.Clamp(initial + value * modifier, min + 0.01f, max);
         actual = Mathf.Clamp(actual + value * modifier, min + 0.01f, max);
