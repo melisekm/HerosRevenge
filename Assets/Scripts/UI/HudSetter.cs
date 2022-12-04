@@ -12,6 +12,8 @@ public class HudSetter : MonoBehaviour
     public TMP_Text timeText;
     public TMP_Text selectedAbilityNumber;
     public LevelUpUISetter levelUpUISetter;
+    public GameObject powerUpPanel;
+    public GameObject powerUpBar;
 
     public PlayerUnit playerUnit;
 
@@ -21,6 +23,8 @@ public class HudSetter : MonoBehaviour
         PlayerControls.OnSwitchAbility += SetAbility;
         ProgressionController.OnLevelUp += OnLevelUp;
         PlayerUnit.OnPlayerDied += OnPlayerDied;
+        StatPowerup.OnStatUpgradeActivated += OnStatUpgradeActivated;
+        StatPowerup.OnStatUpgradeDeactivated += OnStatUpgradeDeactivated;
     }
 
     private void OnDisable()
@@ -32,6 +36,8 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.gold.OnValueChanged -= SetGold;
         ProgressionController.OnLevelUp -= OnLevelUp;
         PlayerUnit.OnPlayerDied -= OnPlayerDied;
+        StatPowerup.OnStatUpgradeActivated -= OnStatUpgradeActivated;
+        StatPowerup.OnStatUpgradeDeactivated -= OnStatUpgradeDeactivated;
     }
 
     private void Start()
@@ -40,6 +46,22 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.xp.OnValueChanged += SetExperience;
         playerUnit.stats.gold.OnValueChanged += SetGold;
     }
+    
+    private void OnStatUpgradeActivated(ScriptableStatUpgrade obj)
+    {
+        var powerupbarGo = Instantiate(powerUpBar, powerUpPanel.transform);
+        // get text child in powerupbar
+        var powerupbarText = powerupbarGo.GetComponentInChildren<TMP_Text>();
+        var amount = obj.statType != StatType.Speed && obj.amount < 1 ? (obj.amount * 100).ToString("F2") + "%" : obj.amount.ToString();
+        powerupbarText.text = $"{obj.rewardName}\n+{amount}";
+    }
+    private void OnStatUpgradeDeactivated(ScriptableStatUpgrade obj)
+    {
+        var powerupbarGo = powerUpPanel.transform.GetChild(0).gameObject;
+        Destroy(powerupbarGo);
+
+    }
+    
     private void OnPlayerDied()
     {
         if (deathText)

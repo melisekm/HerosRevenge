@@ -5987,6 +5987,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1171470526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1171470526, guid: 2579d57c560c48644baaba1b6eaf4483,
+    type: 3}
+  m_PrefabInstance: {fileID: 2262993745335655045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1200383931 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2262993744135847230, guid: 2579d57c560c48644baaba1b6eaf4483,
@@ -22477,6 +22483,11 @@ PrefabInstance:
       propertyPath: gameOverSceneIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6765358065280985616, guid: 597acd844d3afe546b07d0d88b3bf1fc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597acd844d3afe546b07d0d88b3bf1fc, type: 3}
 --- !u!4 &1660522142 stripped
@@ -22676,6 +22687,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1171470527, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
+      propertyPath: m_ChildAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171470530, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171470530, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171470530, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 710.8925
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171470530, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -190
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171470530, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2262993744289606355, guid: 2579d57c560c48644baaba1b6eaf4483,
         type: 3}
       propertyPath: m_Pivot.x
@@ -22947,17 +22982,17 @@ PrefabInstance:
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: statTypes.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: statTypes.Array.data[0]
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: statTypes.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -22967,7 +23002,22 @@ PrefabInstance:
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: statTypes.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: statTypes.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: statTypes.Array.data[5]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: statTypes.Array.data[6]
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -23004,6 +23054,17 @@ PrefabInstance:
       propertyPath: playerUnit
       value: 
       objectReference: {fileID: 2071378733}
+    - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: powerUpBar
+      value: 
+      objectReference: {fileID: 3756622409320497473, guid: 6570b2ac44335d6499e3e9b340eabbd6,
+        type: 3}
+    - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: powerUpPanel
+      value: 
+      objectReference: {fileID: 1171470526}
     - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: levelUpUISetter
