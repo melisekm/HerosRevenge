@@ -105,6 +105,8 @@ public class AbilityStash : MonoBehaviour
                 OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
             }
         }
+        // we have disabled selected ability holder so it doesnt fire immediately
+        // see OnEnable and ProgressionController.OnLevelUp += DisableSelectedHolder;
         selectedAbilityHolder.isHolderActive = true;
     }
 

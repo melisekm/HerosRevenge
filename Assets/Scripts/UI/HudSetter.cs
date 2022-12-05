@@ -46,22 +46,30 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.xp.OnValueChanged += SetExperience;
         playerUnit.stats.gold.OnValueChanged += SetGold;
     }
-    
+
     private void OnStatUpgradeActivated(ScriptableStatUpgrade obj)
     {
         var powerupbarGo = Instantiate(powerUpBar, powerUpPanel.transform);
         // get text child in powerupbar
         var powerupbarText = powerupbarGo.GetComponentInChildren<TMP_Text>();
-        var amount = obj.statType != StatType.Speed && obj.amount < 1 ? (obj.amount * 100).ToString("F2") + "%" : obj.amount.ToString();
+        var amount = obj.statType != StatType.Speed && obj.amount < 1
+            ? (obj.amount * 100).ToString("F2") + "%"
+            : obj.amount.ToString();
         powerupbarText.text = $"{obj.rewardName}\n+{amount}";
     }
-    private void OnStatUpgradeDeactivated(ScriptableStatUpgrade obj)
-    {
-        var powerupbarGo = powerUpPanel.transform.GetChild(0).gameObject;
-        Destroy(powerupbarGo);
 
+    private void OnStatUpgradeDeactivated(ScriptableStatUpgrade _)
+    {
+        if (powerUpPanel && powerUpPanel.transform.childCount > 0)
+        {
+            var powerupbarGo = powerUpPanel.transform.GetChild(0)?.gameObject;
+            if (powerupbarGo)
+            {
+                Destroy(powerupbarGo);
+            }
+        }
     }
-    
+
     private void OnPlayerDied()
     {
         if (deathText)

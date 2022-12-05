@@ -137,9 +137,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   abilities: []
-  damageEffects: []
-  collectibleEffects: []
+  effects: []
   statUpgrades: []
+  powerUps: []
   player: {fileID: 0}
 --- !u!1 &8429650068717300164
 GameObject:
@@ -185,60 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba67d2372e4f4f1c9aad1b6092dd7b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttributes:
-    health:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    attackPower:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    defenseRating:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    speed:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    cooldownRecovery:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    pickupRange:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-  playerStats:
-    xp:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    level:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-    gold:
-      initial: 0
-      actual: 0
-      min: 0
-      max: 0
-      increasePerLevel: 0
-  currentLevel: 0
+  arenas:
+  - {fileID: 11400000, guid: d02ae355aeceee2448de52e2ac5e200a, type: 2}
+  - {fileID: 11400000, guid: aef50094077549249b602c11c6a4b90a, type: 2}
+  - {fileID: 11400000, guid: 569b07cd4a3cf594cbf1ac7092e01480, type: 2}

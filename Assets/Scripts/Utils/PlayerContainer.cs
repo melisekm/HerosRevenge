@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerContainer : MonoBehaviour
@@ -9,33 +10,51 @@ public class PlayerContainer : MonoBehaviour
     [NonSerialized] public List<AbilityType> abilityTypes = new();
     [NonSerialized] public AbilityType ultimateType;
 
-    [NonSerialized] public string currentArena;
+    [NonSerialized] public Arena currentArena;
 
-    // id of level and if it is unlocked
-    public Dictionary<string, bool> levelUnlocked;
+    // dict of arena and completion status
+    public List<Arena> arenas;
+    private HashSet<Arena> completedArenas = new();
+    
+
+    public Arena GetArenaByName(string arenaName)
+    {
+        return arenas.FirstOrDefault(arena => arena.sceneName == arenaName);
+    }
+
+    public void CompleteCurrentArena()
+    {
+        foreach (var arena in arenas)
+        {
+            if (arena == currentArena) continue;
+            
+            var mustCompleteArenas = arena.mustCompleteArenas;
+            if (mustCompleteArenas.FirstOrDefault(x => x.sceneName == currentArena.sceneName))
+            {
+                completedArenas.Add(arena);
+            }
+        }
+
+        // to prevent repetition of the same arena
+        // completedArenas.Remove(currentArena);
+    }
+
+    public bool IsArenaUnlocked(Arena arena)
+    {
+        // if arena is not in dict, return false
+        return completedArenas.Contains(arena);
+    }
 
     private void Awake()
     {
-        // create new instance of levelUnlocked with 2 levels unlocked in constructor
-        // or load from file in future
-        levelUnlocked = new Dictionary<string, bool>
-        {
-            { "Arena_Entrance", true },
-            { "Arena_Name", false }
-        };
         ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
         playerAttributes = new Attributes(playerScriptable.attributes);
         playerStats = new PlayerStats(playerScriptable.playerStats);
-    }
 
-    public void Save(Attributes playerAttributes, PlayerStats playerStats, string currentArena,
-        Dictionary<string, bool> levelUnlocked, List<AbilityType> abilityTypes, AbilityType ultimateType)
-    {
-        this.playerAttributes = playerAttributes;
-        this.playerStats = playerStats;
-        this.currentArena = currentArena;
-        this.levelUnlocked = levelUnlocked;
-        this.abilityTypes = abilityTypes;
-        this.ultimateType = ultimateType;
+        currentArena = arenas.First();
+        if (currentArena.mustCompleteArenas.Count == 0)
+        {
+            completedArenas.Add(currentArena);
+        }
     }
 }

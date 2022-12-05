@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public UnitSpawner unitSpawner;
     private GameState state;
     private PlayerContainer playerContainer;
+    private PlayerUnit playerUnit;
 
     // time until the game starts
     [Min(0.01f)] [SerializeField] private float startDelay = 2f;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         UnitSpawner.OnEnemySpawned += OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied += OnEnemyDied;
         PlayerUnit.OnPlayerDied += OnPlayerDead;
+        WinConditionChecker.OnWinConditionMet += OnWinConditionMet;
     }
 
     private void OnDisable()
@@ -45,8 +47,9 @@ public class GameManager : MonoBehaviour
         UnitSpawner.OnEnemySpawned -= OnEnemySpawned;
         EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
         PlayerUnit.OnPlayerDied -= OnPlayerDead;
+        WinConditionChecker.OnWinConditionMet -= OnWinConditionMet;
     }
-
+    
     private void Start()
     {
         ChangeState(GameState.Starting);
@@ -55,6 +58,10 @@ public class GameManager : MonoBehaviour
     private void OnPlayerDead()
     {
         ChangeState(GameState.ArenaFailed);
+    }
+    private void OnWinConditionMet()
+    {
+        ChangeState(GameState.ArenaFinished);
     }
 
 
@@ -111,6 +118,8 @@ public class GameManager : MonoBehaviour
 
     private void HandleArenaFinished()
     {
+        // move player to another layer so he can't be hit
+        playerContainer.CompleteCurrentArena();
     }
 
     private void HandleArenaFailed()

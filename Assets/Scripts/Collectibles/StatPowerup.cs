@@ -16,6 +16,14 @@ public class StatPowerup : Powerup
         statUpgrade = scriptableStatPowerup.statUpgrade;
     }
 
+    public void OnDestroy()
+    {
+        if (pickedUp)
+        {
+            OnStatUpgradeDeactivated?.Invoke(statUpgrade);
+        }
+    }
+
     public override void PickUp()
     {
         OnStatUpgradeActivated?.Invoke(statUpgrade);
@@ -32,14 +40,12 @@ public class StatPowerup : Powerup
             }
             else
             {
-                OnStatUpgradeDeactivated?.Invoke(statUpgrade);
                 Destroy(gameObject);
             }
         }
         else
         {
             base.Update();
-            
         }
     }
 }
