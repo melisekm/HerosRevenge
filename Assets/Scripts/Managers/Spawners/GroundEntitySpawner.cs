@@ -2,12 +2,13 @@ using UnityEngine;
 
 public abstract class GroundEntitySpawner : MonoBehaviour
 {
-    public Vector2 spawnArea;
+    public Vector2 spawnAreaXminXmax;
+    public Vector2 spawnAreaYminYmax;
 
     private Vector3 GetRandomPosition()
     {
-        return new Vector3(
-            Random.Range(-spawnArea.x, spawnArea.x), Random.Range(-spawnArea.y, spawnArea.y), 0);
+        return new Vector3(Random.Range(spawnAreaXminXmax.x, spawnAreaXminXmax.y),
+            Random.Range(spawnAreaYminYmax.x, spawnAreaYminYmax.y), 0);
     }
 
     public float spawnTimer = 5f;
