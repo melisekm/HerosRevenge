@@ -6,6 +6,7 @@ public class HudSetter : MonoBehaviour
 {
     public TMP_Text healthText;
     public TMP_Text deathText;
+    public TMP_Text winText;
     public TMP_Text xpText;
     public TMP_Text goldText;
     public TMP_Text levelText;
@@ -22,9 +23,10 @@ public class HudSetter : MonoBehaviour
         GameManager.OnUpdateTime += SetTime;
         PlayerControls.OnSwitchAbility += SetAbility;
         ProgressionController.OnLevelUp += OnLevelUp;
-        PlayerUnit.OnPlayerDied += OnPlayerDied;
+        PlayerUnit.OnPlayerDied += ShowYouDiedText;
         StatPowerup.OnStatUpgradeActivated += OnStatUpgradeActivated;
         StatPowerup.OnStatUpgradeDeactivated += OnStatUpgradeDeactivated;
+        WinConditionChecker.OnWinConditionMet += ShowWinText;
     }
 
     private void OnDisable()
@@ -35,9 +37,10 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.xp.OnValueChanged -= SetExperience;
         playerUnit.stats.gold.OnValueChanged -= SetGold;
         ProgressionController.OnLevelUp -= OnLevelUp;
-        PlayerUnit.OnPlayerDied -= OnPlayerDied;
+        PlayerUnit.OnPlayerDied -= ShowYouDiedText;
         StatPowerup.OnStatUpgradeActivated -= OnStatUpgradeActivated;
         StatPowerup.OnStatUpgradeDeactivated -= OnStatUpgradeDeactivated;
+        WinConditionChecker.OnWinConditionMet -= ShowWinText;
     }
 
     private void Start()
@@ -70,11 +73,19 @@ public class HudSetter : MonoBehaviour
         }
     }
 
-    private void OnPlayerDied()
+    private void ShowYouDiedText()
     {
         if (deathText)
         {
             deathText.gameObject.SetActive(true);
+        }
+    }
+    
+    private void ShowWinText()
+    {
+        if (winText)
+        {
+            winText.gameObject.SetActive(true);
         }
     }
 

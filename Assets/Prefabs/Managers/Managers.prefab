@@ -61,9 +61,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {x: 13, y: 5}
-  spawnTimer: 25
+  spawnTimer: 5
   abilityTypes: 
-  statTypes: 06000000
+  statTypes: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &6852524192308160976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,11 +162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17dc81182f062d6419216e0342bfa5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 3
+  currentSpawnRate: 1
   shouldSpawn: 1
   spawnType: 3
   spawnRandomEnemyTypes: 1
   dynamicSpawnRate: 1
+  spawnRate: {fileID: 11400000, guid: 411f5d5a8e6d73e42b052ad0c63bdeab, type: 2}
 --- !u!1 &6852524192017822333
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,10 +331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bcac967b5e59f4db05e34f9ebca704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesKilled: 0
   unitSpawner: {fileID: 6852524191975129122}
-  state: 0
-  startDelay: 2
+  startDelay: 3.5
 --- !u!1 &6852524192544691953
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,9 +379,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 0}
   deathText: {fileID: 0}
+  winText: {fileID: 0}
   xpText: {fileID: 0}
   goldText: {fileID: 0}
   levelText: {fileID: 0}
   timeText: {fileID: 0}
   selectedAbilityNumber: {fileID: 0}
   levelUpUISetter: {fileID: 0}
+  powerUpPanel: {fileID: 0}
+  powerUpBar: {fileID: 3756622409320497473, guid: 6570b2ac44335d6499e3e9b340eabbd6,
+    type: 3}
+  playerUnit: {fileID: 0}
