@@ -118,7 +118,6 @@ public class GameManager : MonoBehaviour
 
     private void HandleArenaFinished()
     {
-        // move player to another layer so he can't be hit
         playerContainer.CompleteCurrentArena();
     }
 
