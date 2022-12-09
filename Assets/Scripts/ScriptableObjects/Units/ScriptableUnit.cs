@@ -49,6 +49,7 @@ public class Attribute
     [SerializeField] public float min;
     [SerializeField] public float max;
     [SerializeField] public float increasePerLevel;
+    [SerializeField] public int upgradeCost;
     public event Action<Attribute> OnValueChanged;
 
     public void ToggleUpgrade(float value, int modifier = 1)
@@ -64,6 +65,13 @@ public class Attribute
         initial = Mathf.Min(initial + increasePerLevel, max);
         actual = initial;
     }
+    
+    public void BuyUpgrade(float multiplier)
+    {
+        initial = Mathf.Min(initial + increasePerLevel, max);
+        actual = initial;
+        upgradeCost = Mathf.RoundToInt(upgradeCost * multiplier);
+    }
 
     public Attribute(Attribute other)
     {
@@ -72,14 +80,16 @@ public class Attribute
         min = other.min;
         max = other.max;
         increasePerLevel = other.increasePerLevel;
+        upgradeCost = other.upgradeCost;
     }
 
-    public Attribute(float initial, float actual, float min, float max, float increasePerLevel)
+    public Attribute(float initial, float actual, float min, float max, float increasePerLevel, int upgradeCost)
     {
         this.initial = initial;
         this.actual = actual;
         this.min = min;
         this.max = max;
         this.increasePerLevel = increasePerLevel;
+        this.upgradeCost = upgradeCost;
     }
 }

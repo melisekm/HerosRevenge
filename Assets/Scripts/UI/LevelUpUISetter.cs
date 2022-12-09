@@ -25,7 +25,8 @@ public class LevelUpUISetter : MonoBehaviour
         public Button button;
     }
 
-    [Header("Attributes")] public TMP_Text damage;
+    [Header("Attributes")]
+    public TMP_Text damage;
     public TMP_Text speed;
     public TMP_Text defense;
     public TMP_Text cooldown;
