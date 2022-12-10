@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu_Shop.unity
     guid: 91b21a2ab9adfb244983d23bf63aaa02
+  - enabled: 1
+    path: Assets/Scenes/Arena_TheNecropolis.unity
+    guid: 761b90c9d8a60114f870f2b3e1351f9a
   m_configObjects: {}

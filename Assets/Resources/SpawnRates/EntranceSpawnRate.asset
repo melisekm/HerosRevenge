@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 997f3a58ee43fa54795147da9fac08b8, type: 3}
-  m_Name: EntranceSpawnRate 1
+  m_Name: EntranceSpawnRate
   m_EditorClassIdentifier: 
   spawnTimeInfos:
   - lessThanSeconds: 30
     speed: 2
-  - lessThanSeconds: 90
+  - lessThanSeconds: 60
     speed: 1
   spawnEnemyCountInfos:
   - lessThanCount: 15

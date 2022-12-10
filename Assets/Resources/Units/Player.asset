@@ -18,7 +18,7 @@ MonoBehaviour:
       _actual: 50
       min: 0
       max: 10000
-      increasePerLevel: 50
+      increasePerLevel: 25
       upgradeCost: 200
     attackPower:
       initial: 5
@@ -26,14 +26,14 @@ MonoBehaviour:
       min: 0
       max: 10000
       increasePerLevel: 5
-      upgradeCost: 150
+      upgradeCost: 100
     defenseRating:
       initial: 0.1
       _actual: 0.1
       min: 0
-      max: 0.9
+      max: 0.7
       increasePerLevel: 0.01
-      upgradeCost: 100
+      upgradeCost: 75
     speed:
       initial: 5
       _actual: 5
@@ -45,9 +45,9 @@ MonoBehaviour:
       initial: 0
       _actual: 0
       min: 0
-      max: 1
-      increasePerLevel: 0.03
-      upgradeCost: 75
+      max: 0.6
+      increasePerLevel: 0.01
+      upgradeCost: 150
     pickupRange:
       initial: 2
       _actual: 2

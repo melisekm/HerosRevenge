@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac3bd13f0d434f24596f112acbc6136d, type: 3}
-  m_Name: TheNamelessCity
+  m_Name: TheNecropolis
   m_EditorClassIdentifier: 
-  sceneName: Arena_TheNamelessCity
+  sceneName: Arena_TheNecropolis
   mustCompleteArenas:
   - {fileID: 11400000, guid: d02ae355aeceee2448de52e2ac5e200a, type: 2}
   maxEnemies: 0

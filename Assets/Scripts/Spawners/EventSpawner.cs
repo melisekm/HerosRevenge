@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class EventSpawner : EffectSpawner
 {
-    public bool isEventActivable = true;
-    [Header("Event")] public int aoeChance = 10;
+    [Header("Event")]
+    public int aoeChance = 10;
     public int checkInterval = 10;
     public int length = 10;
     private bool isEventActive;
@@ -18,13 +18,13 @@ public class EventSpawner : EffectSpawner
         StartCoroutine(EventScheduler());
     }
 
+
     private IEnumerator EventScheduler()
     {
         while (true)
         {
-            if (isEventActivable)
+            if (isSpawnerActive)
             {
-                // random 0 - 100
                 var random = Random.Range(0, 100);
                 if (random < aoeChance)
                 {

@@ -7,7 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int enemiesKilled;
-    public UnitSpawner unitSpawner;
+    public List<Spawner> spawners;
     private GameState state;
     private PlayerContainer playerContainer;
     private PlayerUnit playerUnit;
@@ -27,6 +27,15 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogError("PlayerContainer not found");
+        }
+        var spawnersGo = GameObject.FindGameObjectsWithTag("Spawner");
+        foreach (var spawnerGo in spawnersGo)
+        {
+            var spawncomponents = spawnerGo.GetComponents<Spawner>();
+            foreach (var spawncomponent in spawncomponents)
+            {
+                spawners.Add(spawncomponent);
+            }
         }
     }
 
@@ -135,7 +144,10 @@ public class GameManager : MonoBehaviour
         IEnumerator StartSpawning()
         {
             yield return new WaitForSeconds(startDelay);
-            unitSpawner.SpawnEnemies();
+            foreach (var spawner in spawners)
+            {
+                spawner.Activate();
+            }
         }
 
         StartCoroutine(StartSpawning());

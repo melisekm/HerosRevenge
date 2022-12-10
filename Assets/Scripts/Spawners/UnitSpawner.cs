@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitSpawner : MonoBehaviour
+public class UnitSpawner : Spawner
 {
     private readonly List<Transform> spawnPoints = new();
-    public float currentSpawnRate = 1f;
-    public bool shouldSpawn = true;
     public EnemyType spawnType;
     public bool spawnRandomEnemyTypes = true;
     public bool dynamicSpawnRate = true;
@@ -62,28 +60,28 @@ public class UnitSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnEnemies()
+    public override void Activate()
     {
         IEnumerator SpawnEnemiesCoroutine()
         {
             while (true)
             {
-                if (shouldSpawn)
+                if (isSpawnerActive)
                 {
                     foreach (var spawnPoint in spawnPoints)
                     {
-                        if (!shouldSpawn) break;
-                        yield return new WaitForSeconds(currentSpawnRate);
+                        if (!isSpawnerActive) break;
+                        yield return new WaitForSeconds(spawnTimer);
                         SpawnEnemy(spawnPoint);
                     }
                 }
                 else
                 {
-                    yield return new WaitForSeconds(currentSpawnRate);
+                    yield return new WaitForSeconds(spawnTimer);
                 }
             }
         }
-
+        isSpawnerActive = true;
         StartCoroutine(SpawnEnemiesCoroutine());
     }
 
@@ -96,7 +94,7 @@ public class UnitSpawner : MonoBehaviour
             return;
         }
 
-        currentSpawnRate = spawnRate.GetSpawnRate(enemyCount, Time.timeSinceLevelLoad);
-        Debug.Log($"Spawn rate is now {currentSpawnRate}");
+        spawnTimer = spawnRate.GetSpawnRate(enemyCount, Time.timeSinceLevelLoad);
+        Debug.Log($"Spawn rate is now {spawnTimer}");
     }
 }
