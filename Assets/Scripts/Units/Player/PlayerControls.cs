@@ -43,7 +43,7 @@ public class PlayerControls : MonoBehaviour
             OnAttack?.Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetButtonDown("Ultimate"))
         {
             OnUltimateButtonPress?.Invoke();
         }

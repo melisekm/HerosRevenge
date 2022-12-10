@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerUnit))]
@@ -9,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerUnit playerUnit;
     private Rigidbody2D rb;
     private Vector2 direction;
+    private bool isShooting;
+    public float shootSlowdown = 0.5f;
 
     private void Start()
     {
@@ -21,13 +24,29 @@ public class PlayerMovement : MonoBehaviour
     public void OnEnable()
     {
         PlayerControls.OnMovement += Move;
+        PlayerControls.OnAttack += SlowDownMovement;
         PlayerUnit.OnPlayerDied += DisableMovement;
     }
 
     public void OnDisable()
     {
         PlayerControls.OnMovement -= Move;
+        PlayerControls.OnAttack -= SlowDownMovement;
         PlayerUnit.OnPlayerDied -= DisableMovement;
+    }
+
+    private void SlowDownMovement()
+    {
+        IEnumerator SlowDown()
+        {
+            isShooting = true;
+            speed.actual = speed.actual * shootSlowdown;
+            yield return new WaitForSeconds(0.1f);
+            speed.actual = speed.initial;
+            isShooting = false;
+        }
+        if(!isShooting)
+            StartCoroutine(SlowDown());
     }
 
     private void DisableMovement()

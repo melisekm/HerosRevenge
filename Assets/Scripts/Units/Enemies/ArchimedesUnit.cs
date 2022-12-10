@@ -7,7 +7,7 @@ public class ArchimedesUnit : RangedEnemyUnit
     protected override void AttackPlayer()
     {
         // get random position sphere around player
-        var randomPosition = player.transform.position + Random.insideUnitSphere * randomRadius;
-        ActivateAbility(randomPosition);
+        Vector2 randomPosition = player.transform.position + Random.insideUnitSphere * randomRadius;
+        ActivateAbility(randomPosition, randomPosition);
     }
 }

@@ -6,10 +6,10 @@ public class RangedEnemyUnit : EnemyUnit
 
     protected override void AttackPlayer()
     {
-        ActivateAbility(transform.position);
+        ActivateAbility(transform.position, player.transform.position);
     }
 
-    protected void ActivateAbility(Vector3 startPosition)
+    protected void ActivateAbility(Vector3 startPosition, Vector3 targetPosition)
     {
         Ability projectile = Instantiate(projectilePrefab, startPosition, Quaternion.identity);
         if (projectile)
@@ -22,7 +22,7 @@ public class RangedEnemyUnit : EnemyUnit
                 damage = projectileDamage,
                 range = aiPath.endReachedDistance,
             };
-            projectile.Activate(stats, player.transform.position, Faction.Player);
+            projectile.Activate(stats, targetPosition, Faction.Player);
         }
     }
 }
