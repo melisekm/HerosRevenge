@@ -10,8 +10,9 @@ public class StatPowerup : Powerup
     public static event Action<ScriptableStatUpgrade> OnStatUpgradeDeactivated;
 
     // public static event Action<ScriptableStatUpgrade> OnStatUpgrade;
-    public override void Initialize(ScriptablePowerUp powerup)
+    public override void Initialize(ScriptablePowerUp powerup, float disappearTime)
     {
+        base.disappearTime = disappearTime;
         var scriptableStatPowerup = (ScriptableStatPowerUp)powerup;
         statUpgrade = scriptableStatPowerup.statUpgrade;
     }

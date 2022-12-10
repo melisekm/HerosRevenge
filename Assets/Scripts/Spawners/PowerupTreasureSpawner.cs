@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Units.Player;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PowerupTreasureSpawner : GroundEntitySpawner
 {
@@ -11,6 +12,7 @@ public class PowerupTreasureSpawner : GroundEntitySpawner
     public List<StatType> statTypes;
     private List<ScriptableAbility> abilities;
     private List<ScriptableStatUpgrade> statUpgrades;
+    public Vector2 disappearTimeRange = new(5.0f,10.0f);
 
     private void Start()
     {
@@ -34,7 +36,7 @@ public class PowerupTreasureSpawner : GroundEntitySpawner
         {
             var obj = Instantiate(scriptablePowerUp.prefab, position, Quaternion.identity);
             var powerUp = obj.GetComponent<InitializableCollectible>();
-            powerUp.Initialize(scriptablePowerUp);
+            powerUp.Initialize(scriptablePowerUp, Random.Range(disappearTimeRange.x, disappearTimeRange.y));
         }
     }
 

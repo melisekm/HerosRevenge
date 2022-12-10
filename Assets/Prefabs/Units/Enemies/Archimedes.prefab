@@ -260,7 +260,7 @@ MonoBehaviour:
     type: 3}
   projectilePrefab: {fileID: -7477808379987039157, guid: 5a9b201abcf3a044ab4f30b997d1f6f9,
     type: 3}
-  randomRadius: 2
+  randomRadius: 2.8
 --- !u!114 &6547786827192791147
 MonoBehaviour:
   m_ObjectHideFlags: 0

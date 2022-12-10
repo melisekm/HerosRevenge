@@ -12,10 +12,12 @@ public class HudSetter : MonoBehaviour
     public TMP_Text levelText;
     public TMP_Text timeText;
     public TMP_Text selectedAbilityNumber;
+    public TMP_Text winConditionText;
     public LevelUpUISetter levelUpUISetter;
     public GameObject powerUpPanel;
     public GameObject powerUpBar;
 
+    public WinConditionChecker winConditionChecker;
     public PlayerUnit playerUnit;
 
     private void OnEnable()
@@ -48,6 +50,7 @@ public class HudSetter : MonoBehaviour
         playerUnit.attributes.health.OnValueChanged += SetHealth;
         playerUnit.stats.xp.OnValueChanged += SetExperience;
         playerUnit.stats.gold.OnValueChanged += SetGold;
+        winConditionText.text = winConditionChecker.description;
     }
 
     private void OnStatUpgradeActivated(ScriptableStatUpgrade obj)

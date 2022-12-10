@@ -30,7 +30,7 @@ public class Treasure : Collectible, InitializableCollectible
         animator.SetTrigger(Collected);
     }
 
-    public void Initialize(ScriptablePowerUp powerup)
+    public void Initialize(ScriptablePowerUp powerup, float disappearTime)
     {
         var scriptableStatPowerUp = (ScriptableStatPowerUp)powerup;
         // random amount

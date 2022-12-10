@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class WinConditionChecker : MonoBehaviour
 {
     public static event Action OnWinConditionMet;
+    public string description;
 
     protected void InvokeWin()
     {

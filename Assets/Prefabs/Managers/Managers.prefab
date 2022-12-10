@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6852524192308160976}
   m_Layer: 0
   m_Name: GroundEntitySpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,8 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12883d04741e45e41901f05b0abf8979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnArea: {x: 13, y: 5}
+  isSpawnerActive: 0
   spawnTimer: 5
+  spawnAreaXminXmax: {x: 0, y: 0}
+  spawnAreaYminYmax: {x: 0, y: 0}
+  defaultFaction: 0
+  minMaxEffectRadius: {x: 3, y: 3}
 --- !u!114 &6852524192308160983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,8 +64,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffce2031d9b9354394a4617e32d33e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnArea: {x: 13, y: 5}
+  isSpawnerActive: 0
   spawnTimer: 5
+  spawnAreaXminXmax: {x: 0, y: 0}
+  spawnAreaYminYmax: {x: 0, y: 0}
   abilityTypes: 
   statTypes: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &6852524192308160976
@@ -76,9 +82,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ce04198c4e8f348814aae761d16e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnArea: {x: 13, y: 5}
+  isSpawnerActive: 0
   spawnTimer: 0.1
-  isEventActivable: 1
+  spawnAreaXminXmax: {x: 0, y: 0}
+  spawnAreaYminYmax: {x: 0, y: 0}
+  defaultFaction: 0
+  minMaxEffectRadius: {x: 3, y: 3}
   aoeChance: 10
   checkInterval: 10
   length: 3
@@ -162,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17dc81182f062d6419216e0342bfa5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpawnRate: 1
-  shouldSpawn: 1
+  isSpawnerActive: 0
+  spawnTimer: 5
   spawnType: 3
   spawnRandomEnemyTypes: 1
   dynamicSpawnRate: 1
@@ -331,7 +340,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bcac967b5e59f4db05e34f9ebca704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitSpawner: {fileID: 6852524191975129122}
+  spawners:
+  - {fileID: 6852524191975129122}
+  - {fileID: 6852524192308160980}
   startDelay: 3.5
 --- !u!1 &6852524192544691953
 GameObject:
@@ -385,8 +396,10 @@ MonoBehaviour:
   levelText: {fileID: 0}
   timeText: {fileID: 0}
   selectedAbilityNumber: {fileID: 0}
+  winConditionText: {fileID: 0}
   levelUpUISetter: {fileID: 0}
   powerUpPanel: {fileID: 0}
   powerUpBar: {fileID: 3756622409320497473, guid: 6570b2ac44335d6499e3e9b340eabbd6,
     type: 3}
+  winConditionChecker: {fileID: 0}
   playerUnit: {fileID: 0}

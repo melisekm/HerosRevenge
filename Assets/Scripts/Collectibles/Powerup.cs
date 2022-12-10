@@ -2,14 +2,14 @@ using UnityEngine;
 
 public abstract class Powerup : Collectible, InitializableCollectible
 {
-    public float disapearTime = 15f;
+    protected float disappearTime = 15f;
     public float duration = 5f;
 
     protected override void Update()
     {
-        if (disapearTime > 0)
+        if (disappearTime > 0)
         {
-            disapearTime -= Time.deltaTime;
+            disappearTime -= Time.deltaTime;
         }
         else
         {
@@ -19,10 +19,10 @@ public abstract class Powerup : Collectible, InitializableCollectible
         base.Update();
     }
 
-    public abstract void Initialize(ScriptablePowerUp powerup);
+    public abstract void Initialize(ScriptablePowerUp powerup, float disappearTime);
 }
 
 public interface InitializableCollectible
 {
-    public void Initialize(ScriptablePowerUp powerup);
+    public void Initialize(ScriptablePowerUp powerup, float disappearTime);
 }

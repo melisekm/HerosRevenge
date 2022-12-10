@@ -4283,6 +4283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9311877092d2a46b988a022690f0b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: Achieve Level 15
   playerUnit: {fileID: 2071378733}
   levelToAchieve: 15
 --- !u!4 &728515778
@@ -17294,6 +17295,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6115c84c00492f44b15a2bd3d63cf0f, type: 3}
+--- !u!114 &933626955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7464276090276130791, guid: 2579d57c560c48644baaba1b6eaf4483,
+    type: 3}
+  m_PrefabInstance: {fileID: 2262993745335655045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &944900296
 GameObject:
   m_ObjectHideFlags: 0
@@ -17346,6 +17359,7 @@ MonoBehaviour:
   spawnAreaYminYmax: {x: -7, y: -22}
   abilityTypes: 
   statTypes: 0000000002000000030000000500000006000000
+  disappearTimeRange: {x: 8, y: 20}
 --- !u!114 &944900299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17362,6 +17376,8 @@ MonoBehaviour:
   spawnTimer: 5
   spawnAreaXminXmax: {x: -7, y: 5}
   spawnAreaYminYmax: {x: -18, y: -24}
+  defaultFaction: 0
+  minMaxEffectRadius: {x: 3, y: 3}
 --- !u!114 &944900300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17378,6 +17394,8 @@ MonoBehaviour:
   spawnTimer: 0.1
   spawnAreaXminXmax: {x: -7, y: 5}
   spawnAreaYminYmax: {x: -18, y: -24}
+  defaultFaction: 0
+  minMaxEffectRadius: {x: 3, y: 3}
   aoeChance: 20
   checkInterval: 10
   length: 3
@@ -17420,7 +17438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069720322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.84, y: -18.31, z: 0}
+  m_LocalPosition: {x: -31.8, y: -15.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17440,11 +17458,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpawnerActive: 0
-  spawnTimer: 5
+  spawnTimer: 15
   spawnAreaXminXmax: {x: -34, y: -30}
   spawnAreaYminYmax: {x: -7, y: -22}
   abilityTypes: 
   statTypes: 060000000100000003000000
+  disappearTimeRange: {x: 999, y: 999}
 --- !u!114 &1069720325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17461,6 +17480,8 @@ MonoBehaviour:
   spawnTimer: 5
   spawnAreaXminXmax: {x: -34, y: -30}
   spawnAreaYminYmax: {x: -7, y: -22}
+  defaultFaction: 0
+  minMaxEffectRadius: {x: 3, y: 3}
 --- !u!114 &1069720326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17477,9 +17498,11 @@ MonoBehaviour:
   spawnTimer: 0.1
   spawnAreaXminXmax: {x: -34, y: -30}
   spawnAreaYminYmax: {x: -7, y: -22}
+  defaultFaction: 0
+  minMaxEffectRadius: {x: 3, y: 3}
   aoeChance: 50
-  checkInterval: 7
-  length: 4
+  checkInterval: 6
+  length: 3
 --- !u!1 &1171470526 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1171470526, guid: 2579d57c560c48644baaba1b6eaf4483,
@@ -17519,7 +17542,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2071378743, guid: 7811fa07224b0634aa73712e72643218, type: 3}
       propertyPath: abilityType
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2071378745, guid: 7811fa07224b0634aa73712e72643218, type: 3}
       propertyPath: m_Enabled
@@ -17621,6 +17644,7 @@ Transform:
   - {fileID: 321668542}
   - {fileID: 243655241}
   - {fileID: 567248735}
+  - {fileID: 1658615582}
   m_Father: {fileID: 825986546}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39946,6 +39970,101 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597acd844d3afe546b07d0d88b3bf1fc, type: 3}
+--- !u!1001 &1658615581
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1307580067}
+    m_Modifications:
+    - target: {fileID: 1923255328231687788, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923255328231687788, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923255328231687788, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666391605846240509, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666391605846240509, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_TagString
+      value: SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6115c84c00492f44b15a2bd3d63cf0f, type: 3}
+--- !u!4 &1658615582 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7192831024250975055, guid: e6115c84c00492f44b15a2bd3d63cf0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1658615581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1734814134
 GameObject:
   m_ObjectHideFlags: 0
@@ -48134,12 +48253,12 @@ PrefabInstance:
     - target: {fileID: 2142618897795318826, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.44
+      value: -19.7
       objectReference: {fileID: 0}
     - target: {fileID: 2142618897795318826, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.93
+      value: -5.75
       objectReference: {fileID: 0}
     - target: {fileID: 6413731277077954401, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -48361,6 +48480,16 @@ PrefabInstance:
       propertyPath: spawnAreaYminYmax.y
       value: -23
       objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: disappearTimeRange.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: disappearTimeRange.y
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: xpText
@@ -48411,6 +48540,16 @@ PrefabInstance:
       propertyPath: levelUpUISetter
       value: 
       objectReference: {fileID: 1462152672}
+    - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: winConditionText
+      value: 
+      objectReference: {fileID: 933626955}
+    - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: winConditionChecker
+      value: 
+      objectReference: {fileID: 728515777}
     - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: selectedAbilityNumber

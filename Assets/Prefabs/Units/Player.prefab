@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+  shootSlowdown: 0.75
 --- !u!114 &8625971399444159673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da736ad76bfab014b9017d0570ea1354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityType: 7
+  abilityType: 0
 --- !u!114 &2071378745
 MonoBehaviour:
   m_ObjectHideFlags: 0

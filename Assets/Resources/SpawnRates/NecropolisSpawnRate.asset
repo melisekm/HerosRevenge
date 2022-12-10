@@ -19,7 +19,7 @@ MonoBehaviour:
     speed: 1
   spawnEnemyCountInfos:
   - lessThanCount: 15
-    speed: 0.1
+    speed: 0.15
   - lessThanCount: 25
     speed: 0.25
   - lessThanCount: 35
