@@ -60,6 +60,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -108,6 +113,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2049001241638058044, guid: e505cc4cabcc80d4e899ee9352045493,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5463510667716986333, guid: e505cc4cabcc80d4e899ee9352045493,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -147,7 +157,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.1
+  m_Radius: 1
 --- !u!95 &1162651526672154910
 Animator:
   serializedVersion: 4

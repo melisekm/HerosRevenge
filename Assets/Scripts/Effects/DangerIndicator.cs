@@ -4,33 +4,28 @@ public class DangerIndicator : Effect
 {
     private DangerIndicatorEffect effect;
     private Transform progressCircle;
-    public float activationTime = 3f;
+    private float activationTime = 3f;
 
-    [Header("Random Activation Time")] public bool randomActivationTime = true;
+    [Header("Random Activation Time")]
     public float minActivationTime = 1f;
     public float maxActivationTime = 4f;
 
     private float timeElapsed;
     private Faction targetFaction;
+    private float explosionRadius = 5f;
 
     private void Start()
     {
         progressCircle = transform.Find("ProgressCircle");
-        if (progressCircle && effect.ability.TryGetComponent(out CircleCollider2D circleCollider))
-        {
-            transform.localScale = circleCollider.radius * 2 * Vector3.one;
-        }
-
-        if (randomActivationTime)
-        {
-            activationTime = Random.Range(minActivationTime, maxActivationTime);
-        }
+        activationTime = Random.Range(minActivationTime, maxActivationTime);
     }
 
-    public override void Initialize(ScriptableEffect scriptableEffect, Faction targetFaction)
+    public override void Initialize(ScriptableEffect scriptableEffect, float radius, Faction targetFaction)
     {
         effect = (DangerIndicatorEffect)scriptableEffect;
         this.targetFaction = targetFaction;
+        explosionRadius = radius;
+        transform.localScale = explosionRadius * Vector3.one;
     }
 
     private void Update()
@@ -44,6 +39,7 @@ public class DangerIndicator : Effect
         {
             // activate the ability
             Ability ability = Instantiate(effect.ability, transform.position, Quaternion.identity);
+            ability.transform.localScale *= explosionRadius / 2;
             AbilityStats abilityStats = new AbilityStats
             {
                 damage = effect.damage, // scale with level

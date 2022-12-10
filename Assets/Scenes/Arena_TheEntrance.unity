@@ -22999,6 +22999,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6413731277077954401, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Spawner
+      objectReference: {fileID: 0}
     - target: {fileID: 6852524191106953514, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: m_Name
@@ -23112,6 +23117,16 @@ PrefabInstance:
       objectReference: {fileID: 6852524191999887026}
     - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
+      propertyPath: aoeChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: checkInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
       propertyPath: spawnAreaXminXmax.x
       value: -13
       objectReference: {fileID: 0}
@@ -23149,6 +23164,16 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnAreaYminYmax.y
       value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160980, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: minMaxEffectRadius.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160980, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: minMaxEffectRadius.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
