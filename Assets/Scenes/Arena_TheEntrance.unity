@@ -22871,31 +22871,6 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.43137255
       objectReference: {fileID: 0}
-    - target: {fileID: 7464276090276130791, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_text
-      value: Some very long condition text
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464276090276130791, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 21.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464276090276130791, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_margin.x
-      value: 12.445251
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464276090276130791, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_margin.z
-      value: 15.685226
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464276090276130791, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
 --- !u!114 &2262993745335655046 stripped

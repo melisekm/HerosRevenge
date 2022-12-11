@@ -56,12 +56,9 @@ public class PlayerContainer : MonoBehaviour
     public void CompleteCurrentArena()
     {
         completedArenas.Add(currentArena);
-        foreach (var arena in arenas)
+        foreach (var arena in arenas.FindAll(x => !completedArenas.Contains(x)))
         {
-            if (arena == currentArena) continue;
-            
-            var mustCompleteArenas = arena.mustCompleteArenas;
-            if (mustCompleteArenas.FirstOrDefault(x => x.sceneName == currentArena.sceneName))
+            if (arena.mustCompleteArenas.All(x => completedArenas.Contains(x)))
             {
                 unlockedArenas.Add(arena);
             }
@@ -73,7 +70,8 @@ public class PlayerContainer : MonoBehaviour
     public bool IsArenaUnlocked(Arena arena)
     {
         // has to be unlocked and not completed
-        return unlockedArenas.Contains(arena) && !completedArenas.Contains(arena);
+        return true;
+        // return unlockedArenas.Contains(arena) && !completedArenas.Contains(arena);
     }
 
 
