@@ -11,7 +11,6 @@ public class HudSetter : MonoBehaviour
     public TMP_Text goldText;
     public TMP_Text levelText;
     public TMP_Text timeText;
-    public TMP_Text selectedAbilityNumber;
     public TMP_Text winConditionText;
     public LevelUpUISetter levelUpUISetter;
     public GameObject powerUpPanel;
@@ -23,7 +22,6 @@ public class HudSetter : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnUpdateTime += SetTime;
-        PlayerControls.OnSwitchAbility += SetAbility;
         ProgressionController.OnLevelUp += OnLevelUp;
         PlayerUnit.OnPlayerDied += ShowYouDiedText;
         StatPowerup.OnStatUpgradeActivated += OnStatUpgradeActivated;
@@ -34,7 +32,6 @@ public class HudSetter : MonoBehaviour
     private void OnDisable()
     {
         GameManager.OnUpdateTime -= SetTime;
-        PlayerControls.OnSwitchAbility -= SetAbility;
         playerUnit.attributes.health.OnValueChanged -= SetHealth;
         playerUnit.stats.xp.OnValueChanged -= SetExperience;
         playerUnit.stats.gold.OnValueChanged -= SetGold;
@@ -118,13 +115,6 @@ public class HudSetter : MonoBehaviour
         if (initial) return;
         levelUpUISetter.SetLevelUpUI(playerStats, playerAttributes, nextRewards);
     }
-
-
-    private void SetAbility(int index)
-    {
-        selectedAbilityNumber.text = (index + 1).ToString();
-    }
-
 
     // https://github.com/michalferko/tvorbahier/blob/master/PacMan/Assets/Scripts/UIManager.cs
     void SetTime(float currentTime)

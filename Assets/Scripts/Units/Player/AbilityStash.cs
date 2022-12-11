@@ -10,7 +10,7 @@ public class AbilityStash : MonoBehaviour
     private AbilityHolder selectedAbilityHolder;
     public List<AbilityType> defaultAbilityTypes = new();
     public AbilityHolder ultimateAbilityHolder;
-    public static event Action<ScriptableAbility> OnUltimateChanged;
+    public static event Action<ScriptableAbility, string> OnAbilityChanged;
 
     public void OnEnable()
     {
@@ -30,6 +30,7 @@ public class AbilityStash : MonoBehaviour
         {
             PlayerControls.OnAttack -= abilityHolder.ActivateAbility;
         }
+
         ProgressionController.OnLevelUp -= DisableSelectedHolder;
     }
 
@@ -41,6 +42,7 @@ public class AbilityStash : MonoBehaviour
             PlayerControls.OnAttack += abilityHolder.ActivateAbility;
             abilityList.Add(abilityHolder);
         }
+
         var playerContainerObj = GameObject.FindWithTag("PlayerContainer");
         if (playerContainerObj && playerContainerObj.TryGetComponent(out PlayerContainer playerContainer))
         {
@@ -65,8 +67,11 @@ public class AbilityStash : MonoBehaviour
                 ultimateAbilityHolder.SetAbilityType(playerContainer.ultimateType);
             }
 
-            OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
+            OnAbilityChanged?.Invoke(ultimateAbilityHolder.scriptableAbility, "R");
+            OnAbilityChanged?.Invoke(abilityList[0].scriptableAbility, "1");
+            OnAbilityChanged?.Invoke(abilityList[1].scriptableAbility, "2");
         }
+
         selectedAbilityHolder = abilityList[0];
         selectedAbilityHolder.isHolderActive = true;
         ultimateAbilityHolder.isHolderActive = true;
@@ -98,13 +103,15 @@ public class AbilityStash : MonoBehaviour
                 var randomIndex = Random.Range(0, abilityList.Count);
                 var abilityHolder = abilityList[randomIndex];
                 abilityHolder.SetAbilityType(ability.abilityType);
+                OnAbilityChanged?.Invoke(abilityHolder.scriptableAbility, (randomIndex + 1).ToString());
             }
             else if (ability.group == AbilityGroup.Ultimate)
             {
                 ultimateAbilityHolder.SetAbilityType(ability.abilityType);
-                OnUltimateChanged?.Invoke(ultimateAbilityHolder.scriptableAbility);
+                OnAbilityChanged?.Invoke(ultimateAbilityHolder.scriptableAbility, "R");
             }
         }
+
         // we have disabled selected ability holder so it doesnt fire immediately
         // see OnEnable and ProgressionController.OnLevelUp += DisableSelectedHolder;
         selectedAbilityHolder.isHolderActive = true;

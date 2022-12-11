@@ -3,24 +3,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class UltimateUI : MonoBehaviour
+public class UltimateUI : AbilityHolderUI
 {
-    private AbilityHolder ultimateHolder;
+    private AbilityHolder abilityHolder;
+
     private float currentMaxCooldown;
     public TMP_Text cdText;
     public Image darkMask;
-    public Image abilityIcon;
 
-    private void OnEnable()
-    {
-        AbilityStash.OnUltimateChanged += Initialize;
-    }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        AbilityStash.OnUltimateChanged -= Initialize;
-        ultimateHolder.OnAbilityReady -= ShowReady;
-        ultimateHolder.OnUltimateUsed -= ShowCooldown;
+        base.OnDisable();
+        abilityHolder.OnAbilityReady -= ShowReady;
+        abilityHolder.OnUltimateUsed -= ShowCooldown;
     }
 
     private void Start()
@@ -28,47 +24,39 @@ public class UltimateUI : MonoBehaviour
         var player = GameObject.FindWithTag("Player");
         if (player && player.TryGetComponent(out AbilityStash abilityStash))
         {
-            ultimateHolder = abilityStash.ultimateAbilityHolder;
+            abilityHolder = abilityStash.ultimateAbilityHolder;
             // we only want to subscribe to this particular abilityholder
-            ultimateHolder.OnAbilityReady += ShowReady;
-            ultimateHolder.OnUltimateUsed += ShowCooldown;
+            abilityHolder.OnAbilityReady += ShowReady;
+            abilityHolder.OnUltimateUsed += ShowCooldown;
         }
     }
 
-    private void Initialize(ScriptableAbility scriptableAbility)
+    protected override void Initialize(ScriptableAbility scriptableAbility, string index)
     {
-        if (scriptableAbility)
-        {
-            abilityIcon.enabled = true;
-            abilityIcon.sprite = scriptableAbility.icon;
-            cdText.gameObject.SetActive(true);
-        }
-        else
-        {
-            abilityIcon.enabled = false;
-            cdText.gameObject.SetActive(false);
-        }
+        if (keyString != index) return;
+        base.Initialize(scriptableAbility, index);
+        cdText.gameObject.SetActive(scriptableAbility != null);
     }
 
     private void ShowCooldown()
     {
         darkMask.fillAmount = 1;
-        currentMaxCooldown = ultimateHolder.cooldownTime;
+        currentMaxCooldown = abilityHolder.cooldownTime;
         cdText.text = currentMaxCooldown.ToString("F0");
     }
 
     private void ShowReady()
     {
-        cdText.text = "R";
+        cdText.text = keyString;
     }
 
     private void Update()
     {
-        if (ultimateHolder.cooldownTime > 0)
+        if (abilityHolder.cooldownTime > 0)
         {
             // percentage dark mask fillamount
-            darkMask.fillAmount = ultimateHolder.cooldownTime / currentMaxCooldown;
-            cdText.text = ultimateHolder.cooldownTime.ToString("F0");
+            darkMask.fillAmount = abilityHolder.cooldownTime / currentMaxCooldown;
+            cdText.text = abilityHolder.cooldownTime.ToString("F0");
         }
     }
 }
