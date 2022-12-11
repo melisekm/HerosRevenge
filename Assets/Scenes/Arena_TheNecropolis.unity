@@ -17521,18 +17521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1200577328 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2262993744135897525, guid: 2579d57c560c48644baaba1b6eaf4483,
-    type: 3}
-  m_PrefabInstance: {fileID: 2262993745335655045}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1205099296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48114,11 +48102,7 @@ PrefabInstance:
     - target: {fileID: 176439754, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
       propertyPath: m_text
       value: So here I am in this god damned castle. Now it is time to know my true
-        revenge.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040667056, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+        vengeance.
       objectReference: {fileID: 0}
     - target: {fileID: 2040667057, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
       propertyPath: m_SizeDelta.x
@@ -48564,7 +48548,7 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedAbilityNumber
       value: 
-      objectReference: {fileID: 1200577328}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43404a95f3cbde14e80df4db1a452b7b, type: 3}
 --- !u!114 &6852524191999887025 stripped

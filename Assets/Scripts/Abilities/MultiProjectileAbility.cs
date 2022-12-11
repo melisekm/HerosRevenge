@@ -14,7 +14,7 @@ public class MultiProjectileAbility : RangedAbility
         if (numberOfProjectiles > 1 && distance is >= 0 and <= 10)
             projectileSpread = -8 * distance + 90;
         else
-            projectileSpread = 0;
+            projectileSpread = 10;
 
         // https://www.youtube.com/watch?v=uXLomV2TAMw
         float angle = GetAngleToTarget() + projectileSpread / 2f;

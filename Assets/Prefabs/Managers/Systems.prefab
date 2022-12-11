@@ -189,3 +189,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d02ae355aeceee2448de52e2ac5e200a, type: 2}
   - {fileID: 11400000, guid: aef50094077549249b602c11c6a4b90a, type: 2}
   - {fileID: 11400000, guid: 569b07cd4a3cf594cbf1ac7092e01480, type: 2}
+  upgradeCostMultiplier: 1.5
+  upgradeCostLevelThreshold: 15

@@ -124,15 +124,8 @@ public class AbilityStash : MonoBehaviour
 
     private void SwitchAbility(int index)
     {
+        selectedAbilityHolder.isHolderActive = false;
         abilityList[index].isHolderActive = true;
         selectedAbilityHolder = abilityList[index];
-
-        foreach (AbilityHolder abilityHolder in abilityList)
-        {
-            if (abilityHolder != selectedAbilityHolder)
-            {
-                abilityHolder.isHolderActive = false;
-            }
-        }
     }
 }

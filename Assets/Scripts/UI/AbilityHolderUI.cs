@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +8,7 @@ public class AbilityHolderUI : MonoBehaviour
     public Image abilityIcon;
     public string keyString = "R";
     private GameObject highlight;
+    private GameObject keyGo;
 
     private void OnEnable()
     {
@@ -25,20 +25,33 @@ public class AbilityHolderUI : MonoBehaviour
 
     private void Start()
     {
+        var keyTextGo = transform.Find("KeyText");
+        if (keyTextGo && keyTextGo.TryGetComponent(out TMP_Text keyText))
+        {
+            keyGo = keyTextGo.gameObject; 
+            if (keyString != keyText.text)
+            {
+                Debug.LogError("KeyString and KeyText do not match");
+            }
+            keyString = keyText.text;
+        }
+        
         highlight = transform.Find("Highlight").gameObject;
         if (highlight && keyString == "1")
         {
             highlight.SetActive(true);
+            keyGo.gameObject.SetActive(true);
         }
         else
         {
             highlight.SetActive(false);
+            keyGo.gameObject.SetActive(false);
         }
     }
 
     private void ShowBorder(int index)
     {
-        if (highlight)
+        if (highlight && abilityIcon.enabled)
         {
             highlight.SetActive((index + 1).ToString() == keyString);
         }
@@ -52,10 +65,14 @@ public class AbilityHolderUI : MonoBehaviour
         {
             abilityIcon.enabled = true;
             abilityIcon.sprite = scriptableAbility.icon;
+            if (keyGo)
+                keyGo.SetActive(true);
         }
         else
         {
             abilityIcon.enabled = false;
+            if (keyGo)
+                keyGo.SetActive(false);
         }
     }
 }
