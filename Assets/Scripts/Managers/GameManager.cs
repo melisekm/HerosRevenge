@@ -6,16 +6,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int enemiesKilled;
     private List<Spawner> spawners = new();
     private GameState state;
     private PlayerContainer playerContainer;
     private PlayerUnit playerUnit;
+    private int killCount;
 
     // time until the game starts
     [Min(0.01f)] [SerializeField] private float startDelay = 2f;
 
     public static event Action<float> OnUpdateTime;
+    public static event Action<int> OnKillCountChange;
 
     private void Awake()
     {
@@ -76,7 +77,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnemyDied(EnemyUnit obj)
     {
-        enemiesKilled++;
+        killCount++;
+        OnKillCountChange?.Invoke(killCount);
         // TODO: if curr lvl has enemy cap and enemiesKilled == cap, change state to level complete
     }
 

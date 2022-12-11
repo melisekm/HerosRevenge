@@ -12,6 +12,7 @@ public class HudSetter : MonoBehaviour
     public TMP_Text levelText;
     public TMP_Text timeText;
     public TMP_Text winConditionText;
+    public TMP_Text killsTextValue;
     public LevelUpUISetter levelUpUISetter;
     public GameObject powerUpPanel;
     public GameObject powerUpBar;
@@ -27,6 +28,7 @@ public class HudSetter : MonoBehaviour
         StatPowerup.OnStatUpgradeActivated += OnStatUpgradeActivated;
         StatPowerup.OnStatUpgradeDeactivated += OnStatUpgradeDeactivated;
         WinConditionChecker.OnWinConditionMet += ShowWinText;
+        GameManager.OnKillCountChange += SetKillCount;
     }
 
     private void OnDisable()
@@ -40,6 +42,7 @@ public class HudSetter : MonoBehaviour
         StatPowerup.OnStatUpgradeActivated -= OnStatUpgradeActivated;
         StatPowerup.OnStatUpgradeDeactivated -= OnStatUpgradeDeactivated;
         WinConditionChecker.OnWinConditionMet -= ShowWinText;
+        GameManager.OnKillCountChange -= SetKillCount;
     }
 
     private void Start()
@@ -48,6 +51,11 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.xp.OnValueChanged += SetExperience;
         playerUnit.stats.gold.OnValueChanged += SetGold;
         winConditionText.text = winConditionChecker.description;
+    }
+    
+    private void SetKillCount(int num)
+    {
+        killsTextValue.text = num.ToString();
     }
 
     private void OnStatUpgradeActivated(ScriptableStatUpgrade obj)
