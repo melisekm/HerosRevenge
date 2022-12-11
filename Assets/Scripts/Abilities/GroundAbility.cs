@@ -13,6 +13,12 @@ public class GroundAbility : Ability
     {
         radius = GetComponent<CircleCollider2D>().radius;
     }
+    
+    public override void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
+    {
+        base.Activate(stats, target, targetFaction);
+        transform.position = new Vector3(target.x, target.y, 0);
+    }
 
     protected override void Act(Collider2D collision)
     {

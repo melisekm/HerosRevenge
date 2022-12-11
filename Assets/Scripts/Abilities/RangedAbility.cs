@@ -4,7 +4,7 @@ public class RangedAbility : Ability
 {
     private float flownDistance;
     private bool canMove = true;
-    private int rotationOffset = -90;
+    protected int rotationOffset = -90;
     public float speed = 10f;
 
     public override void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
@@ -14,7 +14,7 @@ public class RangedAbility : Ability
         transform.rotation = Quaternion.Euler(0f, 0f, angle + rotationOffset);
     }
 
-    private float GetAngleToTarget()
+    protected float GetAngleToTarget()
     {
         // https://answers.unity.com/questions/995540/move-towards-mouse-direction-infinitely-at-constan.html
         Vector3 targetPos = new Vector3(target.x, target.y, 0);

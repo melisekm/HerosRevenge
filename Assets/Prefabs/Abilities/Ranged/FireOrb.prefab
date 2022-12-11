@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7359200154823451718}
   - component: {fileID: 1701416597366444426}
   - component: {fileID: 3797999688211964504}
+  - component: {fileID: 5644698119298862009}
   - component: {fileID: -3458292231097376354}
   m_Layer: 8
   m_Name: FireOrb
@@ -160,7 +161,7 @@ MonoBehaviour:
   hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
     type: 3}
   hitColor: {r: 1, g: 0.64705884, b: 0, a: 1}
---- !u!114 &-3458292231097376354
+--- !u!114 &5644698119298862009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,6 +169,22 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7359200154823451721}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7e462afab8f54685702de36cec65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collidesWithUnits: 1
+  collidesWithEnvironment: 1
+  speed: 10
+  numberOfProjectiles: 5
+--- !u!114 &-3458292231097376354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359200154823451721}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62809f37ad9a1634388707314d8c80ea, type: 3}
   m_Name: 

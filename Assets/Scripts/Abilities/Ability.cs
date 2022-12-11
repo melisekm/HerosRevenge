@@ -38,7 +38,7 @@ public class Ability : MonoBehaviour
         }
     }
 
-    public void SetTarget(Vector3 target, Faction targetFaction)
+    protected void SetTarget(Vector3 target, Faction targetFaction)
     {
         this.target = target;
         this.targetFaction = targetFaction;
