@@ -48573,5 +48573,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04231e53a3966974c87b4537b6ddc705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Show your revenge. Kill 10 enemies.
-  killsToWin: 10
+  description: Show your revenge. Kill 200 enemies.
+  killsToWin: 200

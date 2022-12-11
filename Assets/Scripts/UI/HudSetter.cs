@@ -52,21 +52,22 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.gold.OnValueChanged += SetGold;
         winConditionText.text = winConditionChecker.description;
     }
-    
+
     private void SetKillCount(int num)
     {
         killsTextValue.text = num.ToString();
     }
 
-    private void OnStatUpgradeActivated(ScriptableStatUpgrade obj)
+    private void OnStatUpgradeActivated(ScriptableStatUpgrade upgrade)
     {
         var powerupbarGo = Instantiate(powerUpBar, powerUpPanel.transform);
         // get text child in powerupbar
         var powerupbarText = powerupbarGo.GetComponentInChildren<TMP_Text>();
-        var amount = obj.statType != StatType.Speed && obj.amount < 1
-            ? (obj.amount * 100).ToString("F2") + "%"
-            : obj.amount.ToString();
-        powerupbarText.text = $"{obj.rewardName}\n+{amount}";
+        var amount = (upgrade.statType != StatType.Speed || upgrade.statType != StatType.PickupRange) &&
+                     upgrade.amount < 1
+            ? (upgrade.amount * 100).ToString("F2") + "%"
+            : upgrade.amount.ToString();
+        powerupbarText.text = $"{upgrade.rewardName}\n+{amount}";
     }
 
     private void OnStatUpgradeDeactivated(ScriptableStatUpgrade _)
@@ -88,7 +89,7 @@ public class HudSetter : MonoBehaviour
             deathText.gameObject.SetActive(true);
         }
     }
-    
+
     private void ShowWinText()
     {
         if (winText)
