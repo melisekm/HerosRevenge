@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7304571336130045441}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7359200154823451718}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &85366102344392206
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 120783377
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6243c13ba1784934e9b25949f9bc26d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 588d9108ab043fa4ca1ed69dbfadbbca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 7359200154823451718}
   - component: {fileID: 1701416597366444426}
   - component: {fileID: 3797999688211964504}
-  - component: {fileID: 5644698119298862009}
+  - component: {fileID: 991113264746822183}
   m_Layer: 8
-  m_Name: FireOrb
+  m_Name: LightningBlast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013062857, y: 0.06313722}
+  m_Offset: {x: 0.030031845, y: -0.10831809}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -143,7 +143,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23676641, y: 1.004368}
+  m_Size: {x: 0.46046463, y: 1.0215464}
   m_EdgeRadius: 0
 --- !u!114 &3797999688211964504
 MonoBehaviour:
@@ -159,8 +159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
     type: 3}
-  hitColor: {r: 1, g: 0.64705884, b: 0, a: 1}
---- !u!114 &5644698119298862009
+  hitColor: {r: 0, g: 1, b: 0.9430566, a: 1}
+--- !u!114 &991113264746822183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,10 +169,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7359200154823451721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecc7e462afab8f54685702de36cec65d, type: 3}
+  m_Script: {fileID: 11500000, guid: c2dd09303b6654e459818d3c8147e0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collidesWithUnits: 1
   collidesWithEnvironment: 1
   speed: 10
-  numberOfProjectiles: 1
+  numberOfProjectiles: 3
+  lightningEffect: {fileID: 2716430154439769231, guid: 046e29f3afcaa8b4096ee396b71d995c,
+    type: 3}
+  damageMultiplier: 0.1
+  damageRadius: 2

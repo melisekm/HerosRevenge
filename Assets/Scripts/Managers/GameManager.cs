@@ -7,7 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int enemiesKilled;
-    public List<Spawner> spawners;
+    private List<Spawner> spawners = new();
     private GameState state;
     private PlayerContainer playerContainer;
     private PlayerUnit playerUnit;

@@ -1,39 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MultiProjectileAbility : RangedAbility
 {
-    // public float projectileSpread = 60f;
-    public int numberOfProjectiles = 4;
+    public int numberOfProjectiles = 1;
 
     public override void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
     {
         base.Activate(stats, target, targetFaction);
-        // apply linear regression to calculate the spread of the projectiles based on distance from mouse
+        // apply linear regression to calculate the spread of the projectiles based on distance from mouse  y = -8x + 90
         // target is clampfed so cant
-        // y = -8x + 90
         var distance = Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         float projectileSpread;
-        if (distance is >= 0 and <= 10)
-        {
+        if (numberOfProjectiles > 1 && distance is >= 0 and <= 10)
             projectileSpread = -8 * distance + 90;
-        }
         else
-        {
-            projectileSpread = 30;
-        }
+            projectileSpread = 0;
 
+        // https://www.youtube.com/watch?v=uXLomV2TAMw
         float angle = GetAngleToTarget() + projectileSpread / 2f;
-        float angleIncrease;
-        if (numberOfProjectiles != 1)
-        {
-            angleIncrease = projectileSpread / ((float)numberOfProjectiles - 1);
-        }
-        else
-        {
-            angleIncrease = 0;
-        }
+        var angleIncrease = numberOfProjectiles != 1 ? projectileSpread / ((float)numberOfProjectiles - 1) : 0;
 
         for (int i = 0; i < numberOfProjectiles; i++)
         {
@@ -47,4 +32,6 @@ public class MultiProjectileAbility : RangedAbility
 
         Destroy(gameObject); // Destroy the original projectile
     }
+
+
 }

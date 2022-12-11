@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c038356f0460c8c448b0b7d5a69fc690, type: 3}
+  m_Name: LightningBlast
+  m_EditorClassIdentifier: 
+  rewardName: Lightning Blast
+  icon: {fileID: 21300000, guid: 588d9108ab043fa4ca1ed69dbfadbbca, type: 3}
+  description: Draw lightning from your hands and fire multiple projectiles
+  stats:
+    damage: 25
+    baseCooldown: 0.4
+    range: 10
+  abilityType: 5
+  prefab: {fileID: 991113264746822183, guid: 9a926df373e7c5243ae7d69188fcdd02, type: 3}
+  minLevel: 9
+  group: 0

@@ -34,6 +34,7 @@ public enum AbilityType
     FireOrb,
     PiercingShot,
     PoisonRain,
+    LightningBlast,
     BoomingVoice,
     EnergyVacuum,
     Wrath

@@ -6,7 +6,7 @@ public class Ability : MonoBehaviour
     public AbilityStats abilityStats { get; private set; }
 
     protected Vector3 target;
-    private Faction targetFaction;
+    protected Faction targetFaction;
     public bool collidesWithUnits = false;
     public bool collidesWithEnvironment = true;
     private Animator animator;

@@ -19,7 +19,7 @@ MonoBehaviour:
     damage: 0
     baseCooldown: 10
     range: 0
-  abilityType: 6
+  abilityType: 7
   prefab: {fileID: 6999054828270795177, guid: bde55947113a3d34699adaf952224a8c, type: 3}
   minLevel: 0
   group: 1
