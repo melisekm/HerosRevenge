@@ -70,8 +70,7 @@ public class PlayerContainer : MonoBehaviour
     public bool IsArenaUnlocked(Arena arena)
     {
         // has to be unlocked and not completed
-        return true;
-        // return unlockedArenas.Contains(arena) && !completedArenas.Contains(arena);
+        return unlockedArenas.Contains(arena) && !completedArenas.Contains(arena);
     }
 
 
