@@ -38,6 +38,13 @@ public class AbilityHolder : MonoBehaviour
             // clamp magnitude to limit cast range 
             Vector3 mousepos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             var delta = Vector3.ClampMagnitude(mousepos - transform.position, playerUnit.maxCastRange);
+            if (ability is MultiProjectileAbility multiProjectileAbility)
+            {
+                // every N level increase max projectiles by 2(if N=7, 1-6: 1, 7-13: 3, 14-20: 5 etc)
+                multiProjectileAbility.numberOfProjectiles =
+                    CalculateProjectilesToFire(multiProjectileAbility.numberOfProjectiles);
+            }
+
             ability.Activate(UpdateAbilityStats(), transform.position + delta, Faction.Enemy);
             abilityState = AbilityState.Cooldown;
             cooldownTime = ability.abilityStats.baseCooldown;
@@ -46,6 +53,16 @@ public class AbilityHolder : MonoBehaviour
                 OnUltimateUsed?.Invoke();
             }
         }
+    }
+
+    private int CalculateProjectilesToFire(int abilityCurrentProjectiles)
+    {
+        // every N level increase max projectiles by 2(if N=7, 1-6: 1, 7-13: 3, 14-20: 5 etc)
+        int projectilesBasedOnLevel =
+            1 + 2 * (int)(playerUnit.stats.level.actual / playerUnit.levelToIncreaseMaxProjectiles);
+        // choose max of ability default projectiles or current projectiles based on level, or global max
+        return Math.Min(Math.Max(abilityCurrentProjectiles, projectilesBasedOnLevel),
+            playerUnit.globalMaxProjectilesToFire);
     }
 
     private AbilityStats UpdateAbilityStats()

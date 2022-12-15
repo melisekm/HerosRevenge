@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardName: Wrath
   icon: {fileID: 21300000, guid: 71c202d14c16c3148aa473e19310e5f5, type: 3}
-  description: boost ATTRS
+  description: Temporarily boost all of your stats.
   stats:
     damage: 0
     baseCooldown: 20
     range: 0
   abilityType: 8
   prefab: {fileID: 2207584201601088040, guid: f0b6846b169ef984982533c8d90b1514, type: 3}
-  minLevel: 0
+  minLevel: 5
   group: 1

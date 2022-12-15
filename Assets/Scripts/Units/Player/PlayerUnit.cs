@@ -8,6 +8,8 @@ public class PlayerUnit : Unit
     public float maxCastRange = 10f;
     public float levelUpMultiplier = 1.25f;
     public int rewardsCount = 2;
+    public int levelToIncreaseMaxProjectiles = 7;
+    public int globalMaxProjectilesToFire = 9;
     private ProgressionController progressionController { get; set; }
 
     public static event Action OnPlayerDied;
@@ -22,7 +24,7 @@ public class PlayerUnit : Unit
         else
             Debug.LogWarning("PlayerContainer not found");
 
-        progressionController = new ProgressionController(this, levelUpMultiplier, rewardsCount);
+        progressionController = new ProgressionController(this);
     }
 
     protected void OnEnable()

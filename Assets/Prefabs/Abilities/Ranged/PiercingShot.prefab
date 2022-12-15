@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4943086765236575777}
   - component: {fileID: 5128297489681600274}
   - component: {fileID: 6562850970448237131}
-  - component: {fileID: -2677467401441014946}
+  - component: {fileID: -2945956338050869682}
   m_Layer: 8
   m_Name: PiercingShot
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MonoBehaviour:
   hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
     type: 3}
   hitColor: {r: 0.0047169924, g: 0.23600456, b: 1, a: 1}
---- !u!114 &-2677467401441014946
+--- !u!114 &-2945956338050869682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,9 +169,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4943086765236575778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62809f37ad9a1634388707314d8c80ea, type: 3}
+  m_Script: {fileID: 11500000, guid: ecc7e462afab8f54685702de36cec65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collidesWithUnits: 0
   collidesWithEnvironment: 1
   speed: 10
+  numberOfProjectiles: 1

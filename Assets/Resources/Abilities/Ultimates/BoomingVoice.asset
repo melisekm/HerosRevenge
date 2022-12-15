@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardName: Booming Voice
   icon: {fileID: 881267837, guid: 56e31c37031804547bb2f50fa8316cd5, type: 3}
-  description: BOOM
+  description: Hit enemies with loud noise. Deal half their HP + attackpower damage.
   stats:
     damage: 0
     baseCooldown: 15
     range: 0
   abilityType: 6
   prefab: {fileID: -2779171180297876725, guid: 63c0ef589e6a1bd4ea2b02ac73a39f29, type: 3}
-  minLevel: 0
+  minLevel: 4
   group: 1

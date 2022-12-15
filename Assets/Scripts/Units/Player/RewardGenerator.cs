@@ -30,7 +30,8 @@ namespace Units.Player
             // filter those which have minlevel less than playerunit.stats.level.actual
             for (int i = 0; i < nextRewards.Length; i++)
             {
-                var nextRewardType = (RewardType)Random.Range(0, nextRewards.Length);
+                var randomRoll = Random.Range(0, 100);
+                RewardType nextRewardType = randomRoll < 75 ? RewardType.Ability : RewardType.Stat;
                 // make sure there is at least one ability or stat upgrade regardless of what rolls
                 if ((abilities.Count > 0 && nextRewardType == RewardType.Ability) || statUpgrades.Count == 0)
                 {

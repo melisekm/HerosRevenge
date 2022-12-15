@@ -9,18 +9,18 @@ namespace Units.Player
     {
         private PlayerStats playerStats;
         private Attributes playerAttributes;
-        private float levelUpMultiplier;
+        private PlayerUnit playerUnit;
         public static event Action<PlayerStats, Attributes, bool, RewardGenerator.Reward[]> OnLevelUp;
         private RewardGenerator rewardGenerator;
         private List<Attribute> attributesToLevelUp;
 
-        public ProgressionController(PlayerUnit playerUnit, float levelUpMultiplier, int rewardsCount)
+        public ProgressionController(PlayerUnit playerUnit)
         {
-            this.levelUpMultiplier = levelUpMultiplier;
+            this.playerUnit = playerUnit;
             playerStats = playerUnit.stats;
             playerAttributes = playerUnit.attributes;
             OnLevelUp?.Invoke(playerStats, playerAttributes, true, null);
-            rewardGenerator = new RewardGenerator(rewardsCount);
+            rewardGenerator = new RewardGenerator(playerUnit.rewardsCount);
             attributesToLevelUp = new List<Attribute>
             {
                 playerAttributes.health,
@@ -51,7 +51,7 @@ namespace Units.Player
         private void LevelUp()
         {
             playerStats.xp.actual = playerStats.xp.min;
-            playerStats.xp.max = Mathf.RoundToInt(playerStats.xp.max * levelUpMultiplier);
+            playerStats.xp.max = Mathf.RoundToInt(playerStats.xp.max * playerUnit.levelUpMultiplier);
             playerStats.level.actual++;
             playerStats.gold.actual += playerStats.gold.increasePerLevel;
 
@@ -62,6 +62,7 @@ namespace Units.Player
                 .Where(ability => ability.minLevel <= playerStats.level.actual)
                 .ToList();
             var statUpgrades = ResourceSystem.Instance.statUpgrades.ToList();
+            
 
             OnLevelUp?.Invoke(playerStats, playerAttributes, false,
                 rewardGenerator.GenerateRewards(abilities, statUpgrades));

@@ -178,5 +178,5 @@ MonoBehaviour:
   numberOfProjectiles: 3
   lightningEffect: {fileID: 2716430154439769231, guid: 046e29f3afcaa8b4096ee396b71d995c,
     type: 3}
-  damageMultiplier: 0.1
-  damageRadius: 2
+  damageMultiplier: 0.15
+  damageRadius: 2.5

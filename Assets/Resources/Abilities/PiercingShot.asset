@@ -20,5 +20,6 @@ MonoBehaviour:
     baseCooldown: 0.7
     range: 15
   abilityType: 3
-  prefab: {fileID: -2677467401441014946, guid: 8c1439b1f95231642b8adde4ca0115f7, type: 3}
-  minLevel: 0
+  prefab: {fileID: -2945956338050869682, guid: 8c1439b1f95231642b8adde4ca0115f7, type: 3}
+  minLevel: 5
+  group: 0
