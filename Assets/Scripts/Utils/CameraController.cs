@@ -1,12 +1,26 @@
-using System;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    private bool zoomOnWin = true;
     private bool isZooming = false;
     private Camera mainCamera;
+    private bool zoomOnWin = true;
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        var position = target.position;
+        transform.position = new Vector3(position.x, position.y, transform.position.z);
+        if (isZooming)
+        {
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, 1, Time.deltaTime);
+        }
+    }
 
     private void OnEnable()
     {
@@ -18,26 +32,11 @@ public class CameraController : MonoBehaviour
         WinConditionChecker.OnWinConditionMet -= ZoomToPlayer;
     }
 
-    private void Start()
-    {
-        mainCamera = Camera.main;
-    }
-
     private void ZoomToPlayer()
     {
         if (zoomOnWin)
         {
             isZooming = true;
-        }
-    }
-
-    private void Update()
-    {
-        var position = target.position;
-        transform.position = new Vector3(position.x, position.y, transform.position.z);
-        if (isZooming)
-        {
-            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, 1, Time.deltaTime);
         }
     }
 }

@@ -28,6 +28,7 @@ public class MultiProjectileAbility : RangedAbility
                 projectile.SetTarget(target, targetFaction);
                 projectile.SetLayer(targetFaction);
             }
+
             Destroy(gameObject); // Destroy the original projectile
         }
     }

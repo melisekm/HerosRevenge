@@ -20,6 +20,14 @@ public class HudSetter : MonoBehaviour
     public WinConditionChecker winConditionChecker;
     public PlayerUnit playerUnit;
 
+    private void Start()
+    {
+        playerUnit.attributes.health.OnValueChanged += SetHealth;
+        playerUnit.stats.xp.OnValueChanged += SetExperience;
+        playerUnit.stats.gold.OnValueChanged += SetGold;
+        winConditionText.text = winConditionChecker.description;
+    }
+
     private void OnEnable()
     {
         GameManager.OnUpdateTime += SetTime;
@@ -43,14 +51,6 @@ public class HudSetter : MonoBehaviour
         StatPowerup.OnStatUpgradeDeactivated -= OnStatUpgradeDeactivated;
         WinConditionChecker.OnWinConditionMet -= ShowWinText;
         GameManager.OnKillCountChange -= SetKillCount;
-    }
-
-    private void Start()
-    {
-        playerUnit.attributes.health.OnValueChanged += SetHealth;
-        playerUnit.stats.xp.OnValueChanged += SetExperience;
-        playerUnit.stats.gold.OnValueChanged += SetGold;
-        winConditionText.text = winConditionChecker.description;
     }
 
     private void SetKillCount(int num)

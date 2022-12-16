@@ -7,12 +7,12 @@ public abstract class Unit : MonoBehaviour
     public Faction faction { get; protected set; }
     public Attributes attributes { get; private set; }
 
-    public virtual void SetAttributes(Attributes attr) => attributes = attr;
-
     protected virtual void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
+
+    public virtual void SetAttributes(Attributes attr) => attributes = attr;
 
     public virtual void TakeDamage(float damage)
     {

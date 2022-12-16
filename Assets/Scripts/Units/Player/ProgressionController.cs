@@ -7,13 +7,12 @@ namespace Units.Player
 {
     public class ProgressionController
     {
-        private PlayerStats playerStats;
-        private Attributes playerAttributes;
-        private PlayerUnit playerUnit;
-        private AbilityStash playerAbilityStash;
-        public static event Action<PlayerStats, Attributes, bool, RewardGenerator.Reward[]> OnLevelUp;
-        private RewardGenerator rewardGenerator;
         private List<Attribute> attributesToLevelUp;
+        private AbilityStash playerAbilityStash;
+        private Attributes playerAttributes;
+        private PlayerStats playerStats;
+        private PlayerUnit playerUnit;
+        private RewardGenerator rewardGenerator;
 
         public ProgressionController(PlayerUnit playerUnit, AbilityStash abilityStash)
         {
@@ -33,6 +32,8 @@ namespace Units.Player
                 playerAttributes.pickupRange
             };
         }
+
+        public static event Action<PlayerStats, Attributes, bool, RewardGenerator.Reward[]> OnLevelUp;
 
         public void PickUpEnergy(int amount)
         {

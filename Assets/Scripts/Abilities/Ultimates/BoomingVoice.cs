@@ -11,6 +11,7 @@ public class BoomingVoice : Ability
         {
             bonusDamage = playerUnit.attributes.attackPower.actual;
         }
+
         foreach (var enemy in enemies)
         {
             var enemyUnit = enemy.GetComponent<EnemyUnit>();

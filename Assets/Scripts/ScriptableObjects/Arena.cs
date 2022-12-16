@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [CreateAssetMenu(menuName = "Scriptables/Arenas/New Arena")]
 public class Arena : ScriptableObject
 {

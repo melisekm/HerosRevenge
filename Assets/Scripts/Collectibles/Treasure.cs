@@ -6,14 +6,12 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Animator))]
 public class Treasure : Collectible, InitializableCollectible
 {
+    private static readonly int Collected = Animator.StringToHash("Collected");
     public float amount = 25;
     public TMP_Text numberPopup;
+    public Sprite[] sprites;
 
     private Animator animator;
-    public Sprite[] sprites;
-    private static readonly int Collected = Animator.StringToHash("Collected");
-
-    public static event Action<float> OnTreasueCollected;
 
     protected override void Start()
     {
@@ -21,13 +19,6 @@ public class Treasure : Collectible, InitializableCollectible
         animator = GetComponent<Animator>();
         // random sprite
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-    }
-
-
-    public override void PickUp()
-    {
-        OnTreasueCollected?.Invoke(amount);
-        animator.SetTrigger(Collected);
     }
 
     public void Initialize(ScriptablePowerUp powerup, float disappearTime)
@@ -46,6 +37,15 @@ public class Treasure : Collectible, InitializableCollectible
         }
 
         numberPopup.text = "+" + amount;
+    }
+
+    public static event Action<float> OnTreasueCollected;
+
+
+    public override void PickUp()
+    {
+        OnTreasueCollected?.Invoke(amount);
+        animator.SetTrigger(Collected);
     }
 
     // called by animation event

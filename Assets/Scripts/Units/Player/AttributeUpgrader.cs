@@ -1,26 +1,11 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerUnit))]
 public class AttributeUpgrader : MonoBehaviour
 {
-    private List<AttributeUpgrade> upgrades;
     private PlayerUnit playerUnit;
-
-    private void OnEnable()
-    {
-        LevelUpUISetter.OnRewardSelected += UpgradeAttribute;
-        StatPowerup.OnStatUpgradeActivated += UpgradeAttribute;
-        StatPowerup.OnStatUpgradeDeactivated += DowngradeAttribute;
-    }
-
-    private void OnDisable()
-    {
-        LevelUpUISetter.OnRewardSelected -= UpgradeAttribute;
-        StatPowerup.OnStatUpgradeActivated -= UpgradeAttribute;
-        StatPowerup.OnStatUpgradeDeactivated -= DowngradeAttribute;
-    }
+    private List<AttributeUpgrade> upgrades;
 
     private void Start()
     {
@@ -35,6 +20,20 @@ public class AttributeUpgrader : MonoBehaviour
             new(playerUnit.attributes.pickupRange),
             new GoldAttributeUpgrade(playerUnit.stats.gold)
         };
+    }
+
+    private void OnEnable()
+    {
+        LevelUpUISetter.OnRewardSelected += UpgradeAttribute;
+        StatPowerup.OnStatUpgradeActivated += UpgradeAttribute;
+        StatPowerup.OnStatUpgradeDeactivated += DowngradeAttribute;
+    }
+
+    private void OnDisable()
+    {
+        LevelUpUISetter.OnRewardSelected -= UpgradeAttribute;
+        StatPowerup.OnStatUpgradeActivated -= UpgradeAttribute;
+        StatPowerup.OnStatUpgradeDeactivated -= DowngradeAttribute;
     }
 
     private void UpgradeAttribute(ScriptableReward scriptableStat)

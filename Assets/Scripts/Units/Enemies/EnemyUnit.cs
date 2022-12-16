@@ -5,34 +5,26 @@ using UnityEngine;
 
 public class EnemyUnit : Unit
 {
-    public static event Action<EnemyUnit> OnEnemyUnitDied;
-    public float attackCooldown = 1f;
-    public float deathDelay;
-    private float attackTimer;
-    private RotateToPlayer rotateToPlayer;
-
-    public Energy dropOnDeath;
-    [NonSerialized] public int energyDropAmount = 10;
-
-    protected GameObject player;
-
-    // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
-    protected AIPath aiPath;
-    protected AIDestinationSetter destinationSetter;
-
-    private EnemyState state = EnemyState.Moving;
-
-    private enum EnemyState
-    {
-        Moving,
-        Attacking,
-        Dead
-    }
-
-    private Animator animator;
     private static readonly int Dying = Animator.StringToHash("Dying");
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int Speed = Animator.StringToHash("Speed");
+    public float attackCooldown = 1f;
+    public float deathDelay;
+
+    public Energy dropOnDeath;
+
+    // A* controls the movement of the enemy, it also has stopping distance, speed, slowdown distance..
+    protected AIPath aiPath;
+
+    private Animator animator;
+    private float attackTimer;
+    protected AIDestinationSetter destinationSetter;
+    [NonSerialized] public int energyDropAmount = 10;
+
+    protected GameObject player;
+    private RotateToPlayer rotateToPlayer;
+
+    private EnemyState state = EnemyState.Moving;
 
     protected override void Awake()
     {
@@ -49,6 +41,35 @@ public class EnemyUnit : Unit
 
         faction = Faction.Enemy;
     }
+
+    protected virtual void Update()
+    {
+        if (!player) return;
+
+        animator.SetFloat(Speed, Mathf.Abs(aiPath.desiredVelocity.x));
+
+        if (attackTimer >= 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
+
+        if (state != EnemyState.Dead)
+        {
+            CheckDistance();
+        }
+
+        if (state == EnemyState.Attacking)
+        {
+            if (attackTimer <= 0)
+            {
+                animator.SetTrigger(Attack);
+                AttackPlayer();
+                attackTimer = attackCooldown;
+            }
+        }
+    }
+
+    public static event Action<EnemyUnit> OnEnemyUnitDied;
 
 
     // overriden in child classes
@@ -111,30 +132,10 @@ public class EnemyUnit : Unit
         OnEnemyUnitDied?.Invoke(this);
     }
 
-    protected virtual void Update()
+    private enum EnemyState
     {
-        if (!player) return;
-
-        animator.SetFloat(Speed, Mathf.Abs(aiPath.desiredVelocity.x));
-
-        if (attackTimer >= 0)
-        {
-            attackTimer -= Time.deltaTime;
-        }
-
-        if (state != EnemyState.Dead)
-        {
-            CheckDistance();
-        }
-
-        if (state == EnemyState.Attacking)
-        {
-            if (attackTimer <= 0)
-            {
-                animator.SetTrigger(Attack);
-                AttackPlayer();
-                attackTimer = attackCooldown;
-            }
-        }
+        Moving,
+        Attacking,
+        Dead
     }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DigitalRuby.LightningBolt;
 using UnityEngine;
 
@@ -12,6 +9,7 @@ public class LightningEffect : MonoBehaviour
     {
         Destroy(gameObject, destroyAfterSeconds);
     }
+
     public void Initialize(Vector3 start, Vector3 end)
     {
         var bolt = GetComponentInChildren<LightningBoltScript>();

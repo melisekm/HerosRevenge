@@ -4,9 +4,9 @@ using UnityEngine;
 public class RotateToPlayer : MonoBehaviour
 {
     public bool isFacingRight = true;
+    private GameObject player;
     private Action rotateToPlayer;
     private SpriteRenderer sprite;
-    private GameObject player;
 
     private void Start()
     {

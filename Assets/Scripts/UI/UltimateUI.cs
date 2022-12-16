@@ -5,19 +5,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class UltimateUI : AbilityHolderUI
 {
+    public TMP_Text cdText;
+    public Image darkMask;
     private AbilityHolder abilityHolder;
 
     private float currentMaxCooldown;
-    public TMP_Text cdText;
-    public Image darkMask;
-
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        abilityHolder.OnAbilityReady -= ShowReady;
-        abilityHolder.OnUltimateUsed -= ShowCooldown;
-    }
 
     private void Start()
     {
@@ -29,6 +21,24 @@ public class UltimateUI : AbilityHolderUI
             abilityHolder.OnAbilityReady += ShowReady;
             abilityHolder.OnUltimateUsed += ShowCooldown;
         }
+    }
+
+    private void Update()
+    {
+        if (abilityHolder.cooldownTime > 0)
+        {
+            // percentage dark mask fillamount
+            darkMask.fillAmount = abilityHolder.cooldownTime / currentMaxCooldown;
+            cdText.text = abilityHolder.cooldownTime.ToString("F0");
+        }
+    }
+
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        abilityHolder.OnAbilityReady -= ShowReady;
+        abilityHolder.OnUltimateUsed -= ShowCooldown;
     }
 
     protected override void Initialize(ScriptableAbility scriptableAbility, string index)
@@ -48,15 +58,5 @@ public class UltimateUI : AbilityHolderUI
     private void ShowReady()
     {
         cdText.text = keyString;
-    }
-
-    private void Update()
-    {
-        if (abilityHolder.cooldownTime > 0)
-        {
-            // percentage dark mask fillamount
-            darkMask.fillAmount = abilityHolder.cooldownTime / currentMaxCooldown;
-            cdText.text = abilityHolder.cooldownTime.ToString("F0");
-        }
     }
 }

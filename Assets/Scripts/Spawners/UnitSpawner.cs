@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class UnitSpawner : Spawner
 {
-    private readonly List<Transform> spawnPoints = new();
     public EnemyType spawnType;
     public bool spawnRandomEnemyTypes = true;
     public bool dynamicSpawnRate = true;
-    private int enemyCount;
     public SpawnRate spawnRate;
+    private readonly List<Transform> spawnPoints = new();
+    private int enemyCount;
     private float enemyPowerMultiplier;
-
-    public static event Action<EnemyUnit> OnEnemySpawned;
 
 
     private void Awake()
@@ -22,6 +20,15 @@ public class UnitSpawner : Spawner
         foreach (var spawnPoint in spawnPointsGo)
         {
             spawnPoints.Add(spawnPoint.transform);
+        }
+    }
+
+    private void Start()
+    {
+        var playerContainerGo = GameObject.FindWithTag("PlayerContainer");
+        if (playerContainerGo && playerContainerGo.TryGetComponent(out PlayerContainer playerContainer))
+        {
+            enemyPowerMultiplier = playerContainer.GetArenaPowerMultiplier();
         }
     }
 
@@ -35,14 +42,7 @@ public class UnitSpawner : Spawner
         EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
     }
 
-    private void Start()
-    {
-        var playerContainerGo = GameObject.FindWithTag("PlayerContainer");
-        if (playerContainerGo && playerContainerGo.TryGetComponent(out PlayerContainer playerContainer))
-        {
-            enemyPowerMultiplier = playerContainer.GetArenaPowerMultiplier();
-        }
-    }
+    public static event Action<EnemyUnit> OnEnemySpawned;
 
     private void OnEnemyDied(EnemyUnit obj)
     {

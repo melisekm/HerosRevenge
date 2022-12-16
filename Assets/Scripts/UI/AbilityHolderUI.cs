@@ -10,32 +10,20 @@ public class AbilityHolderUI : MonoBehaviour
     private GameObject highlight;
     private GameObject keyGo;
 
-    private void OnEnable()
-    {
-        AbilityStash.OnAbilityChanged += Initialize;
-        PlayerControls.OnSwitchAbility += ShowBorder;
-    }
-
-
-    protected virtual void OnDisable()
-    {
-        AbilityStash.OnAbilityChanged -= Initialize;
-        PlayerControls.OnSwitchAbility += ShowBorder;
-    }
-
     private void Start()
     {
         var keyTextGo = transform.Find("KeyText");
         if (keyTextGo && keyTextGo.TryGetComponent(out TMP_Text keyText))
         {
-            keyGo = keyTextGo.gameObject; 
+            keyGo = keyTextGo.gameObject;
             if (keyString != keyText.text)
             {
                 Debug.LogError("KeyString and KeyText do not match");
             }
+
             keyString = keyText.text;
         }
-        
+
         highlight = transform.Find("Highlight").gameObject;
         if (highlight && keyString == "1")
         {
@@ -47,6 +35,19 @@ public class AbilityHolderUI : MonoBehaviour
             highlight.SetActive(false);
             keyGo.gameObject.SetActive(false);
         }
+    }
+
+    private void OnEnable()
+    {
+        AbilityStash.OnAbilityChanged += Initialize;
+        PlayerControls.OnSwitchAbility += ShowBorder;
+    }
+
+
+    protected virtual void OnDisable()
+    {
+        AbilityStash.OnAbilityChanged -= Initialize;
+        PlayerControls.OnSwitchAbility += ShowBorder;
     }
 
     private void ShowBorder(int index)

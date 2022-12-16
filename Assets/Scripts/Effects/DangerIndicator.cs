@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class DangerIndicator : Effect
 {
-    private DangerIndicatorEffect effect;
-    private Transform progressCircle;
-    private float activationTime = 3f;
-
     [Header("Random Activation Time")] public float minActivationTime = 1f;
     public float maxActivationTime = 4f;
+    private float activationTime = 3f;
+    private float damageMultiplier;
+    private DangerIndicatorEffect effect;
+    private float explosionRadius = 5f;
+    private Transform progressCircle;
+    private Faction targetFaction;
 
     private float timeElapsed;
-    private Faction targetFaction;
-    private float explosionRadius = 5f;
-    private float damageMultiplier;
 
     private void Start()
     {
@@ -26,14 +25,6 @@ public class DangerIndicator : Effect
                 damageMultiplier = playerContainer.GetArenaPowerMultiplier();
             }
         }
-    }
-
-    public override void Initialize(ScriptableEffect scriptableEffect, float radius, Faction targetFaction)
-    {
-        effect = (DangerIndicatorEffect)scriptableEffect;
-        this.targetFaction = targetFaction;
-        explosionRadius = radius;
-        transform.localScale = explosionRadius * Vector3.one;
     }
 
     private void Update()
@@ -56,5 +47,13 @@ public class DangerIndicator : Effect
             // destroy the indicator
             Destroy(gameObject);
         }
+    }
+
+    public override void Initialize(ScriptableEffect scriptableEffect, float radius, Faction targetFaction)
+    {
+        effect = (DangerIndicatorEffect)scriptableEffect;
+        this.targetFaction = targetFaction;
+        explosionRadius = radius;
+        transform.localScale = explosionRadius * Vector3.one;
     }
 }

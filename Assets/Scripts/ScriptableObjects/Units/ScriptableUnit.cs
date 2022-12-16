@@ -11,6 +11,13 @@ public abstract class ScriptableUnit : ScriptableObject
 [Serializable]
 public class Attributes
 {
+    [SerializeField] public Attribute health;
+    [SerializeField] public Attribute attackPower;
+    [SerializeField] public Attribute defenseRating;
+    [SerializeField] public Attribute speed;
+    [SerializeField] public Attribute cooldownRecovery;
+    [SerializeField] public Attribute pickupRange;
+
     public Attributes(Attributes other)
     {
         health = new Attribute(other.health);
@@ -20,13 +27,6 @@ public class Attributes
         cooldownRecovery = new Attribute(other.cooldownRecovery);
         pickupRange = new Attribute(other.pickupRange);
     }
-
-    [SerializeField] public Attribute health;
-    [SerializeField] public Attribute attackPower;
-    [SerializeField] public Attribute defenseRating;
-    [SerializeField] public Attribute speed;
-    [SerializeField] public Attribute cooldownRecovery;
-    [SerializeField] public Attribute pickupRange;
 }
 
 [Serializable]
@@ -36,42 +36,10 @@ public class Attribute
 
     [SerializeField] private float _actual;
 
-    public float actual
-    {
-        get => _actual;
-        set
-        {
-            _actual = value;
-            OnValueChanged?.Invoke(this);
-        }
-    }
-
     [SerializeField] public float min;
     [SerializeField] public float max;
     [SerializeField] public float increasePerLevel;
     [SerializeField] public int upgradeCost;
-    public event Action<Attribute> OnValueChanged;
-
-    public void ToggleUpgrade(float value, int modifier = 1)
-    {        
-        // if he was on max attrbute, lost boost do not lower it
-        if (modifier == -1 && Math.Abs(initial - max) < 0.001) return;
-        initial = Mathf.Clamp(initial + value * modifier, min + 0.01f, max);
-        actual = Mathf.Clamp(actual + value * modifier, min + 0.01f, max);
-    }
-
-    public void LevelUp()
-    {
-        initial = Mathf.Min(initial + increasePerLevel, max);
-        actual = initial;
-    }
-    
-    public void BuyUpgrade(float multiplier)
-    {
-        initial = Mathf.Min(initial + increasePerLevel, max);
-        actual = initial;
-        upgradeCost = Mathf.RoundToInt(upgradeCost * multiplier);
-    }
 
     public Attribute(Attribute other)
     {
@@ -91,5 +59,38 @@ public class Attribute
         this.max = max;
         this.increasePerLevel = increasePerLevel;
         this.upgradeCost = upgradeCost;
+    }
+
+    public float actual
+    {
+        get => _actual;
+        set
+        {
+            _actual = value;
+            OnValueChanged?.Invoke(this);
+        }
+    }
+
+    public event Action<Attribute> OnValueChanged;
+
+    public void ToggleUpgrade(float value, int modifier = 1)
+    {
+        // if he was on max attrbute, lost boost do not lower it
+        if (modifier == -1 && Math.Abs(initial - max) < 0.001) return;
+        initial = Mathf.Clamp(initial + value * modifier, min + 0.01f, max);
+        actual = Mathf.Clamp(actual + value * modifier, min + 0.01f, max);
+    }
+
+    public void LevelUp()
+    {
+        initial = Mathf.Min(initial + increasePerLevel, max);
+        actual = initial;
+    }
+
+    public void BuyUpgrade(float multiplier)
+    {
+        initial = Mathf.Min(initial + increasePerLevel, max);
+        actual = initial;
+        upgradeCost = Mathf.RoundToInt(upgradeCost * multiplier);
     }
 }

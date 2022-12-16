@@ -7,12 +7,12 @@ using Random = UnityEngine.Random;
 
 public class PowerupTreasureSpawner : GroundEntitySpawner
 {
-    private RewardGenerator rewardGenerator;
     public List<AbilityType> abilityTypes;
     public List<StatType> statTypes;
+    public Vector2 disappearTimeRange = new(5.0f, 10.0f);
     private List<ScriptableAbility> abilities;
+    private RewardGenerator rewardGenerator;
     private List<ScriptableStatUpgrade> statUpgrades;
-    public Vector2 disappearTimeRange = new(5.0f,10.0f);
 
     private void Start()
     {

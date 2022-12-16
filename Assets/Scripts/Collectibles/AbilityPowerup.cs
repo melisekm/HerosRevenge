@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 public class AbilityPowerup : Powerup
 {
     public override void Initialize(ScriptablePowerUp powerup, float disappearTime)
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
 
     public override void PickUp()
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
-
 }

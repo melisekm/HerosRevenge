@@ -6,18 +6,23 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool canMove = true;
-    private Attribute speed;
-    private PlayerUnit playerUnit;
-    private Rigidbody2D rb;
+    public float shootSlowdown = 0.5f;
     private Vector2 direction;
     private bool isShooting;
-    public float shootSlowdown = 0.5f;
+    private PlayerUnit playerUnit;
+    private Rigidbody2D rb;
+    private Attribute speed;
 
     private void Start()
     {
         playerUnit = GetComponent<PlayerUnit>();
         rb = GetComponent<Rigidbody2D>();
         speed = playerUnit.attributes.speed;
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = canMove ? new Vector2(direction.x * speed.actual, direction.y * speed.actual) : Vector2.zero;
     }
 
 
@@ -45,7 +50,8 @@ public class PlayerMovement : MonoBehaviour
             speed.actual = speed.initial;
             isShooting = false;
         }
-        if(!isShooting)
+
+        if (!isShooting)
             StartCoroutine(SlowDown());
     }
 
@@ -58,10 +64,5 @@ public class PlayerMovement : MonoBehaviour
     {
         // Get player's movement direction based on input and normalize to prevent double speed when moving diagonal
         direction = new Vector2(horizontal, vertical).normalized;
-    }
-
-    private void FixedUpdate()
-    {
-        rb.velocity = canMove ? new Vector2(direction.x * speed.actual, direction.y * speed.actual) : Vector2.zero;
     }
 }

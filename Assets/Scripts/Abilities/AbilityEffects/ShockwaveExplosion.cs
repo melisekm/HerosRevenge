@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class ShockwaveExplosion : MonoBehaviour
 {
-    private float radius = 1f;
-    private Faction faction;
-    private float damage;
     private Collider2D[] collisionResults = new Collider2D[5];
+    private float damage;
+    private Faction faction;
+    private float radius = 1f;
 
     private void Start()
     {

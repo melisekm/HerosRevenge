@@ -14,6 +14,11 @@ public class FacingDirectionSetter : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
+    protected void Update()
+    {
+        SetFacingDirection();
+    }
+
     private void SetFacingDirection()
     {
         if (rb.velocity.x >= 0.01f)
@@ -37,10 +42,5 @@ public class FacingDirectionSetter : MonoBehaviour
         isFacingRight = !isFacingRight;
         sprite.flipX = !sprite.flipX;
         // this only flips sprite, not the collider etc
-    }
-
-    protected void Update()
-    {
-        SetFacingDirection();
     }
 }

@@ -3,19 +3,25 @@ using UnityEngine;
 
 public class EventSpawner : EffectSpawner
 {
-    [Header("Event")]
-    public int aoeChance = 10;
+    [Header("Event")] public int aoeChance = 10;
     public int checkInterval = 10;
     public int length = 10;
-    private bool isEventActive;
 
     private ScriptableEffect eventEffect;
+
+    private bool isEventActive;
     // private float spawn
 
 
     private void Start()
     {
         StartCoroutine(EventScheduler());
+    }
+
+    protected override void Update()
+    {
+        if (!isEventActive) return;
+        base.Update();
     }
 
 
@@ -50,12 +56,6 @@ public class EventSpawner : EffectSpawner
         }
 
         StartCoroutine(ToggleAoEEvent());
-    }
-
-    protected override void Update()
-    {
-        if (!isEventActive) return;
-        base.Update();
     }
 
     protected override ScriptableObject GetEntity()

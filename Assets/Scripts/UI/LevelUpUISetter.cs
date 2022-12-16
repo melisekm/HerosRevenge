@@ -12,26 +12,15 @@ public class LevelUpUISetter : MonoBehaviour
     public TMP_Text levelNumber;
     public List<UIAbilitySlot> abilitySlots;
 
-
-    public static event Action<ScriptableReward> OnRewardSelected;
-
-    [Serializable]
-    public struct UIAbilitySlot
-    {
-        public TMP_Text name;
-        public TMP_Text description;
-        public TMP_Text type;
-        public Image icon;
-        public Button button;
-    }
-
-    [Header("Attributes")]
-    public TMP_Text damage;
+    [Header("Attributes")] public TMP_Text damage;
     public TMP_Text speed;
     public TMP_Text defense;
     public TMP_Text cooldown;
     public TMP_Text pickup;
     public TMP_Text health;
+
+
+    public static event Action<ScriptableReward> OnRewardSelected;
 
 
     public void SetLevelUpUI(PlayerStats playerStats, Attributes playerAttributes,
@@ -70,5 +59,15 @@ public class LevelUpUISetter : MonoBehaviour
             yield return new WaitForSecondsRealtime(1f);
             btn.interactable = true;
         }
+    }
+
+    [Serializable]
+    public struct UIAbilitySlot
+    {
+        public TMP_Text name;
+        public TMP_Text description;
+        public TMP_Text type;
+        public Image icon;
+        public Button button;
     }
 }

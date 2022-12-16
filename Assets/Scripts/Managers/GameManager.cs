@@ -6,17 +6,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private List<Spawner> spawners = new();
-    private GameState state;
-    private PlayerContainer playerContainer;
-    private PlayerUnit playerUnit;
-    private int killCount;
-
     // time until the game starts
     [Min(0.01f)] [SerializeField] private float startDelay = 2f;
-
-    public static event Action<float> OnUpdateTime;
-    public static event Action<int> OnKillCountChange;
+    private int killCount;
+    private PlayerContainer playerContainer;
+    private PlayerUnit playerUnit;
+    private List<Spawner> spawners = new();
+    private GameState state;
 
     private void Awake()
     {
@@ -29,6 +25,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("PlayerContainer not found");
         }
+
         var spawnersGo = GameObject.FindGameObjectsWithTag("Spawner");
         foreach (var spawnerGo in spawnersGo)
         {
@@ -37,6 +34,19 @@ public class GameManager : MonoBehaviour
             {
                 spawners.Add(spawncomponent);
             }
+        }
+    }
+
+    private void Start()
+    {
+        ChangeState(GameState.Starting);
+    }
+
+    private void Update()
+    {
+        if (state == GameState.Playing)
+        {
+            OnUpdateTime?.Invoke(Time.timeSinceLevelLoad);
         }
     }
 
@@ -59,16 +69,15 @@ public class GameManager : MonoBehaviour
         PlayerUnit.OnPlayerDied -= OnPlayerDead;
         WinConditionChecker.OnWinConditionMet -= OnWinConditionMet;
     }
-    
-    private void Start()
-    {
-        ChangeState(GameState.Starting);
-    }
+
+    public static event Action<float> OnUpdateTime;
+    public static event Action<int> OnKillCountChange;
 
     private void OnPlayerDead()
     {
         ChangeState(GameState.ArenaFailed);
     }
+
     private void OnWinConditionMet()
     {
         ChangeState(GameState.ArenaFinished);
@@ -154,14 +163,6 @@ public class GameManager : MonoBehaviour
         }
 
         StartCoroutine(StartSpawning());
-    }
-
-    private void Update()
-    {
-        if (state == GameState.Playing)
-        {
-            OnUpdateTime?.Invoke(Time.timeSinceLevelLoad);
-        }
     }
 }
 

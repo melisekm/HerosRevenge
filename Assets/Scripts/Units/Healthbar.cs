@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Healthbar : MonoBehaviour
 {
-    private Unit unit;
-    private Transform bar;
+    public bool isAlwaysActive = false;
     private Transform background;
+    private Transform bar;
     private float prevHealth;
     private float prevMaxHealth;
-    public bool isAlwaysActive = false;
+    private Unit unit;
 
 
     private void Awake()
@@ -20,17 +20,6 @@ public class Healthbar : MonoBehaviour
         bar = transform.Find("Bar");
         background = transform.Find("Background");
         SetActive(isAlwaysActive);
-    }
-
-    private void SetActive(bool active)
-    {
-        background.gameObject.SetActive(active);
-        bar.gameObject.SetActive(active);
-    }
-
-    private void SetSize(float size)
-    {
-        bar.localScale = new Vector3(size, 1f);
     }
 
     private void Update()
@@ -50,5 +39,16 @@ public class Healthbar : MonoBehaviour
             prevMaxHealth = maxCurrentHealth;
             SetSize(currentHealth / maxCurrentHealth);
         }
+    }
+
+    private void SetActive(bool active)
+    {
+        background.gameObject.SetActive(active);
+        bar.gameObject.SetActive(active);
+    }
+
+    private void SetSize(float size)
+    {
+        bar.localScale = new Vector3(size, 1f);
     }
 }

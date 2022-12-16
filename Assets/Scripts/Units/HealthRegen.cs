@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthRegen : MonoBehaviour
 {
-    private Attribute health;
-    private float timer;
-    private float regenTime = 0.2f;
-    private float regenAmount = 1f;
     private bool active = true;
+    private Attribute health;
+    private float regenAmount = 1f;
+    private float regenTime = 0.2f;
+    private float timer;
 
     private void Start()
     {
@@ -17,6 +14,17 @@ public class HealthRegen : MonoBehaviour
         if (unit)
         {
             health = unit.attributes.health;
+        }
+    }
+
+    private void Update()
+    {
+        if (!active) return;
+        timer += Time.deltaTime;
+        if (timer >= regenTime && health.actual < health.initial)
+        {
+            timer = 0;
+            health.actual += regenAmount;
         }
     }
 
@@ -33,16 +41,5 @@ public class HealthRegen : MonoBehaviour
     private void DisableHealthRegen()
     {
         active = false;
-    }
-
-    private void Update()
-    {
-        if (!active) return;
-        timer += Time.deltaTime;
-        if (timer >= regenTime && health.actual < health.initial)
-        {
-            timer = 0;
-            health.actual += regenAmount;
-        }
     }
 }

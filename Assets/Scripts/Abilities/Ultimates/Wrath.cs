@@ -1,17 +1,15 @@
-using System;
 using UnityEngine;
 
 public class Wrath : Ability
 {
-    private PlayerUnit playerUnit;
     public float duration;
-    [Header("Attribute boosts")]
-    public float health = 20f;
+    [Header("Attribute boosts")] public float health = 20f;
     public float attackPower = 10f;
     public float speed = 2f;
     public float coolDownRecovery = 0.1f;
     public float defenseRating = 0.2f;
     public float pickupRange = 2f;
+    private PlayerUnit playerUnit;
 
     private void Start()
     {

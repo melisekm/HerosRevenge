@@ -6,12 +6,6 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
-    private PlayerContainer playerContainer;
-    private Attributes playerAttributes;
-    private PlayerStats playerStats;
-    private List<Attribute> upgradableAttributes;
-    private Dictionary<Button, Attribute> buttonToAttribute = new();
-
     [Header("Current Player Stats")] public TMP_Text playerHealth;
     public TMP_Text playerAttackPower;
     public TMP_Text playerDefenseRating;
@@ -32,6 +26,11 @@ public class ShopUI : MonoBehaviour
     public TMP_Text defenseRatingUpgradeCost;
     public TMP_Text pickupRangeUpgradeCost;
     public TMP_Text cooldownRecoveryUpgradeCost;
+    private Dictionary<Button, Attribute> buttonToAttribute = new();
+    private Attributes playerAttributes;
+    private PlayerContainer playerContainer;
+    private PlayerStats playerStats;
+    private List<Attribute> upgradableAttributes;
 
     private void Start()
     {

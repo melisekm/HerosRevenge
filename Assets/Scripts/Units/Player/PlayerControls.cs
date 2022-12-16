@@ -3,33 +3,13 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public static event Action OnAttack;
-    public static event Action<int> OnSwitchAbility;
-    public static event Action<float, float> OnMovement;
-    public static event Action OnUltimateButtonPress;
-
-    private int maxAbilityCount;
     private bool isActive = true;
 
-
-    private void OnEnable()
-    {
-        PlayerUnit.OnPlayerDied += DisableControls;
-    }
-
-    private void OnDisable()
-    {
-        PlayerUnit.OnPlayerDied -= DisableControls;
-    }
+    private int maxAbilityCount;
 
     private void Start()
     {
         maxAbilityCount = TryGetComponent(out AbilityStash stash) ? stash.defaultAbilityTypes.Count : 0;
-    }
-
-    private void DisableControls()
-    {
-        isActive = false;
     }
 
     private void Update()
@@ -56,5 +36,26 @@ public class PlayerControls : MonoBehaviour
                 OnSwitchAbility?.Invoke(i);
             }
         }
+    }
+
+
+    private void OnEnable()
+    {
+        PlayerUnit.OnPlayerDied += DisableControls;
+    }
+
+    private void OnDisable()
+    {
+        PlayerUnit.OnPlayerDied -= DisableControls;
+    }
+
+    public static event Action OnAttack;
+    public static event Action<int> OnSwitchAbility;
+    public static event Action<float, float> OnMovement;
+    public static event Action OnUltimateButtonPress;
+
+    private void DisableControls()
+    {
+        isActive = false;
     }
 }

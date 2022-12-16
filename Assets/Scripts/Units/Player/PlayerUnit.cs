@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class PlayerUnit : Unit
 {
-    public PlayerStats stats { get; private set; }
     [Tooltip("Max cast range for spells which do are not projectiels (e.g. how far can player place PoisonRain")]
     public float maxCastRange = 10f;
+
     [Tooltip("How much xp is needed to level up. (increase per level)")]
     public float levelUpMultiplier = 1.25f;
+
     [Tooltip("How many rewards are when leveling up")] // needs a lot more additonal changes
     public int rewardsCount = 2;
+
     [Tooltip("At which level player will get more projectiles per multiproj ability")]
     public int levelToIncreaseMaxProjectiles = 7;
+
     [Tooltip("Global maximum even if player is above levelToIncreaseMaxProjectiles")]
     public int globalMaxProjectilesToFire = 9;
-    private ProgressionController progressionController { get; set; }
 
-    public static event Action OnPlayerDied;
+    public PlayerStats stats { get; private set; }
+
+    private ProgressionController progressionController { get; set; }
 
     protected override void Awake()
     {
@@ -43,6 +47,8 @@ public class PlayerUnit : Unit
         Energy.OnEnergyCollected -= progressionController.PickUpEnergy;
         Treasure.OnTreasueCollected -= progressionController.PickUpGold;
     }
+
+    public static event Action OnPlayerDied;
 
     protected override void Die()
     {

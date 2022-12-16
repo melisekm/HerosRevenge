@@ -7,32 +7,9 @@ using Random = UnityEngine.Random;
 public class AbilityStash : MonoBehaviour
 {
     public List<AbilityHolder> abilityList = new();
-    private AbilityHolder selectedAbilityHolder;
     public List<AbilityType> defaultAbilityTypes = new();
     public AbilityHolder ultimateAbilityHolder;
-    public static event Action<ScriptableAbility, string> OnAbilityChanged;
-
-    public void OnEnable()
-    {
-        PlayerControls.OnSwitchAbility += SwitchAbility;
-        PlayerControls.OnUltimateButtonPress += TryToUseUltimate;
-        LevelUpUISetter.OnRewardSelected += SetAbility;
-        // we need this because after clicking on reward it would immediately activate ability
-        ProgressionController.OnLevelUp += DisableSelectedHolder;
-    }
-
-    public void OnDisable()
-    {
-        PlayerControls.OnSwitchAbility -= SwitchAbility;
-        PlayerControls.OnUltimateButtonPress -= TryToUseUltimate;
-        LevelUpUISetter.OnRewardSelected -= SetAbility;
-        foreach (var abilityHolder in abilityList)
-        {
-            PlayerControls.OnAttack -= abilityHolder.ActivateAbility;
-        }
-
-        ProgressionController.OnLevelUp -= DisableSelectedHolder;
-    }
+    private AbilityHolder selectedAbilityHolder;
 
     private void Start()
     {
@@ -77,6 +54,28 @@ public class AbilityStash : MonoBehaviour
         ultimateAbilityHolder.isHolderActive = true;
     }
 
+    public void OnEnable()
+    {
+        PlayerControls.OnSwitchAbility += SwitchAbility;
+        PlayerControls.OnUltimateButtonPress += TryToUseUltimate;
+        LevelUpUISetter.OnRewardSelected += SetAbility;
+        // we need this because after clicking on reward it would immediately activate ability
+        ProgressionController.OnLevelUp += DisableSelectedHolder;
+    }
+
+    public void OnDisable()
+    {
+        PlayerControls.OnSwitchAbility -= SwitchAbility;
+        PlayerControls.OnUltimateButtonPress -= TryToUseUltimate;
+        LevelUpUISetter.OnRewardSelected -= SetAbility;
+        foreach (var abilityHolder in abilityList)
+        {
+            PlayerControls.OnAttack -= abilityHolder.ActivateAbility;
+        }
+
+        ProgressionController.OnLevelUp -= DisableSelectedHolder;
+    }
+
     public void OnDestroy()
     {
         // save abilities
@@ -87,6 +86,8 @@ public class AbilityStash : MonoBehaviour
             playerContainer.ultimateType = ultimateAbilityHolder.abilityType;
         }
     }
+
+    public static event Action<ScriptableAbility, string> OnAbilityChanged;
 
     private void DisableSelectedHolder(PlayerStats _, Attributes __, bool initial, RewardGenerator.Reward[] ___)
     {

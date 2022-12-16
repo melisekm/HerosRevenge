@@ -11,6 +11,10 @@ public class ScriptablePlayer : ScriptableUnit
 [Serializable]
 public class PlayerStats
 {
+    [SerializeField] public Attribute xp;
+    [SerializeField] public Attribute level;
+    [SerializeField] public Attribute gold;
+
     public PlayerStats(PlayerStats other)
     {
         xp = new Attribute(other.xp);
@@ -24,8 +28,4 @@ public class PlayerStats
         this.level = new Attribute(level);
         this.gold = new Attribute(gold);
     }
-
-    [SerializeField] public Attribute xp;
-    [SerializeField] public Attribute level;
-    [SerializeField] public Attribute gold;
 }

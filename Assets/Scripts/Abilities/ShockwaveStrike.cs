@@ -5,9 +5,9 @@ public class ShockwaveStrike : MultiProjectileAbility
     public ShockwaveExplosion shockwaveExplosion;
     public float spawnExplosionsTimer = 0.1f;
     public float explosionDamageMultiplier = 0.3f;
-    private float timer;
-    private float explosionDamage;
     private bool canSpawnExplosions = true;
+    private float explosionDamage;
+    private float timer;
 
     private void Start()
     {

@@ -5,29 +5,38 @@ using UnityEngine;
 public class AbilityHolder : MonoBehaviour
 {
     public AbilityType abilityType = AbilityType.Empty;
-    private PlayerUnit playerUnit;
-    [NonSerialized] public bool isHolderActive;
-    [NonSerialized] public float cooldownTime;
-    [NonSerialized] public ScriptableAbility scriptableAbility;
     private AbilityState abilityState = AbilityState.Ready;
-    public event Action OnUltimateUsed;
-    public event Action OnAbilityReady;
+    [NonSerialized] public float cooldownTime;
+    [NonSerialized] public bool isHolderActive;
 
     private Camera mainCamera;
-    // here it would be best to have some kind of container holding info about currently active ability
-    // e.g. scriptableability, values, type etc
-
-    private enum AbilityState
-    {
-        Ready,
-        Cooldown
-    }
+    private PlayerUnit playerUnit;
+    [NonSerialized] public ScriptableAbility scriptableAbility;
 
     private void Start()
     {
         mainCamera = Camera.main;
         playerUnit = GetComponent<PlayerUnit>();
     }
+
+    private void Update()
+    {
+        if (abilityType != AbilityType.Empty && abilityState == AbilityState.Cooldown)
+        {
+            if (cooldownTime > 0)
+            {
+                cooldownTime -= Time.deltaTime;
+            }
+            else
+            {
+                abilityState = AbilityState.Ready;
+                OnAbilityReady?.Invoke();
+            }
+        }
+    }
+
+    public event Action OnUltimateUsed;
+    public event Action OnAbilityReady;
 
     public void ActivateAbility()
     {
@@ -82,20 +91,12 @@ public class AbilityHolder : MonoBehaviour
             scriptableAbility = ResourceSystem.Instance.GetAbilityByType(abilityType);
         }
     }
+    // here it would be best to have some kind of container holding info about currently active ability
+    // e.g. scriptableability, values, type etc
 
-    private void Update()
+    private enum AbilityState
     {
-        if (abilityType != AbilityType.Empty && abilityState == AbilityState.Cooldown)
-        {
-            if (cooldownTime > 0)
-            {
-                cooldownTime -= Time.deltaTime;
-            }
-            else
-            {
-                abilityState = AbilityState.Ready;
-                OnAbilityReady?.Invoke();
-            }
-        }
+        Ready,
+        Cooldown
     }
 }

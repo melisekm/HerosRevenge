@@ -3,17 +3,15 @@ using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
-    public AbilityStats abilityStats { get; private set; }
-
-    protected Vector3 target;
-    protected Faction targetFaction;
+    protected static readonly int PlayFinished = Animator.StringToHash("playFinished");
     public bool collidesWithUnits = false;
     public bool collidesWithEnvironment = true;
     protected Animator animator;
     protected HitEffect hitEffect;
-    protected static readonly int PlayFinished = Animator.StringToHash("playFinished");
 
-    public virtual void SetAbilityStats(AbilityStats st) => abilityStats = st;
+    protected Vector3 target;
+    protected Faction targetFaction;
+    public AbilityStats abilityStats { get; private set; }
 
 
     protected void Awake()
@@ -21,6 +19,14 @@ public class Ability : MonoBehaviour
         animator = GetComponent<Animator>();
         hitEffect = GetComponent<HitEffect>();
     }
+
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        Act(collision);
+    }
+
+    public virtual void SetAbilityStats(AbilityStats st) => abilityStats = st;
 
 
     public virtual void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
@@ -42,12 +48,6 @@ public class Ability : MonoBehaviour
     {
         this.target = target;
         this.targetFaction = targetFaction;
-    }
-
-
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        Act(collision);
     }
 
     protected virtual void Act(Collider2D collision)

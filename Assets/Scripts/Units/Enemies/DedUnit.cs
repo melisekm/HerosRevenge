@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class DedUnit : RangedEnemyUnit
 {
-    private bool isEvading;
     public float evadeTime = 2f;
     public float randomPathSize = 5f;
+    private bool isEvading;
 
     protected override void AttackPlayer()
     {

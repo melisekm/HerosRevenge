@@ -5,23 +5,22 @@ using UnityEngine;
 
 public class PlayerContainer : MonoBehaviour
 {
-    [NonSerialized] public Attributes playerAttributes;
-    [NonSerialized] public PlayerStats playerStats;
-    [NonSerialized] public List<AbilityType> abilityTypes = new();
-    [NonSerialized] public AbilityType ultimateType;
-
-    [NonSerialized] public Arena currentArena;
-
     // dict of arena and completion status
     public List<Arena> arenas;
-    private HashSet<Arena> unlockedArenas = new();
-    private HashSet<Arena> completedArenas = new();
 
     public float upgradeCostMultiplier = 1.5f;
     public float upgradeCostLevelThreshold = 10f; // doubles every 10 levels
     public int newGamePlus;
     public int killCount;
     public int deathsCount;
+    [NonSerialized] public List<AbilityType> abilityTypes = new();
+    private HashSet<Arena> completedArenas = new();
+
+    [NonSerialized] public Arena currentArena;
+    [NonSerialized] public Attributes playerAttributes;
+    [NonSerialized] public PlayerStats playerStats;
+    [NonSerialized] public AbilityType ultimateType;
+    private HashSet<Arena> unlockedArenas = new();
 
     private void Awake()
     {

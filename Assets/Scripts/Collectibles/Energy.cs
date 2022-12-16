@@ -9,13 +9,6 @@ public class Energy : Collectible
     // how close the game object has to be to disappear after flying towards the player
     private float destroyDistance = 0.1f;
 
-    public static event Action<int> OnEnergyCollected;
-
-    public override void PickUp()
-    {
-        pickedUp = true;
-    }
-
     protected override void Update()
     {
         if (pickedUp)
@@ -33,5 +26,12 @@ public class Energy : Collectible
         }
 
         base.Update();
+    }
+
+    public static event Action<int> OnEnergyCollected;
+
+    public override void PickUp()
+    {
+        pickedUp = true;
     }
 }

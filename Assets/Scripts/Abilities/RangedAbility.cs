@@ -2,10 +2,23 @@ using UnityEngine;
 
 public class RangedAbility : Ability
 {
-    private float flownDistance;
-    protected bool canMove = true;
-    protected int rotationOffset = -90;
     public float speed = 10f;
+    protected bool canMove = true;
+    private float flownDistance;
+    protected int rotationOffset = -90;
+
+    protected virtual void Update()
+    {
+        if (canMove)
+        {
+            transform.position += transform.up * (speed * Time.deltaTime);
+            flownDistance += speed * Time.deltaTime;
+            if (flownDistance >= abilityStats.range)
+            {
+                Die();
+            }
+        }
+    }
 
     public override void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)
     {
@@ -27,18 +40,5 @@ public class RangedAbility : Ability
     {
         canMove = false;
         base.Die();
-    }
-
-    protected virtual void Update()
-    {
-        if (canMove)
-        {
-            transform.position += transform.up * (speed * Time.deltaTime);
-            flownDistance += speed * Time.deltaTime;
-            if (flownDistance >= abilityStats.range)
-            {
-                Die();
-            }
-        }
     }
 }

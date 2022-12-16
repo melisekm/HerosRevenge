@@ -2,13 +2,10 @@ using UnityEngine;
 
 public abstract class Collectible : MonoBehaviour
 {
+    protected bool pickedUp;
     protected GameObject player;
     private PlayerUnit playerUnit;
-    protected bool pickedUp;
     protected SpriteRenderer spriteRenderer;
-
-    
-    public abstract void PickUp();
 
     protected virtual void Start()
     {
@@ -28,4 +25,7 @@ public abstract class Collectible : MonoBehaviour
             PickUp();
         }
     }
+
+
+    public abstract void PickUp();
 }

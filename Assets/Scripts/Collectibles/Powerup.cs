@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class Powerup : Collectible, InitializableCollectible
 {
-    protected float disappearTime = 15f;
     public float duration = 5f;
+    protected float disappearTime = 15f;
 
     protected override void Update()
     {

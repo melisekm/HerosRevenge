@@ -5,31 +5,26 @@ namespace Units.Player
 {
     public class RewardGenerator
     {
-        private int rewardsCount;
-
         public enum RewardType
         {
             Ability,
             Stat
         }
 
-        public class Reward
-        {
-            public RewardType rewardType;
-            public ScriptableReward scriptableReward;
-        }
+        private int rewardsCount;
 
         public RewardGenerator(int rewardsCount)
         {
             this.rewardsCount = rewardsCount;
         }
 
-        public Reward[] GenerateRewards(List<ScriptableAbility> abilitiesOrig, List<ScriptableStatUpgrade> statUpgradesOrig)
+        public Reward[] GenerateRewards(List<ScriptableAbility> abilitiesOrig,
+            List<ScriptableStatUpgrade> statUpgradesOrig)
         {
             // make local copy of lists
             List<ScriptableAbility> abilities = new List<ScriptableAbility>(abilitiesOrig);
             List<ScriptableStatUpgrade> statUpgrades = new List<ScriptableStatUpgrade>(statUpgradesOrig);
-            
+
             Reward[] nextRewards = new Reward[rewardsCount];
             // filter those which have minlevel less than playerunit.stats.level.actual
             for (int i = 0; i < nextRewards.Length; i++)
@@ -63,6 +58,12 @@ namespace Units.Player
             }
 
             return nextRewards;
+        }
+
+        public class Reward
+        {
+            public RewardType rewardType;
+            public ScriptableReward scriptableReward;
         }
     }
 }
