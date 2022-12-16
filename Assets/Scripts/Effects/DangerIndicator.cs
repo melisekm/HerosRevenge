@@ -6,18 +6,26 @@ public class DangerIndicator : Effect
     private Transform progressCircle;
     private float activationTime = 3f;
 
-    [Header("Random Activation Time")]
-    public float minActivationTime = 1f;
+    [Header("Random Activation Time")] public float minActivationTime = 1f;
     public float maxActivationTime = 4f;
 
     private float timeElapsed;
     private Faction targetFaction;
     private float explosionRadius = 5f;
+    private float damageMultiplier;
 
     private void Start()
     {
         progressCircle = transform.Find("ProgressCircle");
         activationTime = Random.Range(minActivationTime, maxActivationTime);
+        var playerContainerGo = GameObject.FindWithTag("PlayerContainer");
+        if (playerContainerGo && playerContainerGo.TryGetComponent(out PlayerContainer playerContainer))
+        {
+            if (playerContainer.currentArena)
+            {
+                damageMultiplier = playerContainer.currentArena.enemyPowerMultiplier;
+            }
+        }
     }
 
     public override void Initialize(ScriptableEffect scriptableEffect, float radius, Faction targetFaction)
@@ -42,7 +50,7 @@ public class DangerIndicator : Effect
             ability.transform.localScale *= explosionRadius / 2;
             AbilityStats abilityStats = new AbilityStats
             {
-                damage = effect.damage, // scale with level
+                damage = effect.damage * damageMultiplier
             };
             ability.Activate(abilityStats, transform.position, targetFaction);
             // destroy the indicator

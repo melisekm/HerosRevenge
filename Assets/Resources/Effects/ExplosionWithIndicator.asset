@@ -16,4 +16,4 @@ MonoBehaviour:
   effect: {fileID: 2406066452211190612, guid: 898da6b9966d69f4683d5cb0bec8b6d8, type: 3}
   ability: {fileID: -7477808379987039157, guid: 0c6d60a3a131cda42a5ad0f2816ce58d,
     type: 3}
-  damage: 100
+  damage: 200

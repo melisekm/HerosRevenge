@@ -9,9 +9,9 @@ public class Ability : MonoBehaviour
     protected Faction targetFaction;
     public bool collidesWithUnits = false;
     public bool collidesWithEnvironment = true;
-    private Animator animator;
+    protected Animator animator;
     protected HitEffect hitEffect;
-    private static readonly int PlayFinished = Animator.StringToHash("playFinished");
+    protected static readonly int PlayFinished = Animator.StringToHash("playFinished");
 
     public virtual void SetAbilityStats(AbilityStats st) => abilityStats = st;
 

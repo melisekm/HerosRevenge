@@ -3,7 +3,7 @@ using UnityEngine;
 public class RangedAbility : Ability
 {
     private float flownDistance;
-    private bool canMove = true;
+    protected bool canMove = true;
     protected int rotationOffset = -90;
     public float speed = 10f;
 

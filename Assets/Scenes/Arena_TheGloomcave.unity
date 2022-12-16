@@ -6022,7 +6022,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 127
-      m_TileSpriteIndex: 72
+      m_TileSpriteIndex: 78
       m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6032,7 +6032,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 71
-      m_TileSpriteIndex: 71
+      m_TileSpriteIndex: 76
       m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6042,7 +6042,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 70
-      m_TileSpriteIndex: 70
+      m_TileSpriteIndex: 74
       m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9257,24 +9257,24 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 21300254, guid: ca1f1e20c71399f4ab9c815c2528cc1c, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 21301734, guid: aa9f510a84a336543994cb3b86dea09f, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21301740, guid: aa9f510a84a336543994cb3b86dea09f, type: 3}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300088, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21301738, guid: aa9f510a84a336543994cb3b86dea09f, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21301736, guid: aa9f510a84a336543994cb3b86dea09f, type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 21301734, guid: aa9f510a84a336543994cb3b86dea09f, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 2
-    m_Data: {fileID: 21300088, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 1
     m_Data: {fileID: 21300160, guid: 9603be6d9ac69924f945566fb9497bde, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21301736, guid: aa9f510a84a336543994cb3b86dea09f, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300024, guid: 9603be6d9ac69924f945566fb9497bde, type: 3}
   - m_RefCount: 1
@@ -10572,14 +10572,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2071378743, guid: 7811fa07224b0634aa73712e72643218, type: 3}
-      propertyPath: abilityType
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2071378745, guid: 7811fa07224b0634aa73712e72643218, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 461855116459380945, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
       propertyPath: m_Name
@@ -30320,25 +30312,14 @@ PrefabInstance:
       value: I can feel the anger coursing through my veins as I enter this cave.
         This is where I will have my final showdown.
       objectReference: {fileID: 0}
-    - target: {fileID: 2040667056, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040667057, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1931.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040667057, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.0052567
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040667057, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 172.12
-      objectReference: {fileID: 0}
     - target: {fileID: 2144378218, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1937.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 274340931839591013, guid: 2579d57c560c48644baaba1b6eaf4483,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2262993744289606355, guid: 2579d57c560c48644baaba1b6eaf4483,
         type: 3}
@@ -30453,11 +30434,6 @@ PrefabInstance:
     - target: {fileID: 2262993744289606359, guid: 2579d57c560c48644baaba1b6eaf4483,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2262993745335655048, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

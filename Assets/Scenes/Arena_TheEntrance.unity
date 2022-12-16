@@ -6059,6 +6059,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8625971399444159673, guid: 7811fa07224b0634aa73712e72643218,
+        type: 3}
+      propertyPath: defaultAbilityTypes.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625971399444159673, guid: 7811fa07224b0634aa73712e72643218,
+        type: 3}
+      propertyPath: defaultAbilityTypes.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7811fa07224b0634aa73712e72643218, type: 3}
 --- !u!1 &1307580066
@@ -22739,17 +22749,10 @@ PrefabInstance:
       value: I'll tear down these walls and expose the Necropolis for the hellish
         place it is. I won't rest until every last undead monster is destroyed.
       objectReference: {fileID: 0}
-    - target: {fileID: 2040667056, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
+    - target: {fileID: 274340931839591013, guid: 2579d57c560c48644baaba1b6eaf4483,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040667057, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1931.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040667057, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.0052567
       objectReference: {fileID: 0}
     - target: {fileID: 2262993744289606355, guid: 2579d57c560c48644baaba1b6eaf4483,
         type: 3}
@@ -22860,11 +22863,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3071721720050618795, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.43137255
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
@@ -23015,6 +23013,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192179247151, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: startDelay
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: aoeChance
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}

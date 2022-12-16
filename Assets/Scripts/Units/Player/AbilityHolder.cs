@@ -70,9 +70,6 @@ public class AbilityHolder : MonoBehaviour
         AbilityStats abilityStats = scriptableAbility.stats;
         abilityStats.damage += playerUnit.attributes.attackPower.actual;
         abilityStats.baseCooldown *= 1 - playerUnit.attributes.cooldownRecovery.actual;
-        // can also do something based on player level or level he is *currently* in
-        // e.g. if player is level 7, then increase damage further by 10%
-        abilityStats.damage *= 1 + playerUnit.stats.level.actual * 0.1f;
         return abilityStats;
     }
 
