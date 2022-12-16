@@ -142,11 +142,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6926869239916068405, guid: 21ad04d028ef8f74e9de0e7ec59eb166,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 53f176b6f54d8a94a8801cc55d4eec4e, type: 3}
     - target: {fileID: 8429650068454758120, guid: 21ad04d028ef8f74e9de0e7ec59eb166,
         type: 3}
       propertyPath: m_Name
@@ -35116,16 +35111,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6765358064544470484, guid: 597acd844d3afe546b07d0d88b3bf1fc,
-        type: 3}
-      propertyPath: gameOverSceneIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6765358065280985616, guid: 597acd844d3afe546b07d0d88b3bf1fc,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597acd844d3afe546b07d0d88b3bf1fc, type: 3}
 --- !u!1001 &1658615581
@@ -43519,11 +43504,6 @@ PrefabInstance:
       propertyPath: data.dataString
       value: UEsDBBQAAAgIAAAIIew0LPRgaQIAACAFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMFy2jAQ/RVG58LYJIHQWwuE9EDChHZy8UVIa6xBljySHCAZ/r0rWcYu5YL8dt/u26e1v4hQtgLmtFkZwdeaA/k+IP5Mvg264DOc6F6rrfiENuddcFf4JBpy3qgTGvHU06wuwRnBfqi99MkJgrUSuTblku9hrq2zCOdUWsCQ0c6zFUJfA3LCv+HMU854Gk/96RNPs2RwwSMD5cD0UtPxKJ3hbxIZw/Ru9BA5DaVWTNKyAu71d8z7h8i4S0OawsliRhIqMC2lsFEYcecqDL6tCjDgJ+eC4pxBTDrygxcg9oXzqvvs1zy34KINhp4XwqBhTVnyUzcultQeGmkfVNa+0TiIakqu/4sOG8250eVz2zVNfAdXCHZ4o2dGreuZ3IcXPeHBnyOVB7qT8F6AetEro2vFMehM7am1hfGie7wONi+AHTq8kXoD1lVneHun7Y36GS5h9tNcinIXjL9vgK3Uwe6wCGDwan6h4LAmNpZA1Kv4Y+E33ff3KQaehLEOQ3FK5eXtdG18KlkGz/w0tZtroyDAUXQFikp33mAZd3uBN7Fe25vIE/VvTmweY+0LcUMJcJefJDehjT5eL8sW+rgGW7zWTgoFnWgfeEGf5lqpZr/6nrS0bW1yynq0fS34v6tF2O6B548Aj9N8soN8PJzOIIVpPrvP6ZglkwkJuycUzknlphEa7cFbU11xhXvWflAGK0OrsOvc0ONKfJa6Z7lQud4yA6BemwpX4WCwCb6WfMkFGrQF54QK902+MiI1OwDProWyMOny5AzNuioZqcSHdh7JyDx8QTLi4esubwx8CDj65m2xC7n8BVBLAwQUAAAICAAACCHsxO0HUW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0UnKSaUqaRWqqhXmaWVJqmpGuuWWqYap5mqVJWqJRsoGZmVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHsNCz0YGkCAAAgBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHsxO0HUW0AAAB4AAAACQAkAAAAAAAAAAAAAAC2AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAG4DAAAAAA==
       objectReference: {fileID: 0}
-    - target: {fileID: 6852524192017822335, guid: 43404a95f3cbde14e80df4db1a452b7b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6852524192179247151, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: startDelay
@@ -43718,6 +43698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedAbilityNumber
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384659590911650641, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4444594687369684736, guid: 43404a95f3cbde14e80df4db1a452b7b, type: 3}

@@ -39,8 +39,8 @@ public class LevelUpUISetter : MonoBehaviour
     {
         damage.text = playerAttributes.attackPower.actual.ToString("F0");
         speed.text = playerAttributes.speed.actual.ToString("0.#");
-        defense.text = (playerAttributes.defenseRating.actual * 100).ToString("F0") + "%";
-        cooldown.text = (playerAttributes.cooldownRecovery.actual * 100).ToString("F0") + "%";
+        defense.text = playerAttributes.defenseRating.actual.ToString("P0");
+        cooldown.text = playerAttributes.cooldownRecovery.actual.ToString("P0");
         pickup.text = playerAttributes.pickupRange.actual.ToString("0.#");
         health.text = playerAttributes.health.actual.ToString("F0");
         levelNumber.text = playerStats.level.actual.ToString("F0");

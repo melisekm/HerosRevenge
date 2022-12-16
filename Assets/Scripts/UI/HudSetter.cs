@@ -63,10 +63,10 @@ public class HudSetter : MonoBehaviour
         var powerupbarGo = Instantiate(powerUpBar, powerUpPanel.transform);
         // get text child in powerupbar
         var powerupbarText = powerupbarGo.GetComponentInChildren<TMP_Text>();
-        var amount = (upgrade.statType != StatType.Speed || upgrade.statType != StatType.PickupRange) &&
-                     upgrade.amount < 1
-            ? (upgrade.amount * 100).ToString("F2") + "%"
-            : upgrade.amount.ToString();
+        var amount = upgrade.statType == StatType.Speed || upgrade.statType == StatType.PickupRange ||
+                     upgrade.amount > 1
+            ? upgrade.amount.ToString()
+            : upgrade.amount.ToString("P0");
         powerupbarText.text = $"{upgrade.rewardName}\n+{amount}";
     }
 
@@ -125,15 +125,16 @@ public class HudSetter : MonoBehaviour
         levelUpUISetter.SetLevelUpUI(playerStats, playerAttributes, nextRewards);
     }
 
-    // https://github.com/michalferko/tvorbahier/blob/master/PacMan/Assets/Scripts/UIManager.cs
-    void SetTime(float currentTime)
+    private void SetTime(float currentTime)
     {
-        // transform time to desired format
-        int minutes = Mathf.FloorToInt(currentTime / 60F);
-        int seconds = Mathf.FloorToInt(currentTime - minutes * 60);
-        string niceTime = $"{minutes:00}:{seconds:00}";
+        timeText.text = FormatTime(currentTime);
+    }
 
-        // Set UI time text
-        timeText.text = niceTime;
+    // https://github.com/michalferko/tvorbahier/blob/master/PacMan/Assets/Scripts/UIManager.cs
+    public static string FormatTime(float time)
+    {
+        int minutes = Mathf.FloorToInt(time / 60F);
+        int seconds = Mathf.FloorToInt(time - minutes * 60);
+        return $"{minutes:00}:{seconds:00}";
     }
 }

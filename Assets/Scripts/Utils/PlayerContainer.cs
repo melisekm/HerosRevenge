@@ -19,7 +19,10 @@ public class PlayerContainer : MonoBehaviour
 
     public float upgradeCostMultiplier = 1.5f;
     public float upgradeCostLevelThreshold = 10f; // doubles every 10 levels
-    
+    public int newGamePlus;
+    public int killCount;
+    public int deathsCount;
+
     private void Awake()
     {
         ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
@@ -35,7 +38,7 @@ public class PlayerContainer : MonoBehaviour
 
     private void DecideBuyableUpgradeCostMultiplier()
     {
-        if(playerStats.level.actual > upgradeCostLevelThreshold)
+        if (playerStats.level.actual > upgradeCostLevelThreshold)
         {
             upgradeCostMultiplier *= 1.5f;
             upgradeCostLevelThreshold *= 2f;
@@ -47,14 +50,15 @@ public class PlayerContainer : MonoBehaviour
         playerStats.gold.actual -= attr.upgradeCost;
         attr.BuyUpgrade(upgradeCostMultiplier);
     }
-    
+
     public Arena GetArenaByName(string arenaName)
     {
         return arenas.FirstOrDefault(arena => arena.sceneName == arenaName);
     }
 
-    public void CompleteCurrentArena()
+    public void CompleteCurrentArena(int killCount)
     {
+        this.killCount += killCount;
         completedArenas.Add(currentArena);
         foreach (var arena in arenas.FindAll(x => !completedArenas.Contains(x)))
         {
@@ -77,5 +81,23 @@ public class PlayerContainer : MonoBehaviour
     public bool IsAttributeBuyable(Attribute attr)
     {
         return playerStats.gold.actual >= attr.upgradeCost;
+    }
+
+    public float GetArenaPowerMultiplier()
+    {
+        // if enemypower is 1 and ngplus is 1, and there are 3 arenas, then the multiplier is 1+1*3=4, or 2+1*3=5... 
+        return currentArena.enemyPowerMultiplier + newGamePlus * arenas.Count;
+    }
+
+    public void BeginNewGamePlus()
+    {
+        newGamePlus++;
+        completedArenas.Clear();
+    }
+
+    public void FailCurrentArena(int killCount)
+    {
+        this.killCount += killCount;
+        deathsCount++;
     }
 }

@@ -142,11 +142,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6926869239916068405, guid: 21ad04d028ef8f74e9de0e7ec59eb166,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 53f176b6f54d8a94a8801cc55d4eec4e, type: 3}
     - target: {fileID: 8429650068454758120, guid: 21ad04d028ef8f74e9de0e7ec59eb166,
         type: 3}
       propertyPath: m_Name
@@ -10402,7 +10397,7 @@ MonoBehaviour:
   spawnAreaXminXmax: {x: -14, y: -2}
   spawnAreaYminYmax: {x: 11, y: 2}
   abilityTypes: 
-  statTypes: 0000000002000000030000000500000006000000
+  statTypes: 0000000002000000030000000400000001000000
   disappearTimeRange: {x: 8, y: 20}
 --- !u!114 &944900299
 MonoBehaviour:
@@ -10506,7 +10501,7 @@ MonoBehaviour:
   spawnAreaXminXmax: {x: 15, y: 22}
   spawnAreaYminYmax: {x: 5, y: 1}
   abilityTypes: 
-  statTypes: 060000000100000003000000
+  statTypes: 0100000003000000
   disappearTimeRange: {x: 999, y: 999}
 --- !u!114 &1069720325
 MonoBehaviour:
@@ -25842,13 +25837,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6765358064544470484, guid: 597acd844d3afe546b07d0d88b3bf1fc,
         type: 3}
+      propertyPath: scoreSceneName
+      value: Menu_GameFinished
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765358064544470484, guid: 597acd844d3afe546b07d0d88b3bf1fc,
+        type: 3}
       propertyPath: gameOverSceneIndex
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6765358065280985616, guid: 597acd844d3afe546b07d0d88b3bf1fc,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597acd844d3afe546b07d0d88b3bf1fc, type: 3}
@@ -30578,11 +30573,6 @@ PrefabInstance:
       propertyPath: data.dataString
       value: UEsDBBQAAAgIAAAIIewJedHidgIAADIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWxgRjorQVCekjChHZy8UXIa6xBljySHCAZ/ntXsoxd6ovl9/bz7cpfhEtTAbNKbzTPnlUG5PuAuDP5NujIJzjTg5I7/gmtzTvPbOGMqLd5o5YrxGPnZlQJVnP2Qx6EM44QrCXPlS7X2QGWyliDcE6FAaS0ss5bIvQ1IGd8DRfO5YKn8cydPvG0iAZXPDKQFnRnmozQBJ9pEjySUTxZ4DNZBMfGr5ZM0LKCzDXRuU8f2kSNmcT2gkU0chxTQnATqiP2Uvnud1UBGlz7GafYrK8oHrnuC+CHwrqIfe/XPDdggxaaXlZco2pNWPJTNVKW1Byb0j6oqF2isS+qCfn8HzuMPZ1rVT61WePIZbAFZ8c3emHU2J7SfXjVK9zrc6LiSPcC3guQL2qjVS0zJK2unWttYLzqPm+NLQtgxw5vSr0D66oT/DbY0WQ+jefJJFkPo1kYlWvo6oU4LwUv934K0wbYCeW196sBGuf0C6v3i2NCXERdSX8M/KaH/oYF4pFrY5EKLUtX617V2pmStRfQtVbbpdISPBw6qEBSYS9bDGPvp3nH9dLeMY/U3aWQPHDtFblz8XBnH0V31FadbpMzhTo9gyleayu4hK5oR7ygTkslZbNsfU1at12tc8p6boeaZ//uGWH7hyyfA8xnebKHfDycLSCGWb6Y5nTMoiQhfhG5xD6p2DaFBnlwarILLnHp2l/MYKNp5Rc/0/S04Z+l6knOZa52TAPI1ybCrXDQmATvaLbOOAq0A2u59PMmXykRih0hS2+BUt/p+mw1TbsoKan4h7IOScnS/1NS4uDbYm81fHA4ueRtsCu5/gVQSwMEFAAACAgAAAgh7MTtB1FtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFJykmlKmkVqqoV5mllSapqRrrllqmGqeZqlSVqiUbKBmZlSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7Al50eJ2AgAAMgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7MTtB1FtAAAAeAAAAAkAJAAAAAAAAAAAAAAAwwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB7AwAAAAA=
       objectReference: {fileID: 0}
-    - target: {fileID: 6852524192017822335, guid: 43404a95f3cbde14e80df4db1a452b7b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6852524192179247151, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: startDelay
@@ -30844,4 +30834,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Survive for 2 minutes.
-  timeToSurvive: 120
+  timeToSurvive: 20

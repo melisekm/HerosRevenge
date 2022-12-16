@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena_TheGloomcave.unity
     guid: d432bab7daf217747a57cc4998d5a271
+  - enabled: 1
+    path: Assets/Scenes/Menu_GameFinished.unity
+    guid: 6085fdc2004525e4ebbc1ebaa8708f67
   m_configObjects: {}

@@ -88,12 +88,11 @@ public class ShopUI : MonoBehaviour
         healthUpgradeButton.text = "Max Health +" + playerAttributes.health.increasePerLevel.ToString("F0");
         attackPowerUpgradeButton.text = "Attack Power +" + playerAttributes.attackPower.increasePerLevel.ToString("F0");
         defenseRatingUpgradeButton.text = "Defense Rating +" +
-                                          (playerAttributes.defenseRating.increasePerLevel * 100).ToString("F0") + "%";
+                                          playerAttributes.defenseRating.increasePerLevel.ToString("P0");
         pickupRangeUpgradeButton.text =
             "Pickup Range +" + playerAttributes.pickupRange.increasePerLevel.ToString("0.#");
         cooldownRecoveryUpgradeButton.text = "Cooldown Recovery +" +
-                                             (playerAttributes.cooldownRecovery.increasePerLevel * 100).ToString("F0") +
-                                             "%";
+                                             playerAttributes.cooldownRecovery.increasePerLevel.ToString("P0");
         foreach (var buttonAttribute in buttonToAttribute)
         {
             buttonAttribute.Key.interactable = playerContainer.IsAttributeBuyable(buttonAttribute.Value);
@@ -104,9 +103,9 @@ public class ShopUI : MonoBehaviour
     {
         playerHealth.text = playerAttributes.health.initial.ToString("F0");
         playerAttackPower.text = playerAttributes.attackPower.initial.ToString("F0");
-        playerDefenseRating.text = (playerAttributes.defenseRating.initial * 100).ToString("F0") + "%";
+        playerDefenseRating.text = playerAttributes.defenseRating.initial.ToString("P0");
         playerSpeed.text = playerAttributes.pickupRange.initial.ToString("0.#");
-        playerCooldownRecovery.text = (playerAttributes.cooldownRecovery.initial * 100).ToString("F0") + "%";
+        playerCooldownRecovery.text = playerAttributes.cooldownRecovery.initial.ToString("P0");
         playerGold.text = playerStats.gold.actual.ToString("F0");
     }
 }

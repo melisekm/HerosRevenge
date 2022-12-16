@@ -6062,12 +6062,12 @@ PrefabInstance:
     - target: {fileID: 8625971399444159673, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
       propertyPath: defaultAbilityTypes.Array.data[0]
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8625971399444159673, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
       propertyPath: defaultAbilityTypes.Array.data[1]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7811fa07224b0634aa73712e72643218, type: 3}
@@ -22471,11 +22471,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6765358064544470484, guid: 597acd844d3afe546b07d0d88b3bf1fc,
-        type: 3}
-      propertyPath: gameOverSceneIndex
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597acd844d3afe546b07d0d88b3bf1fc, type: 3}
 --- !u!4 &1660522142 stripped
@@ -23013,11 +23008,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6852524192179247151, guid: 43404a95f3cbde14e80df4db1a452b7b,
-        type: 3}
-      propertyPath: startDelay
-      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}

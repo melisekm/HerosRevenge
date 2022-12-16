@@ -288,3 +288,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 569b07cd4a3cf594cbf1ac7092e01480, type: 2}
   upgradeCostMultiplier: 1.5
   upgradeCostLevelThreshold: 15
+  newGamePlus: 0
+  killCount: 0
+  deathsCount: 0

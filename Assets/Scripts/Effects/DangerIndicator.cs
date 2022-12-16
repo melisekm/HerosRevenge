@@ -23,7 +23,7 @@ public class DangerIndicator : Effect
         {
             if (playerContainer.currentArena)
             {
-                damageMultiplier = playerContainer.currentArena.enemyPowerMultiplier;
+                damageMultiplier = playerContainer.GetArenaPowerMultiplier();
             }
         }
     }

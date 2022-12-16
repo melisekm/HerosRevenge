@@ -129,11 +129,12 @@ public class GameManager : MonoBehaviour
 
     private void HandleArenaFinished()
     {
-        playerContainer.CompleteCurrentArena();
+        playerContainer.CompleteCurrentArena(killCount);
     }
 
     private void HandleArenaFailed()
     {
+        playerContainer.FailCurrentArena(killCount);
     }
 
     private void HandleStarting()

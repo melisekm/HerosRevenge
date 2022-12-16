@@ -40,7 +40,7 @@ public class UnitSpawner : Spawner
         var playerContainerGo = GameObject.FindWithTag("PlayerContainer");
         if (playerContainerGo && playerContainerGo.TryGetComponent(out PlayerContainer playerContainer))
         {
-            enemyPowerMultiplier = playerContainer.currentArena.enemyPowerMultiplier;
+            enemyPowerMultiplier = playerContainer.GetArenaPowerMultiplier();
         }
     }
 
