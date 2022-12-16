@@ -14,41 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes:
     health:
-      initial: 75
-      _actual: 75
+      initial: 100
+      _actual: 100
       min: 0
       max: 0
       increasePerLevel: 0
+      upgradeCost: 0
     attackPower:
       initial: 12
       _actual: 12
       min: 0
       max: 0
       increasePerLevel: 0
+      upgradeCost: 0
     defenseRating:
       initial: 0.2
       _actual: 0.2
       min: 0
       max: 0
       increasePerLevel: 0
+      upgradeCost: 0
     speed:
       initial: 2
       _actual: 2
       min: 0
       max: 0
       increasePerLevel: 0
+      upgradeCost: 0
     cooldownRecovery:
       initial: 0
       _actual: 0
       min: 0
       max: 0
       increasePerLevel: 0
+      upgradeCost: 0
     pickupRange:
       initial: 0
       _actual: 0
       min: 0
       max: 0
       increasePerLevel: 0
+      upgradeCost: 0
   prefab: {fileID: -1339602520040639883, guid: 65ace372b344f2a448e282c5ecead28b, type: 3}
   enemyType: 1
   energyDropAmount: 15
