@@ -23,8 +23,8 @@ public class PlayerUnit : Unit
             Initialize(playerContainer);
         else
             Debug.LogWarning("PlayerContainer not found");
-
-        progressionController = new ProgressionController(this);
+        var abilityStash = GetComponent<AbilityStash>();
+        progressionController = new ProgressionController(this, abilityStash);
     }
 
     protected void OnEnable()

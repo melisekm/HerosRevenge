@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: TheEntrance
   m_EditorClassIdentifier: 
   sceneName: Arena_TheEntrance
-  isUnlocked: 1
-  nextArenas:
-  - {fileID: 11400000, guid: 569b07cd4a3cf594cbf1ac7092e01480, type: 2}
-  maxEnemies: 0
+  mustCompleteArenas: []
+  enemyPowerMultiplier: 1

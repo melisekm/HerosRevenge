@@ -15,4 +15,4 @@ MonoBehaviour:
   sceneName: Arena_TheGloomcave
   mustCompleteArenas:
   - {fileID: 11400000, guid: aef50094077549249b602c11c6a4b90a, type: 2}
-  maxEnemies: 0
+  enemyPowerMultiplier: 3

@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class AbilityStash : MonoBehaviour
 {
-    private List<AbilityHolder> abilityList = new();
+    public List<AbilityHolder> abilityList = new();
     private AbilityHolder selectedAbilityHolder;
     public List<AbilityType> defaultAbilityTypes = new();
     public AbilityHolder ultimateAbilityHolder;

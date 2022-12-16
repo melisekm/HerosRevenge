@@ -15,4 +15,4 @@ MonoBehaviour:
   sceneName: Arena_TheNecropolis
   mustCompleteArenas:
   - {fileID: 11400000, guid: d02ae355aeceee2448de52e2ac5e200a, type: 2}
-  maxEnemies: 0
+  enemyPowerMultiplier: 2

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class KillEnemies : WinConditionChecker
 {
     public float killsToWin = 10;

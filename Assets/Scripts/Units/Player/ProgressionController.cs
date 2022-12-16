@@ -10,15 +10,17 @@ namespace Units.Player
         private PlayerStats playerStats;
         private Attributes playerAttributes;
         private PlayerUnit playerUnit;
+        private AbilityStash playerAbilityStash;
         public static event Action<PlayerStats, Attributes, bool, RewardGenerator.Reward[]> OnLevelUp;
         private RewardGenerator rewardGenerator;
         private List<Attribute> attributesToLevelUp;
 
-        public ProgressionController(PlayerUnit playerUnit)
+        public ProgressionController(PlayerUnit playerUnit, AbilityStash abilityStash)
         {
             this.playerUnit = playerUnit;
             playerStats = playerUnit.stats;
             playerAttributes = playerUnit.attributes;
+            playerAbilityStash = abilityStash;
             OnLevelUp?.Invoke(playerStats, playerAttributes, true, null);
             rewardGenerator = new RewardGenerator(playerUnit.rewardsCount);
             attributesToLevelUp = new List<Attribute>
@@ -57,12 +59,20 @@ namespace Units.Player
 
             attributesToLevelUp.ForEach(attribute => attribute.LevelUp());
 
-            var abilities = ResourceSystem.Instance
-                .abilities
-                .Where(ability => ability.minLevel <= playerStats.level.actual)
+            // get current ability types
+            var currentAbilities = playerAbilityStash.abilityList
+                .Select(abilityHolder => abilityHolder.abilityType)
+                .ToList();
+
+            var abilities = ResourceSystem.Instance.abilities
+                .Where(ability => ability.minLevel <= playerStats.level.actual // ability is available for this level
+                                  // player doesnt have this ability as ultimate
+                                  && playerAbilityStash.ultimateAbilityHolder.abilityType != ability.abilityType
+                                  // player doesnt have this ability
+                                  && !currentAbilities.Contains(ability.abilityType))
                 .ToList();
             var statUpgrades = ResourceSystem.Instance.statUpgrades.ToList();
-            
+
 
             OnLevelUp?.Invoke(playerStats, playerAttributes, false,
                 rewardGenerator.GenerateRewards(abilities, statUpgrades));

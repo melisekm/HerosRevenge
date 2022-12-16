@@ -11,6 +11,7 @@ public class UnitSpawner : Spawner
     public bool dynamicSpawnRate = true;
     private int enemyCount;
     public SpawnRate spawnRate;
+    private float enemyPowerMultiplier;
 
     public static event Action<EnemyUnit> OnEnemySpawned;
 
@@ -34,6 +35,15 @@ public class UnitSpawner : Spawner
         EnemyUnit.OnEnemyUnitDied -= OnEnemyDied;
     }
 
+    private void Start()
+    {
+        var playerContainerGo = GameObject.FindWithTag("PlayerContainer");
+        if (playerContainerGo && playerContainerGo.TryGetComponent(out PlayerContainer playerContainer))
+        {
+            enemyPowerMultiplier = playerContainer.currentArena.enemyPowerMultiplier;
+        }
+    }
+
     private void OnEnemyDied(EnemyUnit obj)
     {
         enemyCount--;
@@ -53,12 +63,23 @@ public class UnitSpawner : Spawner
         {
             enemyCount++;
             // do any level based stuff here
-            enemy.energyDropAmount = enemyScriptable.energyDropAmount; // * level
-            enemy.SetAttributes(new Attributes(enemyScriptable.attributes));
+            var enemyAttributes = new Attributes(enemyScriptable.attributes);
+            SetAttributeBasedOnLevel(enemyAttributes.health);
+            SetAttributeBasedOnLevel(enemyAttributes.attackPower);
+            SetAttributeBasedOnLevel(enemyAttributes.defenseRating);
+            enemy.energyDropAmount *= (int)enemyPowerMultiplier;
+            enemy.SetAttributes(enemyAttributes);
             OnEnemySpawned?.Invoke(enemy);
             DecideSpawnRate();
         }
     }
+
+    private void SetAttributeBasedOnLevel(Attribute attr)
+    {
+        attr.initial *= (int)enemyPowerMultiplier;
+        attr.actual *= (int)enemyPowerMultiplier;
+    }
+
 
     public override void Activate()
     {
@@ -81,6 +102,7 @@ public class UnitSpawner : Spawner
                 }
             }
         }
+
         isSpawnerActive = true;
         StartCoroutine(SpawnEnemiesCoroutine());
     }

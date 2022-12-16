@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 2071378742}
   - component: {fileID: 2071378743}
   - component: {fileID: 2071378745}
+  - component: {fileID: 6870700052496330514}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363842c024bca0247bd38127c3183945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityList: []
   defaultAbilityTypes: 0200000001000000
   ultimateAbilityHolder: {fileID: 2071378743}
 --- !u!114 &3846312350725019872
@@ -248,6 +250,8 @@ MonoBehaviour:
   maxCastRange: 10
   levelUpMultiplier: 1.25
   rewardsCount: 2
+  levelToIncreaseMaxProjectiles: 7
+  globalMaxProjectilesToFire: 9
 --- !u!114 &2071378742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +314,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6870700052496330514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461855116459380945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f08fcf7985981a439e2fc193d1c8db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &922623836905763256
 GameObject:
   m_ObjectHideFlags: 0

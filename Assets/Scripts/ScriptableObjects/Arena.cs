@@ -6,5 +6,5 @@ public class Arena : ScriptableObject
 {
     public string sceneName;
     public List<Arena> mustCompleteArenas;
-    public int maxEnemies;
+    public float enemyPowerMultiplier = 1f;
 }

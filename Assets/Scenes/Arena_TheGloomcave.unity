@@ -10493,7 +10493,7 @@ GameObject:
   - component: {fileID: 944900298}
   - component: {fileID: 944900300}
   m_Layer: 0
-  m_Name: GroundEntitySpawnerRightDown
+  m_Name: GroundEntitySpawnerLeft
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10507,7 +10507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944900296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.91, y: 7.11, z: 0}
+  m_LocalPosition: {x: -14.35, y: 10.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10528,8 +10528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawnerActive: 0
   spawnTimer: 10
-  spawnAreaXminXmax: {x: -34, y: -30}
-  spawnAreaYminYmax: {x: -7, y: -22}
+  spawnAreaXminXmax: {x: -14, y: -2}
+  spawnAreaYminYmax: {x: 11, y: 2}
   abilityTypes: 
   statTypes: 0000000002000000030000000500000006000000
   disappearTimeRange: {x: 8, y: 20}
@@ -10547,8 +10547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawnerActive: 0
   spawnTimer: 5
-  spawnAreaXminXmax: {x: -7, y: 5}
-  spawnAreaYminYmax: {x: -18, y: -24}
+  spawnAreaXminXmax: {x: -14, y: -2}
+  spawnAreaYminYmax: {x: 11, y: 2}
   defaultFaction: 0
   minMaxEffectRadius: {x: 3, y: 3}
 --- !u!114 &944900300
@@ -10565,8 +10565,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawnerActive: 0
   spawnTimer: 0.1
-  spawnAreaXminXmax: {x: -7, y: 5}
-  spawnAreaYminYmax: {x: -18, y: -24}
+  spawnAreaXminXmax: {x: -14, y: -2}
+  spawnAreaYminYmax: {x: 11, y: 2}
   defaultFaction: 0
   minMaxEffectRadius: {x: 3, y: 3}
   aoeChance: 20
@@ -10597,7 +10597,7 @@ GameObject:
   - component: {fileID: 1069720324}
   - component: {fileID: 1069720326}
   m_Layer: 0
-  m_Name: GroundEntitySpawnerLeft
+  m_Name: GroundEntitySpawnerRight
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10611,7 +10611,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069720322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.69, y: 2.6, z: 0}
+  m_LocalPosition: {x: 14.77, y: 4.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10632,8 +10632,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawnerActive: 0
   spawnTimer: 15
-  spawnAreaXminXmax: {x: -34, y: -30}
-  spawnAreaYminYmax: {x: -7, y: -22}
+  spawnAreaXminXmax: {x: 15, y: 22}
+  spawnAreaYminYmax: {x: 5, y: 1}
   abilityTypes: 
   statTypes: 060000000100000003000000
   disappearTimeRange: {x: 999, y: 999}
@@ -10651,8 +10651,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawnerActive: 0
   spawnTimer: 5
-  spawnAreaXminXmax: {x: -34, y: -30}
-  spawnAreaYminYmax: {x: -7, y: -22}
+  spawnAreaXminXmax: {x: 15, y: 22}
+  spawnAreaYminYmax: {x: 5, y: 1}
   defaultFaction: 0
   minMaxEffectRadius: {x: 3, y: 3}
 --- !u!114 &1069720326
@@ -10669,11 +10669,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawnerActive: 0
   spawnTimer: 0.1
-  spawnAreaXminXmax: {x: -34, y: -30}
-  spawnAreaYminYmax: {x: -7, y: -22}
+  spawnAreaXminXmax: {x: 15, y: 22}
+  spawnAreaYminYmax: {x: 5, y: 1}
   defaultFaction: 0
   minMaxEffectRadius: {x: 3, y: 3}
-  aoeChance: 50
+  aoeChance: 10
   checkInterval: 6
   length: 3
 --- !u!1 &1171470526 stripped
@@ -31744,12 +31744,12 @@ PrefabInstance:
     - target: {fileID: 2142618897795318826, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.91
+      value: 13.29
       objectReference: {fileID: 0}
     - target: {fileID: 2142618897795318826, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.93
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2280551413013005039, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -31759,7 +31759,7 @@ PrefabInstance:
     - target: {fileID: 6413731277077954401, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: m_Name
-      value: GroundEntitySpawnerRight
+      value: GroundEntitySpawnerMid
       objectReference: {fileID: 0}
     - target: {fileID: 6413731277077954401, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -31910,7 +31910,7 @@ PrefabInstance:
     - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaXminXmax.x
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -31920,12 +31920,12 @@ PrefabInstance:
     - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaYminYmax.x
-      value: -5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160976, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaYminYmax.y
-      value: -23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160980, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -31935,22 +31935,22 @@ PrefabInstance:
     - target: {fileID: 6852524192308160980, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaXminXmax.x
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160980, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaXminXmax.y
-      value: 3
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160980, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaYminYmax.x
-      value: -5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160980, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaYminYmax.y
-      value: -23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -31965,7 +31965,7 @@ PrefabInstance:
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaXminXmax.x
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -31975,12 +31975,12 @@ PrefabInstance:
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaYminYmax.x
-      value: -5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: spawnAreaYminYmax.y
-      value: -23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
@@ -32062,6 +32062,11 @@ PrefabInstance:
       propertyPath: selectedAbilityNumber
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7384659590911650641, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4444594687369684736, guid: 43404a95f3cbde14e80df4db1a452b7b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 43404a95f3cbde14e80df4db1a452b7b, type: 3}
@@ -32104,8 +32109,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6852524191999887027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04231e53a3966974c87b4537b6ddc705, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d46a765af6bf9844b1e98bb1ad9b0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Show your revenge. Kill 200 enemies.
-  killsToWin: 500
+  description: Survive for 3 minutes.
+  timeToSurvive: 180
