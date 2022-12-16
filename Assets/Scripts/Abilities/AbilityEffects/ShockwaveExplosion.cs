@@ -8,6 +8,7 @@ public class ShockwaveExplosion : MonoBehaviour
     private float radius = 1f;
     private Faction faction;
     private float damage;
+    private Collider2D[] collisionResults = new Collider2D[5];
 
     private void Start()
     {
@@ -25,8 +26,8 @@ public class ShockwaveExplosion : MonoBehaviour
     public void Explode()
     {
         // circle overlap to find all colliders in the explosion radius
-        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, radius);
-        foreach (Collider2D collision in collisions)
+        var size = Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults);
+        foreach (Collider2D collision in collisionResults)
         {
             if (collision.gameObject.TryGetComponent(out Unit unit))
             {

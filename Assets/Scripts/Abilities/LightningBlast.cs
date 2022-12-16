@@ -5,11 +5,13 @@ public class LightningBlast : MultiProjectileAbility
     public LightningEffect lightningEffect;
     public float damageMultiplier = 0.1f;
     public float damageRadius = 2.0f;
+    private Collider2D[] collisionResults = new Collider2D[10];
+
 
     protected override void Die()
     {
-        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, damageRadius);
-        foreach (Collider2D collision in collisions)
+        Physics2D.OverlapCircleNonAlloc(transform.position, damageRadius, collisionResults);
+        foreach (Collider2D collision in collisionResults)
         {
             if (collision.gameObject.TryGetComponent(out Unit unit))
             {

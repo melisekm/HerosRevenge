@@ -8,6 +8,7 @@ public class GroundAbility : Ability
     public float dissapearTime = 2f;
     private bool isActive = true;
     private float radius;
+    private Collider2D[] collisionResults = new Collider2D[20];
 
     private void Start()
     {
@@ -52,10 +53,10 @@ public class GroundAbility : Ability
         // periodically check for physics.overlapcircle to hit enemies
         else
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
-            foreach (Collider2D collider in colliders)
+            Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults);
+            foreach (Collider2D collision in collisionResults)
             {
-                Act(collider);
+                Act(collision);
             }
 
             attackTimer = 0;
