@@ -39,6 +39,7 @@ namespace Units.Player
             if (playerAttributes.health.actual <= 0) return;
 
             playerStats.xp.actual += amount;
+            playerStats.gold.actual += amount * 0.5f; // 1 energy = 0.5 gold
             if (playerStats.xp.actual >= playerStats.xp.max && playerStats.level.actual < playerStats.level.max)
             {
                 LevelUp();

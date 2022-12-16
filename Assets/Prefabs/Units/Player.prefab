@@ -250,7 +250,7 @@ MonoBehaviour:
   maxCastRange: 10
   levelUpMultiplier: 1.25
   rewardsCount: 2
-  levelToIncreaseMaxProjectiles: 7
+  levelToIncreaseMaxProjectiles: 6
   globalMaxProjectilesToFire: 9
 --- !u!114 &2071378742
 MonoBehaviour:

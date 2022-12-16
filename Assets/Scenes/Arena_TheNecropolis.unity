@@ -43269,8 +43269,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 176439754, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
       propertyPath: m_text
-      value: I have come to the Necropolis, a city of the dead, to fulfill my destiny
-        and let the dead tremble at my feet!
+      value: I have come to the Necropolis, a city of the dead, to fulfill my destiny.
+        Let the dead tremble at my feet!
       objectReference: {fileID: 0}
     - target: {fileID: 2040667056, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}
       propertyPath: m_IsActive
