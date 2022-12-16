@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Ivory Temple
+  m_text: The Gloomcave
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a9b84421e5e6f644ba987765c097aa3, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 748aad73ff488554b984bccc8b4461a9, type: 2}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 406209476}
   - component: {fileID: 406209475}
   m_Layer: 5
-  m_Name: Arena_TheIvoryTemple
+  m_Name: Arena_TheGloomcave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
