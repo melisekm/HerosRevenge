@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class ArenaSelection : MonoBehaviour
 {
     public List<Button> arenaButtons;
-
+    public GameObject resetGamePanel;
+    
     private void Start()
     {
         // get playercontainer
@@ -23,5 +24,15 @@ public class ArenaSelection : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ShowResetGamePanel()
+    {
+        resetGamePanel.SetActive(true);
+    }
+
+    public void HideResetGamePanel()
+    {
+        resetGamePanel.SetActive(false);
     }
 }

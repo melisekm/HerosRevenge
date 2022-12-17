@@ -63,6 +63,12 @@ public class SceneChanger : MonoBehaviour
         animator.SetTrigger(FadeOut);
     }
 
+    public void ResetGame()
+    {
+        playerContainer.ResetGame();
+        FadeToScene("Menu_ArenaSelection");
+    }
+
     // In the animation event
     public void OnFadeComplete()
     {

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerContainer : MonoBehaviour
 {
-    // dict of arena and completion status
     public List<Arena> arenas;
 
     public float upgradeCostMultiplier = 1.5f;
@@ -13,20 +12,38 @@ public class PlayerContainer : MonoBehaviour
     public int newGamePlus;
     public int killCount;
     public int deathsCount;
-    [NonSerialized] public List<AbilityType> abilityTypes = new();
-    private HashSet<Arena> completedArenas = new();
+    [NonSerialized] public List<AbilityType> abilityTypes;
+    private HashSet<Arena> completedArenas;
+    private float _upgradeCostMultiplier;
+    private float _upgradeCostLevelThreshold;
 
     [NonSerialized] public Arena currentArena;
     [NonSerialized] public Attributes playerAttributes;
     [NonSerialized] public PlayerStats playerStats;
     [NonSerialized] public AbilityType ultimateType;
-    private HashSet<Arena> unlockedArenas = new();
+    private HashSet<Arena> unlockedArenas;
 
     private void Awake()
     {
+        _upgradeCostMultiplier = upgradeCostMultiplier;
+        _upgradeCostLevelThreshold = upgradeCostLevelThreshold;
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        upgradeCostMultiplier = _upgradeCostMultiplier;
+        upgradeCostLevelThreshold = _upgradeCostLevelThreshold;
+        newGamePlus = 0;
+        killCount = 0;
+        deathsCount = 0;
+        abilityTypes = new List<AbilityType>();
+        completedArenas = new HashSet<Arena>();
+        unlockedArenas = new HashSet<Arena>();
         ScriptablePlayer playerScriptable = ResourceSystem.Instance.player;
         playerAttributes = new Attributes(playerScriptable.attributes);
         playerStats = new PlayerStats(playerScriptable.playerStats);
+        ultimateType = AbilityType.Empty;
 
         currentArena = arenas.First();
         if (currentArena.mustCompleteArenas.Count == 0)
