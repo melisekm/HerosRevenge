@@ -44,12 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fd298eddecb544fbd1a7d02c6d27ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedByPlayer: 0
   collidesWithUnits: 0
   collidesWithEnvironment: 1
   duration: 5
   health: 40
   attackPower: 20
-  speed: 2
+  speed: 1
   coolDownRecovery: 0.1
   defenseRating: 0.15
   pickupRange: 3
