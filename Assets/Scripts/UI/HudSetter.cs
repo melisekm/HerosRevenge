@@ -14,8 +14,6 @@ public class HudSetter : MonoBehaviour
     public TMP_Text winConditionText;
     public TMP_Text killsTextValue;
     public LevelUpUISetter levelUpUISetter;
-    public GameObject powerUpPanel;
-    public GameObject powerUpBar;
 
     public WinConditionChecker winConditionChecker;
     public PlayerUnit playerUnit;
@@ -33,8 +31,6 @@ public class HudSetter : MonoBehaviour
         GameManager.OnUpdateTime += SetTime;
         ProgressionController.OnLevelUp += OnLevelUp;
         PlayerUnit.OnPlayerDied += ShowYouDiedText;
-        StatPowerup.OnStatUpgradeActivated += OnStatUpgradeActivated;
-        StatPowerup.OnStatUpgradeDeactivated += OnStatUpgradeDeactivated;
         WinConditionChecker.OnWinConditionMet += ShowWinText;
         GameManager.OnKillCountChange += SetKillCount;
     }
@@ -47,8 +43,6 @@ public class HudSetter : MonoBehaviour
         playerUnit.stats.gold.OnValueChanged -= SetGold;
         ProgressionController.OnLevelUp -= OnLevelUp;
         PlayerUnit.OnPlayerDied -= ShowYouDiedText;
-        StatPowerup.OnStatUpgradeActivated -= OnStatUpgradeActivated;
-        StatPowerup.OnStatUpgradeDeactivated -= OnStatUpgradeDeactivated;
         WinConditionChecker.OnWinConditionMet -= ShowWinText;
         GameManager.OnKillCountChange -= SetKillCount;
     }
@@ -58,29 +52,6 @@ public class HudSetter : MonoBehaviour
         killsTextValue.text = num.ToString();
     }
 
-    private void OnStatUpgradeActivated(ScriptableStatUpgrade upgrade)
-    {
-        var powerupbarGo = Instantiate(powerUpBar, powerUpPanel.transform);
-        // get text child in powerupbar
-        var powerupbarText = powerupbarGo.GetComponentInChildren<TMP_Text>();
-        var amount = upgrade.statType is StatType.Speed or StatType.PickupRange ||
-                     upgrade.amount > 1
-            ? upgrade.amount.ToString()
-            : upgrade.amount.ToString("P0");
-        powerupbarText.text = $"{upgrade.rewardName}\n+{amount}";
-    }
-
-    private void OnStatUpgradeDeactivated(ScriptableStatUpgrade _)
-    {
-        if (powerUpPanel && powerUpPanel.transform.childCount > 0)
-        {
-            var powerupbarGo = powerUpPanel.transform.GetChild(0)?.gameObject;
-            if (powerupbarGo)
-            {
-                Destroy(powerupbarGo);
-            }
-        }
-    }
 
     private void ShowYouDiedText()
     {

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,9 @@ public class UltimateUI : AbilityHolderUI
     public TMP_Text cdText;
     public Image darkMask;
     private AbilityHolder abilityHolder;
+    public GameObject ultimateActivePanel;
+    private Image ultimateActiveImage;
+    public TMP_Text ultimateActiveText;
 
     private float currentMaxCooldown;
 
@@ -21,6 +25,8 @@ public class UltimateUI : AbilityHolderUI
             abilityHolder.OnAbilityReady += ShowReady;
             abilityHolder.OnUltimateUsed += ShowCooldown;
         }
+
+        ultimateActiveImage = ultimateActivePanel.GetComponent<Image>();
     }
 
     private void Update()
@@ -33,12 +39,31 @@ public class UltimateUI : AbilityHolderUI
         }
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        IUltimate.OnUltimateActive += ShowActive;
+    }
+
 
     protected override void OnDisable()
     {
         base.OnDisable();
         abilityHolder.OnAbilityReady -= ShowReady;
         abilityHolder.OnUltimateUsed -= ShowCooldown;
+        IUltimate.OnUltimateActive -= ShowActive;
+    }
+
+    private void ShowActive(float timer)
+    {
+        if (timer == -1)
+        {
+            ultimateActivePanel.SetActive(false);
+        }
+        else
+        {
+            ultimateActiveText.text = timer.ToString("F0");
+        }
     }
 
     protected override void Initialize(ScriptableAbility scriptableAbility, string index)
@@ -53,6 +78,9 @@ public class UltimateUI : AbilityHolderUI
         darkMask.fillAmount = 1;
         currentMaxCooldown = abilityHolder.cooldownTime;
         cdText.text = currentMaxCooldown.ToString("F0");
+        ultimateActivePanel.SetActive(true);
+        ultimateActiveImage.sprite = abilityIcon.sprite;
+        ultimateActiveText.text = "ACTIVE";
     }
 
     private void ShowReady()

@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class Wrath : Ability
+public class Wrath : Ability, IUltimate
 {
     public float duration;
     [Header("Attribute boosts")] public float health = 20f;
@@ -10,6 +11,8 @@ public class Wrath : Ability
     public float defenseRating = 0.2f;
     public float pickupRange = 2f;
     private PlayerUnit playerUnit;
+    private IUltimate ultimate;
+    public float timer { get; set; }
 
     private void Start()
     {
@@ -21,11 +24,22 @@ public class Wrath : Ability
             ToggleBoost(attributes, 1);
             Destroy(gameObject, duration);
         }
+
+        ultimate = this;
+    }
+
+    private void Update()
+    {
+        duration -= Time.deltaTime;
+        timer = duration;
+        ultimate.ActivateUltimate();
     }
 
     private void OnDestroy()
     {
         ToggleBoost(playerUnit.attributes, -1);
+        timer = -1;
+        ultimate.ActivateUltimate();
     }
 
     private void ToggleBoost(Attributes attributes, int modifier)

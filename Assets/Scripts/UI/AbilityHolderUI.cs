@@ -37,7 +37,7 @@ public class AbilityHolderUI : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         AbilityStash.OnAbilityChanged += Initialize;
         PlayerControls.OnSwitchAbility += ShowBorder;

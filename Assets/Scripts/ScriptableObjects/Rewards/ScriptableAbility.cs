@@ -38,5 +38,6 @@ public enum AbilityType
     ShockwaveStrike,
     BoomingVoice,
     EnergyVacuum,
-    Wrath
+    Wrath,
+    BloodAura
 }

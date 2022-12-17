@@ -47,9 +47,9 @@ MonoBehaviour:
   collidesWithUnits: 0
   collidesWithEnvironment: 1
   duration: 5
-  health: 20
-  attackPower: 10
+  health: 40
+  attackPower: 20
   speed: 2
   coolDownRecovery: 0.1
-  defenseRating: 0.2
-  pickupRange: 2
+  defenseRating: 0.25
+  pickupRange: 3

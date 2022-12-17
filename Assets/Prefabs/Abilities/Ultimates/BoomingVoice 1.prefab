@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -2779171180297876725}
   - component: {fileID: -6974304955510520716}
   m_Layer: 8
-  m_Name: BoomingVoice
+  m_Name: BoomingVoice 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

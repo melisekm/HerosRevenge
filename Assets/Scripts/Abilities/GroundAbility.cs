@@ -7,15 +7,15 @@ public class GroundAbility : Ability
     public float dissapearTime = 2f;
     private float attackTimer;
     private Collider2D[] collisionResults = new Collider2D[20];
-    private bool isActive = true;
+    protected bool isActive = true;
     private float radius;
 
-    private void Start()
+    protected virtual void Start()
     {
         radius = GetComponent<CircleCollider2D>().radius;
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (!isActive) return;
         if (attackTimer < attackCooldown)
@@ -28,8 +28,7 @@ public class GroundAbility : Ability
             int size = Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults);
             for (var index = 0; index < size; index++)
             {
-                var collision = collisionResults[index];
-                Act(collision);
+                Act(collisionResults[index]);
             }
 
             attackTimer = 0;
