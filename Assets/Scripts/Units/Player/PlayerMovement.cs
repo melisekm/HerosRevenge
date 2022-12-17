@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         IEnumerator SlowDown()
         {
             isShooting = true;
-            speed.actual = speed.actual * shootSlowdown;
+            speed.actual *= shootSlowdown;
             yield return new WaitForSeconds(0.1f);
             speed.actual = speed.initial;
             isShooting = false;

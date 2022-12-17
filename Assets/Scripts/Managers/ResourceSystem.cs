@@ -27,7 +27,7 @@ public class ResourceSystem : Singleton<ResourceSystem>
         return powerUps.Find(x => x.powerUpType == type);
     }
 
-    public ScriptableEffect GetRandomDamageEffect()
+    private ScriptableEffect GetRandomDamageEffect()
     {
         return effects[Random.Range(0, effects.Count)];
     }

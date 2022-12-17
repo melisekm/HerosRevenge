@@ -10,9 +10,10 @@ public class LightningBlast : MultiProjectileAbility
 
     protected override void Die()
     {
-        Physics2D.OverlapCircleNonAlloc(transform.position, damageRadius, collisionResults);
-        foreach (Collider2D collision in collisionResults)
+        int size = Physics2D.OverlapCircleNonAlloc(transform.position, damageRadius, collisionResults);
+        for (var index = 0; index < size; index++)
         {
+            var collision = collisionResults[index];
             if (collision.gameObject.TryGetComponent(out Unit unit))
             {
                 if (targetFaction == unit.faction)

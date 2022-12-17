@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Healthbar : MonoBehaviour
 {
-    public bool isAlwaysActive = false;
+    public bool isAlwaysActive;
     private Transform background;
     private Transform bar;
     private float prevHealth;

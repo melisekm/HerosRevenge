@@ -14,7 +14,7 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void SetAttributes(Attributes attr) => attributes = attr;
 
-    public virtual void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         if (attributes.health.actual == attributes.health.min) return;
 
@@ -34,7 +34,7 @@ public abstract class Unit : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void DieAfterDelay(float delay = 0.5f)
+    protected void DieAfterDelay(float delay = 0.5f)
     {
         Destroy(gameObject, delay);
     }

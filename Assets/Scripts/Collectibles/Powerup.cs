@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Powerup : Collectible, InitializableCollectible
+public abstract class Powerup : Collectible, INitializableCollectible
 {
     public float duration = 5f;
     protected float disappearTime = 15f;
@@ -22,7 +22,7 @@ public abstract class Powerup : Collectible, InitializableCollectible
     public abstract void Initialize(ScriptablePowerUp powerup, float disappearTime);
 }
 
-public interface InitializableCollectible
+public interface INitializableCollectible
 {
     public void Initialize(ScriptablePowerUp powerup, float disappearTime);
 }

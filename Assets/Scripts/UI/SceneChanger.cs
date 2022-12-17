@@ -9,6 +9,8 @@ public class SceneChanger : MonoBehaviour
     public string scoreSceneName = "Menu_ArenaSelection";
     private PlayerContainer playerContainer;
     private string sceneToLoad;
+    private static readonly int FadeIn = Animator.StringToHash("FadeIn");
+    private static readonly int FadeOut = Animator.StringToHash("FadeOut");
 
     private void Start()
     {
@@ -58,14 +60,14 @@ public class SceneChanger : MonoBehaviour
     {
         sceneToLoad = sceneName;
         playerContainer.currentArena = playerContainer.GetArenaByName(sceneName);
-        animator.SetTrigger("FadeOut");
+        animator.SetTrigger(FadeOut);
     }
 
     // In the animation event
     public void OnFadeComplete()
     {
         SceneManager.LoadScene(sceneToLoad);
-        animator.SetTrigger("FadeIn");
+        animator.SetTrigger(FadeIn);
     }
 
     public void QuitApplication()

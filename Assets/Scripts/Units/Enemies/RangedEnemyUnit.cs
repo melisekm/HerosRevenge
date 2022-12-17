@@ -20,7 +20,7 @@ public class RangedEnemyUnit : EnemyUnit
             AbilityStats stats = new AbilityStats
             {
                 damage = projectileDamage,
-                range = aiPath.endReachedDistance,
+                range = aiPath.endReachedDistance
             };
             projectile.Activate(stats, targetPosition, Faction.Player);
         }

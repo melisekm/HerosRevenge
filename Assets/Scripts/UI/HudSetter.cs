@@ -63,7 +63,7 @@ public class HudSetter : MonoBehaviour
         var powerupbarGo = Instantiate(powerUpBar, powerUpPanel.transform);
         // get text child in powerupbar
         var powerupbarText = powerupbarGo.GetComponentInChildren<TMP_Text>();
-        var amount = upgrade.statType == StatType.Speed || upgrade.statType == StatType.PickupRange ||
+        var amount = upgrade.statType is StatType.Speed or StatType.PickupRange ||
                      upgrade.amount > 1
             ? upgrade.amount.ToString()
             : upgrade.amount.ToString("P0");

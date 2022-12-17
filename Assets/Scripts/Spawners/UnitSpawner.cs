@@ -66,6 +66,7 @@ public class UnitSpawner : Spawner
             var enemyAttributes = new Attributes(enemyScriptable.attributes);
             SetAttributeBasedOnLevel(enemyAttributes.health);
             SetAttributeBasedOnLevel(enemyAttributes.attackPower);
+            enemy.energyDropAmount = enemyScriptable.energyDropAmount;
             enemy.energyDropAmount *= (int)enemyPowerMultiplier;
             enemy.SetAttributes(enemyAttributes);
             OnEnemySpawned?.Invoke(enemy);

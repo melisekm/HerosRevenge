@@ -38,7 +38,7 @@ public class StatPowerup : Powerup
     // public static event Action<ScriptableStatUpgrade> OnStatUpgrade;
     public override void Initialize(ScriptablePowerUp powerup, float disappearTime)
     {
-        base.disappearTime = disappearTime;
+        this.disappearTime = disappearTime;
         var scriptableStatPowerup = (ScriptableStatPowerUp)powerup;
         statUpgrade = scriptableStatPowerup.statUpgrade;
     }

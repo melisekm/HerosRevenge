@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameFinishedUI : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameFinishedUI : MonoBehaviour
     public TMP_Text defense;
     public TMP_Text cdRecovery;
     public TMP_Text pickupRange;
+    public Button newGamePlusBtn;
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class GameFinishedUI : MonoBehaviour
             defense.text = playerAttributes.defenseRating.actual.ToString("P0");
             cdRecovery.text = playerAttributes.cooldownRecovery.actual.ToString("P0");
             pickupRange.text = playerAttributes.pickupRange.actual.ToString("0.#");
+            newGamePlusBtn.onClick.AddListener(() => playerContainer.BeginNewGamePlus());
         }
     }
 }

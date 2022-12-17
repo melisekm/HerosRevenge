@@ -25,9 +25,10 @@ public class GroundAbility : Ability
         // periodically check for physics.overlapcircle to hit enemies
         else
         {
-            Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults);
-            foreach (Collider2D collision in collisionResults)
+            int size = Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults);
+            for (var index = 0; index < size; index++)
             {
+                var collision = collisionResults[index];
                 Act(collision);
             }
 

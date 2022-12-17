@@ -4,7 +4,7 @@ using UnityEngine;
 public class Ability : MonoBehaviour
 {
     protected static readonly int PlayFinished = Animator.StringToHash("playFinished");
-    public bool collidesWithUnits = false;
+    public bool collidesWithUnits;
     public bool collidesWithEnvironment = true;
     protected Animator animator;
     protected HitEffect hitEffect;
@@ -26,7 +26,7 @@ public class Ability : MonoBehaviour
         Act(collision);
     }
 
-    public virtual void SetAbilityStats(AbilityStats st) => abilityStats = st;
+    protected void SetAbilityStats(AbilityStats st) => abilityStats = st;
 
 
     public virtual void Activate(AbilityStats stats, Vector3 target, Faction targetFaction)

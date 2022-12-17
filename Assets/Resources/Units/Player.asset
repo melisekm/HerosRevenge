@@ -38,7 +38,7 @@ MonoBehaviour:
       initial: 5
       _actual: 5
       min: 0
-      max: 15
+      max: 7
       increasePerLevel: 0
       upgradeCost: 0
     cooldownRecovery:
@@ -75,6 +75,6 @@ MonoBehaviour:
       initial: 150
       _actual: 150
       min: 0
-      max: 10000
+      max: 100000
       increasePerLevel: 75
       upgradeCost: 0

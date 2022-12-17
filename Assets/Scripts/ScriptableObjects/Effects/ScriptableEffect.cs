@@ -10,5 +10,5 @@ public class ScriptableEffect : ScriptableObject
 [Serializable]
 public enum EffectType
 {
-    DangerIndicator,
+    DangerIndicator
 }

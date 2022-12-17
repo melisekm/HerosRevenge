@@ -24,9 +24,10 @@ public class ShockwaveExplosion : MonoBehaviour
     public void Explode()
     {
         // circle overlap to find all colliders in the explosion radius
-        var size = Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults);
-        foreach (Collider2D collision in collisionResults)
+        int size = Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults);
+        for (var index = 0; index < size; index++)
         {
+            var collision = collisionResults[index];
             if (collision.gameObject.TryGetComponent(out Unit unit))
             {
                 if (unit.faction == faction)

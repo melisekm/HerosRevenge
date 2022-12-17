@@ -3,9 +3,9 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    private bool isZooming = false;
+    private bool isZooming;
     private Camera mainCamera;
-    private bool zoomOnWin = true;
+    public bool zoomOnWin = true;
 
     private void Start()
     {

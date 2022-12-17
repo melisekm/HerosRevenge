@@ -4,7 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Animator))]
-public class Treasure : Collectible, InitializableCollectible
+public class Treasure : Collectible, INitializableCollectible
 {
     private static readonly int Collected = Animator.StringToHash("Collected");
     public float amount = 25;

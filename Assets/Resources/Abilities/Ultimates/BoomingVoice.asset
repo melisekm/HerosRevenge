@@ -21,5 +21,5 @@ MonoBehaviour:
     range: 0
   abilityType: 7
   prefab: {fileID: -2779171180297876725, guid: 63c0ef589e6a1bd4ea2b02ac73a39f29, type: 3}
-  minLevel: 4
+  minLevel: 7
   group: 1

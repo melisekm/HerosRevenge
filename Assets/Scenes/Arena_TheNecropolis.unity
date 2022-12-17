@@ -14751,6 +14751,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870700052496330514, guid: 7811fa07224b0634aa73712e72643218,
+        type: 3}
+      propertyPath: regenTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870700052496330514, guid: 7811fa07224b0634aa73712e72643218,
+        type: 3}
+      propertyPath: regenAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8625971399444159673, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
       propertyPath: defaultAbilityTypes.Array.data[0]

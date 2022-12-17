@@ -1414,6 +1414,7 @@ MonoBehaviour:
   defense: {fileID: 1600601102}
   cdRecovery: {fileID: 829864711}
   pickupRange: {fileID: 879388645}
+  newGamePlusBtn: {fileID: 2063990326}
 --- !u!1 &377090722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4783,18 +4784,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8429650067733176483}
-        m_TargetAssemblyTypeName: PlayerContainer, Assembly-CSharp
-        m_MethodName: BeginNewGamePlus
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1919430672}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: FadeToScene
@@ -5180,15 +5169,3 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21ad04d028ef8f74e9de0e7ec59eb166, type: 3}
---- !u!114 &8429650067733176483 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8429650068717300170, guid: 21ad04d028ef8f74e9de0e7ec59eb166,
-    type: 3}
-  m_PrefabInstance: {fileID: 8429650067733176482}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba67d2372e4f4f1c9aad1b6092dd7b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScriptableReward : ScriptableObject
 {
-    public String rewardName;
+    public string rewardName;
     public Sprite icon;
-    public String description;
+    public string description;
 }

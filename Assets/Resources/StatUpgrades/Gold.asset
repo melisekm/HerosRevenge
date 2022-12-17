@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardName: Gold
   icon: {fileID: 21300000, guid: f187f9d37f1fa2e4fa7b9b77439ec2e1, type: 3}
-  description: Increase current gold amount by 50
+  description: Increase current gold amount by 150
   statType: 6
   amount: 150

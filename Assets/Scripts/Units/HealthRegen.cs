@@ -4,9 +4,9 @@ public class HealthRegen : MonoBehaviour
 {
     private bool active = true;
     private Attribute health;
-    private float regenAmount = 1f;
-    private float regenTime = 0.2f;
     private float timer;
+    public float regenTime = 0.2f;
+    public float regenAmount = 1f;
 
     private void Start()
     {

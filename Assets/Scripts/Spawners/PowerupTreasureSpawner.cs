@@ -35,7 +35,7 @@ public class PowerupTreasureSpawner : GroundEntitySpawner
         if (entity is ScriptablePowerUp scriptablePowerUp)
         {
             var obj = Instantiate(scriptablePowerUp.prefab, position, Quaternion.identity);
-            var powerUp = obj.GetComponent<InitializableCollectible>();
+            var powerUp = obj.GetComponent<INitializableCollectible>();
             powerUp.Initialize(scriptablePowerUp, Random.Range(disappearTimeRange.x, disappearTimeRange.y));
         }
     }
