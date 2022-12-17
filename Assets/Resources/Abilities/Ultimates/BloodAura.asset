@@ -17,9 +17,9 @@ MonoBehaviour:
   description: Engulf youself in a blood, causing damage to nearby enemies
   stats:
     damage: 15
-    baseCooldown: 20
+    baseCooldown: 30
     range: 0
   abilityType: 10
   prefab: {fileID: 4040480943973488589, guid: 63c0ef589e6a1bd4ea2b02ac73a39f29, type: 3}
-  minLevel: 0
+  minLevel: 4
   group: 1

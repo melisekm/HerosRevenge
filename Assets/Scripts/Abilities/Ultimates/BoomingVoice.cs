@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class BoomingVoice : Ability
+public class BoomingVoice : Ability, IUltimateEventInvokable
 {
+    private IUltimateEventInvokable ultimateEventInvokable;
+    public float damagePercentage = 0.5f;
     private void Start()
     {
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -15,10 +17,12 @@ public class BoomingVoice : Ability
         foreach (var enemy in enemies)
         {
             var enemyUnit = enemy.GetComponent<EnemyUnit>();
-            enemyUnit.TakeDamage(enemyUnit.attributes.health.initial * 0.5f + bonusDamage);
+            enemyUnit.TakeDamage(enemyUnit.attributes.health.initial * damagePercentage + bonusDamage);
             hitEffect.Activate(enemyUnit.transform.position);
         }
 
+        ultimateEventInvokable = this;
+        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation);
         Destroy(gameObject);
     }
 }

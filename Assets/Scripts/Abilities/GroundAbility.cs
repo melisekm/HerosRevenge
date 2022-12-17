@@ -9,6 +9,7 @@ public class GroundAbility : Ability
     private Collider2D[] collisionResults = new Collider2D[20];
     protected bool isActive = true;
     private float radius;
+    private int targetLayerMask;
 
     protected virtual void Start()
     {
@@ -25,7 +26,7 @@ public class GroundAbility : Ability
         // periodically check for physics.overlapcircle to hit enemies
         else
         {
-            int size = Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults);
+            int size = Physics2D.OverlapCircleNonAlloc(transform.position, radius, collisionResults, targetLayerMask);
             for (var index = 0; index < size; index++)
             {
                 Act(collisionResults[index]);
@@ -67,6 +68,11 @@ public class GroundAbility : Ability
         if (targetFaction == Faction.Player)
         {
             gameObject.layer = LayerMask.NameToLayer("GroundAbilityLayer");
+            targetLayerMask = LayerMask.GetMask("Default");
+        }
+        else
+        {
+            targetLayerMask = LayerMask.GetMask("EnemyLayer");
         }
     }
 }

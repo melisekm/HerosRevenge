@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class EnergyVacuum : Ability
+public class EnergyVacuum : Ability, IUltimateEventInvokable
 {
+    private IUltimateEventInvokable ultimateEventInvokable;
     private void Start()
     {
         var energies = GameObject.FindGameObjectsWithTag("Energy");
@@ -11,6 +12,8 @@ public class EnergyVacuum : Ability
             energyComp.PickUp();
         }
 
+        ultimateEventInvokable = this;
+        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation);
         Destroy(gameObject);
     }
 }

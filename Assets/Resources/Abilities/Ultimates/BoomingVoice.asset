@@ -17,9 +17,9 @@ MonoBehaviour:
   description: Hit enemies with loud noise. Deal half their HP + attackpower damage.
   stats:
     damage: 0
-    baseCooldown: 15
+    baseCooldown: 20
     range: 0
   abilityType: 7
-  prefab: {fileID: -2779171180297876725, guid: 63c0ef589e6a1bd4ea2b02ac73a39f29, type: 3}
+  prefab: {fileID: -2779171180297876725, guid: 7bbd14509bfa50a408f35794e481a45d, type: 3}
   minLevel: 7
   group: 1

@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityList: []
-  defaultAbilityTypes: 0200000001000000
+  defaultAbilityTypes: 0100000000000000
   ultimateAbilityHolder: {fileID: 2071378743}
 --- !u!114 &3846312350725019872
 MonoBehaviour:
@@ -326,6 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f08fcf7985981a439e2fc193d1c8db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regenTime: 0.2
+  regenAmount: 1
 --- !u!1 &922623836905763256
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,3 +626,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 461855116459380957}
+  zoomOnWin: 1

@@ -646,7 +646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 172.12}
+  m_AnchoredPosition: {x: 0, y: 170.7}
   m_SizeDelta: {x: 0, y: 344.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2040667059
@@ -1796,12 +1796,12 @@ MonoBehaviour:
     type: {fileID: 2262993745843710433}
     icon: {fileID: 2262993745139552780}
     button: {fileID: 2262993744575591307}
-  damage: {fileID: 2262993744990809491}
-  speed: {fileID: 2262993745028512316}
-  defense: {fileID: 2262993745906779335}
-  cooldown: {fileID: 2262993744466937660}
-  pickup: {fileID: 2262993745660668106}
-  health: {fileID: 2262993745796778976}
+  damage: {fileID: 2262993744466937660}
+  speed: {fileID: 2262993745660668106}
+  defense: {fileID: 2262993745796778976}
+  cooldown: {fileID: 2262993744990809491}
+  pickup: {fileID: 2262993745028512316}
+  health: {fileID: 2262993745906779335}
 --- !u!1 &2262993744442707857
 GameObject:
   m_ObjectHideFlags: 0
@@ -7734,8 +7734,8 @@ RectTransform:
   m_GameObject: {fileID: 6857674767639057375}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6399474446204317408}
   m_Father: {fileID: 2262993744174339659}

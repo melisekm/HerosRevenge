@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Pickup all dropped energy on map immediately.
   stats:
     damage: 0
-    baseCooldown: 10
+    baseCooldown: 15
     range: 0
   abilityType: 8
   prefab: {fileID: 6999054828270795177, guid: bde55947113a3d34699adaf952224a8c, type: 3}

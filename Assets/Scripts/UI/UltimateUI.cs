@@ -42,7 +42,7 @@ public class UltimateUI : AbilityHolderUI
     protected override void OnEnable()
     {
         base.OnEnable();
-        IUltimate.OnUltimateActive += ShowActive;
+        IUltimateEventInvokable.OnUltimateActive += ShowActive;
     }
 
 
@@ -51,12 +51,12 @@ public class UltimateUI : AbilityHolderUI
         base.OnDisable();
         abilityHolder.OnAbilityReady -= ShowReady;
         abilityHolder.OnUltimateUsed -= ShowCooldown;
-        IUltimate.OnUltimateActive -= ShowActive;
+        IUltimateEventInvokable.OnUltimateActive -= ShowActive;
     }
 
     private void ShowActive(float timer)
     {
-        if (timer == -1)
+        if (timer <= 0)
         {
             ultimateActivePanel.SetActive(false);
         }
@@ -80,7 +80,6 @@ public class UltimateUI : AbilityHolderUI
         cdText.text = currentMaxCooldown.ToString("F0");
         ultimateActivePanel.SetActive(true);
         ultimateActiveImage.sprite = abilityIcon.sprite;
-        ultimateActiveText.text = "ACTIVE";
     }
 
     private void ShowReady()

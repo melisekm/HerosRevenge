@@ -1,10 +1,8 @@
 using UnityEngine;
 
-public class BloodAura : GroundAbility, IUltimate
+public class BloodAura : GroundAbility, IUltimateEventInvokable
 {
-    private Transform playerPos;
-    private IUltimate ultimate;
-    public float timer { get; set; }
+    private IUltimateEventInvokable ultimateEventInvokable;
 
 
     protected override void Start()
@@ -13,18 +11,21 @@ public class BloodAura : GroundAbility, IUltimate
         var player = GameObject.FindWithTag("Player");
         if (player)
         {
-            playerPos = player.transform;
+            transform.parent = player.transform;
+            transform.position = player.transform.position;
+        }
+        else
+        {
+            Debug.LogError("Player not found");
         }
 
-        ultimate = this;
+        ultimateEventInvokable = this;
     }
 
     protected override void Update()
     {
-        transform.position = playerPos.position;
         base.Update();
-        timer = dissapearTime;
-        ultimate.ActivateUltimate();
+        ultimateEventInvokable.InvokeUltimateEvent(dissapearTime);
     }
 
     private void OnEnable()
@@ -37,14 +38,14 @@ public class BloodAura : GroundAbility, IUltimate
         PlayerUnit.OnPlayerDied -= Disable;
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
-        timer = -1;
-        ultimate.ActivateUltimate();
+        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation);
     }
 
     private void Disable()
     {
         isActive = false;
     }
+
 }

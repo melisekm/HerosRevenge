@@ -10392,7 +10392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffce2031d9b9354394a4617e32d33e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawnerActive: 0
   spawnTimer: 10
   spawnAreaXminXmax: {x: -20, y: -2}
   spawnAreaYminYmax: {x: 11, y: 2}
@@ -10411,7 +10410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12883d04741e45e41901f05b0abf8979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawnerActive: 0
   spawnTimer: 5
   spawnAreaXminXmax: {x: -20, y: -2}
   spawnAreaYminYmax: {x: 11, y: 2}
@@ -10429,7 +10427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ce04198c4e8f348814aae761d16e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawnerActive: 0
   spawnTimer: 0.1
   spawnAreaXminXmax: {x: -20, y: -2}
   spawnAreaYminYmax: {x: 11, y: 2}
@@ -10496,7 +10493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffce2031d9b9354394a4617e32d33e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawnerActive: 0
   spawnTimer: 15
   spawnAreaXminXmax: {x: 15, y: 22}
   spawnAreaYminYmax: {x: 5, y: 1}
@@ -10515,7 +10511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12883d04741e45e41901f05b0abf8979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawnerActive: 0
   spawnTimer: 5
   spawnAreaXminXmax: {x: 15, y: 22}
   spawnAreaYminYmax: {x: 5, y: 1}
@@ -10533,7 +10528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ce04198c4e8f348814aae761d16e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawnerActive: 0
   spawnTimer: 0.1
   spawnAreaXminXmax: {x: 15, y: 22}
   spawnAreaYminYmax: {x: 5, y: 1}
@@ -30428,11 +30422,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 1937.36
       objectReference: {fileID: 0}
-    - target: {fileID: 274340931839591013, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2262993744289606355, guid: 2579d57c560c48644baaba1b6eaf4483,
         type: 3}
       propertyPath: m_Pivot.x
@@ -30542,11 +30531,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2262993744289606359, guid: 2579d57c560c48644baaba1b6eaf4483,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2579d57c560c48644baaba1b6eaf4483, type: 3}

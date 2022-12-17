@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpType: 2
   prefab: {fileID: 7020559418433006018, guid: 5cf71eaef8e57cf48bbd9e6ae93ab6ba, type: 3}
-  randomAmount: 1
+  randomAmount: 0
   minRandomAmount: 0
   maxRandomAmount: 0

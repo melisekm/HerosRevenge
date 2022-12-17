@@ -181,6 +181,21 @@ MonoBehaviour:
   collidesWithUnits: 0
   collidesWithEnvironment: 0
   speed: 1
+--- !u!114 &6661093825452899533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006492488070156149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f300f0c94aa7be498559ed52c06b5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
+    type: 3}
+  hitColor: {r: 0, g: 1, b: 0.8264365, a: 1}
 --- !u!1 &4743379793293016296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1579615521485040599, guid: e505cc4cabcc80d4e899ee9352045493,

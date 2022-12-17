@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class Wrath : Ability, IUltimate
+public class Wrath : Ability, IUltimateEventInvokable
 {
     public float duration;
     [Header("Attribute boosts")] public float health = 20f;
@@ -11,35 +10,32 @@ public class Wrath : Ability, IUltimate
     public float defenseRating = 0.2f;
     public float pickupRange = 2f;
     private PlayerUnit playerUnit;
-    private IUltimate ultimate;
-    public float timer { get; set; }
+    private IUltimateEventInvokable ultimateEventInvokable;
 
     private void Start()
     {
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player && player.TryGetComponent(out PlayerUnit pu))
+        GameObject playerGo = GameObject.FindWithTag("Player");
+        if (playerGo && playerGo.TryGetComponent(out PlayerUnit playerUnit))
         {
-            playerUnit = pu;
-            Attributes attributes = playerUnit.attributes;
+            this.playerUnit = playerUnit;
+            Attributes attributes = this.playerUnit.attributes;
             ToggleBoost(attributes, 1);
             Destroy(gameObject, duration);
         }
 
-        ultimate = this;
+        ultimateEventInvokable = this;
     }
 
     private void Update()
     {
         duration -= Time.deltaTime;
-        timer = duration;
-        ultimate.ActivateUltimate();
+        ultimateEventInvokable.InvokeUltimateEvent(duration);
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
         ToggleBoost(playerUnit.attributes, -1);
-        timer = -1;
-        ultimate.ActivateUltimate();
+        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation);
     }
 
     private void ToggleBoost(Attributes attributes, int modifier)

@@ -31,21 +31,21 @@ MonoBehaviour:
       initial: 0.1
       _actual: 0.1
       min: 0
-      max: 0.7
+      max: 0.75
       increasePerLevel: 0.01
       upgradeCost: 60
     speed:
       initial: 5
       _actual: 5
       min: 0
-      max: 7
+      max: 15
       increasePerLevel: 0
       upgradeCost: 0
     cooldownRecovery:
       initial: 0
       _actual: 0
       min: 0
-      max: 0.6
+      max: 0.75
       increasePerLevel: 0.01
       upgradeCost: 30
     pickupRange:

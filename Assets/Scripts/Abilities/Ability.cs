@@ -57,6 +57,7 @@ public class Ability : MonoBehaviour
             if (targetFaction == unit.faction)
             {
                 unit.TakeDamage(abilityStats.damage);
+                ActivateHitEffect(collision.transform.position);
                 if (collidesWithUnits)
                 {
                     Die();
@@ -66,6 +67,7 @@ public class Ability : MonoBehaviour
 
         if (collidesWithEnvironment && collision.gameObject.CompareTag("SolidObjects"))
         {
+            ActivateHitEffect(transform.position + transform.up);
             Die();
         }
     }
@@ -80,12 +82,14 @@ public class Ability : MonoBehaviour
         }
         else
         {
-            if (hitEffect)
-            {
-                hitEffect.Activate(transform.position + transform.up);
-            }
-
             Destroy(gameObject);
+        }
+    }
+    protected virtual void ActivateHitEffect(Vector3 position)
+    {
+        if (hitEffect)
+        {
+            hitEffect.Activate(position);
         }
     }
 }

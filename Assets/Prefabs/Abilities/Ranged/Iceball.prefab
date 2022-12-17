@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3118448274658497239}
   - component: {fileID: 5412794097732380216}
   - component: {fileID: 4703212943246044686}
+  - component: {fileID: -234765548313856429}
   m_Layer: 10
   m_Name: Iceball
   m_TagString: Untagged
@@ -170,3 +171,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-234765548313856429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807822209394156985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f300f0c94aa7be498559ed52c06b5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1197340139804505157, guid: 5966cf2685b5cb449a5a06dddc93e353,
+    type: 3}
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
