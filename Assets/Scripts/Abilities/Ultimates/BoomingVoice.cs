@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class BoomingVoice : Ability, IUltimateEventInvokable
 {
-    private IUltimateEventInvokable ultimateEventInvokable;
     public float damagePercentage = 0.5f;
+    private IUltimateEventInvokable ultimateEventInvokable;
+
     private void Start()
     {
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");

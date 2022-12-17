@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,12 +7,12 @@ public class UltimateUI : AbilityHolderUI
 {
     public TMP_Text cdText;
     public Image darkMask;
-    private AbilityHolder abilityHolder;
     public GameObject ultimateActivePanel;
-    private Image ultimateActiveImage;
     public TMP_Text ultimateActiveText;
+    private AbilityHolder abilityHolder;
 
     private float currentMaxCooldown;
+    private Image ultimateActiveImage;
 
     private void Start()
     {

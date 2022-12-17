@@ -2,16 +2,15 @@ using UnityEngine;
 
 public abstract class Collectible : MonoBehaviour
 {
+    // how close the game object has to be to disappear after flying towards the player
+    public float flySpeed = 10f;
+    public bool shouldFlyTowardsPlayer;
+    private float destroyDistance = 0.1f;
     protected bool pickedUp;
     private GameObject player;
     protected PlayerUnit playerUnit;
 
     protected SpriteRenderer spriteRenderer;
-
-    // how close the game object has to be to disappear after flying towards the player
-    public float flySpeed = 10f;
-    private float destroyDistance = 0.1f;
-    public bool shouldFlyTowardsPlayer;
 
     protected virtual void Start()
     {

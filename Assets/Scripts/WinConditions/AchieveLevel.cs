@@ -12,6 +12,7 @@ public class AchieveLevel : WinConditionChecker
         {
             levelToAchieve = playerUnit.stats.level.actual + 2;
         }
+
         description = "Reach level " + levelToAchieve;
     }
 

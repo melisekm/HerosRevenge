@@ -12,10 +12,10 @@ public class PlayerContainer : MonoBehaviour
     public int newGamePlus;
     public int killCount;
     public int deathsCount;
+    private float _upgradeCostLevelThreshold;
+    private float _upgradeCostMultiplier;
     [NonSerialized] public List<AbilityType> abilityTypes;
     private HashSet<Arena> completedArenas;
-    private float _upgradeCostMultiplier;
-    private float _upgradeCostLevelThreshold;
 
     [NonSerialized] public Arena currentArena;
     [NonSerialized] public Attributes playerAttributes;

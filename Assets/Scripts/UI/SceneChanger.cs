@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    private static readonly int FadeIn = Animator.StringToHash("FadeIn");
+    private static readonly int FadeOut = Animator.StringToHash("FadeOut");
     public Animator animator;
     public string gameOverSceneName = "Menu_ArenaSelection";
     public string scoreSceneName = "Menu_ArenaSelection";
     private PlayerContainer playerContainer;
     private string sceneToLoad;
-    private static readonly int FadeIn = Animator.StringToHash("FadeIn");
-    private static readonly int FadeOut = Animator.StringToHash("FadeOut");
 
     private void Start()
     {

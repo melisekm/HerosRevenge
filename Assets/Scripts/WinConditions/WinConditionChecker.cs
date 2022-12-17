@@ -6,7 +6,6 @@ public abstract class WinConditionChecker : MonoBehaviour
     public string description;
     private bool isWinConditionMet;
     protected int newGamePlus;
-    public static event Action OnWinConditionMet;
 
     protected virtual void Awake()
     {
@@ -16,6 +15,8 @@ public abstract class WinConditionChecker : MonoBehaviour
             newGamePlus = playerContainer.newGamePlus;
         }
     }
+
+    public static event Action OnWinConditionMet;
 
     protected void InvokeWin()
     {

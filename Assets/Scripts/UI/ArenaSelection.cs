@@ -6,7 +6,7 @@ public class ArenaSelection : MonoBehaviour
 {
     public List<Button> arenaButtons;
     public GameObject resetGamePanel;
-    
+
     private void Start()
     {
         // get playercontainer

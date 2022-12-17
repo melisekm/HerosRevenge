@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class HealthRegen : MonoBehaviour
 {
+    public float regenTime = 0.2f;
+    public float regenAmount = 1f;
     private bool active = true;
     private Attribute health;
     private float timer;
-    public float regenTime = 0.2f;
-    public float regenAmount = 1f;
 
     private void Start()
     {

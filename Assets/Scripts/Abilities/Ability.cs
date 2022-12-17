@@ -86,6 +86,7 @@ public class Ability : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     protected virtual void ActivateHitEffect(Vector3 position)
     {
         if (hitEffect)

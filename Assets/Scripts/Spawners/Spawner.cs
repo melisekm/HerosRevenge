@@ -3,8 +3,8 @@ using UnityEngine;
 
 public abstract class Spawner : MonoBehaviour
 {
-    [NonSerialized] protected bool isSpawnerActive;
     public float spawnTimer = 5f;
+    [NonSerialized] protected bool isSpawnerActive;
 
     public virtual void Activate()
     {

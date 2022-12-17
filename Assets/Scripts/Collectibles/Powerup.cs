@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public abstract class Powerup : Collectible, INitializableCollectible
 {
-    protected float duration = 5f;
     protected float disappearTime = 15f;
+    protected float duration = 5f;
     protected bool isActive;
 
     protected override void Update()

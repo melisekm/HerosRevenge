@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +16,6 @@ public class MusicToggler : MonoBehaviour
             this.musicSource = musicSource;
             musicIcon.sprite = musicSource.isPlaying ? musicOn : musicOff;
         }
-        
     }
 
     public void ToggleMusic()
