@@ -202,7 +202,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8429650068644529216, guid: 21ad04d028ef8f74e9de0e7ec59eb166, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 21ad04d028ef8f74e9de0e7ec59eb166, type: 3}
 --- !u!1 &168755298
 GameObject:
@@ -10392,10 +10393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffce2031d9b9354394a4617e32d33e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 10
+  spawnTimer: 15
   spawnAreaXminXmax: {x: -20, y: -2}
   spawnAreaYminYmax: {x: 11, y: 2}
-  abilityTypes: 
+  abilityTypes: 0a000000090000000800000007000000
   statTypes: 0000000002000000030000000400000001000000
   disappearTimeRange: {x: 8, y: 20}
 --- !u!114 &944900299
@@ -10497,7 +10498,7 @@ MonoBehaviour:
   spawnAreaXminXmax: {x: 15, y: 22}
   spawnAreaYminYmax: {x: 5, y: 1}
   abilityTypes: 
-  statTypes: 0100000003000000
+  statTypes: 010000000300000000000000
   disappearTimeRange: {x: 999, y: 999}
 --- !u!114 &1069720325
 MonoBehaviour:
@@ -10624,7 +10625,7 @@ PrefabInstance:
     - target: {fileID: 6870700052496330514, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
       propertyPath: regenTime
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6870700052496330514, guid: 7811fa07224b0634aa73712e72643218,
         type: 3}
@@ -30814,6 +30815,21 @@ PrefabInstance:
       propertyPath: statTypes.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: abilityTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: abilityTypes.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: abilityTypes.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: xpText
@@ -30883,6 +30899,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedAbilityNumber
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930214859063286695, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7384659590911650641, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}

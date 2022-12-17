@@ -1,14 +1,28 @@
-using System;
+using UnityEngine;
 
 public class AbilityPowerup : Powerup
 {
-    public override void Initialize(ScriptablePowerUp powerup, float disappearTime)
+    private ScriptableAbility scriptableAbility;
+
+    protected override void Start()
     {
-        throw new NotImplementedException();
+        base.Start();
+        spriteRenderer.sprite = scriptableAbility.icon;
     }
 
-    public override void PickUp()
+    public override void Initialize(ScriptablePowerUp powerup, float disappearTime)
     {
-        throw new NotImplementedException();
+        this.disappearTime = disappearTime;
+        var scriptableStatPowerup = (ScriptableAbilityPowerUp)powerup;
+        scriptableAbility = scriptableStatPowerup.ability;
+    }
+
+    protected override void OnPlayerReach()
+    {
+        Ability ability = Instantiate(scriptableAbility.prefab, transform.position, Quaternion.identity);
+        AbilityStats abilityStats = scriptableAbility.stats;
+        abilityStats.damage += playerUnit.attributes.attackPower.actual;
+        ability.Activate(abilityStats, transform.position, Faction.Enemy);
+        Destroy(gameObject);
     }
 }

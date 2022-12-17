@@ -1,19 +1,24 @@
+using System;
 using UnityEngine;
 
 public abstract class Powerup : Collectible, INitializableCollectible
 {
-    public float duration = 5f;
+    protected float duration = 5f;
     protected float disappearTime = 15f;
+    protected bool isActive;
 
     protected override void Update()
     {
-        if (disappearTime > 0)
+        if (!isActive)
         {
-            disappearTime -= Time.deltaTime;
-        }
-        else
-        {
-            Destroy(gameObject);
+            if (disappearTime > 0)
+            {
+                disappearTime -= Time.deltaTime;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         base.Update();

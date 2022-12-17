@@ -14663,7 +14663,7 @@ MonoBehaviour:
   spawnTimer: 10
   spawnAreaXminXmax: {x: -34, y: -30}
   spawnAreaYminYmax: {x: -7, y: -22}
-  abilityTypes: 
+  abilityTypes: 070000000a000000
   statTypes: 0000000002000000030000000500000006000000
   disappearTimeRange: {x: 8, y: 20}
 --- !u!114 &944900299
@@ -43788,6 +43788,31 @@ PrefabInstance:
       propertyPath: disappearTimeRange.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: abilityTypes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: abilityTypes.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: abilityTypes.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: abilityTypes.Array.data[2]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852524192308160983, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: abilityTypes.Array.data[3]
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6852524192544691955, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}
       propertyPath: xpText
@@ -43857,6 +43882,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedAbilityNumber
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930214859063286695, guid: 43404a95f3cbde14e80df4db1a452b7b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7384659590911650641, guid: 43404a95f3cbde14e80df4db1a452b7b,
         type: 3}

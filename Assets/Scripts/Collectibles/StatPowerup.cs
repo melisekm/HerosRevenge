@@ -5,9 +5,15 @@ public class StatPowerup : Powerup
 {
     private ScriptableStatUpgrade statUpgrade;
 
+    protected override void Start()
+    {
+        base.Start();
+        spriteRenderer.sprite = statUpgrade.icon;
+    }
+
     protected override void Update()
     {
-        if (pickedUp)
+        if (isActive)
         {
             if (duration > 0)
             {
@@ -43,9 +49,10 @@ public class StatPowerup : Powerup
         statUpgrade = scriptableStatPowerup.statUpgrade;
     }
 
-    public override void PickUp()
+    protected override void OnPlayerReach()
     {
-        OnStatUpgradeActivated?.Invoke(statUpgrade);
+        isActive = true;
         spriteRenderer.enabled = false;
+        OnStatUpgradeActivated?.Invoke(statUpgrade);
     }
 }

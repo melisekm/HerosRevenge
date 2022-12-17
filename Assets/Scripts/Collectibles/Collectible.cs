@@ -3,9 +3,15 @@ using UnityEngine;
 public abstract class Collectible : MonoBehaviour
 {
     protected bool pickedUp;
-    protected GameObject player;
-    private PlayerUnit playerUnit;
+    private GameObject player;
+    protected PlayerUnit playerUnit;
+
     protected SpriteRenderer spriteRenderer;
+
+    // how close the game object has to be to disappear after flying towards the player
+    public float flySpeed = 10f;
+    private float destroyDistance = 0.1f;
+    public bool shouldFlyTowardsPlayer;
 
     protected virtual void Start()
     {
@@ -17,15 +23,37 @@ public abstract class Collectible : MonoBehaviour
     protected virtual void Update()
     {
         // cant pickup if player is dead
-        if (pickedUp || playerUnit.attributes.health.actual <= 0) return;
+        if (playerUnit.attributes.health.actual <= 0) return;
 
-        if (Vector3.Distance(transform.position, player.transform.position) < playerUnit.attributes.pickupRange.actual)
+        if (shouldFlyTowardsPlayer && pickedUp)
         {
-            pickedUp = true;
-            PickUp();
+            // fly towards player
+            transform.position = Vector3.MoveTowards(
+                transform.position, player.transform.position, flySpeed * Time.deltaTime
+            );
+            // if reached player destroy self
+            if (Vector3.Distance(transform.position, player.transform.position) < destroyDistance)
+            {
+                OnPlayerReach();
+            }
+        }
+        else
+        {
+            if (!pickedUp && Vector3.Distance(transform.position, player.transform.position) <
+                playerUnit.attributes.pickupRange.actual)
+            {
+                PickUp();
+            }
         }
     }
 
+    protected virtual void OnPlayerReach()
+    {
+    }
 
-    public abstract void PickUp();
+
+    public virtual void PickUp()
+    {
+        pickedUp = true;
+    }
 }

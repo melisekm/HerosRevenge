@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BoomingVoice
   m_EditorClassIdentifier: 
   rewardName: Booming Voice
-  icon: {fileID: 881267837, guid: 56e31c37031804547bb2f50fa8316cd5, type: 3}
+  icon: {fileID: 21300000, guid: e19192c3eb57ebb4f9ca95e66fd3c77b, type: 3}
   description: Hit enemies with loud noise. Deal half their HP + attackpower damage.
   stats:
     damage: 0

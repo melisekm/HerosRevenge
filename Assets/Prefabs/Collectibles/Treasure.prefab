@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f8134065c90d44aae8266f8788c905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flySpeed: 10
+  shouldFlyTowardsPlayer: 0
   amount: 25
   numberPopup: {fileID: 3541279542083400454}
   sprites:

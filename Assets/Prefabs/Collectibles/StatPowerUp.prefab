@@ -129,5 +129,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42272fe91ea06544b4cdd51d6885a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disapearTime: 15
-  duration: 5
+  flySpeed: 10
+  shouldFlyTowardsPlayer: 1

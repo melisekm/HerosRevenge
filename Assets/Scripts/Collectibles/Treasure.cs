@@ -44,6 +44,7 @@ public class Treasure : Collectible, INitializableCollectible
 
     public override void PickUp()
     {
+        base.PickUp();
         OnTreasueCollected?.Invoke(amount);
         animator.SetTrigger(Collected);
     }
