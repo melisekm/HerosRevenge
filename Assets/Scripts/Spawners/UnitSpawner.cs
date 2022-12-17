@@ -117,6 +117,5 @@ public class UnitSpawner : Spawner
         }
 
         spawnTimer = spawnRate.GetSpawnRate(enemyCount, Time.timeSinceLevelLoad);
-        Debug.Log($"Spawn rate is now {spawnTimer}");
     }
 }

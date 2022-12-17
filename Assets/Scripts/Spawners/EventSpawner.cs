@@ -49,9 +49,7 @@ public class EventSpawner : EffectSpawner
             isEventActive = true;
             timeUntilSpawn = 0;
             eventEffect = ResourceSystem.Instance.GetEffectByType(EffectType.DangerIndicator);
-            Debug.Log("Starting event");
             yield return new WaitForSeconds(length);
-            Debug.Log("Ending event");
             isEventActive = false;
         }
 

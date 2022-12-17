@@ -51,5 +51,5 @@ MonoBehaviour:
   attackPower: 20
   speed: 2
   coolDownRecovery: 0.1
-  defenseRating: 0.25
+  defenseRating: 0.15
   pickupRange: 3

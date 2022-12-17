@@ -22,7 +22,7 @@ public class BoomingVoice : Ability, IUltimateEventInvokable
         }
 
         ultimateEventInvokable = this;
-        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation);
+        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation, usedByPlayer);
         Destroy(gameObject);
     }
 }

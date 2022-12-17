@@ -29,13 +29,13 @@ public class Wrath : Ability, IUltimateEventInvokable
     private void Update()
     {
         duration -= Time.deltaTime;
-        ultimateEventInvokable.InvokeUltimateEvent(duration);
+        ultimateEventInvokable.InvokeUltimateEvent(duration, usedByPlayer);
     }
 
     public void OnDestroy()
     {
         ToggleBoost(playerUnit.attributes, -1);
-        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation);
+        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation, usedByPlayer);
     }
 
     private void ToggleBoost(Attributes attributes, int modifier)

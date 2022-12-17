@@ -3976,7 +3976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12883d04741e45e41901f05b0abf8979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 15
+  spawnTimer: 25
   spawnAreaXminXmax: {x: -13, y: 15}
   spawnAreaYminYmax: {x: 5, y: -6}
   defaultFaction: 0

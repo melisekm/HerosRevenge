@@ -59,6 +59,7 @@ public class AbilityHolder : MonoBehaviour
             cooldownTime = ability.abilityStats.baseCooldown;
             if (scriptableAbility.group == AbilityGroup.Ultimate)
             {
+                ability.usedByPlayer = true;
                 OnUltimateUsed?.Invoke();
             }
         }

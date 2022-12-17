@@ -114,8 +114,6 @@ public class GameManager : MonoBehaviour
 
     private void ChangeState(GameState newState)
     {
-        Debug.Log($"New state: {newState}");
-
         state = newState;
         switch (newState)
         {

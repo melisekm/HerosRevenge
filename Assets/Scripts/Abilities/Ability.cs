@@ -4,6 +4,7 @@ using UnityEngine;
 public class Ability : MonoBehaviour
 {
     protected static readonly int PlayFinished = Animator.StringToHash("playFinished");
+    public bool usedByPlayer;
     public bool collidesWithUnits;
     public bool collidesWithEnvironment = true;
     protected Animator animator;

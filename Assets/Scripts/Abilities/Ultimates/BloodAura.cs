@@ -25,7 +25,7 @@ public class BloodAura : GroundAbility, IUltimateEventInvokable
     protected override void Update()
     {
         base.Update();
-        ultimateEventInvokable.InvokeUltimateEvent(dissapearTime);
+        ultimateEventInvokable.InvokeUltimateEvent(dissapearTime, usedByPlayer);
     }
 
     private void OnEnable()
@@ -40,12 +40,11 @@ public class BloodAura : GroundAbility, IUltimateEventInvokable
 
     public void OnDestroy()
     {
-        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation);
+        ultimateEventInvokable.InvokeUltimateEvent(IUltimateEventInvokable.EndOfActivation, usedByPlayer);
     }
 
     private void Disable()
     {
         isActive = false;
     }
-
 }
