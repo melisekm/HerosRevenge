@@ -1,6 +1,10 @@
 # Hero's Revenge
 2D Topdown roguelite arena shooter
 
+## Play Here
+
+ https://melisekm.itch.io/heros-revenge
+
 ## Overview
 ### Genre
 - Roguelite Arena Shooter
@@ -92,10 +96,6 @@ https://www.youtube.com/watch?v=bKpOtUALnng
 ![image](https://user-images.githubusercontent.com/46221266/208278674-823cb885-f88c-4d7a-b04f-f103543c6a8e.png)
 ![image](https://user-images.githubusercontent.com/46221266/208278670-46b21b4e-fc8e-46ee-8f0d-88d58e7a4ac8.png)
 
-
-
-
-
 ## Credits - Assets
 
 - Pixel Art Top Down - Basic -> https://assetstore.unity.com/packages/2d/environments/pixel-art-top-down-basic-187605
@@ -123,3 +123,7 @@ https://www.youtube.com/watch?v=bKpOtUALnng
 - Lightning blast -> https://www.clipartmax.com/middle/m2H7K9A0d3G6d3G6_pin-lightning-strike-clip-art-lightning-transparent/
 - Piercing Projectile -> https://www.clipartmax.com/download/m2i8H7Z5Z5N4G6Z5_spear-nhs-blue-spear-clip-art/
 - Mage portrait -> https://corwin-zx.itch.io/pixelart-rpg-character-portraits
+
+## Dev
+
+- Main scene: Menu_Main
