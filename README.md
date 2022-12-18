@@ -17,7 +17,7 @@
 - Follows player int he center of the screen
 
 ### Controls
-- WASD – Moving, 1,2 – Ability selection
+- WASD – Moving, 1,2 – Ability selection, R - Ultimate
 - Mouse – Aiming and shooting
 
 ## Features
